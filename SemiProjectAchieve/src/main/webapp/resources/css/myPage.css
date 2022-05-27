@@ -1,137 +1,154 @@
 * { box-sizing: border-box;}
 body{ margin: 0;}
 
+/* 임시 Header */
+header{
+    height: 200px;
+    display: flex; /* flex 형식으로 변경 -> 내부 요소를 유연하게 정렬/배치 */
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #b4b4b4;
+}
+
 /* 마이페이지 영역 */
 .myPage-content{ 
     /* 공통 class */
-    width: 1200px;
+    width: auto;
     height: auto;
 
     display: flex;
 }
 
-/* 마이페이지 왼쪽 사이드 메뉴 */
-.myPage-leftSide{
-    width: 20%;
+
+/* 마이페이지 섹션 */
+.myPage-sideMenu{
+    width: 25%;
+
+    display: flex;
+    justify-content: center;
+    align-items: top;
+
+    padding-top: 40px;
+
     border-right: 2px solid #b4b4b4;
 }
 
-.myPage-list{
+.myPage-main{
     width: 100%;
-    padding: 0 20px 0 0;
-    margin-left: 40px;
-}
-
-.myPage-list > li:first-child{
-    list-style: none;
-    height: 70px;
-    font-size: 27px;
-    font-weight: bolder;
-    margin: 30px 0;
-}
-
-.myPage-list > li{
-    list-style: none;
-    height: 30px;
-    font-size: 17px;
-    font-weight: 600;
-    margin: 15px 0;
-}
-
-.myPage-list a{
-    text-decoration: none;
-    color: black;
-    height: 100%;
-    width: 65%;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.myPage-list a:hover{
-    cursor: pointer;
+
+/* 마이페이지 사이드 메뉴 */
+.myPage-sideMenu a{
+    text-decoration: none;
+    color: black;
+    height: 100%;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+/* 페이지 제목 */
+.myPage-sideMenu > h2{
+    font-size: 1.7em;
+    font-weight: bolder;
+
+    margin: 40px 30px;
+    padding-left: 10px;
+}
+
+/* 리스트 */
+#sideMenu-list{
+    width: 65%;
+}
+
+/* 메뉴 이름 */
+.sideMenu-list-row{
+    width: 100%;
+    height: 35px;
+    padding-left: 10px;
+}
+
+/* 마우스 효과 */
+.sideMenu-list-row:hover{
     background-color: #142578;
+}
+
+.sideMenu-list-row > a:hover{
     color: white;
 }
 
 
 /* 마이페이지 메인 */
-.myPage-main{
-    /* 공통 class */
-    width: 80%;
-    margin: 40px 15px;
+
+#myPage-detail{
+    margin-top: 50px;
 }
 
-.myPage-listName{
-    /* 공통 class */
-    /* 페이지 제목 */
-    font-size: 30px;
-    margin-left: 100px;
+/* 페이지 제목 */
+#myPage-title{
+    font-size: 2em;
 }
 
-.myInfo{
-    /* 공통 class */
-    margin-left: 100px;
+/* 행 */
+.myPage-detail-row{
+    margin: 20px 0;
 }
 
-.myPage-row{
+/* 행 이름 */
+.myPage-detail-row > div{
+    font-size: 1.1em;
+    font-weight: bold;
+
     padding: 5px 0;
-}
 
-#memberName{
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 20px;
-    text-decoration: underline;
-}
-
-.myPage-row:nth-child(3){
-    border-bottom: 1.5px solid #b4b4b4;
-    margin: 10px 0;
-}
-
-/* 회원정보 수정 */
-.update-row{
-    margin: 30px 0;
-}
-
-.update-row label{
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.update-row input{
-    width: 350px;
-    height: 35px;
-    
-    font-size: 15px;
-
-    border: none;
-    border-bottom: 1px solid #b4b4b4;
-
-    padding-left: 5px;
-
-    margin-top: 5px;
-
-    outline: none;
+    color: #504d4d;
 
 }
 
-#myInfo-update-btn{
-    width: 200px;
+/* input */
+.myPage-detail-input{
+    width: 380px;
     height: 40px;
-    
-    background-color: #142578;
-    color: white;
+
+    font-size: 17px;
+
+    margin: 8px 0;
 
     border: 0;
+    border-bottom: 1px solid #b4b4b4;
+    outline: 0;
+}
+
+.myPage-detail-input:focus-within{
+    border-bottom: 2px solid #142578;
+}
+
+#memberEmail{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 0 10px;
+}
+
+#modify{
+    width: 380px;
+    height: 40px;
+
+    margin: 35px 0;
+
+    font-weight: bold;
+    font-size: 1.1em;
+
+    border: none;
     border-radius: 5px;
 
-    font-size: 17px;
-    font-weight: bold;
-
-    margin-top: 40px;
+    background-color: #142578;
+    color: white;
 
     cursor: pointer;
 }
