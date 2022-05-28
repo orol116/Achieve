@@ -24,7 +24,7 @@ header > span{
     font-weight: bold;
     text-align: center;
 
-    color: #142578;
+    color: #0e194e;
 }
 
 
@@ -91,7 +91,7 @@ header > span{
 
 .myPage-sideMenu a{
     text-decoration: none;
-    color: #142578;
+    color: #0e194e;
     height: 100%;
 
     font-weight: bold;
@@ -107,7 +107,7 @@ header > span{
 
 /* 마우스 효과 */
 .sideMenu-list-row:hover{
-    border-bottom: 2px solid #142578;
+    border-bottom: 2px solid #0e194e;
 }
 
 
@@ -155,7 +155,7 @@ header > span{
 }
 
 .myPage-detail-input:focus-within{
-    border-bottom: 2px solid #142578;
+    border-bottom: 2px solid #0e194e;
 }
 
 /* 아이디 */
@@ -178,7 +178,7 @@ header > span{
     border: none;
     border-radius: 5px;
 
-    background-color: #142578;
+    background-color: #0e194e;
     color: white;
 
     cursor: pointer;
