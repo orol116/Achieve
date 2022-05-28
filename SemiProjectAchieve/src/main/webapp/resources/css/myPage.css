@@ -1,14 +1,33 @@
 * { box-sizing: border-box;}
-body{ margin: 0;}
+body{ 
+    margin: 0;
+}
 
 /* 임시 Header */
 header{
     height: 200px;
     display: flex; /* flex 형식으로 변경 -> 내부 요소를 유연하게 정렬/배치 */
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     border-bottom: 2px solid #b4b4b4;
 }
+
+#logo{ /* 임시 */
+    width: 150px;
+    height: 150px;
+
+    margin: 0 180px;
+}
+
+header > span{
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+
+    color: #142578;
+}
+
+
 
 /* 마이페이지 영역 */
 .myPage-content{ 
@@ -25,69 +44,79 @@ header{
     width: 25%;
 
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: top;
 
     padding-top: 40px;
 
-    border-right: 2px solid #b4b4b4;
+    /* border-right: 2px solid #b4b4b4; */
 }
 
 .myPage-main{
     width: 100%;
 
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
 
 /* 마이페이지 사이드 메뉴 */
-.myPage-sideMenu a{
-    text-decoration: none;
-    color: black;
-    height: 100%;
-
-    display: flex;
-    justify-content: left;
-    align-items: center;
+/* 리스트 */
+#sideMenu-list{
+    width: 60%;
 }
 
 /* 페이지 제목 */
-.myPage-sideMenu > h2{
+.myPage-sideMenu h2{
     font-size: 1.7em;
     font-weight: bolder;
 
-    margin: 40px 30px;
-    padding-left: 10px;
+    margin: 50px 0;
 }
 
-/* 리스트 */
-#sideMenu-list{
-    width: 65%;
-}
 
 /* 메뉴 이름 */
 .sideMenu-list-row{
     width: 100%;
-    height: 35px;
-    padding-left: 10px;
+    height: 40px;
+
+    padding-bottom: 0;
+    margin: 10px 0;
+}
+
+.sideMenu-list-row:nth-child(2){
+    margin-top: 50px;
+}
+
+.myPage-sideMenu a{
+    text-decoration: none;
+    color: #142578;
+    height: 100%;
+
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sideMenu-list-row > a{
+    font-size: 1.2em;
 }
 
 /* 마우스 효과 */
 .sideMenu-list-row:hover{
-    background-color: #142578;
+    border-bottom: 2px solid #142578;
 }
 
-.sideMenu-list-row > a:hover{
-    color: white;
-}
 
 
 /* 마이페이지 메인 */
 
 #myPage-detail{
     margin-top: 50px;
+    margin-left: 180px;
 }
 
 /* 페이지 제목 */
@@ -129,12 +158,14 @@ header{
     border-bottom: 2px solid #142578;
 }
 
+/* 아이디 */
 #memberEmail{
     font-size: 25px;
     font-weight: bold;
     padding: 20px 0 10px;
 }
 
+/* 버튼 */
 #modify{
     width: 380px;
     height: 40px;
