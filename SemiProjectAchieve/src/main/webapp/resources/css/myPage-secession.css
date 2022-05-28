@@ -35,11 +35,11 @@
     font-weight: bold;
     font-size: 1.1em;
 
-    border: 2px solid #142578;
+    border: 2px solid #0e194e;
     border-radius: 5px;
 
     background-color: white;
-    color: #142578;
+    color: #0e194e;
 
     cursor: pointer;
 }
@@ -56,7 +56,7 @@
     border: none;
     border-radius: 5px;
 
-    background-color: #142578;
+    background-color: #0e194e;
     color: white;
 
     cursor: pointer;
