@@ -1,0 +1,63 @@
+/* 회원탈퇴 페이지 하단부 */
+
+/* 회원 탈퇴 안내 */
+.secession-guide{
+    margin: 70px 0;
+}
+
+.secession-guide-detail{
+    padding: 3px 0;
+
+    font-size: small;
+    color: #343434;
+}
+
+/* 밑줄 */
+#blank{
+    margin: 20px 0;
+    border-bottom: 2px solid #b4b4b4;
+}
+
+/* 버튼 영역 */
+.secession-btn-area{
+    margin: 50px 0;
+
+    display: inline-block;
+    
+}
+
+/* 회원 탈퇴 취소 버튼 */
+#secession-cancel-btn{
+    width: 180px;
+    height: 40px;
+    margin-right: 130px;
+
+    font-weight: bold;
+    font-size: 1.1em;
+
+    border: 2px solid #142578;
+    border-radius: 5px;
+
+    background-color: white;
+    color: #142578;
+
+    cursor: pointer;
+}
+
+
+/* 회원 탈퇴 버튼 */
+#secession-confirm-btn{
+    width: 180px;
+    height: 40px;
+
+    font-weight: bold;
+    font-size: 1.1em;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #142578;
+    color: white;
+
+    cursor: pointer;
+}
