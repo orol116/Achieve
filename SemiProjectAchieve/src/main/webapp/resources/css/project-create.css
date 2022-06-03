@@ -78,49 +78,104 @@ header > section:nth-of-type(2){
 
 }
 
-/* ------------------------------ main 코드 -------------------------------------- */
 
 
-#infor-main{
-    display: block;
-    border: 2px solid black;
-    width: 700px;
-    margin-left: 330px;
 
+/* 마이페이지 영역 */
 
-}
-
-#infor-first{
-    background-color: rgb(199, 196, 196);
-    font-weight: bold;
-    font-size: 18px;
-    padding: 5px 20px;
-    margin-bottom: 0;
-
-
-}
-
-#start-day{
-    background-color: rgb(199, 196, 196);
-    font-size: 13px;
-    padding: 0 0 10px 20px;
-
+.classPage-content{
+    width: 1000px;
+    height: 800px;
+    margin: 20px auto;
+    display: flex; 
+    
+    
+    flex-direction: column;
     
 }
 
+/* 사이드 메뉴 */
 
-.infor-header{
-    border: 1px solid black; 
+.classPage-inside{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+
+}
+
+.classPage-left{
+    width: 400px;
+    height: 600px;
     font-size: 20px;
-    font-weight: 700;
-    padding: 10px 20px;
-}
-
-.infor-text{
-    font-size: 13px;
-    padding: 20px 20px;
-    letter-spacing: 0 5px;
+    border: solid 2px black;
+    margin: 20px;
     
 
 }
+
+
+
+.left-text{
+    margin: 40px 10px 20px 30px;
+    font-weight: bold;
+
+}
+
+#className{
+    display: flex;
+    width: 300px;
+    height: 40px;
+    outline: none;
+    justify-content: center;
+    font-size: 15px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    
+}
+
+
+div[class="page-left"]{
+    margin: 0 0 0 30px;
+    font-size: 20px;
+    
+}
+
+select[name="classCategory"]{
+    width: 150px;
+    height: 40px;
+}
+
+
+
+.classPage-right{
+    width: 400px;
+    height: 600px;
+    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.classPage-right label{
+    font-size: 24px;
+    font-weight: bold;
+
+    
+}
+
+p#select-text{
+    margin-top: 6px;
+    margin-left: 30px;
+    
+    
+
+}
+
+.select-text{
+    margin-bottom: 40px;
+}
+
 

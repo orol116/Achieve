@@ -1,0 +1,204 @@
+main{
+    width: 1400px;
+    margin: auto;
+}
+
+
+/* header */
+header{
+    height: 200px;
+    display: flex; /* flex 형식으로 변경 -> 내부 요소를 유연하게 정렬/배치 */
+}
+
+header > section:nth-of-type(1){
+    flex-basis : 20%;
+}
+header > section:nth-of-type(2){
+    flex-basis : 60%;
+}
+header > section:nth-of-type(3){
+    flex-basis : 20%;
+}
+
+
+/* 로고 */
+header > section:nth-of-type(1){
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+
+#home-logo{
+    width: 120px;
+    height: auto;
+    /* 이미지는 width/height 둘 중 하나만 지정 시 
+    나머지 방향의 크기가 같은 비율로 지정됨 */
+}
+
+
+/* 검색 스타일 */
+header > section:nth-of-type(2){
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.search-area{ 
+    width : 400px;
+    height: 50px;
+    
+  }
+
+.search-area fieldset{
+    padding: 2px;
+    margin : 0;
+    border : 2px solid #455ba8;
+    border-radius: 5px;
+    
+    display: flex;
+}
+
+
+
+#search-btn{
+    width: 5%;
+    cursor: pointer;
+    font-size : 1.2em;
+    color : #455ba8;
+    background-color: white;
+    border : 0;
+}
+
+#query{
+    font-weight: bold;
+    width: 350px;
+
+}
+
+
+/* ----------------------------------------------------------------------------------------- */
+
+
+#FAQ-container{
+   display: block;
+   border: 2px solid black;
+   width: 740px;
+   margin-left: 300px;
+   
+}
+
+#FAQ-main{
+    padding: 20px;
+}
+
+#FAQ-middle{
+    border: 1px solid #ccc;
+    margin-top: 30px;
+}
+
+
+
+#select-area{
+    border: 1px solid black;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+
+
+}
+
+
+
+
+#FAQ-header{
+    height: 50px;
+    font-size: 17px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding-left: 23px;
+    border-bottom: 1px solid #ccc;
+    background-color: #ddd;
+
+}
+
+/* ----------------------------------- */
+
+.FAQ{
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+}
+
+.FAQ > li{
+    padding: 20px 0;
+    box-sizing: border-box;
+
+}
+
+.FAQ > li:nth-child(n+2){
+    border-top: 1px solid #ccc;
+}
+
+.FAQ input{
+    display: none;
+}
+
+.FAQ label{
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}
+
+.FAQ label::before{
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-left: 8px solid #455ba8;
+    margin: 2px 0 0 8px;
+    float: left;
+}
+
+.FAQ input:checked + label::before {
+    border: 8px solid transparent;
+    border-top: 8px solid #455ba8;
+    border-bottom: 0;
+    margin: 8px 4px 0;
+    
+}
+
+.FAQ div{
+    display: none;
+    color: #666;
+    font-size: 0.9375em;
+    overflow: hidden;
+    padding: 10px 0 10px 30px;
+    box-sizing: border-box;
+    
+}
+
+.FAQ input:checked + label + div{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
