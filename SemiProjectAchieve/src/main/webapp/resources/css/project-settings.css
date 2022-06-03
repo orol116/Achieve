@@ -78,49 +78,72 @@ header > section:nth-of-type(2){
 
 }
 
-/* ------------------------------ main 코드 -------------------------------------- */
 
 
-#infor-main{
+/* ------------------------------------------------------- */
+
+
+.setting-main{
+    width: 700px;
     display: block;
-    border: 2px solid black;
     width: 700px;
     margin-left: 330px;
-
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0;
 
 }
 
 #infor-first{
-    background-color: rgb(199, 196, 196);
+   
     font-weight: bold;
-    font-size: 18px;
-    padding: 5px 20px;
-    margin-bottom: 0;
-
-
-}
-
-#start-day{
-    background-color: rgb(199, 196, 196);
-    font-size: 13px;
-    padding: 0 0 10px 20px;
-
-    
-}
-
-
-.infor-header{
-    border: 1px solid black; 
     font-size: 20px;
-    font-weight: 700;
-    padding: 10px 20px;
-}
-
-.infor-text{
-    font-size: 13px;
     padding: 20px 20px;
-    letter-spacing: 0 5px;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid black;
     
-
 }
+
+.setting-body{
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 20px;
+    
+}
+
+button{
+    float: right;
+    margin-right: 10px;
+    width: 80px;
+    height: 32px;
+    cursor: pointer;
+}
+
+select{
+    float: right;
+    margin-right: 10px;
+    width: 100px;
+    height: 32px;
+    padding-left: 25px;
+}
+
+.setting-body:nth-last-child(1){
+    border-top: 1px solid #ccc;
+    margin-top: 0px;
+    border-bottom: 1px solid black;
+}
+
+textarea{
+    margin: 0;
+    width: 698px;
+    padding: 0;
+    height: 150px;
+    resize: none;
+}
+
+
+
+
 
