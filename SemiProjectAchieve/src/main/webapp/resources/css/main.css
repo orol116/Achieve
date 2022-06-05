@@ -1,0 +1,391 @@
+*{box-sizing: border-box;}
+
+body{margin: 0;}
+
+main{
+    width: 1200px;
+    margin: auto;
+}
+
+/* header */
+header{
+    height: 200px;
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+header>section:nth-child(1){flex-basis: 20%;}
+header>section:nth-child(2){flex-basis: 60%;}
+header>section:nth-child(3){flex-basis: 20%;}
+
+/* 로고 */
+header > section:nth-of-type(1){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home-logo{
+    width: 140px;
+    height: auto;
+}
+
+/* 중앙부분 */
+header>section:nth-of-type(2){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-title{
+    width: 500px;
+    height: 50px;
+    padding: 2px;
+    border: 2px solid rgb(14, 25, 78);
+    border-radius: 5px;
+
+    display: flex;
+
+}
+
+#query{
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+
+    /* input 태그에 포커스가 맞춰 졌을때 이를 표현하기위한 바깥선(테두리보다 바깥에 존재) */
+    outline: 0;
+
+    width: 92%;
+}
+
+
+/* 헤더 우측 버튼 */
+.right-header > button{
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    background-color: white;
+    color: rgb(14, 25, 78);
+    font-size: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+/* content */
+.content{
+    height: 800px;
+    display: flex;
+}
+
+.content-1{flex-basis: 25%;}
+.content-2{flex-basis: 75%;}
+
+/* login 스타일 */
+form[name="login-form"]{
+    height: 200px;
+    margin: 10px 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    font-size: 14px;
+}
+
+/* 로그인영역 */
+#id-pw-area{
+    margin: 10px 0;
+    padding: 0px;
+
+    border: 1px solid #ddd;
+    display: flex;
+
+    flex-basis: 40%;
+}
+
+
+/* 아이디/비밀번호 input 영역 */
+#id-pw-area > section:first-child{
+    flex-basis: 70%; /* 좌우 비중 */
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* 로그인 버튼 영역 */
+#id-pw-area > section:last-child{
+    flex-basis: 30%; /* 좌우 비중 */
+    display: flex;
+    justify-content: center;
+}
+
+#id-pw-area input{
+    border: none;
+    border-right: 1px solid #ddd;
+    flex-basis: 50%; /*상하 비율*/
+    outline: 0;
+    margin: 0;
+    padding: 5px;
+}
+
+/* ID/PW 구분선 */
+#id-pw-area input:first-child{
+    border-bottom: 1px solid #ddd;
+}
+
+/* focus 시 옵션 */
+#id-pw-area input:focus{
+    border: 2px solid rgb(14, 25, 78);
+    background-color: aliceblue;
+}
+
+/* 로그인 버튼 */
+#id-pw-area button{
+    width: 100%;
+    border: 0;
+    background-color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* 로그인 버튼에 마우스 올리면 */
+#id-pw-area button:hover{
+    background-color: rgb(14, 25, 78);
+    color:white;
+    font-weight: bold;
+    border-radius: 3px;
+    border: none;
+}
+
+/* 아이디저장 체크박스 */
+form > label{
+    margin-bottom: 10px;
+}
+
+/* 회원가입, ID/PW 찾기 영역 */
+#signup-find-area{
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* 회원가입/IDPW찾기 버튼 */
+#signup-find-area > button{
+    flex-basis: 45%;
+}
+
+/* 하단 버튼 */
+article > button{
+    height: 40px;
+    background-color: rgb(14, 25, 78);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 하단 버튼 a태그 */
+button > a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    
+    /* display: flex; */
+}
+
+/* 마이페이지 버튼 */
+#signup-find-area > #myPageBtn{
+    flex-basis: 100%;
+    margin-bottom: 10px;
+        
+}
+
+/* 프로젝트 만들기/찾기 영역 */
+#main-project-area{
+    height: 90px;
+    margin: 10px 0;
+}
+
+/* 프로젝트 버튼 */
+#main-project-area > button{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*로그인 성공 시 화면*/
+.login-area{
+    height: 120px;
+    padding: 30px 10px;
+    margin: 10px 0;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+}
+
+/* 이미지를 감싸고 있는 a태그 */
+.login-area > a{
+    display: block;
+
+    width: 70px;
+    height: 70px;
+
+    border: 3px solid #ddd;
+    border-radius: 50%;
+}
+
+#member-profile{
+    width: 64px;
+}
+
+
+/* 회원정보 + 로그아웃 영역 */
+.my-info{ 
+    width: 100%;
+    height: 100%;
+    margin-left: 20px;
+}
+
+.my-info>div{ 
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 닉네임 */
+#nickname{
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -3px;
+}
+
+/* 로그아웃 버튼 */
+#logout-btn{
+    color:rgb(14, 25, 78);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;    
+    margin-right: 5px;
+}
+
+/* 이메일 */
+.my-info > p{
+    margin: 0;
+    color: rgb(14, 25, 78);
+}
+
+
+
+
+
+/* content-2 */
+.content-2{
+    padding: 10px 30px;
+}
+
+/* 상단 추천 공개 프로젝트 */
+#top-area{
+    width: 100%;
+    height: 120px;
+    background-color: rgba(14, 25, 78, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* 추천 공개 프로젝트 세부 */
+.top-class{
+    height: 85%;
+    width: 25%;
+    background-color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3%;
+}
+
+/* 추천 공개 프로젝트 세부 프로젝트 명 부분 */
+.top-class > a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(14, 25, 78);
+}
+
+/* 참여중인 프로젝트 */
+.project-join{
+    height: 200px;
+    width: auto;
+    margin: 10px 0;
+    background-color: #eee;
+}
+.project-join h2{
+    padding: 20px 0 0;
+}
+
+li{
+    list-style: none;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* 참여중인 프로젝트 새글 */
+li > a{
+    text-decoration: none;
+    padding: 0 5px;
+    color: rgb(14, 25, 78);
+}
+
+
+
+
+
+
+
+
+
+
+/* footer */
+footer{
+    height: 200px;
+    background-color: #acadd342;
+    display: flex;
+    flex-direction: column; /*중심축 세로로 바꾸기*/
+    justify-content: center; /*중심축 중앙으로 보내기*/
+    align-items: center; /*교차축 중앙으로 보내기*/
+     
+}
+
+#footer{
+    font-weight: bold;
+    font: 20px;
+    padding-bottom: 20px;
+}
+
+/* footer 스타일 */
+footer a{
+    text-decoration: none;
+    color: black;
+}
