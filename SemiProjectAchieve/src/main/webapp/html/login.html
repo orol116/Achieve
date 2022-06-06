@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achieve</title>
 
-    <link rel="stylesheet" href="../webapp/resources/css/main.css">
+    <link rel="stylesheet" href="../resources/css/main.css">    
 
     <script src="https://kit.fontawesome.com/35f111b89d.js" crossorigin="anonymous"></script>
     
@@ -48,34 +48,35 @@
                 <section class="content-1">
 
                     <form action="member/login" method="post" name="login-form">
-                    
-                        <!-- 아이디(이메일)/비밀번호/로그인 -->
-                        <fieldset id="id-pw-area">
-                            
-                            <section>
-                                <input type="text" name="inputEmail" placeholder="아이디(이메일)">
-                                <input type="password" name="inputPw" placeholder="비밀번호">
-                            </section>
-                            
-                            
-                            <section>
+                                    
+                        <article class="login-area">
+	            			
+                            <!-- 회원 프로필 이미지 -->
+                            <a href="#">
+                                <img src="../images/user.png" id="member-profile">
+                            </a>
+                        
+                            <!-- 회원 정보 + 로그아웃 버튼 -->
+                            <div class="my-info">
+                                <div>
+                                    <a href="#" id="nickname">닉네임</a>
+                                    
+                                    <a href="#" id="logout-btn">&times;</a>
                                 
-                                <button>로그인</button>
+                                </div>
                                 
-                            </section>
-                            
-                        </fieldset>
-                                                   
-                        <label for="saveId">
-                            <input type="checkbox" name="saveId" ${chk}> 아이디 저장
-                        </label>
+                                <p>
+                                    user01@kh.or.kr
+                                </p>
+                                
+                            </div>
+                        
+                        </article>            
             
-            
-                        <!-- 회원가입/ID,PW찾기 -->
+                        <!-- 마이페이지 -->
                         <article id="signup-find-area">
                             
-                            <button><a href="#">회원가입</a></button>
-                            <button><a href="#">ID/PW 찾기</a></button>
+                            <button id="myPageBtn"><a href="#">마이페이지</a></button>
                             
                         </article>
                         
@@ -97,9 +98,35 @@
                 </section>
 
 
-                <!-- 우측 어취브 홍보 부분 -->
+                <!-- 오른쪽 프로젝트 추천 부분 -->
                 <section class="content-2">
                 
+                    <div id="top-area">
+                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
+                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
+                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
+                    </div>
+
+                    <div class="project-join">
+                        <ul>
+                            <h2>참여중인 프로젝트 1</h2>
+                        
+                            <li><a href="#">새로운 글1</a></li>
+                            <li><a href="#">새로운 글2</a></li>
+                            <li><a href="#">새로운 글3</a></li>
+                        </ul>
+                        
+                    </div>
+
+                    <div class="project-join">
+                        <ul>
+                            <h2>참여중인 프로젝트 2</h2>
+                        
+                            <li><a href="#">새로운 글1</a></li>
+                            <li><a href="#">새로운 글2</a></li>
+                            <li><a href="#">새로운 글3</a></li>
+                        </ul>
+                    </div>
 
                     
                 </section>
