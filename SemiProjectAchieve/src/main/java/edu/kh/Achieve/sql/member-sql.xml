@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>member-sql.xml</comment>
+	
+	<entry key="login">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NM, MEMBER_NICK, 
+		TO_CHAR(MEMBER_BIRTH, 'YYYY-MM-DD') AS MEMBER_BIRTH,
+		MEMBER_TEL, MEMBER_PROFILE
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = ?
+		AND MEMBER_PW = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+
+	<entry key="updateMember">
+		UPDATE MEMBER SET
+		MEMBER_NM = ?,
+		MEMBER_NICK = ?,
+		MEMBER_TEL = ?
+		WHERE MEMBER_NO = ?
+	</entry>
+	
+	<entry key="changePw">
+		UPDATE MEMBER SET
+		MEMBER_PW = ?
+		WHERE MEMBER_NO = ?
+		AND MEMBER_PW = ?
+	</entry>
+
+</properties>
