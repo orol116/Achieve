@@ -13,6 +13,7 @@ public class Member {
 	private String secessionFlag;
 	private String suspensionFlag;
 	private String profileImage;
+	
 	public int getMemberNo() {
 		return memberNo;
 	}
