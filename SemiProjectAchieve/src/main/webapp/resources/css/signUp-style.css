@@ -112,3 +112,6 @@ h1{
 .memberBirth>input{
     width: 95px;
 }
+
+.confirm{color:green}
+.error{color:red}

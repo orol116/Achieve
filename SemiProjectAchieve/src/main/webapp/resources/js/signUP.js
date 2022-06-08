@@ -124,8 +124,6 @@ memberName.addEventListener("input",function(){
             error : function(){ // 비동기 통신 중 에러가 발생한 경우
                 console.log("에러발생")
             }
-
-
         })
 
         
