@@ -34,6 +34,7 @@
                 <div id="sideMenu-list">
                     <!-- <h2><a href="#">마이페이지</a></h2> -->
 
+                    <br>
                     <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=1">메인페이지</a></div>
                     <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=2">공지사항</a></div>
                     <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=3">자유게시판</a></div>
@@ -52,7 +53,7 @@
                     <h1 class="board-name">${boardName}</h1>
                     
                     <div class="btn-area">
-                        <button id="insertBtn">글 작성하기</button>
+                        <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&cp=${param.cp}'">글 작성하기</button>
                     </div>
 
                     <div class="list-wrapper">

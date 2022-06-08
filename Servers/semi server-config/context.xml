@@ -26,4 +26,19 @@
     <!--
     <Manager pathname="" />
     -->
+    
+    <!-- DBCP 세팅 -->
+    <Resource
+		name="jdbc/oracle"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="oracle.jdbc.OracleDriver"
+		url="jdbc:oracle:thin:@115.90.212.22:9000:xe"
+		username="achieve"
+		password="achieve1234"
+		maxTotal="200"
+		maxIdle="20"
+		maxWaitMillis="-1"
+	/>
+    
 </Context>
