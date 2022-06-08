@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.kh.Achieve.member.model.service.MemberService;
 import edu.kh.Achieve.member.model.vo.Member;
 
 @WebServlet("/member/signUp")
@@ -46,7 +47,14 @@ public class SignUpServlet extends HttpServlet{
 		mem.setMemberName(memberName);
 		mem.setMemberBirthday(memberBirth);
 		
-		
+		try {
+			MemberService service = new MemberService();
+			
+			int result = service.signUp(mem);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
