@@ -1,6 +1,6 @@
 // 유효성 검사 여부를 기록할 객체 생성
 const checkObj = {
-    "memberId"    :false,
+    "memberEmail"    :false,
     "memberPw"       :false,
     "memberPwConfirm":false,
     "memberName" :false,
@@ -13,32 +13,32 @@ const checkObj = {
 
 
 // 아이디 유효성 검사
-const memberId = document.getElementById("memberId");
+const memberEmail = document.getElementById("memberEmail");
 const IdMessage = document.getElementById("idMessage");
 
-memberId.addEventListener("input", function(){
+memberEmail.addEventListener("input", function(){
     // 입력이 되지 않은 경우
-    if(memberId.value.length==0){
+    if(memberEmail.value.length==0){
         idMessage.innerText="아이디를 입력해주세요.";
         idMessage.classList.remove("confirm");
         idMessage.classList.remove("error");
 
-        checkObj.memberId = false; // 유효하지 않음을 기록
+        checkObj.memberEmail = false; // 유효하지 않음을 기록
         return;
     }
 
     // 입력된 경우
     const regExp =/^[\w\-\_]{4,}@[\w\-\_]+(\.\w+){1,3}$/;
     // + : 1개 이상. {1,}이렇게 사용도 가능
-    if(regExp.test(memberId.value)){
+    if(regExp.test(memberEmail.value)){
 
         $.ajax({
             url:"idDupCheck", // 필수 속성 url
             // 현재 주소 : /community2/member/signUp
             // 상대경로 : /community2/member/IdDupCheck
-            date : { "memberId":memberId.value},
+            date : { "memberEmail":memberEmail.value},
             // data 속성 : 비동기 통신 시 서버로 전달할 값을 작성(JS객체 형식)
-            // -> 비동기 통신 시 input에 입력된 값을 "memberId" 이라는
+            // -> 비동기 통신 시 input에 입력된 값을 "memberEmail" 이라는
             // key 값(파라미터)으로 전달
 
             type : "GET", // 데이터 전달 방식
@@ -53,13 +53,13 @@ memberId.addEventListener("input", function(){
                     idMessage.innerText="이미 사용 중인 아이디입니다.";
                     idMessage.classList.add("error");
                     idMessage.classList.remove("confirm");
-                    checkObj.memberId = false; // 유효함을 기록
+                    checkObj.memberEmail = false; // 유효함을 기록
 
                 }else{ //중복 x
                     idMessage.innerText="사용 가능한 아이디입니다.";
                     idMessage.classList.add("confirm");
                     idMessage.classList.remove("error");
-                    checkObj.memberId = true; // 유효함을 기록
+                    checkObj.memberEmail = true; // 유효함을 기록
                 }
             },
 
@@ -72,9 +72,11 @@ memberId.addEventListener("input", function(){
         idMessage.innerText="이메일 형식이 올바르지 않습니다. .";
         idMessage.classList.add("error");
         idMessage.classList.remove("confirm");
-        checkObj.memberId = false; // 유효하지 않음을 기록
+        checkObj.memberEmail = false; // 유효하지 않음을 기록
     }
 });
+
+// 비밀번호 유효성 검사
 
 
 
@@ -97,35 +99,11 @@ memberName.addEventListener("input",function(){
     const regExp = /^[a-zA-Z0-9가-힣]{2,10}$/;
 
     if(regExp.test(memberName.value)){
-        
 
-        // 닉네임 중복 검사(ajax) 진행
-        $.ajax({
-            url:"NameDupCheck", // 필수 작성
-            data:{"memberName":memberName.value}, // 서버로 전달할 값(파라미터)
-            type : "GET", // 데이터 전달 방식(기본값 GET)
-            success:function(res){ // 비동기 통신 성공 시 (에러 발생 X)
-                // 매개변수 res : Servlet에서 응답으로 출력된 데이터가 저장됨
-
-                if(res == 0){ // 중복이 아님.
-
-                    NameMessage.innerText="사용가능한 닉네임 입니다. .";
-                    NameMessage.classList.add("confirm");
-                    NameMessage.classList.remove("error");
-                    checkObj.memberName = true;
-
-                }else{ // 중복이다.
-                    NameMessage.innerText="이미 사용중인 닉네임 입니다. .";
-                    NameMessage.classList.add("error");
-                    NameMessage.classList.remove("confirm");
-                    checkObj.memberName = false;
-                }
-            },
-            error : function(){ // 비동기 통신 중 에러가 발생한 경우
-                console.log("에러발생")
-            }
-        })
-
+        NameMessage.innerText="사용가능한 닉네임 입니다. .";
+        NameMessage.classList.add("confirm");
+        NameMessage.classList.remove("error");
+        checkObj.memberName = true;
         
     }else{
         NameMessage.innerText="닉네임 형식이 올바르지 않습니다. .";
@@ -137,9 +115,7 @@ memberName.addEventListener("input",function(){
 
 });
 
-
-
-
+// 생년월일 유효성 검사
 
 
 
