@@ -50,7 +50,6 @@ public class SignUpServlet extends HttpServlet{
 		try {
 			MemberService service = new MemberService();
 			
-			int result = service.signUp(mem);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
