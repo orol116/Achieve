@@ -126,6 +126,32 @@ public class MemberDAO {
 	}
 
 
+	/** 회원가입 DAO
+	 * @param conn
+	 * @param mem
+	 * @return
+	 * @throws Exception
+	 */
+	public int signUp(Connection conn, Member mem) throws Exception{
+		
+		int result =0;
+		
+		try {
+			
+			String sql = prop.getProperty(null);
+			
+			
+			
+		}finally {
+			
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+
 
 
 	
