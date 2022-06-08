@@ -1,6 +1,5 @@
 package edu.kh.Achieve.member.model.vo;
 
-
 public class Member {
 	
 	private int memberNo;
@@ -84,4 +83,3 @@ public class Member {
 	
 
 }
-
