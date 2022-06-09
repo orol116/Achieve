@@ -1,0 +1,59 @@
+package edu.kh.Achieve.board.controller;
+
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.List;
+
+import com.oreilly.servlet.MultipartRequest;
+
+import edu.kh.Achieve.board.model.vo.BoardAttachment;
+import edu.kh.Achieve.common.MyRenamePolicy;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/board/write")
+public class BoardWriteController extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		try {
+
+			// 게시글 수정 기능은 향후에 추가
+			
+			String path = "/WEB-INF/views/board/board-write.jsp";
+			req.getRequestDispatcher(path).forward(req, resp);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		int maxSize = 1024 * 1024 * 500; // 500MB 제한 (수정 가능)
+		
+		HttpSession session = req.getSession();
+		String root = session.getServletContext().getRealPath("/");
+		String folderPath = "/resources/images/board/";
+		String filePath = root + folderPath;
+		
+		String encoding = "UTF-8";
+		
+		MultipartRequest mpReq = new MultipartRequest(req, filePath, maxSize, encoding, new MyRenamePolicy());
+		
+		Enumeration<String> files = mpReq.getFileNames();
+		
+		List<BoardAttachment> boardAttachment = null;
+		
+	}
+
+}

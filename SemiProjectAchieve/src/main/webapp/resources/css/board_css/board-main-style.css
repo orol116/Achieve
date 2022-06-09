@@ -88,7 +88,7 @@
 
 /* 버튼 */
 #insertBtn{
-    margin-right: 50px;
+    margin-bottom: 30px;
     width: 95px;
     height: 40px;
     background-color: white;
@@ -138,7 +138,9 @@
     display: flex;
     justify-content: space-between;
 
-    margin: 30px auto;
+    margin: 30px;
+    margin-left: 540px;
+
 }
 
 /* 검색 영역 공통 스타일 */
