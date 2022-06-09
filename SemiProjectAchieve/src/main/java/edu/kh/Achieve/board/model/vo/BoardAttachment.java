@@ -11,5 +11,8 @@ public class BoardAttachment {
 	
 	private int attachmentNo;
 	private String attachmentReName;
+	private String attachmentOriginal;
+	private int attachmentLevel;
+	private int boardNo;
 
 }
