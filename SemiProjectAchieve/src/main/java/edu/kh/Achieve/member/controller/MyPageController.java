@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,11 @@ public class MyPageController extends HttpServlet{
 		try {
 			
 			if(command.equals("info")) { // 내 정보 수정
+				
+				String path = "/WEB-INF/views/member/myPage-info.jsp";
+				req.getRequestDispatcher(path).forward(req, resp);
+				
+				
 				// 파라미터 얻어오기(이름, 닉네임, 핸드폰번호)
 				String memberName = req.getParameter("memberName");
 				String memberNickname = req.getParameter("memberNickname");
@@ -103,6 +109,39 @@ public class MyPageController extends HttpServlet{
 				
 			} // changePw if문 끝
 			
+			
+			// ------------------------------------------------------
+			
+			if(command.equals("secession")) {
+				
+				// 로그인 회원 번호 얻어오기
+				HttpSession session = req.getSession();
+				Member loginMember = (Member)(session.getAttribute("loginMember"));
+				int memberNo = loginMember.getMemberNo();
+				
+				// 회원 탈퇴 후 결과 반환
+				int result = service.secession(memberNo);
+				String path = null;
+				
+				if(result > 0) {
+					session.invalidate(); // 세션 무효화
+					session = req.getSession(); // 새로운 세션 얻어오기
+					
+					session.setAttribute("message", "회원 탈퇴 성공");
+					path = req.getContextPath();
+					
+					Cookie c = new Cookie("saveId", ""); // 쿠키 생성
+					c.setMaxAge(0); // 쿠키 수명
+					c.setPath(req.getContextPath()); // 쿠키 적용 경로
+					resp.addCookie(c); // 쿠키 클라이언트에 전송
+				} else {
+					session.setAttribute("message", "회원 탈퇴 실패, 메인 페이지로 돌아갑니다.");
+					path = req.getContextPath();
+				}
+				
+				resp.sendRedirect(path);
+				
+			} // secession if 끝
 			
 			
 			

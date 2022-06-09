@@ -21,7 +21,7 @@
         <header>
             <section>
                 <a href="main">
-                    <img src="../images/semilogo.png" id="home-logo">
+                    <img src="${contextPath}/resources/images/Achieve_logo.png" id="home-logo">
                 </a>
             </section>
 

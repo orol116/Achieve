@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,56 +10,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Page - secession</title>
 
-    <link rel="stylesheet" href="../resources/css/myPage-style.css">
-    <link rel="stylesheet" href="../resources/css/myPage-secession.css">
-    <link rel="stylesheet" href="../resources/css/sideMenu.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-secession.css">
 
 </head>
 <body>
 
     <main>
         <header>
-            <img src="../resources/images/Achieve_logo.png" id="logo"><span>header : Achieve</span>
+            <img src="${contextPath}/resources/images/Achieve_logo.png" id="logo"><span>header : Achieve</span>
         </header>
 
         <!-- 마이페이지 -->
         <section class="myPage-content">
 
             <!-- 왼쪽 사이드 메뉴 -->
-            <section class="myPage-sideMenu">
-                <div id="sideMenu-list">
-                    <h2><a href="#">마이페이지</a></h2>
-
-                    <div class="sideMenu-list-row"><a href="#">내가 쓴 글</a></div>
-                    <div class="sideMenu-list-row"><a href="#">내가 쓴 댓글</a></div>
-                    <div class="sideMenu-list-row"><a href="#">비밀번호 변경</a></div>
-                    <div class="sideMenu-list-row"><a href="#">회원 탈퇴</a></div>
-                </div>
-            </section>
+            <jsp:include page="/WEB-INF/views/member/sideMenu.jsp" />
 
             <!-- 마이페이지 - 메인 내용 -->
             <section class="myPage-main">
                 <div id="myPage-detail">
                     <h1 id="myPage-title">회원 탈퇴</h1>
 
-                    <form action="#" method="post" name="myPage-form">
+                    <form action="secession" method="post" name="myPage-form" onsubmit="return secessionValidate()">
                         <!-- onsubmit으로 input이 변화가 없으면 제출X -->
                             <div class="myPage-detail-row" id="memberEmail">
-                                <div>ID(email)</div> 
+                                <div>${loginMember.memberEmail}</div> 
                             </div>
                             
                             <div class="myPage-detail-row" id="memberName">
-                                <div>이름</div>            
+                                <div>${loginMember.memberName}</div>            
                                 
                             </div>
 
                             <div class="myPage-detail-row" id="memberNickname">
-                                <div>닉네임</div>            
+                                <div>${loginMember.memberNickname}</div>            
                                 
                             </div>
 
                             <div class="myPage-detail-row" id="memberTel">
-                                <div>핸드폰 번호</div>            
+                                <div>${loginMember.memberTel}</div>            
                                 
                             </div>
                             
@@ -87,5 +81,11 @@
             </section>
         </section>
     </main>
+
+    <!-- footer 완성되면 주석 해제 -->
+    <!-- <jsp:include page="/WEB-INF/views/common/footer.jsp"> -->
+
+    <!-- myPage.js 연결 -->
+    <script src="${contextPath}/resources/js/member/myPage-secession.js"></script>
 </body>
 </html>
