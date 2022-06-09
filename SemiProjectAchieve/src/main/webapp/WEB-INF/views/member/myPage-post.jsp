@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 조회</title>
-    <link rel="stylesheet" href="../resources/css/main-inquire.css">
-    <link rel="stylesheet" href="../resources/css/posting-inquire.css"> 
+    <link rel="stylesheet" href="../resources/css/myPage-inquire-main.css">
+    <link rel="stylesheet" href="../resources/css/myPage-post.css"> 
 </head>
 <body>
     <main>
@@ -169,8 +172,13 @@
                 </div>
     
                 <div class="btn-area">
-                    <button id="insertBtn">삭제</button>
-                    <button id="insertBtn">글쓰기</button>
+                    <div id="checkAll">
+                        <input type="checkbox" >전체선택
+                    </div>
+                    <div>
+                    <a class="insertBtn">삭제</a>
+                    <a class="insertBtn">글쓰기</a>
+                    </div>
                 </div>
     
                 <div class="pagination-area">
@@ -212,6 +220,6 @@
     
 
 
-    
+    <script src="../resources/js/member/myPage-post.js""></script>
 </body>
 </html>

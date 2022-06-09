@@ -28,11 +28,14 @@ myPage-row{
 }
 
 
-
+.list-table > thead>tr>th{
+    background-color: #0e194e;
+    color: white;
+}
 /* a태그 공통 설정 */
 .board-list a{
     text-decoration: none;
-    color: gray;
+    color: black;
 }
 
 .board-list a:hover{
@@ -40,7 +43,7 @@ myPage-row{
     color: #0e194e;
 }
 
-/* 댓글 목록 화면 전체 영역 설정 */
+/* 게시판 목록 화면 전체 영역 설정 */
 .board-list{
     width: 800px;
     margin: 50px auto;
@@ -48,11 +51,6 @@ myPage-row{
 
 
 /* 게시글 목록 영역 */
-.list-table > thead>tr>th{
-    background-color: #0e194e;
-    color: white;
-}
-
 .list-wrapper{
     width: 100%;
     min-height: 560px;
@@ -73,82 +71,68 @@ myPage-row{
     color: black;
 }
 
-.list-table th{
+.list-table tr{
     height: 50px;
-}
-
-.list-table td{
-    height: 70px;
-    padding: 0;
 }
 
 .list-table > tbody >tr{
     border-bottom: 0.5px solid lightgray;
-    
 }
 
-.list-table >thead>tr{
+.list-table tr > *{
     text-align: center;
 }
 
-.list-table >thead> tr > :first-child{ 
+.list-table tr > *:nth-of-type(1){ 
     width: 10%; 
 }
-.list-table >thead >tr > :last-child{
-    width: 90%; 
-    text-align: left;
-    padding: 0;
-}
+.list-table tr > *:nth-of-type(2){width: 10%;}
+.list-table tr > td:nth-of-type(3){ 
+     width: 55%;
+     text-align: left;
+     padding-left: 35px;
+   }
+.list-table tr > *:nth-of-type(4){ width: 15%;}
+.list-table tr > *:nth-of-type(5){ width: 10%;}
 
-.inner_list{
-    color: black;
-    font-size: 15px;
-}
-.comment-date{
-    color: gray;
-    font-size: 12px;
-}
-.comment_title{
-    color: gray;
-    font-size: 12px;
-}
-
-
-#head-content{
-    text-align: center;
-}
-
-.list-chkbox{
-    text-align: center;
-    padding-right: 10px;
-    padding-left: 10px;
-}
 /* 버튼 영역 */
 .btn-area{
-    height:  50px;
+    height:  40px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
+    font-size: 13px;
+}
+
+.btn-area > div:nth-of-type(2){
+    display: flex;
+    height: 100%;
 }
 #checkAll{
     padding-left: 25px;
 }
-.insertBtn{
+
+/* 버튼 */
+a.insertBtn{
     margin-right: 8px;
-    width: 70px;
-    height: 40px;
+    width: 60px;
+    height: 100%;
 
     background-color: white;
     border: 1px solid #0e194e;
     color:  #0e194e;
-
+    text-align: center;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.insertBtn:hover{
+
+#insertBtn:hover{
     background-color: #0e194e;
     border: 2px solid white;
     color:  white;
@@ -170,7 +154,7 @@ myPage-row{
     width: 20px;
     margin: 0 5px;
     text-align: center;
-    
+   
 }
 
 .pagination a{
@@ -190,38 +174,3 @@ myPage-row{
     font-weight: bold;
 }
 
-/* 검색 영역 */
-#boardSearch{
-    width: 500px;
-    height: 30px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-}
-
-/* 검색 영역 공통 스타일 */
-#boardSearch *{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-#boardSearch select{
-    width: 100px;
-
-}
-
-#boardSearch input{
-    flex-grow: 1;
-    margin: 0 10px;
-    padding-left: 10px;
-}
-
-#boardSearch button{
-    width: 100px;
-
-    background-color: #0e194e ;
-    color: white;
-    border: none;
-
-}
