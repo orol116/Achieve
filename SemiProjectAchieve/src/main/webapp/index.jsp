@@ -119,8 +119,10 @@
         </section>
 
     </main>
-        
-    <footer>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+    <!-- <footer>
         <p>
             <article id="footer">
                 <a href="#">FAQ</a>
@@ -135,7 +137,7 @@
             
             Copyright &copy; KH Information Educational Institute A-class DevTeam2
         </p>
-    </footer>
+    </footer> -->
 
 
 
