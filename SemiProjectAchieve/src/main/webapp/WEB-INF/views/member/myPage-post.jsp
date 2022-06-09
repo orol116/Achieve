@@ -8,16 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 조회</title>
-    <link rel="stylesheet" href="../resources/css/myPage-inquire-main.css">
-    <link rel="stylesheet" href="../resources/css/myPage-post.css"> 
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-inquire-main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-post.css"> 
 </head>
 <body>
     <main>
+
+        <!-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> -->
         <header>
             <!-- 클릭 시 메인페이지로 이동하는 로고 -->
             <section>
                 <a href="#">
-                    <img src="../resources/images/Achieve_logo.png" id="home-logo">
+                    <img src="${contextPath}/resources/images/Achieve_logo.png" id="home-logo">
                 </a>
             </section>
 
@@ -29,12 +31,12 @@
             <section>
                 <div>
                     <a href="#">
-                        <img src="../resources/images/favorit.png" id="fav-logo">
+                        <img src="${contextPath}/resources/images/favorit.png" id="fav-logo">
                     </a>
                 </div>
                 <div>
                     <a href="#">
-                        <img src="../resources/images/note.png" id="note-logo">
+                        <img src="${contextPath}/resources/images/note.png" id="note-logo">
                     </a>
                 </div>
             </section>
@@ -61,7 +63,7 @@
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
             <section class="myPage-main">
                 <div class="myPage-first">
-                    <a href="#"><img src="../resources/images/user.png" id="profile-logo"></a>
+                    <a href="#"><img src="${contextPath}/resources/images/user.png" id="profile-logo"></a>
                 </div>
 
                 <div class="myPage-second">
@@ -203,7 +205,7 @@
 
     <footer>
        
-       
+       <!-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> -->
         <article>
             <a href="#">FAQ</a>
             <span>|</span>
@@ -220,6 +222,6 @@
     
 
 
-    <script src="../resources/js/member/myPage-post.js""></script>
+    <script src="${contextPath}/resources/js/member/myPage-post.js""></script>
 </body>
 </html>
