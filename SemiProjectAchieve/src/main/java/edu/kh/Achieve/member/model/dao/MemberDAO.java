@@ -155,8 +155,10 @@ public class MemberDAO {
 		}
 		
 		return result;
-		
 	}
+	
+	
+	
 	/**
 	 * 회원 탈퇴 DAO
 	 * @param conn
