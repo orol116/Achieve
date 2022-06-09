@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 조회</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-inquire-main.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-post.css"> 
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-board.css"> 
 </head>
 <body>
     <main>
 
-        <!-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> -->
+        <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
         <header>
             <!-- 클릭 시 메인페이지로 이동하는 로고 -->
             <section>
@@ -205,7 +205,7 @@
 
     <footer>
        
-       <!-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> -->
+       <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
         <article>
             <a href="#">FAQ</a>
             <span>|</span>
