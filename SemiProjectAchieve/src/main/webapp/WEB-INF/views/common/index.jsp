@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achieve</title>
 
-    <link rel="stylesheet" href="../resources/css/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 
     <script src="https://kit.fontawesome.com/35f111b89d.js" crossorigin="anonymous"></script>
     
@@ -16,34 +19,15 @@
     
     <main>
 
-        <header>
-            <section>
-                <a href="${contextPath}">
-                    <img src="${contextPath}/resources/images/Achieve_logo.png" id="home-logo">
-                </a>
-            </section>
-
-            <section>
-                <article class="project-title">
-        
-                <!-- 나중에 프로젝트 타이틀 들어오는 자리 -->
-                    
-                </article>
-            </section>
-            
-            
-            <section class="right-header">
-                <button type="button" id="chat-btn" class="fa-solid fa-star"></button>
-            </section>
-
-        </header>
+        <!-- 내부 접근 절대 경로 -->
+		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
         <!-- 마이페이지 -->
         <section class="myPage-content">
 
-            <!-- 왼쪽 회원 사이드 메뉴 -->
             <section class="content">
-                    
+                
+                <!-- 왼쪽 회원 사이드 메뉴 -->
                 <section class="content-1">
 
                     <form action="member/login" method="post" name="login-form">
@@ -99,6 +83,7 @@
                 <!-- 우측 어취브 홍보 부분 -->
                 <section class="content-2">
                 
+                    <img >
 
                     
                 </section>
@@ -117,22 +102,10 @@
 
     </main>
         
-    <footer>
-        <p>
-            <article id="footer">
-                <a href="#">FAQ</a>
-                <span> | </span>
-                <a href="#">1:1문의</a>
-                <span> | </span>
-                <a href="#">이용약관</a>
-                <span> | </span>
-                <a href="#">개인정보처리방침</a>
-            </article>
-            
-            
-            Copyright &copy; KH Information Educational Institute A-class DevTeam2
-        </p>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <!-- jQuery Library -->
+    <script    src="https://code.jquery.com/jquery-3.6.0.min.js"    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="    crossorigin="anonymous"></script>
 
 
 
