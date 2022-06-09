@@ -35,5 +35,10 @@
 	</entry>
 	
 	
+	<entry key="secession">
+		UPDATE MEMBER SET
+		SECESSION_FL = 'Y'
+		WHERE MEMBER_NO = ?
+	</entry>
 
 </properties>
