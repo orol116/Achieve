@@ -185,6 +185,7 @@ public class BoardDAO {
 		return boardList;
 	}
 
+<<<<<<< HEAD
 	/** 특정 게시판에서 조건을 만족하는 게시글 수 조회 DAO
 	 * @param conn
 	 * @param type
@@ -268,4 +269,6 @@ public class BoardDAO {
 
 
 
+=======
+>>>>>>> 3beb99ac3c5f85ca0f685948bc3ab27d0f49ef17
 }

@@ -1,9 +1,9 @@
 package edu.kh.Achieve.member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,7 +43,25 @@ public class LoginServlet extends HttpServlet{
 				
 				// 특정 시간 후 요청 없을 시 세션 만료
 				session.setMaxInactiveInterval(3600);
+				
+				// 아이디 저장
+				Cookie c = new Cookie("saveId", inputEmail);
+				
+				// 아이디 저장이 체크된 경우
+				if(req.getParameter("saveId") != null) {
+					c.setMaxAge(60*60*24*30);
+				} else {
+					c.setMaxAge(0);
+				}
+				
+				c.setPath(req.getContextPath());
+				
+				resp.addCookie(c);
+			} else {
+				session.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			}
+			
+			resp.sendRedirect(req.getContextPath());
 			
 		} catch(Exception e) {
 			e.printStackTrace();
