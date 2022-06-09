@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achieve</title>
 
-    <link rel="stylesheet" href="../webapp/resources/css/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 
     <script src="https://kit.fontawesome.com/35f111b89d.js" crossorigin="anonymous"></script>
     
@@ -24,9 +25,9 @@
         <!-- 마이페이지 -->
         <section class="myPage-content">
 
-            <!-- 왼쪽 회원 사이드 메뉴 -->
             <section class="content">
-                    
+                
+                <!-- 왼쪽 회원 사이드 메뉴 -->
                 <section class="content-1">
 
                     <form action="member/login" method="post" name="login-form">
