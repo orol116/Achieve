@@ -186,16 +186,25 @@
                 <div class="pagination-area">
                     <ul class="pagination">
                       
+                        
+                        <li><a href="#">&lt;&lt;</a></li>
                         <li><a href="#">&lt;</a></li>
                         
                         <!-- li*10>a{$} -->
                         <li><a class="current">1</a></li>
     
-                        <li><a href="#">2</a></li>
+                        <li><a href="${contextPath}/member/BoardList?type=1&cp=2">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">8</a></li>
+                        <li><a href="#">9</a></li>
+                        <li><a href="#">10</a></li>
+
                         <li><a href="#">&gt;</a></li>
+                        <li><a href="#">&gt;&gt;</a></li>
                         
                     </ul>
                 </div>
