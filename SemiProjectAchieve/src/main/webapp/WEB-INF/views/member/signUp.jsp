@@ -9,14 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/signUp-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+
     <script src="https://kit.fontawesome.com/51bf4ad8d5.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
+    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
     <main>
         <h1>회원가입</h1>
         <section class="signUp-content">
-            <form action="#" method="POST" name="signUp-form" onsubmit="return signUpValidate()">
+            <form action="signUp" method="POST" name="signUp-form" onsubmit="return signUpValidate()">
 
                 <label for="memberEmail">
                     <span class="required">*</span> 아이디
@@ -24,12 +27,11 @@
                 
                 <div class="signUp-input-area">
                     <input type="text" id="memberEmail" name="memberEmail"
-                            placeholder="아이디를 이메일 형식으로 작성해주세요." maxlength="30"
+                            placeholder="이메일 형식으로 작성해주세요." maxlength="30"
                             autocomplete="off" required>
-                    <button type="button">중복검사</button>
                 </div>
 
-                <span class="signUp-message" id="idMessage">아이디를 입력해주세요</span>
+                <span class="signUp-message" id="idMessage"></span>
 
 
                 <label for="memberPw">
@@ -51,7 +53,7 @@
                             placeholder="비밀번호 확인" maxlength="30">
                 </div>
 
-                <span class="signUp-message error" id="pwMessage">비밀번호가 일치하지 않습니다.</span>
+                <span class="signUp-message error" id="pwMessage"></span>
 
 
 
@@ -65,7 +67,7 @@
                             placeholder="이름" maxlength="10">
                 </div>
 
-                <span class="signUp-message confirm" id="nameMessage">이름을 입력해주세요.</span>
+                <span class="signUp-message confirm" id="nameMessage"></span>
 
 
 
@@ -78,7 +80,7 @@
                             placeholder="닉네임" maxlength="10">
                 </div>
 
-                <span class="signUp-message confirm" id="nicknameMessage">닉네임을 입력해주세요.</span>
+                <span class="signUp-message confirm" id="nicknameMessage"></span>
 
 
                 
@@ -124,8 +126,10 @@
 
     </main>
     
+
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</body>
 
     <script src="${contextPath}/resources/js/member/signUp.js"></script>
-</body>
 </html>

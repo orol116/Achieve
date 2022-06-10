@@ -13,14 +13,14 @@ const checkObj = {
 
 // 아이디 유효성 검사
 const memberEmail = document.getElementById("memberEmail");
-const idMessage = document.getElementById("idMessage");
+const emailMessage = document.getElementById("idMessage");
 
 memberEmail.addEventListener("input", function(){
     // 입력이 되지 않은 경우
     if(memberEmail.value.length==0){
-        idMessage.innerText="아이디를 입력해주세요.";
-        idMessage.classList.remove("confirm");
-        idMessage.classList.remove("error");
+        emailMessage.innerText="아이디를 입력해주세요.";
+        emailMessage.classList.remove("confirm");
+        emailMessage.classList.remove("error");
 
         checkObj.memberEmail = false; // 유효하지 않음을 기록
         return;
@@ -31,10 +31,17 @@ memberEmail.addEventListener("input", function(){
     // + : 1개 이상. {1,}이렇게 사용도 가능
     if(regExp.test(memberEmail.value)){
 
+        // ******** 이메일 중복검사 (ajax) 진행예정
+        // ******** 이메일 중복검사 (ajax) 진행예정
+        
+        // $.ajax({k:v, k:v});// jQuery ajax 기본형태
+
+        // memberEmail.value == 입력된 이메일
+
         $.ajax({
-            url:"idDupCheck", // 필수 속성 url
+            url:"emailDupCheck", // 필수 속성 url
             // 현재 주소 : /community2/member/signUp
-            // 상대경로 : /community2/member/IdDupCheck
+            // 상대경로 : /community2/member/emailDupCheck
             date : { "memberEmail":memberEmail.value},
             // data 속성 : 비동기 통신 시 서버로 전달할 값을 작성(JS객체 형식)
             // -> 비동기 통신 시 input에 입력된 값을 "memberEmail" 이라는
@@ -46,18 +53,19 @@ memberEmail.addEventListener("input", function(){
                 // 비동기 통신(ajax)가 오류 없이 요청/응답을 성공한 경우
 
                 // 매개변수 result : servlet에서 출력된 result 값이 담겨있다.
+                console.log(result);
 
                 if(result == 1){ // 중복 O
 
-                    idMessage.innerText="이미 사용 중인 아이디입니다.";
-                    idMessage.classList.add("error");
-                    idMessage.classList.remove("confirm");
+                    emailMessage.innerText="이미 사용 중인 이메일입니다";
+                    emailMessage.classList.add("error");
+                    emailMessage.classList.remove("confirm");
                     checkObj.memberEmail = false; // 유효함을 기록
 
                 }else{ //중복 x
-                    idMessage.innerText="사용 가능한 아이디입니다.";
-                    idMessage.classList.add("confirm");
-                    idMessage.classList.remove("error");
+                    emailMessage.innerText="사용 가능한 이메일입니다. .";
+                    emailMessage.classList.add("confirm");
+                    emailMessage.classList.remove("error");
                     checkObj.memberEmail = true; // 유효함을 기록
                 }
             },
@@ -68,9 +76,9 @@ memberEmail.addEventListener("input", function(){
             }   
         });
     }else{
-        idMessage.innerText="이메일 형식이 올바르지 않습니다. .";
-        idMessage.classList.add("error");
-        idMessage.classList.remove("confirm");
+        emailMessage.innerText="이메일 형식이 올바르지 않습니다. .";
+        emailMessage.classList.add("error");
+        emailMessage.classList.remove("confirm");
         checkObj.memberEmail = false; // 유효하지 않음을 기록
     }
 });
@@ -248,25 +256,29 @@ const birthMessage = document.getElementById("birthMessage");
 for(let i of memberBirth){
 
     i.addEventListener("input",function(){
+
         if(i.value.length==0){
             checkObj.memberBirth = false;
             return;
         }
+        console.log(i.value);
+    
+
+        const regExp =/^[0-9]{1,4}$/;
+
+        if(regExp.test(i.value)){
+            birthMessage.innerText = "유효한 생년월일 입니다.";
+            birthMessage.classList.add("confirm");
+            birthMessage.classList.remove("error");
+            checkObj.memberBirth = true;
+        }else{
+            birthMessage.innerText = "생년월일 형식이 유효하지 않습니다.";
+            birthMessage.classList.add("error");
+            birthMessage.classList.remove("false");
+            checkObj.memberBirth = false;
+        }
+
     })
-
-    const regExp =/^[0-9]{1,}$/;
-
-    if(regExp.text(i.value)){
-        birthMessage.innerText = "유효한 생년 월일 입니다.";
-        birthMessage.classList.add("confirm");
-        birthMessage.classList.remove("error");
-        checkObj.memberBirth = true;
-    }else{
-        birthMessage.innerText = "생년 월일 형식이 일치하지 않습니다.";
-        birthMessage.classList.add("error");
-        birthMessage.classList.remove("false");
-        checkObj.memberBirth = false;
-    }
 }
 
 
