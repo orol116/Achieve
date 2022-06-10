@@ -87,7 +87,7 @@ public class MemberDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mem.getMemberName());
-			pstmt.setString(1, mem.getMemberNickname());
+			pstmt.setString(2, mem.getMemberNickname());
 			pstmt.setString(3, mem.getMemberTel());
 			pstmt.setInt(4, mem.getMemberNo());
 			
@@ -186,6 +186,34 @@ public class MemberDAO {
 		return result;
 	}
 
+
+	/**
+	 * 프로필 이미지 변경 DAO
+	 * @param conn
+	 * @param memberNo
+	 * @param profileImage
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateProfileImage(Connection conn, int memberNo, String profileImage) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateProfileImage");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, profileImage);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 
 	/** 이메일 중복 체크
 	 * @param conn

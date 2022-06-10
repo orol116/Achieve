@@ -8,17 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Page - changePw</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage.css">
+     <!-- 헤더, 푸터 위한 main.css -->
+     <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 
+     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
+     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
+
+    <!-- 사이드바 아이콘 사용을 위한 링크 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">     
+ 
 </head>
 <body>
 
+    <!-- 비밀번호 변경 -->
+
     <main>
-        <header>
-            <!-- 헤더 생기면 include 코드로 변경하기 -->
-            <!-- <jsp:include page="/WEB-INF/views/common/header.jsp"> -->
-            <img src="${contextPath}/resources/images/Achieve_logo.png" id="logo"><span>header : Achieve</span>
-        </header>
+        <!-- header -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
 
         <!-- 마이페이지 -->
         <section class="myPage-content">
@@ -31,7 +38,7 @@
                 <div id="myPage-detail">
                     <h1 id="myPage-title">비밀번호 변경</h1>
 
-                    <form action="changePw" method="post" name="myPage-form" onsubmit="return pwUpdateValidate()">
+                    <form action="changePwSubmit" method="post" name="myPage-form" onsubmit="return pwUpdateValidate()">
                         <!-- onsubmit으로 input이 변화가 없으면 제출X -->
                             
                             <div class="myPage-detail-row" id="currentPw">
@@ -64,8 +71,7 @@
         </section>
     </main>
 
-    <!-- footer 완성되면 주석 해제 -->
-    <!-- <jsp:include page="/WEB-INF/views/common/footer.jsp"> -->
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
     <!-- myPage.js 연결 -->
     <script src="${contextPath}/resources/js/member/myPage-changePw.js"></script>
