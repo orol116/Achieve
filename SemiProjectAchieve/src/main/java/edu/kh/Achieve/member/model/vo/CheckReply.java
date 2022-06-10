@@ -14,7 +14,6 @@ public class CheckReply {
 	private int replyNo;
 	private String replyContent;
 	private String createDate;
-	// private int boardNo;
 	private int memberNo;
 	private String memberNickName;
 	private String profileImage;

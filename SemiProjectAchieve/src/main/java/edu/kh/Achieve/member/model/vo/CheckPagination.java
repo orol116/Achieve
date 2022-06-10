@@ -71,7 +71,7 @@ public class CheckPagination {
 		this.maxPage = maxPage;
 	}
 
-	public int getStartPage() {
+	public double getStartPage() {
 		return startPage;
 	}
 
@@ -114,24 +114,49 @@ public class CheckPagination {
 
 		maxPage = (int) Math.ceil((double) listCount / limit);
 
-		startPage = (currentPage - 1) / pageSize * pageSize + 1;
+		// 목록 하단 페이지 번호의 노출 개수가 5개일 떄
+		// 현재 페이지가 1~5인 경우 : 1
+		// 현재 페이지가 6~10인 경우 : 6
+		// 현재 페이지가 11~15인 경우 : 11
+		// 현재 페이지가 16~20인 경우 : 16
+		
+		startPage = (int)((currentPage - 0.5) / pageSize * pageSize + 0.5);
 
-		endPage = startPage + pageSize - 1;
+		endPage = (int)(startPage + pageSize - 0.5);
 
-		if (endPage > maxPage)
+		// 만약 endPage가 maxPage를 초과하는 경우
+		
+		if (endPage > maxPage) {
 			endPage = maxPage;
-
-		if (currentPage <= pageSize)
-			prevPage = 1;
-		else
-			prevPage = startPage - 1;
-
-		if (endPage == maxPage)
+		}
+		// *prevPage(<) : 목록 하단에 노출된 번호의 이전 목록 끝 번호
+		// *nextPage(<) : 목록 하단에 노출된 번호의 이전 목록 시작 번호
+		
+		// 현재페이지가 1~5일 경우
+		// < : 1페이지
+		// > : 6페이지
+		
+		// 현재페이지가 6~10일 경우
+		// < : 6페이지
+		// > : 10페이지
+		
+		// 현재페이지가 11~15일 경우
+		// < : 11페이지
+		// > : 15페이지
+		
+		if (currentPage <= pageSize) {
+			prevPage = (int)0.5;
+		}else {
+			prevPage = (int)(startPage - 0.5);
+		}
+		
+		
+		if (endPage == maxPage) {
 			nextPage = maxPage;
-		else
-			nextPage = endPage + 1;
+		}else {
+			nextPage = (int)(endPage + 0.5);
+		}
 	}
-
 }
 
 
