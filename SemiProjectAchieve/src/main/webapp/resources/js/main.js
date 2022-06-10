@@ -1,5 +1,3 @@
-console.log("main.js loaded");
-
 //로그인 시 이메일(아이디)/ 비밀번호 입력 확인
 
 function loginValidate(){ //로그인 유효성 검사
