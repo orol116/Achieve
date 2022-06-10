@@ -69,8 +69,8 @@
                                 <!-- 회원가입/ID,PW찾기 -->
                                 <article id="signup-find-area">
                                     
-                                    <button><a href="/member/signUp">회원가입</a></button>
-                                    <button><a href="#">ID/PW 찾기</a></button>
+                                    <a href="${contextPath}/member/signUp">회원가입</a>
+                                    <a href="#">ID/PW 찾기</a>
                                     
                                 </article>
                                 
@@ -137,8 +137,6 @@
             
             
                 
-                    
-                
             
                 </section>
 
@@ -154,8 +152,6 @@
             </section>
 
 
-
-
             
 
 
@@ -169,8 +165,6 @@
 
     <!-- jQuery Library -->
     <script    src="https://code.jquery.com/jquery-3.6.0.min.js"    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="    crossorigin="anonymous"></script>
-
-
 
 </body>
 </html>
