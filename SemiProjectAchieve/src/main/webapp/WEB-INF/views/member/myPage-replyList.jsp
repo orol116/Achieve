@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 조회</title>
+    <title>댓글 조회</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-inquire-main.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-board.css"> 
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-reply.css">
 </head>
 <body>
     <main>
-
-        <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
         <header>
             <!-- 클릭 시 메인페이지로 이동하는 로고 -->
             <section>
@@ -87,83 +86,80 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>글번호</th>
-                                <th>제목</th>
-                                <th>작성일</th>
-                                <th>조회</th>
+                                <th id="head-content">댓글</th>
                             </tr>
                         </thead>
     
                         <tbody class="board-list">
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
+                                <td class="list-chkbox"><input type="checkbox"></td>
+                                <td>
+                                    <a href="#">
+                                    <div class="inner_list">댓글 내용 <br></div>
+                                    <div class="comment-date">작성일 : 2022-05-29<br></div>
+                                    <div class="comment_title">게시글 제목[5]</div>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
+                                <td class="list-chkbox"><input type="checkbox"></td>
+                                <td>
+                                    <a href="#">
+                                        <div class="inner_list">댓글 내용 <br></div>
+                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
+                                        <div class="comment_title">게시글 제목[5]</div>
+                                        </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목[5]</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
+                                <td class="list-chkbox"><input type="checkbox"></td>
+                                <td>
+                                    <a href="#">
+                                        <div class="inner_list">댓글 내용 <br></div>
+                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
+                                        <div class="comment_title">게시글 제목[5]</div>
+                                        </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
+                                <td class="list-chkbox"><input type="checkbox"></td>
+                                <td>
+                                    <a href="#">
+                                        <div class="inner_list">댓글 내용 <br></div>
+                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
+                                        <div class="comment_title">게시글 제목[5]</div>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
+                                <td class="list-chkbox"><input type="checkbox"></td>
+                                <td>
+                                    <a href="#">
+                                        <div class="inner_list">댓글 내용 <br></div>
+                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
+                                        <div class="comment_title">게시글 제목[5]</div>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
+                                <td class="list-chkbox"><input type="checkbox"></td>
+                                <td>
+                                    <a href="#">
+                                        <div class="inner_list">댓글 내용 <br></div>
+                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
+                                        <div class="comment_title">게시글 제목[5]</div>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목[2]</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
+                                <td class="list-chkbox"><input type="checkbox"></td>
+                                <td>
+                                    <a href="#" >
+                                        <div class="inner_list">댓글 내용 <br></div>
+                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
+                                        <div class="comment_title">게시글 제목[5]</div>
+                                    </a>
+                                </td>
                             </tr>
                            
                             
@@ -185,37 +181,23 @@
     
                 <div class="pagination-area">
                     <ul class="pagination">
-                      
-                        
-                        <li><a href="#">&lt;&lt;</a></li>
-                        <li><a href="#">&lt;</a></li>
-                        
                         <!-- li*10>a{$} -->
                         <li><a class="current">1</a></li>
-    
-                        <li><a href="${contextPath}/member/BoardList?cp=2">2</a></li>
+                        
+                        <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#">10</a></li>
 
-                        <li><a href="#">&gt;</a></li>
-                        <li><a href="#">&gt;&gt;</a></li>
-                        
                     </ul>
                 </div>
             </section>
         </section>
-
     </main>
 
     <footer>
        
-       <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
+       
         <article>
             <a href="#">FAQ</a>
             <span>|</span>
@@ -229,18 +211,15 @@
          <pre>KH A-class 개발2팀</pre>
         
     </footer>
-
-
-<script>
-    const contextPath = "${contextPath}";
-    const boardNo = "${detail.boardNo}";
-    const loginMemberNo = "${loginMember.memberNo}";
-    // -> 로그인 o -> "10";
-    // -> 로그인 x -> "";
-</script>
     
+<script>
+const contextPath = "${contextPath}";
+const boardNo = "${detail.boardNo}";
+const loginMemberNo = "${loginMember.memberNo}";
+// -> 로그인 o -> "10";
+// -> 로그인 x -> "";
+</script>
 
-
-    <script src="${contextPath}/resources/js/member/myPage-post.js""></script>
+    
 </body>
 </html>

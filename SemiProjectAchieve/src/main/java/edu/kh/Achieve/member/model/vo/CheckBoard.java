@@ -22,6 +22,7 @@ public class CheckBoard {
 		private String boardState;
 		private int memberNo;
 		private String memberNickname;
+		private String profileImage;
 		private int boardCode;
 
 	}

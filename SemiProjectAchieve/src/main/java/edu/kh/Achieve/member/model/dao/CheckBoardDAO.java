@@ -14,7 +14,6 @@ import java.util.Properties;
 
 import edu.kh.Achieve.member.model.vo.CheckBoard;
 import edu.kh.Achieve.member.model.vo.CheckBoardDetail;
-import edu.kh.Achieve.member.model.vo.CheckBoardImage;
 import edu.kh.Achieve.member.model.vo.CheckPagination;
 
 public class CheckBoardDAO {
@@ -39,64 +38,56 @@ public class CheckBoardDAO {
 		}
 	}
 
-	/** 게시물 조회 DAO
-	 * @param conn
-	 * @param type
-	 * @return boardName
-	 * @throws Exception
-	 */
-	public String selectBoardName(Connection conn, int type) throws Exception  {
-		String boardName = null;
-		
-		try{
-			String sql = prop.getProperty("selectBoardName");
-			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, type);
-			
-			rs=pstmt.executeQuery();
-			
-			if(rs.next()) {
-				boardName = rs.getString(1);
-			}
-			
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		
-		return boardName;
-	}
+//	/** 게시물 이름조회 DAO
+//	 * @param conn
+//	 * @param type
+//	 * @return boardName
+//	 * @throws Exception
+//	 */
+//	public String selectBoardName(Connection conn, int type) throws Exception  {
+//		String boardName = null;
+//		
+//		try{
+//			String sql = prop.getProperty("selectBoardName");
+//			
+//			pstmt = conn.prepareStatement(sql);
+//			
+//			pstmt.setInt(1, type);
+//			
+//			rs=pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				boardName = rs.getString(1);
+//			}
+//			
+//		}finally {
+//			close(rs);
+//			close(pstmt);
+//		}
+//		
+//		return boardName;
+//	}
 
-	/** 특정 게시판 전체 게시글 수 조회 DAO
+	/** 게시판 전체 게시글 수 조회 DAO
 	 * @param conn
-	 * @param type
 	 * @return listCount
 	 * @throws Exception
 	 */
-	public int getListCount(Connection conn, int type) throws Exception{
+	public int getListCount(Connection conn) throws Exception{
 
 		int listCount = 0;
 		
 		try{
-			String sql = prop.getProperty("getListCount");
-			
-			pstmt= conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, type);
-			
-			rs=pstmt.executeQuery();
-					
+			String sql = prop.getProperty("getCheckListCount");
+			stmt= conn.createStatement();	
+			rs=stmt.executeQuery(sql);
 			if(rs.next()) {
 				listCount = rs.getInt(1);
 			}
-			
 		}finally{
 			close(rs);
-			close(pstmt);
+			close(stmt);
 		}
-		
 		return listCount;
 	}
 
@@ -107,7 +98,7 @@ public class CheckBoardDAO {
 	 * @return boardList
 	 * @throws Exception
 	 */
-	public List<CheckBoard> selectBoardList(Connection conn, CheckPagination pagination, int type) throws Exception {
+	public List<CheckBoard> selectBoardList(Connection conn, CheckPagination pagination) throws Exception {
 		
 		List<CheckBoard> boardList = new ArrayList<CheckBoard>();
 		
@@ -120,9 +111,9 @@ public class CheckBoardDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, type);
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
+
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -190,48 +181,7 @@ public class CheckBoardDAO {
 		return detail;
 	}
 
-	/** 게시글에 첨부된 이미지 리스트 조회
-	 * @param conn
-	 * @param boardNo
-	 * @return imageList
-	 * @throws Exception
-	 */
-	public List<CheckBoardImage> selectImageList(Connection conn, int boardNo) throws Exception {
-		
-		 List<CheckBoardImage> imageList = new ArrayList<>();
-		 
-		 try {
-			 
-			 String sql = prop.getProperty("selectImageList");
-			 
-			 pstmt = conn.prepareStatement(sql);
-			 
-			 pstmt.setInt(1, boardNo);
-			 
-			 rs=pstmt.executeQuery();
-			 
-			 while(rs.next()) {
-				 
-				 CheckBoardImage image = new CheckBoardImage();
-				 
-			 	image.setImageNo(rs.getInt(1));
-			 	image.setImageReName(rs.getString(2));
-				image.setImageOriginal(rs.getString(3));
-				image.setImageLevel(rs.getInt(4));
-				image.setBoardNo(rs.getInt(5));
-
-				imageList.add(image);
-			 }
-			 
-		 }finally {
-			 close(rs);
-			 close(pstmt);
-			 
-		 }
-
-		 return imageList;
-	}
-
+	
 	/** 다음 게시글 번호 조회 DAO
 	 * @param conn
 	 * @return boardNo

@@ -24,7 +24,7 @@ public class CheckBoardDetail {
 	private int memberNo;
 	private String boardName;
 	
-	private List<CheckBoardImage> imageList;
+//	private List<CheckBoardImage> imageList;
 	
 	
 
