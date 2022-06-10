@@ -6,6 +6,7 @@ import static edu.kh.Achieve.common.JDBCTemplate.getConnection;
 import static edu.kh.Achieve.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.List;
 
 import edu.kh.Achieve.member.model.dao.MemberDAO;
 import edu.kh.Achieve.member.model.vo.Member;
@@ -139,6 +140,44 @@ public class MemberService {
 		
 		return result;
 	}
+
+
+	/** 멤버 리스트 서비스
+	 * 
+	 * @return list
+	 */
+	public List<Member> selectAll() throws Exception{
+		
+		Connection conn = getConnection();
+		
+		List<Member> list  = dao.selectAll(conn);
+		
+		close(conn);
+		
+		return list;
+	}
+
+
+	/**
+	 * 프로필 이미지 변경 Service
+	 * @param memberNo
+	 * @param profileImage
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateProfileImage(int memberNo, String profileImage) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.updateProfileImage(conn, memberNo, profileImage);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
 
 
 

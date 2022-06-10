@@ -1,0 +1,65 @@
+function selectAll(){ // 회원 전체 조회 함수
+    // ajax 코드
+    $.ajax({
+        url : "member/selectAll",
+        dataType : "json", // 응답 데이터의 형식을 JSON으로 지정
+                           // -> 자동으로 JS 객체로 변환됨
+            success : function( list ){
+                //console.log(list);
+                // list == JS 객체 배열 
+    
+                // 1) #memberList 내용 삭제
+                const memberList = document.getElementById("memberList");
+    
+                memberList.innerHTML = "";
+
+            // 2) list 를 for문을 이용해서 반복 접근
+
+            for(let item of list){
+                // item == 회원 1명의 정보가 담긴 JS 객체
+
+                // 3) div 요소 생성
+                const div1 = document.createElement("div");
+                const div3 = document.createElement("div");
+                const div3 = document.createElement("div");
+
+                const span1 = document.createElement("span");
+                const span2 = document.createElement("span");
+
+                span1.innerText = item.memberNo; // 회원 번호
+
+                span2.innerText = item.memberNickname; // 회원 닉네임
+
+                div3.append(span1,span2);
+                div2.append(div3);
+                div1.append(div2);
+
+                // 6) memberList에 tr 추가
+                memberList.append(tr);
+            }
+
+        },
+        error : function(){
+
+            console.log("에러발생")
+        }
+
+    });
+}
+
+// 일정 시간 마다 회원 목록 조회
+
+// 즉시 실행 함수(속도 빠름, 변수명 중복문제 해결)
+(function(){
+
+    selectAll(); // 함수 호출 -> 회원 목록을 1차적으로 먼저 조회
+
+    // window.setInterval(함수, 딜레이(ms))
+    setInterval(selectAll, 10000);
+    // 함수 이름만 작성하면 함수가 실행되는게 아니라 함수 코드가 대입되는 것이다. 
+    // -> 10초마다 selectAll 함수를 수행하게 된다.
+
+    // setInterval()은 지연 -> 수행 -> 지연 -> 수행... 반복
+    // -> 처음에 함수가 수행되지 않아서 공백인 상태가 있다. 지연이 시작이기때문에
+    // -> 그 공백 상태를 메꿀려면 한번 따로 수행시킨다. 
+})();

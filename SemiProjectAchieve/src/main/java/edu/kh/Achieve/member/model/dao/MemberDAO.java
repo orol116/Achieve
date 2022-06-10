@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import edu.kh.Achieve.member.model.vo.Member;
@@ -85,7 +87,7 @@ public class MemberDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mem.getMemberName());
-			pstmt.setString(1, mem.getMemberNickname());
+			pstmt.setString(2, mem.getMemberNickname());
 			pstmt.setString(3, mem.getMemberTel());
 			pstmt.setInt(4, mem.getMemberNo());
 			
@@ -185,6 +187,34 @@ public class MemberDAO {
 	}
 
 
+	/**
+	 * 프로필 이미지 변경 DAO
+	 * @param conn
+	 * @param memberNo
+	 * @param profileImage
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateProfileImage(Connection conn, int memberNo, String profileImage) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateProfileImage");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, profileImage);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+
 	/** 이메일 중복 체크
 	 * @param conn
 	 * @param memberEmail
@@ -250,6 +280,41 @@ public class MemberDAO {
 		}
 		
 		return result;
+	}
+
+
+	/** 멤버 리스트 DAO
+	 * @param conn
+	 * @return list
+	 * @throws Exception
+	 */
+	public List<Member> selectAll(Connection conn) throws Exception{
+	
+//		List<Member>  list = new ArrayList<Member>();
+		
+		List<Member> list = new ArrayList<Member>();
+		
+		try {
+			String sql = prop.getProperty("selectAll");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while( rs.next() ) {
+				Member mem = new Member();
+				
+				mem.setMemberNo( 		rs.getInt(1) );
+				mem.setMemberNickname( 	rs.getString(2));
+				
+				list.add(mem); // 리스트 추가
+			}
+			
+		}finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return list;
 	}
 
 

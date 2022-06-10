@@ -41,6 +41,11 @@
 		WHERE MEMBER_NO = ?
 	</entry>
 	
+	<entry key="updateProfileImage">
+		UPDATE MEMBER SET
+		MEMBER_PROFILE = ?
+		WHERE MEMBER_NO = ?
+	</entry>
 	<entry key ="emailDupCheck">
 
 	SELECT COUNT(*) FROM MEMBER
@@ -54,6 +59,15 @@
 	SELECT COUNT(*) FROM MEMBER
 	WHERE MEMBER_NICK = ?
 	AND SECESSION_FL = 'N'
+	</entry>
+	
+	
+	
+	<entry key="selectAll">
+	SELECT MEMBER_NO, MEMBER_NICK
+	FROM MEMBER
+	WHERE SECESSION_FL = 'N'
+	ORDER BY MEMBER_NO
 	</entry>
 	
 	
