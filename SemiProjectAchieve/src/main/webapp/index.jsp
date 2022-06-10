@@ -62,15 +62,15 @@
                                 </c:if>
                                                         
                                 <label for="saveId">
-                                    <input type="checkbox" name="saveId" ${chk}> 아이디 저장
+                                    <input type="checkbox" name="saveId" ${chk} id="saveId"> 아이디 저장
                                 </label>
                     
                     
                                 <!-- 회원가입/ID,PW찾기 -->
                                 <article id="signup-find-area">
                                     
-                                    <button type="button"><a href="${contextPath}/member/signUp">회원가입</a></button>
-                                    <button type="button"><a href="#">ID/PW 찾기</a></button>
+                                    <button type="button"><a href="${contextPath}/member/signUp" id="main-singUp">회원가입</a></button>
+                                    <button type="button"><a href="#" id="main-find">ID/PW 찾기</a></button>
                                     
                                 </article>
                                 
@@ -155,7 +155,7 @@
                         
                         <c:when test="${empty sessionScope.loginMember}">
                             <!-- 하단 어취브 홍보 부분 -->
-                            <img >
+                            <img src="${contextPath}/resources/images/mainLobby.jpg" id="main-lobby">
     
                         </c:when>
 
@@ -206,6 +206,9 @@
 
     <!-- jQuery Library -->
     <script    src="https://code.jquery.com/jquery-3.6.0.min.js"    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="    crossorigin="anonymous"></script>
+
+    <!-- main.js 연결 절대경로 -->
+	<script src="${contextPath}/resources/js/main.js"></script>
 
 </body>
 </html>
