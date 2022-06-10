@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ-create-project</title>
 
-    <link rel="stylesheet" href="../resources/css/FAQ.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/FAQ.css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -39,54 +43,13 @@
 </head>
 <body>
     <main>  
-        <header>
-
-            <!-- 클릭 시 메인페이지로 이동하는 로고 -->
-            <section>
-                <a href="#">
-                    <img src="../resources/images/Achieve_logo.png" id="home-logo">
-                </a>
-            </section>
-
-            <section>
-                <article class="search-area">
-                    <!-- form 내부 input 태그 값을 서버 또는 페이지로 전달 -->
-                    <form action="#" name="search-form">
-        
-                        <!-- fieldset: form 내부에서 input을 종류별로 묶는 용도로 많이 사용 -->
-                        <fieldset>
-
-                            <!-- autocomplete="off" : HTML 기본 자동완성 사용 X -->
-                            <input type="search" id="query" name="query" 
-                                autocomplete="off" placeholder="프로젝트, 게시글, 페이지 검색">
-        
-                            <!-- 검색 버튼 -->
-                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass"></button>  
-                        </fieldset>
-                    </form>
-                </article>
-            </section>
-
-
-        </header>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
         <!-- 사이드바 시작 -->
 
 
-        <div class="menu">
-            <label for="expand-menu"><div>메뉴</div></label>
-            <input type="checkbox" id="expand-menu" name="expand-menu">
-            <ul>
-                <li><a href="#" class="item"><div>프로필</div></a></li>
-                <li><a href="#" class="item"><div>개인정보변경</div></a></li>
-                <li><a href="#" class="item"><div>구성원</div></a></li>
-                <li><a href="#" class="item"><div>과제확인</div></a></li>
-                <li><a href="#" class="item"><div>공지사항</div></a></li>
-                <li><a href="#" class="item"><div>글작성</div></a></li>
-                <li><a href="#" class="item"><div>초대</div></a></li>
-            </ul>
-        </div>
+        <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"/>
 
         <!-- 사이드바 끝 -->
 
@@ -97,9 +60,9 @@
 
             <div id="FAQ-main">
                 <div id="select-area">
-                    <button class="selectBtn">자주 묻는 질문</button>
-                    <button class="selectBtn">프로젝트 생성/관리</button>
-                    <button class="selectBtn">로그인/가입</button>
+                    <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/firstFAQ'">자주 묻는 질문</button>
+                    <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/secondFAQ'">프로젝트 생성/관리</button>
+                    <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/thirdFAQ'">로그인/가입</button>
 
                 </div>
 
@@ -154,19 +117,7 @@
 
 
 
-    <footer>
-        <p>Copyright &copy; KH Information Educational Institute A-Class</p>
-
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
 
     

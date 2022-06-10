@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,36 +18,10 @@
 </head>
 <body>
     <main>  
-        <header>
-
-            <!-- 클릭 시 메인페이지로 이동하는 로고 -->
-            <section>
-                <a href="#">
-                    <img src="../resources/images/Achieve_logo.png" id="home-logo">
-                </a>
-            </section>
-
-            <section>
-                <article class="search-area">
-                    <!-- form 내부 input 태그 값을 서버 또는 페이지로 전달 -->
-                    <form action="#" name="search-form">
-        
-                        <!-- fieldset: form 내부에서 input을 종류별로 묶는 용도로 많이 사용 -->
-                        <fieldset>
-
-                            <!-- autocomplete="off" : HTML 기본 자동완성 사용 X -->
-                            <input type="search" id="query" name="query" 
-                                autocomplete="off" placeholder="프로젝트, 게시글, 페이지 검색">
-        
-                            <!-- 검색 버튼 -->
-                            <button type="submit" id="search-btn" class="fa-solid fa-magnifying-glass"></button>  
-                        </fieldset>
-                    </form>
-                </article>
-            </section>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
-        </header>
+		<jsp:include page="/WEB-INF/views/common/sideMenu.jsp"/>
 
         <div class="body">
             <div class="setting-main">
@@ -112,19 +89,7 @@
 
 
 
-    <footer>
-        <p>Copyright &copy; KH Information Educational Institute A-Class</p>
-
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
     <script src="../resources/js/project.js"></script>
 
