@@ -60,12 +60,15 @@ header>section:nth-of-type(2){
     width: 92%;
 }
 
+/* 헤더 우측 */
+.right-header{
+    display: flex;
+    align-items: center;
+}
 
-/* 헤더 우측 버튼 */
-.right-header > button{
-    width: 50px;
+/* 헤더 우측 알림 버튼 */
+.right-header button{
     height: 50px;
-    margin-top: 50px;
     background-color: white;
     color: rgb(14, 25, 78);
     font-size: 40px;
@@ -233,7 +236,7 @@ button > a{
 .login-area{
     height: 120px;
     padding: 30px 10px;
-    margin: 10px 0;
+    margin: 20px 0;
 
     border: 1px solid #ddd;
     border-radius: 10px;
