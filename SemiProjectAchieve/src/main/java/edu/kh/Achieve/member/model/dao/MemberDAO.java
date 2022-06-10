@@ -303,8 +303,8 @@ public class MemberDAO {
 			while( rs.next() ) {
 				Member mem = new Member();
 				
-				mem.setMemberNo( 		rs.getInt(1) );
-				mem.setMemberNickname( 	rs.getString(2));
+				mem.setMemberNo( rs.getInt(1) );
+				mem.setMemberNickname(rs.getString(2));
 				
 				list.add(mem); // 리스트 추가
 			}

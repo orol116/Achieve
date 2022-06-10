@@ -26,6 +26,11 @@ public class SelectAllServlet extends HttpServlet{
 			
 			List<Member> list = service.selectAll();
 			
+			for(Member mem : list) {
+				
+				System.out.println(mem);
+			}
+			
 			// Gson 라이브러리를 이용해서 JSON 형태로 변환 후 응답
 			new Gson().toJson( list, resp.getWriter() );
 		

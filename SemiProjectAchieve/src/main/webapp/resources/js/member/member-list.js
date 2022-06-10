@@ -1,7 +1,7 @@
 function selectAll(){ // 회원 전체 조회 함수
     // ajax 코드
     $.ajax({
-        url : "member/selectAll",
+        url :"selectAll",
         dataType : "json", // 응답 데이터의 형식을 JSON으로 지정
                            // -> 자동으로 JS 객체로 변환됨
             success : function( list ){
@@ -9,7 +9,7 @@ function selectAll(){ // 회원 전체 조회 함수
                 // list == JS 객체 배열 
     
                 // 1) #memberList 내용 삭제
-                const memberList = document.getElementById("memberList");
+                const memberList = document.getElementById("member-list");
     
                 memberList.innerHTML = "";
 
@@ -20,22 +20,32 @@ function selectAll(){ // 회원 전체 조회 함수
 
                 // 3) div 요소 생성
                 const div1 = document.createElement("div");
+                div1.classList.add("member-list");
+
+                const div2 = document.createElement("div");
+                div2.classList.add("member-img");
+
                 const div3 = document.createElement("div");
-                const div3 = document.createElement("div");
+                div3.classList.add("member-status-name");
 
                 const span1 = document.createElement("span");
+                span1.classList.add("status")
+                
                 const span2 = document.createElement("span");
+                span2.classList.add("name")
+
+                const br = document.createElement("br");
 
                 span1.innerText = item.memberNo; // 회원 번호
 
                 span2.innerText = item.memberNickname; // 회원 닉네임
 
-                div3.append(span1,span2);
+                div3.append(span1,br,span2);
+                  
                 div2.append(div3);
                 div1.append(div2);
 
-                // 6) memberList에 tr 추가
-                memberList.append(tr);
+                memberList.append(div1);
             }
 
         },
@@ -55,7 +65,7 @@ function selectAll(){ // 회원 전체 조회 함수
     selectAll(); // 함수 호출 -> 회원 목록을 1차적으로 먼저 조회
 
     // window.setInterval(함수, 딜레이(ms))
-    setInterval(selectAll, 10000);
+    setInterval(selectAll, 100000000000000);
     // 함수 이름만 작성하면 함수가 실행되는게 아니라 함수 코드가 대입되는 것이다. 
     // -> 10초마다 selectAll 함수를 수행하게 된다.
 
