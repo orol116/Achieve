@@ -131,8 +131,7 @@ a.insertBtn{
     justify-content: center;
     align-items: center;
 }
-
-#insertBtn:hover{
+.insertBtn:hover{
     background-color: #0e194e;
     border: 2px solid white;
     color:  white;
