@@ -32,8 +32,6 @@ public class BoardMainController extends HttpServlet {
 			
 			BoardService service = new BoardService();
 			
-			// 게시글 목록(자유게시판, 과제 ...) 조회
-		
 			List<Board> boardTypeList = service.selectboardTypeList();
 			req.setAttribute("boardTypeList", boardTypeList);
 			

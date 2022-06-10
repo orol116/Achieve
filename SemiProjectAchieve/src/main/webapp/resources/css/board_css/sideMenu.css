@@ -1,13 +1,11 @@
 .myPage-sideMenu{
-    width: 25%;
 
+    flex-basis: 25%;
     display: flex;
-    justify-content: right;
-    align-items: top;
+    justify-content: center;
 
-    padding-top: 40px;
+    margin-top: 30px;
 
-    /* border-right: 2px solid #b4b4b4; */
 }
 
 

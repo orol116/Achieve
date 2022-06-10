@@ -5,9 +5,7 @@
 }
 
 #board-area{
-    width: 1200px;
-    margin-top: 50px;
-    margin-left: 180px;
+    width: 100%;
 }
 
 
@@ -23,7 +21,7 @@
 
 /* 게시판 목록 화면 전체 영역 설정 */
 .board-list{
-    width: 100%;
+    width: 1000px;
     display: inline-block;
     justify-content: left;
     align-items: center;
@@ -141,7 +139,7 @@
     justify-content: space-between;
 
     margin: 30px;
-    margin-left: 540px;
+    margin-left: 212px;
 
 }
 
