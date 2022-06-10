@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
+<!-- map에 저장된 값을 각각 변수에 저장 -->
+<c:set var = "boardName" value=${map.boardName}/>
+<c:set var = "pagination" value=${map.pagination}/>
+<c:set var = "boardList" value=${map.boardList}/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 조회</title>
+    <title>작성글</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-inquire-main.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-board.css"> 
 </head>
@@ -48,7 +53,7 @@
         
             <section class="left-side">
 
-                <h1>마이페이지</h1>
+                <h1>마이페이지- 작성글</h1>
 
                 <ul class="list-group">
                     <li> <a href="#">회원정보 수정 </a> </li>
@@ -95,76 +100,34 @@
                         </thead>
     
                         <tbody class="board-list">
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목[5]</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목[2]</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>1</td>
-                                <td><a href="#">게시글 제목</a></td>
-                                <td>2022-05-23</td>
-                                <td>50</td>
-                            </tr>
+
+                            <c:choose>
+                                <c:when test="${emptu boardList}">
+                                <!-- 작성글 목록 조회 결과가 비어있다면 -->
+                                    <tr>
+                                        <th colspan="5">작성글이 존재하지 않습니다.</th>
+                                    </tr>
+                                </c:when>
+
+                                <c:otherwise>
+                                <!-- 작성글 목록 조회 결과가 비어있지않다면 -->
+                                    <!-- 향상된 for문 처럼 사용 -->
+                                    <c:forEach var ="board" items="${boardList}">
+                                        <tr>
+                                            <td><input type="checkbox">${board.boardNo}</td>
+                                            <td>1</td>
+                                            <td>
+                                                <a href="#">${board.boardTitle}</a>
+                                            </td>
+                                            <td>${board.createDate}/td>
+                                            <td>&{board.readCount}</td>
+                                        </tr>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
+                           
+                            
+                            
                            
                             
                         </tbody>
