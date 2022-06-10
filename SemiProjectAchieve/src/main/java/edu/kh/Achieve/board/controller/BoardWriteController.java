@@ -9,6 +9,7 @@ import com.oreilly.servlet.MultipartRequest;
 
 import edu.kh.Achieve.board.model.service.BoardService;
 import edu.kh.Achieve.board.model.vo.BoardAttachment;
+import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.common.MyRenamePolicy;
 import edu.kh.Achieve.member.model.vo.Member;
 
@@ -42,53 +43,81 @@ public class BoardWriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		int maxSize = 1024 * 1024 * 500; // 500MB 제한 (수정 가능)
-		
-		HttpSession session = req.getSession();
-		String root = session.getServletContext().getRealPath("/");
-		String folderPath = "/resources/images/board/";
-		String filePath = root + folderPath;
-		
-		String encoding = "UTF-8";
-		
-		MultipartRequest mpReq = new MultipartRequest(req, filePath, maxSize, encoding, new MyRenamePolicy());
-		
-		Enumeration<String> files = mpReq.getFileNames();
-		
-		List<BoardAttachment> boardAttachmentList = new ArrayList<BoardAttachment>();
-		
-		while (files.hasMoreElements()) {
-			String name = files.nextElement();
+		try {
+			int maxSize = 1024 * 1024 * 500; // 500MB 제한 (수정 가능)
 			
-			String rename = mpReq.getFilesystemName(name);
-			String original = mpReq.getOriginalFileName(name);
+			HttpSession session = req.getSession();
+			String root = session.getServletContext().getRealPath("/");
+			String folderPath = "/resources/images/board/";
+			String filePath = root + folderPath;
 			
-			if (rename != null) {
+			String encoding = "UTF-8";
+	
+			MultipartRequest mpReq = new MultipartRequest(req, filePath, maxSize, encoding, new MyRenamePolicy());
+			
+			Enumeration<String> files = mpReq.getFileNames();
+			
+			List<BoardAttachment> boardAttachmentList = null;
+					// new ArrayList<BoardAttachment>();
+			/*
+			
+			while (files.hasMoreElements()) {
+				String name = files.nextElement();
 				
-				BoardAttachment attachment = new BoardAttachment();
+				String rename = mpReq.getFilesystemName(name);
+				String original = mpReq.getOriginalFileName(name);
 				
-				attachment.setAttachmentOriginal(original);
-				attachment.setAttachmentReName(folderPath + rename);
-				attachment.setAttachmentLevel(Integer.parseInt(name));
-				
-				boardAttachmentList.add(attachment);
+				if (rename != null) {
+					
+					BoardAttachment attachment = new BoardAttachment();
+					
+					attachment.setAttachmentOriginal(original);
+					attachment.setAttachmentReName(folderPath + rename);
+					attachment.setAttachmentLevel(Integer.parseInt(name));
+					
+					boardAttachmentList.add(attachment);
+				}
 			}
-		}
-		
-		String boardTitle = mpReq.getParameter("boardTitle");
-		String boardContent = mpReq.getParameter("boardContent");
-		int boardCode = Integer.parseInt(mpReq.getParameter("type"));
-		
-		Member loginMember = (Member)session.getAttribute("loginMember");
-		int memberNo = loginMember.getMemberNo();
-		
-//		BoardDetail detail = new BoardDetail();
-//		detail.setBoardTitle(boardTitle);
-//		detail.setBoardContent(boardContent);
-//		detail.setMemberNo(memberNo);
-		
+			
+			String boardTitle = mpReq.getParameter("boardTitle");
+			String boardContent = mpReq.getParameter("boardContent");
+			int boardCode = Integer.parseInt(mpReq.getParameter("type"));
+			
+			Member loginMember = (Member)session.getAttribute("loginMember");
+			int memberNo = loginMember.getMemberNo();
+			
+			BoardDetail detail = new BoardDetail();
+			detail.setBoardTitle(boardTitle);
+			detail.setBoardContent(boardContent);
+			detail.setMemberNo(memberNo);
+			
+	
+			BoardService service = new BoardService();
+	
+			String mode = mpReq.getParameter("mode");
+			
+			if (mode.equals("insert")) { // 삽입
+				
+				int boardNo = service.insertBoard(detail, boardAttachmentList, boardCode);
+				String path = null;
+				
+				if (boardNo > 0) {
+					session.setAttribute("message", "게시글이 등록되었습니다.");
+					path = "detail?no=" + boardNo + "&type=" + boardCode;
+					
+				} else {
+					session.setAttribute("message", "게시글 등록 실패");
+					path = "write?mode=" + mode + "&type=" + boardCode;
+				}
+				
+				resp.sendRedirect(path);
+				
+			}
 
-		
+			 */
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 

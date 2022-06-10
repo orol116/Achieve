@@ -39,18 +39,21 @@ SELECT * FROM BOARD;
 
 
 -- BOARD 테이블 샘플 데이터 삽입(PL/ SQL)
-BEGIN
+-- BEGIN
 
-    FOR I IN 1..20 LOOP
+--     FOR I IN 1..20 LOOP
 
-        INSERT INTO BOARD
-        VALUES(SEQ_BOARD_NO.NEXTVAL, 
-                SEQ_BOARD_NO.CURRVAL || '번째 게시글',
-                SEQ_BOARD_NO.CURRVAL || '번째 게시글 내용 입니다.',
-                DEFAULT, DEFAULT, DEFAULT, DEFAULT,1,1
-        );
+--         INSERT INTO BOARD
+--         VALUES(SEQ_BOARD_NO.NEXTVAL, 
+--                 SEQ_BOARD_NO.CURRVAL || '번째 게시글',
+--                 SEQ_BOARD_NO.CURRVAL || '번째 게시글 내용 입니다.',
+--                 DEFAULT, DEFAULT, DEFAULT, DEFAULT,1,1
+--         );
 
-    END LOOP;
-END;
+--     END LOOP;
+-- END;
+
+SELECT BOARD_NM, BOARD_CD FROM BOARD_TYPE
+ORDER BY BOARD_CD;
 
 

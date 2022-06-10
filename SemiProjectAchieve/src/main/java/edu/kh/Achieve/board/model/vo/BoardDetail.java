@@ -1,6 +1,7 @@
 package edu.kh.Achieve.board.model.vo;
 
-import lombok.AllArgsConstructor;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,19 +11,19 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
-public class Board {
-	
+public class BoardDetail {
+
 	private int boardNo;
 	private String boardTitle;
 	private String boardContent;
 	private String createDate;
 	private String updateDate;
 	private int readCount;
-	private String boardState;
-	private int memberNo;
 	private String memberNickname;
+	private String profileImage;
+	private int memberNo;
 	private String boardName;
-	private int boardCode;
-
+	
+	private List<BoardAttachment> attachmentList;
 }
+
