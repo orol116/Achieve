@@ -9,19 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/board_css/header.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/board-write-style.css">
 
     <script src="${contextPath}/resources/js/board/ckeditor/ckeditor.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 <body>
 
     <main>
 
-        <header>
-            <img src="${contextPath}/resources/images/Achieve_logo.png" id="logo"><span>OOO 프로젝트</span>
-        </header>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
         <form action="#" enctype="multipart/form-data" method="POST" class="board-write">
 
@@ -33,15 +32,12 @@
             </div>
 
             <div class="content-area">
-
-
                 <div class="add-content">
 
-                    <label for="img0">첨부파일
-                        <img class="preview">
-                    </label>
-                    <input type="file" class="inputImage" id="img0" name="0" accept="image/*">
+                    <label for="img0">첨부파일</label>
+                    <input type="file" class="inputImage" id="img0" name="file" onchange="onchange();" multiple>
 
+                    <span id="attachName"></span><span id="attachSize"></span>
                 </div>
 
 
@@ -54,16 +50,16 @@
 
                 </div>
 
-                <!-- 게시판 종류 선택 기능 삽입하기 -->
-                <!-- <select name="board-type" id="board-type">
-
-                </select> -->
-
-
                 <div class="bottom-area">
 
-                    <!-- <label for="secret-content"><input type="checkbox" id="secret-content"> 비밀글</label> -->
+                    <input type="hidden" name="type" value="${param.type}">
 
+                    <select name="board-type" id="board-type">
+                        <option value="">게시판 선택</option>
+                        <c:forEach var="boardType" items="${boardTypeList}">
+                            <option value="${boardType.boardCode}">${boardType.boardName}</option>
+                        </c:forEach>
+                    </select>
 
                     <!-- 버튼 영역 -->
                     <div class="board-btn-area">
@@ -88,7 +84,7 @@
         
     </main>
 
-
-
+    <script src="${contextPath}/resources/js/board/board.js"></script>
+    
 </body>
 </html>

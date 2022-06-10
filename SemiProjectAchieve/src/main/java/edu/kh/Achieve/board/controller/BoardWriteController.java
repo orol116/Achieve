@@ -8,6 +8,7 @@ import java.util.List;
 import com.oreilly.servlet.MultipartRequest;
 
 import edu.kh.Achieve.board.model.service.BoardService;
+import edu.kh.Achieve.board.model.vo.Board;
 import edu.kh.Achieve.board.model.vo.BoardAttachment;
 import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.common.MyRenamePolicy;
@@ -59,6 +60,13 @@ public class BoardWriteController extends HttpServlet {
 			
 			List<BoardAttachment> boardAttachmentList = null;
 					// new ArrayList<BoardAttachment>();
+			
+			BoardService service = new BoardService();
+			
+			List<Board> boardTypeList = service.selectboardTypeList();
+			req.setAttribute("boardTypeList", boardTypeList);
+
+			
 			/*
 			
 			while (files.hasMoreElements()) {
@@ -91,8 +99,7 @@ public class BoardWriteController extends HttpServlet {
 			detail.setBoardContent(boardContent);
 			detail.setMemberNo(memberNo);
 			
-	
-			BoardService service = new BoardService();
+
 	
 			String mode = mpReq.getParameter("mode");
 			

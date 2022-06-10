@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${boardName}</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/board_css/header.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/sideMenu.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/board-main-style.css">
 
@@ -24,13 +24,7 @@
 
     <main>
 
-        <header>
-            <a href="${contextPath}">
-                <img src="${contextPath}/resources/images/Achieve_logo.png" id="logo">
-            </a>
-            <span>OOO 프로젝트</span>
-        </header>
-
+		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
         <div class="div-sec">
 
