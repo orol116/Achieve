@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" href="../resources/css/signUp-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/signUp-style.css">
     <script src="https://kit.fontawesome.com/51bf4ad8d5.js" crossorigin="anonymous"></script>
 
 </head>
@@ -94,6 +97,9 @@
                     <input type="number" name="memberBirth"
                     placeholder="일" maxlength="2">
                 </div>
+                <span class="signUp-message" id="birthMessage"></span>
+
+
                 
                 
                 <label for="memberTel">
@@ -105,9 +111,8 @@
                             placeholder="(- 없이 숫자만 입력)" maxlength="11">
 
                 </div>
-                <span class="signUp-message error" id="telMessage">
-                    전화번호 형식이 올바르지 않습니다.</span>
-
+                <span class="signUp-message" id="telMessage">
+                   </span>
 
 
 
@@ -119,6 +124,8 @@
 
     </main>
     
-    <script></script>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+    <script src="${contextPath}/resources/js/member/signUp.js"></script>
 </body>
 </html>

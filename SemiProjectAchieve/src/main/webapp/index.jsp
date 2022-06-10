@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achieve</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+    <link rel="stylesheet" href="../webapp/resources/css/main.css">
 
     <script src="https://kit.fontawesome.com/35f111b89d.js" crossorigin="anonymous"></script>
     
@@ -21,7 +21,7 @@
         <header>
             <section>
                 <a href="main">
-                    <img src="${contextPath}/resources/images/Achieve_logo.png" id="home-logo">
+                    <img src="../images/semilogo.png" id="home-logo">
                 </a>
             </section>
 
@@ -119,10 +119,8 @@
         </section>
 
     </main>
-
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
-    <!-- <footer>
+        
+    <footer>
         <p>
             <article id="footer">
                 <a href="#">FAQ</a>
@@ -137,7 +135,7 @@
             
             Copyright &copy; KH Information Educational Institute A-class DevTeam2
         </p>
-    </footer> -->
+    </footer>
 
 
 

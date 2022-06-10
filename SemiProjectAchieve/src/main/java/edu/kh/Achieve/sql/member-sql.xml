@@ -40,5 +40,22 @@
 		SECESSION_FL = 'Y'
 		WHERE MEMBER_NO = ?
 	</entry>
+	
+	<entry key ="emailDupCheck">
+
+	SELECT COUNT(*) FROM MEMBER
+	WHERE MEMBER_EMAIL = ?
+	AND SECESSION_FL = 'N'
+	
+	</entry>
+	
+	<entry key="nicknameDupCheck">
+	
+	SELECT COUNT(*) FROM MEMBER
+	WHERE MEMBER_NICK = ?
+	AND SECESSION_FL = 'N'
+	</entry>
+	
+	
 
 </properties>
