@@ -193,7 +193,7 @@
                         <!-- li*10>a{$} -->
                         <li><a class="current">1</a></li>
     
-                        <li><a href="${contextPath}/member/BoardList?type=1&cp=2">2</a></li>
+                        <li><a href="${contextPath}/member/BoardList?cp=2">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
