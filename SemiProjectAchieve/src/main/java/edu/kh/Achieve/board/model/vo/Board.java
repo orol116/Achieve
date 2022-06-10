@@ -8,9 +8,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
-@AllArgsConstructor
 public class Board {
 	
 	private int boardNo;
@@ -22,6 +20,8 @@ public class Board {
 	private String boardState;
 	private int memberNo;
 	private String memberNickname;
+	private String boardName;
 	private int boardCode;
 
+	
 }

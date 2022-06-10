@@ -9,7 +9,10 @@ import java.util.Map;
 
 import edu.kh.Achieve.board.model.dao.BoardDAO;
 import edu.kh.Achieve.board.model.vo.Board;
+import edu.kh.Achieve.board.model.vo.BoardAttachment;
+import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.board.model.vo.Pagination;
+import edu.kh.Achieve.common.Util;
 
 public class BoardService {
 	
@@ -27,13 +30,20 @@ public class BoardService {
 		
 		String boardName = dao.selectBoardName(conn, type);
 		
-		int listCount = dao.getListCount(conn, type);
+		int listCount = 0;
+		
+		if (type == 1) {
+			listCount = dao.getNewListCount(conn);
+		} else {
+			listCount = dao.getListCount(conn, type);
+		}
+		
 		
 		Pagination pagination = new Pagination(cp, listCount);
 		
 		List<Board> boardList = null;
 		
-		if (type == 4) { // 최신글 조회
+		if (type == 1) { // 최신글 조회
 			boardList = dao.selectBoardMainList(conn, pagination);
 		} else {
 			boardList = dao.selectBoardMain(conn, pagination, type);
@@ -87,6 +97,70 @@ public class BoardService {
 		return map;
 		
 		
+	}
+
+	/** 게시글 등록 Service
+	 * @param detail
+	 * @param imageList
+	 * @param boardCode
+	 * @return boardNo
+	 * @throws Exception
+	 */
+	public int insertBoard(BoardDetail detail, List<BoardAttachment> boardAttachmentList, int boardCode) throws Exception {
+		
+		Connection conn = getConnection();
+
+		int boardNo = dao.nextBoardNo(conn);
+
+		detail.setBoardNo(boardNo);
+		
+		detail.setBoardTitle(Util.XSSHandling(detail.getBoardTitle()));
+		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
+
+		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
+		
+		int result = dao.insertBoard(conn, detail, boardCode);
+		
+		if (result > 0) {
+			for (BoardAttachment image : boardAttachmentList) { 
+				image.setBoardNo(boardNo);
+				
+				result = dao.insertBoardAttachment(conn, image);
+				
+				if (result == 0) {
+					break;
+				}
+			}
+			
+		}
+		
+		// 트랜잭션 처리
+		if (result > 0) commit(conn);
+		else {
+			rollback(conn);
+			boardNo = 0;
+		}
+		
+		close(conn);
+
+		return boardNo;
+	}
+
+
+	/** 게시판 종류 조회 Service
+	 * @param type
+	 * @return boardTypeList
+	 * @throws Exception
+	 */
+	public List<Board> selectboardTypeList() throws Exception {
+
+		Connection conn = getConnection();
+		
+		List<Board> boardTypeList = dao.selectboardType(conn);
+	
+		close(conn);
+		
+		return boardTypeList;
 	}
 	
 

@@ -1,6 +1,6 @@
 package edu.kh.Achieve.member.model.dao;
 
-import static edu.kh.Achieve.common.JDBCTemplate.*;
+import static edu.kh.Achieve.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -126,6 +126,40 @@ public class MemberDAO {
 	}
 
 
+	/** 회원가입 DAO
+	 * @param conn
+	 * @param mem
+	 * @return result
+	 * @throws Exception
+	 */
+	public int signUp(Connection conn, Member mem) throws Exception{
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("signUp");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mem.getMemberEmail());
+			pstmt.setString(2, mem.getMemberPw());
+			pstmt.setString(3, mem.getMemberName());
+			pstmt.setString(4, mem.getMemberNickname());
+			pstmt.setString(5, mem.getMemberBirthday());
+			pstmt.setString(6, mem.getMemberTel());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
 	/**
 	 * 회원 탈퇴 DAO
 	 * @param conn
@@ -179,13 +213,72 @@ public class MemberDAO {
 	}
 	
 
-
-
-
+	/** 이메일 중복 체크
+	 * @param conn
+	 * @param memberEmail
+	 * @return
+	 * @throws Exception
+	 */
+	public int emailDupCheck(Connection conn, String memberEmail) throws Exception{
+		
+		int result = 0; // 결과 저장용 변수
+		
+		try {
+			// SQL 얻어오기
+			String sql = prop.getProperty("emailDupCheck");
+			
+			// pstmt 생성
+			pstmt = conn.prepareStatement(sql);
+			
+			// 위치홀더에 알맞은 값 세팅
+			pstmt.setString(1, memberEmail);
+			
+			// SQL(SELECT) 수행 후 결과 반환 받기
+			rs = pstmt.executeQuery();
+			
+			// rs.next() 로 조회결과를 확인
+			if( rs.next() ) {
+				result = rs.getInt(1); // 1번 컬럼 결과를 result에 대입
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
-	
-	
-	
+	/** 닉네임 중복 체크
+	 * 
+	 * @param conn
+	 * @param memberNickname
+	 * @return
+	 * @throws Exception
+	 */
+	public int nicknameDupCheck(Connection conn, String memberNickname) throws Exception{
+		
+		int result =0;
+		
+		try {
+			String sql = prop.getProperty("nicknameDupCheck");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberNickname);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	

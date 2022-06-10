@@ -5,6 +5,7 @@
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="boardList" value="${map.boardList}" />
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,8 +25,12 @@
     <main>
 
         <header>
-            <img src="${contextPath}/resources/images/Achieve_logo.png" id="logo"><span>OOO 프로젝트</span>
+            <a href="${contextPath}">
+                <img src="${contextPath}/resources/images/Achieve_logo.png" id="logo">
+            </a>
+            <span>OOO 프로젝트</span>
         </header>
+
 
         <div class="div-sec">
 
@@ -34,14 +39,12 @@
                 <div id="sideMenu-list">
                     <!-- <h2><a href="#">마이페이지</a></h2> -->
 
+
                     <br>
 
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=4">최신글</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=1">공지사항</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=2">자유게시판</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=3">과제</a></div>
-
-                    <!-- 이 부분에 직접 만든 게시판 목록 조회후 출력하는 구문 추가하기 -->
+                    <c:forEach var="boardType" items="${boardTypeList}">
+                        <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}">${boardType.boardName}</a></div>
+                    </c:forEach>
 
                     <br>
                     <div class="sideMenu-list-row"><a href="#">내가 쓴 글</a></div>
@@ -50,20 +53,23 @@
                 </div>
             </section>
 
+            <c:if test="${!empty param.key}">
+                <c:set var="sURL" value="&key=${param.key}&query=${param.query}" />
+            </c:if>
+
             <section class="board-list">
                 
                 <div id="board-area">
-           
-                    <c:if test="${param.type != 4}">
-                        <h1 class="board-name">${boardName}</h1>
-                    </c:if>
-                    <c:if test="${param.type == 4}">
-                        <h1 class="board-name">최신글</h1>
+
+                    <h1 class="board-name">${boardName}</h1>
+
+                    <c:if test="${!empty param.key}">
+                        <h3 style="margin-left: 30px;"> "${param.query}" 검색 결과</h3>
                     </c:if>
 
 
                     <div class="btn-area">
-                        <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&cp=${param.cp}'">글 작성하기</button>
+                        <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&cp=${param.cp}'">글쓰기</button>
                     </div>
 
                     <div class="list-wrapper">
@@ -110,10 +116,9 @@
                         <c:set var="url" value="main?type=${param.type}&cp="/>
 
                         <ul class="pagination">
+
                             <li><a href="${url}1${sURL}">&lt;&lt;</a></li>
                             <li><a href="${url}${pagination.prevPage}${sURL}">&lt;</a></li>
-        
-                            <li><a class="current">1</a></li>
         
                             <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 

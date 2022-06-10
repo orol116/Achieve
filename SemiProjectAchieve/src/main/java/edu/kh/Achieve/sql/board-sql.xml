@@ -9,6 +9,18 @@
 		WHERE BOARD_CD = ?
 	</entry>
 	
+	<!-- 게시판 종류 조회 -->
+	<entry key="selectboardTypeList">
+		SELECT BOARD_NM, BOARD_CD FROM BOARD_TYPE
+		ORDER BY BOARD_CD
+	</entry>
+	
+	<!-- 최신글 게시판 글 수 조회 -->
+	<entry key="selectNewListCount">
+		SELECT COUNT(*) FROM BOARD
+		WHERE BOARD_ST = 'N'
+	</entry>
+	
 	<!-- 특정 게시판 글 수 조회 -->
 	<entry key="selectListCount">
 		SELECT COUNT(*) FROM BOARD
@@ -75,6 +87,23 @@
 		   ) A
 		)
 		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 다음 게시글 번호 조회 -->
+	<entry key="nextBoardNo">
+		SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+	</entry>
+	
+	<!-- 게시글 삽입 -->
+	<entry key="insertBoard">
+		INSERT INTO BOARD
+		VALUES(?, ?, ?, DEFAULT, DEFAULT, DEFAULT, DEFAULT, ?, ?)
+	</entry>
+	
+	<!-- 게시글 첨부파일 삽입 -->
+	<entry key="insertBoardAttachment">
+		INSERT INTO BOARD_IMG
+		VALUES(SEQ_IMG_NO.NEXTVAL, ?, ?, ?, ?)
 	</entry>
 
 </properties>

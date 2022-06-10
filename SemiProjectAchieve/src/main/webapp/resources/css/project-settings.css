@@ -143,6 +143,26 @@ textarea{
     resize: none;
 }
 
+#PJNameChange{
+    display: none;
+
+    float: right;
+    margin-right: 10px;
+    
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #aaa;
+
+    width: 270px;
+    height: 30px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    outline: 0;
+    text-align: right;
+
+}
+
 
 
 

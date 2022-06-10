@@ -118,12 +118,15 @@ header > section:nth-of-type(2){
 .left-text{
     margin: 40px 10px 20px 30px;
     font-weight: bold;
+    
 
 }
 
+
+
 #className{
     display: flex;
-    width: 300px;
+    width: 230px;
     height: 40px;
     outline: none;
     justify-content: center;
@@ -131,6 +134,7 @@ header > section:nth-of-type(2){
     border-top: none;
     border-left: none;
     border-right: none;
+    margin-left: 30px;
     
 }
 
@@ -142,8 +146,9 @@ div[class="page-left"]{
 }
 
 select[name="classCategory"]{
-    width: 150px;
+    width: 128px;
     height: 40px;
+    
 }
 
 
@@ -169,13 +174,111 @@ select[name="classCategory"]{
 p#select-text{
     margin-top: 6px;
     margin-left: 30px;
-    
-    
 
 }
 
 .select-text{
     margin-bottom: 40px;
 }
+
+#createBtn{
+    width: 80px;
+    height: 30px;
+   
+    float: right;
+    margin-left: 20px;
+    margin-top: 90px;
+    cursor: pointer;
+
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#createBtn:hover{
+
+    background-color: #455ba8;
+    color: white;
+}
+
+
+
+
+
+
+#projectQuota{
+    width: 120px;
+    height: 40px;
+}
+
+
+/* ------------------------ */
+
+.page-left3{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+select{
+    margin-left: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+
+div[class=category] .left-text{
+    margin-left: 40px;
+    
+}
+
+div[class="quota"]{
+    margin-left: 60px;
+}
+
+div[class="quota"] .left-text{
+    margin-left: 10px;
+
+}
+
+input[type="number"]{
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+
+.classPage-right :nth-child(1){
+    margin-top: 50px;
+}
+
+.page-left1{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+#name-double-check{
+    width: 70px;
+    height: 38px;
+    margin-top: 7px;
+    margin-left: 15px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#name-double-check:hover{
+
+    background-color: #455ba8;
+    color: white;
+}
+
+
+
+
 
 

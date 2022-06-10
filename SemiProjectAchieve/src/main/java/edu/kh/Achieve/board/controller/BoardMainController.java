@@ -1,6 +1,8 @@
 package edu.kh.Achieve.board.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.kh.Achieve.board.model.service.BoardService;
+import edu.kh.Achieve.board.model.vo.Board;
+import edu.kh.Achieve.board.model.vo.BoardDetail;
 
 @WebServlet("/board/main")
 public class BoardMainController extends HttpServlet {
@@ -28,6 +32,11 @@ public class BoardMainController extends HttpServlet {
 			
 			BoardService service = new BoardService();
 			
+			// 게시글 목록(자유게시판, 과제 ...) 조회
+		
+			List<Board> boardTypeList = service.selectboardTypeList();
+			req.setAttribute("boardTypeList", boardTypeList);
+			
 			Map<String, Object> map = null;
 			
 			if (req.getParameter("key") == null) {
@@ -38,7 +47,6 @@ public class BoardMainController extends HttpServlet {
 				
 				map = service.searchBoardList(type, cp, key, query);
 			}
-			
 			
 			req.setAttribute("map", map);
 			

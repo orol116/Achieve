@@ -3,11 +3,9 @@ package edu.kh.Achieve.member.model.vo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 public class Member {
 	
@@ -21,5 +19,8 @@ public class Member {
 	private String secessionFlag;
 	private String suspensionFlag;
 	private String profileImage;
+	
+
+	
 
 }
