@@ -57,5 +57,14 @@
 	</entry>
 	
 	
+	
+	<entry key="selectAll">
+	SELECT MEMBER_NO, MEMBER_NICK
+	FROM MEMBER
+	WHERE SECESSION_FL = 'N'
+	ORDER BY MEMBER_NO
+	</entry>
+	
+	
 
 </properties>

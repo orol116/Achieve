@@ -6,6 +6,7 @@ import static edu.kh.Achieve.common.JDBCTemplate.getConnection;
 import static edu.kh.Achieve.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.List;
 
 import edu.kh.Achieve.member.model.dao.MemberDAO;
 import edu.kh.Achieve.member.model.vo.Member;
@@ -138,6 +139,22 @@ public class MemberService {
 		close(conn);
 		
 		return result;
+	}
+
+
+	/** 멤버 리스트 서비스
+	 * 
+	 * @return list
+	 */
+	public List<Member> selectAll() throws Exception{
+		
+		Connection conn = getConnection();
+		
+		List<Member> list  = dao.selectAll(conn);
+		
+		close(conn);
+		
+		return list;
 	}
 
 
