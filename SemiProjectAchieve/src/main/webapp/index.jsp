@@ -46,7 +46,7 @@
                                     
                                     <section>
                                         
-                                        <button>로그인</button>
+                                        <button type="submit">로그인</button>
                                         
                                     </section>
                                     
@@ -69,8 +69,8 @@
                                 <!-- 회원가입/ID,PW찾기 -->
                                 <article id="signup-find-area">
                                     
-                                    <button><a href="${contextPath}/member/signUp">회원가입</a></button>
-                                    <button><a href="#">ID/PW 찾기</a></button>
+                                    <button type="button"><a href="${contextPath}/member/signUp">회원가입</a></button>
+                                    <button type="button"><a href="#">ID/PW 찾기</a></button>
                                     
                                 </article>
                                 
@@ -129,8 +129,8 @@
 
                     <article id="main-project-area">
                         
-                        <button><a href="#">프로젝트 만들기</a></button><br>
-                        <button><a href="#">프로젝트 찾기</a></button>
+                        <button type="button"><a href="#">프로젝트 만들기</a></button><br>
+                        <button type="button"><a href="#">프로젝트 찾기</a></button>
 
         
                     </article>
