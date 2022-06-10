@@ -1,4 +1,4 @@
-/* myPage-info에 저장해둠 */
+/* sideMenu.jsp */
 
 .menu {
     display: block;
@@ -36,7 +36,7 @@
     line-height: 1.5;
     font-size: 1em;
     font-family: 'Noto Sans KR';
-    padding: 0 0 0 20px;
+    padding: 0 0 0 80px;
 }
 
 .menu ::before {
