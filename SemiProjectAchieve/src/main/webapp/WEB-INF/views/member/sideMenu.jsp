@@ -4,6 +4,7 @@
 <section class="myPage-sideMenu">
     <div class="menu">
         <ul>
+            <li><a href="${contextPath}/member/myPage/profile" class="item"><div>프로필 수정</div></a></li>
             <li><a href="#" class="item"><div>내가 쓴 글</div></a></li>
             <li><a href="#" class="item"><div>내가 쓴 댓글</div></a></li>
             <li><a href="${contextPath}/member/myPage/changePw" class="item"><div>비밀번호 변경</div></a></li>

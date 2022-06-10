@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
 
+    <!-- 사이드바 아이콘 사용을 위한 링크 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
 

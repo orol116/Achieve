@@ -14,6 +14,9 @@
    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
 
+    <!-- 사이드바 아이콘 사용을 위한 링크 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
 
@@ -33,7 +36,7 @@
                 <div id="myPage-detail">
                     <h1 id="myPage-title">회원 탈퇴</h1>
 
-                    <form action="secession" method="post" name="myPage-form" onsubmit="return secessionValidate()">
+                    <form action="secessionSubmit" method="post" name="myPage-form" onsubmit="return secessionValidate()">
                         <!-- onsubmit으로 input이 변화가 없으면 제출X -->
                             <div class="myPage-detail-row" id="memberEmail">
                                 <div>${loginMember.memberEmail}</div> 

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+
+import edu.kh.Achieve.common.MyRenamePolicy;
 import edu.kh.Achieve.member.model.service.MemberService;
 import edu.kh.Achieve.member.model.vo.Member;
 
@@ -35,8 +38,6 @@ public class MyPageController extends HttpServlet{
 				
 			} // info if문 끝
 			
-			
-			// -------------------------------------------------------------
 			
 			
 			if(command.equals("update")) {
@@ -83,7 +84,19 @@ public class MyPageController extends HttpServlet{
 			} // update if문 끝
 			
 			
+			// -------------------------------------------------------------
+			
+			
 			if(command.equals("changePw")) { // 비밀번호 변경
+				
+				String path = "/WEB-INF/views/member/myPage-changePw.jsp";
+				req.getRequestDispatcher(path).forward(req, resp);
+				
+				
+			} // changePw 화면 전환 if문 끝
+			
+			
+			if(command.equals("changePwSubmit")) { // 비밀번호 변경
 				// 파라미터 얻어오기(현재 비밀번호, 새 비밀번호)
 				String currentPw = req.getParameter("currentPw");
 				String newPw = req.getParameter("newPw");
@@ -114,12 +127,23 @@ public class MyPageController extends HttpServlet{
 				// 결과에 따라 화면 재요청
 				resp.sendRedirect(path);
 				
-			} // changePw if문 끝
+			} // changePwSubmit if문 끝
 			
 			
 			// ------------------------------------------------------
 			
-			if(command.equals("secession")) {
+			
+			
+			if(command.equals("secession")) { // 회원 탈퇴 화면 전환
+				
+				String path = "/WEB-INF/views/member/myPage-secession.jsp";
+				req.getRequestDispatcher(path).forward(req, resp);
+				
+				
+			} // secession 화면 전환 if문 끝
+			
+			
+			if(command.equals("secessionSubmit")) {
 				
 				// 로그인 회원 번호 얻어오기
 				HttpSession session = req.getSession();
@@ -148,7 +172,84 @@ public class MyPageController extends HttpServlet{
 				
 				resp.sendRedirect(path);
 				
-			} // secession if 끝
+			} // secessionSubmit if문 끝
+			
+			
+			// ------------------------------------------------------
+			
+			
+			if(command.equals("profile")) {
+				
+				String path = "/WEB-INF/views/member/myPage-profile.jsp";
+				req.getRequestDispatcher(path).forward(req, resp);
+				
+			} // profile if문 끝
+			
+			
+			if(command.equals("profileSubmit")) {
+				
+				int maxSize = 1024 * 1024 * 20;
+				//			   1KB    1MB   20MB
+						
+				
+				HttpSession session = req.getSession();
+				
+				String root = session.getServletContext().getRealPath("/");
+				// C:\workspace\SemiProject_Achieve\src\main\webapp
+				
+				// 실제 파일이 저장되는 폴더의 경로
+				String folderPath = "/resources/images/memberProfile/";
+				
+				// memberProfile 폴더까지의 절대 경로
+				// C:\workspace\SemiProject_Achieve\src\main\webapp\resources\images\memberProfile
+				String filePath = root + folderPath;
+				
+				// 저장되는 파일의 파일명 중복 방지를 위한 파일명 변경 규칙
+				// --> MyRenamePolicy 클래스 생성
+				
+				// 파일 이외의 파라미터들의 문자 인코딩 지정
+				String encoding = "UTF-8";
+				
+				MultipartRequest mpReq = new MultipartRequest(req, filePath, maxSize, encoding, new MyRenamePolicy());
+				
+				// 프로필 이미지 변경 Service 호출 시 필요한 값
+				Member loginMember = (Member)session.getAttribute("loginMember");
+				int memberNo = loginMember.getMemberNo();
+
+				// DB에 삽입 될 프로필 이미지 경로
+				// 단, x 버튼이 클릭되면(input태그 value값이 1이면) null 대입
+				String profileImage = folderPath + mpReq.getFilesystemName("profileImage");		
+				
+				// ** 프로필 이미지 삭제 **
+				// 1) "delete" input type="hidden" 태그의 값(파라미터) 얻어 오기
+				int delete = Integer.parseInt(mpReq.getParameter("delete"));
+				
+				// 2) delete의 값이 1(눌린 경우) 이면 profileImage의 값을 null로 변경
+				if(delete == 1) {
+					profileImage = null;
+				}
+				
+				// 프로필 이미지 변경 Service 호출 후 결과 반환 받기
+				int result = service.updateProfileImage(memberNo, profileImage);
+				
+				if(result > 0) { // 성공
+					session.setAttribute("message", "프로필 이미지가 변경되었습니다.");
+					
+					// session에 저장된 로그인 정보 동기화 작업 진행
+					loginMember.setProfileImage(profileImage);
+					
+				} else { // 실패
+					session.setAttribute("message", "프로필 이미지 변경 실패");				
+				}
+				
+				// 성공/실패 관계 없이 프로필 화면 재요청
+				resp.sendRedirect("profile"); // 상대경로
+			}
+			
+			
+			// ------------------------------------------------------
+			
+			
 			
 			
 			
