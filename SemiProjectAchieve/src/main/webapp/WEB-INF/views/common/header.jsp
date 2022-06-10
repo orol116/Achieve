@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <header>
         <section>
@@ -19,7 +20,17 @@
         
         
         <section class="right-header">
-            <button type="button" id="chat-btn" class="fa-solid fa-star"></button>
+            
+            <c:if test="${!empty sessionScope.loginMember}">
+                
+                <a href="">
+                    <button type="button" id="chat-btn" class="fa-solid fa-envelope"></button>
+                    
+                </a>
+            
+            </c:if>
+            
+
         </section>
 
     </header>

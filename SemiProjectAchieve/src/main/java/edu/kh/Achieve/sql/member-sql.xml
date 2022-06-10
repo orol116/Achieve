@@ -41,6 +41,11 @@
 		WHERE MEMBER_NO = ?
 	</entry>
 	
+	<entry key="updateProfileImage">
+		UPDATE MEMBER SET
+		MEMBER_PROFILE = ?
+		WHERE MEMBER_NO = ?
+	</entry>
 	<entry key ="emailDupCheck">
 
 	SELECT COUNT(*) FROM MEMBER
