@@ -8,10 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import edu.kh.Achieve.board.model.vo.Board;
+import edu.kh.Achieve.board.model.vo.BoardAttachment;
+import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.board.model.vo.Pagination;
 
 public class BoardDAO {
@@ -64,6 +68,32 @@ public class BoardDAO {
 		return boardName;
 	}
 
+	/** 최신글 게시판 전체 게시글 수 조회 DAO
+	 * @param conn
+	 * @param type
+	 * @return listCount
+	 * @throws Exception
+	 */
+	public int getNewListCount(Connection conn) throws Exception {
+		
+		int listCount = 0;
+		
+		try {
+			String sql = prop.getProperty("selectNewListCount");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if (rs.next()) listCount = rs.getInt(1);
+			
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return listCount;
+	}
+	
 	/** 특정 게시판 전체 게시글 수 조회 DAO
 	 * @param conn
 	 * @param type
@@ -264,4 +294,159 @@ public class BoardDAO {
 		}
 		return boardList;
 	}
+
+	/** 다음 게시글 번호 조회 DAO
+	 * @param conn
+	 * @return boardNo
+	 * @throws Exception
+	 */
+	public int nextBoardNo(Connection conn) throws Exception {
+		
+		int boardNo = 0;
+		
+		try {
+			String sql = prop.getProperty("nextBoardNo");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if (rs.next()) {
+				boardNo = rs.getInt(1);
+			}
+			
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return boardNo;
+
+	}
+
+	/** 게시글 삽입 DAO
+	 * @param conn
+	 * @param detail
+	 * @param boardCode
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertBoard(Connection conn, BoardDetail detail, int boardCode) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertBoard");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, detail.getBoardNo());
+			pstmt.setString(2, detail.getBoardTitle());
+			pstmt.setString(3, detail.getBoardContent());
+			pstmt.setInt(4, detail.getMemberNo());
+			pstmt.setInt(5, boardCode);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/** 게시글 첨부파일 삽입 DAO
+	 * @param conn
+	 * @param image
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertBoardAttachment(Connection conn, BoardAttachment attachmentt) throws Exception {
+
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertBoardAttachment");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, attachmentt.getAttachmentReName());
+			pstmt.setString(2, attachmentt.getAttachmentOriginal());
+			pstmt.setInt(3, attachmentt.getAttachmentLevel());
+			pstmt.setInt(4, attachmentt.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/** 게시판 종류 이름 조회 DAO
+	 * @param conn
+	 * @return boardTypeList
+	 * @throws Exception
+	 */
+	public List<Board> selectboardType(Connection conn) throws Exception {
+
+		List<Board> boardType = new ArrayList<Board>();
+		
+		try {
+			String sql = prop.getProperty("selectboardTypeList");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				
+				Board bd = new Board();
+
+				bd.setBoardName(rs.getString("BOARD_NM"));
+				bd.setBoardCode(rs.getInt("BOARD_CD"));
+
+				boardType.add(bd);
+			}
+			
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return boardType;
+		
+	}
+	
+	/** 게시판 종류 코드(타입) 조회 DAO
+	 * @param conn
+	 * @return boardTypeList
+	 * @throws Exception
+	 */
+	public List<Board> selectboardTypeCode(Connection conn) throws Exception {
+		
+		List<Board> boardCode = new ArrayList<Board>();
+		
+		try {
+			String sql = prop.getProperty("selectboardTypeList");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				
+				Board bd = new Board();
+				
+				bd.setBoardCode(rs.getInt("BOARD_CD"));
+				
+				boardCode.add(bd);
+			}
+			
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return boardCode;
+		
+	}
+
+
 }

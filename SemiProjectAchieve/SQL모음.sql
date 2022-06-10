@@ -39,22 +39,35 @@ SELECT * FROM BOARD;
 
 
 -- BOARD 테이블 샘플 데이터 삽입(PL/ SQL)
-BEGIN
+-- BEGIN
 
-    FOR I IN 1..20 LOOP
+--     FOR I IN 1..20 LOOP
 
-        INSERT INTO BOARD
-        VALUES(SEQ_BOARD_NO.NEXTVAL, 
-                SEQ_BOARD_NO.CURRVAL || '번째 게시글',
-                SEQ_BOARD_NO.CURRVAL || '번째 게시글 내용 입니다.',
-                DEFAULT, DEFAULT, DEFAULT, DEFAULT,1,1
-        );
+--         INSERT INTO BOARD
+--         VALUES(SEQ_BOARD_NO.NEXTVAL, 
+--                 SEQ_BOARD_NO.CURRVAL || '번째 게시글',
+--                 SEQ_BOARD_NO.CURRVAL || '번째 게시글 내용 입니다.',
+--                 DEFAULT, DEFAULT, DEFAULT, DEFAULT,1,1
+--         );
 
+<<<<<<< HEAD
+--     END LOOP;
+-- END;
+
+SELECT BOARD_NM, BOARD_CD FROM BOARD_TYPE
+ORDER BY BOARD_CD;
+=======
     END LOOP;
 END;
-
+/
 
 -- 게시판이름조회
 SELECT BOARD_NM FROM BOARD_TYPE
 WHERE BOARD_CD=2;
+
+--PW 변경
+ALTER TABLE MEMBER MODIFY "MEMBER_PW" VARCHAR2(100);
+
+>>>>>>> 48f04db8d30965ba0c029dc71eb8c907d26176f0
+
 

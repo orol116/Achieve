@@ -18,6 +18,7 @@ public class Board {
 	private String boardState;
 	private int memberNo;
 	private String memberNickname;
+	private String boardName;
 	private int boardCode;
 	
 	
