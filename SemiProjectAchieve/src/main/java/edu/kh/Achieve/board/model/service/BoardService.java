@@ -32,7 +32,7 @@ public class BoardService {
 		
 		int listCount = 0;
 		
-		if (type == 4) {
+		if (type == 1) {
 			listCount = dao.getNewListCount(conn);
 		} else {
 			listCount = dao.getListCount(conn, type);
@@ -43,7 +43,7 @@ public class BoardService {
 		
 		List<Board> boardList = null;
 		
-		if (type == 4) { // 최신글 조회
+		if (type == 1) { // 최신글 조회
 			boardList = dao.selectBoardMainList(conn, pagination);
 		} else {
 			boardList = dao.selectBoardMain(conn, pagination, type);
@@ -152,15 +152,12 @@ public class BoardService {
 	 * @return boardTypeList
 	 * @throws Exception
 	 */
-	public Map<String, Object> selectboardTypeList() throws Exception {
+	public List<Board> selectboardTypeList() throws Exception {
 
 		Connection conn = getConnection();
 		
-		List<Board> boardType = dao.selectboardType(conn);
+		List<Board> boardTypeList = dao.selectboardType(conn);
 	
-		Map<String, Object> boardTypeList = new HashMap<String, Object>();
-		boardTypeList.put("boardType", boardType);
-		
 		close(conn);
 		
 		return boardTypeList;

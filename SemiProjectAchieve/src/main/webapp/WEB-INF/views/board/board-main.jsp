@@ -4,7 +4,6 @@
 <c:set var="boardName" value="${map.boardName}" />
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="boardList" value="${map.boardList}" />
-<!-- <c:set var="boardType" value="${boardTypeList.boardType}" /> -->
 
 
 <!DOCTYPE html>
@@ -44,16 +43,8 @@
                     <br>
 
                     <c:forEach var="boardType" items="${boardTypeList}">
-
-                        ${boardType.boardName}
-                        ${boardType.boardCode}
                         <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}">${boardType.boardName}</a></div>
                     </c:forEach>
-
-                    <!-- <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=4">최신글</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=1">공지사항</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=2">자유게시판</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=3">과제</a></div> -->
 
                     <br>
                     <div class="sideMenu-list-row"><a href="#">내가 쓴 글</a></div>
@@ -69,13 +60,8 @@
             <section class="board-list">
                 
                 <div id="board-area">
-           
-                    <c:if test="${param.type != 4}">
-                        <h1 class="board-name">${boardName}</h1>
-                    </c:if>
-                    <c:if test="${param.type == 4}">
-                        <h1 class="board-name">최신글</h1>
-                    </c:if>
+
+                    <h1 class="board-name">${boardName}</h1>
 
                     <c:if test="${!empty param.key}">
                         <h3 style="margin-left: 30px;"> "${param.query}" 검색 결과</h3>
