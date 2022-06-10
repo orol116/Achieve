@@ -69,8 +69,8 @@
                                 <!-- 회원가입/ID,PW찾기 -->
                                 <article id="signup-find-area">
                                     
-                                    <a href="${contextPath}/member/signUp">회원가입</a>
-                                    <a href="#">ID/PW 찾기</a>
+                                    <button><a href="${contextPath}/member/signUp">회원가입</a></button>
+                                    <button><a href="#">ID/PW 찾기</a></button>
                                     
                                 </article>
                                 
