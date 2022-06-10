@@ -35,10 +35,14 @@
                     <!-- <h2><a href="#">마이페이지</a></h2> -->
 
                     <br>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=1">메인페이지</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=2">공지사항</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=3">자유게시판</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=4">과제</a></div>
+
+                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=4">최신글</a></div>
+                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=1">공지사항</a></div>
+                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=2">자유게시판</a></div>
+                    <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=3">과제</a></div>
+
+                    <!-- 이 부분에 직접 만든 게시판 목록 조회후 출력하는 구문 추가하기 -->
+
                     <br>
                     <div class="sideMenu-list-row"><a href="#">내가 쓴 글</a></div>
                     <div class="sideMenu-list-row"><a href="#">내가 쓴 댓글</a></div>
@@ -50,8 +54,14 @@
                 
                 <div id="board-area">
            
-                    <h1 class="board-name">${boardName}</h1>
-                    
+                    <c:if test="${param.type != 4}">
+                        <h1 class="board-name">${boardName}</h1>
+                    </c:if>
+                    <c:if test="${param.type == 4}">
+                        <h1 class="board-name">최신글</h1>
+                    </c:if>
+
+
                     <div class="btn-area">
                         <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&cp=${param.cp}'">글 작성하기</button>
                     </div>
@@ -62,7 +72,7 @@
                             <thead>
                                 <tr>
                                     <th>글 번호</th>
-                                    <th>제목</th>
+                                    <th style="text-align: center;">제목</th>
                                     <th>작성자</th>
                                     <th>작성일</th>
                                     <th>조회수</th>
@@ -97,11 +107,11 @@
 
                     <div class="pagination-area">
 
-                        <c:set var="url" value="list?type=${param.type}&cp="/>
+                        <c:set var="url" value="main?type=${param.type}&cp="/>
 
                         <ul class="pagination">
-                            <li><a href="${url}1">&lt;&lt;</a></li>
-                            <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
+                            <li><a href="${url}1${sURL}">&lt;&lt;</a></li>
+                            <li><a href="${url}${pagination.prevPage}${sURL}">&lt;</a></li>
         
                             <li><a class="current">1</a></li>
         
@@ -113,14 +123,14 @@
                                     </c:when>
 
                                     <c:otherwise>
-                                        <li><a href="${url}${i}">${i}</a></li>
+                                        <li><a href="${url}${i}${sURL}">${i}</a></li>
                                     </c:otherwise>
                                 </c:choose>
 
                             </c:forEach>
         
-                            <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
-                            <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
+                            <li><a href="${url}${pagination.nextPage}${sURL}">&gt;</a></li>
+                            <li><a href="${url}${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
                         </ul>
                     </div>
 
@@ -130,15 +140,16 @@
     
     
                 <form action="#" method="get" id="boardSearch">
+                    <input type="hidden" name="type" value="${param.type}">
     
-                    <select name="key">
+                    <select name="key" id="search-key">
                         <option value="t">제목</option>
                         <option value="c">내용</option>
                         <option value="tc">제목 + 내용</option>
                         <option value="w">작성자</option>
                     </select>
     
-                    <input type="text" name="query" placeholder="검색어를 입력해주세요.">
+                    <input type="text" name="query" id="search-query" placeholder="검색어를 입력해주세요.">
     
                     <button>검색</button>
     

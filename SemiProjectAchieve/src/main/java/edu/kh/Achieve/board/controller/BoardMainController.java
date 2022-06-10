@@ -28,7 +28,17 @@ public class BoardMainController extends HttpServlet {
 			
 			BoardService service = new BoardService();
 			
-			Map<String, Object> map = service.selectBoardMain(type, cp);
+			Map<String, Object> map = null;
+			
+			if (req.getParameter("key") == null) {
+				map = service.selectBoardMain(type, cp);
+			} else {
+				String key = req.getParameter("key");
+				String query = req.getParameter("query");
+				
+				map = service.searchBoardList(type, cp, key, query);
+			}
+			
 			
 			req.setAttribute("map", map);
 			

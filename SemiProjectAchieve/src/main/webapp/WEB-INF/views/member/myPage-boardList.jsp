@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 조회</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-inquire-main.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-post.css"> 
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-board.css"> 
 </head>
 <body>
     <main>
 
-        <!-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> -->
+        <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
         <header>
             <!-- 클릭 시 메인페이지로 이동하는 로고 -->
             <section>
@@ -186,16 +186,25 @@
                 <div class="pagination-area">
                     <ul class="pagination">
                       
+                        
+                        <li><a href="#">&lt;&lt;</a></li>
                         <li><a href="#">&lt;</a></li>
                         
                         <!-- li*10>a{$} -->
                         <li><a class="current">1</a></li>
     
-                        <li><a href="#">2</a></li>
+                        <li><a href="${contextPath}/member/BoardList?type=1&cp=2">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">8</a></li>
+                        <li><a href="#">9</a></li>
+                        <li><a href="#">10</a></li>
+
                         <li><a href="#">&gt;</a></li>
+                        <li><a href="#">&gt;&gt;</a></li>
                         
                     </ul>
                 </div>
@@ -205,7 +214,7 @@
 
     <footer>
        
-       <!-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> -->
+       <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
         <article>
             <a href="#">FAQ</a>
             <span>|</span>

@@ -1,13 +1,16 @@
 package edu.kh.Achieve.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
 import com.oreilly.servlet.MultipartRequest;
 
+import edu.kh.Achieve.board.model.service.BoardService;
 import edu.kh.Achieve.board.model.vo.BoardAttachment;
 import edu.kh.Achieve.common.MyRenamePolicy;
+import edu.kh.Achieve.member.model.vo.Member;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,7 +55,40 @@ public class BoardWriteController extends HttpServlet {
 		
 		Enumeration<String> files = mpReq.getFileNames();
 		
-		List<BoardAttachment> boardAttachment = null;
+		List<BoardAttachment> boardAttachmentList = new ArrayList<BoardAttachment>();
+		
+		while (files.hasMoreElements()) {
+			String name = files.nextElement();
+			
+			String rename = mpReq.getFilesystemName(name);
+			String original = mpReq.getOriginalFileName(name);
+			
+			if (rename != null) {
+				
+				BoardAttachment attachment = new BoardAttachment();
+				
+				attachment.setAttachmentOriginal(original);
+				attachment.setAttachmentReName(folderPath + rename);
+				attachment.setAttachmentLevel(Integer.parseInt(name));
+				
+				boardAttachmentList.add(attachment);
+			}
+		}
+		
+		String boardTitle = mpReq.getParameter("boardTitle");
+		String boardContent = mpReq.getParameter("boardContent");
+		int boardCode = Integer.parseInt(mpReq.getParameter("type"));
+		
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		int memberNo = loginMember.getMemberNo();
+		
+//		BoardDetail detail = new BoardDetail();
+//		detail.setBoardTitle(boardTitle);
+//		detail.setBoardContent(boardContent);
+//		detail.setMemberNo(memberNo);
+		
+
+		
 		
 	}
 
