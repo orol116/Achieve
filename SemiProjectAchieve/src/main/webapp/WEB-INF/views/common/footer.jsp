@@ -5,13 +5,13 @@
     <footer>
         <p>
             <article id="footer">
-                <a href="#">FAQ</a>
+                <a href="/SemiProjectAchieve/FAQ/firstFAQ">FAQ</a>
                 <span> | </span>
                 <a href="#">1:1문의</a>
                 <span> | </span>
-                <a href="#">이용약관</a>
+                <a href="/SemiProjectAchieve/FAQ/terms/conditions">이용약관</a>
                 <span> | </span>
-                <a href="#">개인정보처리방침</a>
+                <a href="/SemiProjectAchieve/FAQ/personal/info">개인정보처리방침</a>
             </article>
             
             
