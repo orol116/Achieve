@@ -145,8 +145,9 @@ public class MemberDAO {
 			pstmt.setString(1, mem.getMemberEmail());
 			pstmt.setString(2, mem.getMemberPw());
 			pstmt.setString(3, mem.getMemberName());
-			pstmt.setString(4, mem.getMemberBirthday());
-			pstmt.setString(5, mem.getMemberTel());
+			pstmt.setString(4, mem.getMemberNickname());
+			pstmt.setString(5, mem.getMemberBirthday());
+			pstmt.setString(6, mem.getMemberTel());
 			
 			result = pstmt.executeUpdate();
 			

@@ -31,14 +31,13 @@ public class SignUpServlet extends HttpServlet{
 		String memberPw = req.getParameter("memberPw");
 		String memberTel = req.getParameter("memberTel");
 		String memberName = req.getParameter("memberName");
+		String memberNickname = req.getParameter("memberNickname");
 		
 		String[] birth = req.getParameterValues("memberBirth");
 		
 		String memberBirth = null;
 		
-		if(birth[0].equals("")) {
-			memberBirth = String.join(".",birth);
-		}
+		memberBirth = String.join("-",birth);
 		
 		Member mem = new Member();
 		
@@ -46,6 +45,7 @@ public class SignUpServlet extends HttpServlet{
 		mem.setMemberPw(memberPw);
 		mem.setMemberTel(memberTel);
 		mem.setMemberName(memberName);
+		mem.setMemberNickname(memberNickname);
 		mem.setMemberBirthday(memberBirth);
 		
 		try {
