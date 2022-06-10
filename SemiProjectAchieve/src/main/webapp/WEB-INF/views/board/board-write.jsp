@@ -62,7 +62,7 @@
 
                 <div class="bottom-area">
 
-                    <label for="secret-content"><input type="checkbox" id="secret-content"> 비밀글</label>
+                    <!-- <label for="secret-content"><input type="checkbox" id="secret-content"> 비밀글</label> -->
 
 
                     <!-- 버튼 영역 -->

@@ -141,10 +141,51 @@
                 </section>
 
 
-                <!-- 우측 어취브 홍보 부분 -->
+                <!-- 오른쪽 프로젝트 추천 부분 -->
                 <section class="content-2">
-                
-                    <img >
+
+                    <div id="top-area">
+                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
+                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
+                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
+                    </div>
+
+
+                    <c:choose>
+                        
+                        <c:when test="${empty sessionScope.loginMember}">
+                            <!-- 하단 어취브 홍보 부분 -->
+                            <img >
+    
+                        </c:when>
+
+                        <c:otherwise>
+
+                            <div class="project-join">
+                                <ul>
+                                    <h2>참여중인 프로젝트 1</h2>
+                                
+                                    <li><a href="#">새로운 글1</a></li>
+                                    <li><a href="#">새로운 글2</a></li>
+                                    <li><a href="#">새로운 글3</a></li>
+                                </ul>
+                                
+                            </div>
+        
+                            <div class="project-join">
+                                <ul>
+                                    <h2>참여중인 프로젝트 2</h2>
+                                
+                                    <li><a href="#">새로운 글1</a></li>
+                                    <li><a href="#">새로운 글2</a></li>
+                                    <li><a href="#">새로운 글3</a></li>
+                                </ul>
+                            </div>
+
+                        </c:otherwise>
+
+                    </c:choose>
+                    
 
                     
                 </section>

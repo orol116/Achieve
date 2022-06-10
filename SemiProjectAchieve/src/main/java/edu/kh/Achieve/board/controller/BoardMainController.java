@@ -34,7 +34,7 @@ public class BoardMainController extends HttpServlet {
 			
 			// 게시글 목록(자유게시판, 과제 ...) 조회
 		
-			Map<String, Object> boardTypeList = service.selectboardTypeList();
+			List<Board> boardTypeList = service.selectboardTypeList();
 			req.setAttribute("boardTypeList", boardTypeList);
 			
 			Map<String, Object> map = null;
