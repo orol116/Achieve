@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achieve</title>
 
-    <link rel="stylesheet" href="../webapp/resources/css/main.css">
+    <link rel="stylesheet" href="resources/css/main.css">
 
     <script src="https://kit.fontawesome.com/35f111b89d.js" crossorigin="anonymous"></script>
     
@@ -18,70 +19,113 @@
     
     <main>
 
-        <header>
-            <section>
-                <a href="main">
-                    <img src="../images/semilogo.png" id="home-logo">
-                </a>
-            </section>
-
-            <section>
-                <article class="project-title">
-        
-                <!-- 나중에 프로젝트 타이틀 들어오는 자리 -->
-                    
-                </article>
-            </section>
-            
-            
-            <section class="right-header">
-                <button type="button" id="chat-btn" class="fa-solid fa-comment"></button>
-                <button type="button" id="chat-btn" class="fa-solid fa-star"></button>
-            </section>
-
-        </header>
+        <!-- 내부 접근 절대 경로 -->
+		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 
         <!-- 마이페이지 -->
         <section class="myPage-content">
 
-            <!-- 왼쪽 회원 사이드 메뉴 -->
             <section class="content">
-                    
+                
+                <!-- 왼쪽 회원 사이드 메뉴 -->
                 <section class="content-1">
 
-                    <form action="member/login" method="post" name="login-form">
+                    <c:choose>
+
+                        <c:when test="${empty sessionScope.loginMember}">
+
+                            <form action="member/login" method="post" name="login-form" onsubmit="return loginValidate()">
+                            
+                                <!-- 아이디(이메일)/비밀번호/로그인 -->
+                                <fieldset id="id-pw-area">
+                                    
+                                    <section>
+                                        <input type="text" name="inputEmail" placeholder="아이디(이메일)" value="${cookie.saveId.value}">
+                                        <input type="password" name="inputPw" placeholder="비밀번호">
+                                    </section>
+                                    
+                                    <section>
+                                        
+                                        <button>로그인</button>
+                                        
+                                    </section>
+                                    
+                                </fieldset>
+
+                                <!-- 쿠키에 saveId가 있는 경우 -->
+                                <c:if test="${!empty cookie.saveId.value}">
+                                    
+                                    <!-- chk변수 생성(page scope) -->
+                                    <c:set var="chk" value="checked"/>
+                                
+                                
+                                </c:if>
+                                                        
+                                <label for="saveId">
+                                    <input type="checkbox" name="saveId" ${chk}> 아이디 저장
+                                </label>
                     
-                        <!-- 아이디(이메일)/비밀번호/로그인 -->
-                        <fieldset id="id-pw-area">
-                            
-                            <section>
-                                <input type="text" name="inputEmail" placeholder="아이디(이메일)">
-                                <input type="password" name="inputPw" placeholder="비밀번호">
-                            </section>
-                            
-                            
-                            <section>
+                    
+                                <!-- 회원가입/ID,PW찾기 -->
+                                <article id="signup-find-area">
+                                    
+                                    <a href="${contextPath}/member/signUp">회원가입</a>
+                                    <a href="#">ID/PW 찾기</a>
+                                    
+                                </article>
                                 
-                                <button>로그인</button>
+                            </form>
+                                    
+                        </c:when>
+
+                        <c:otherwise>
+
+                            <article class="login-area">
+	            			
+                                <!-- 회원 프로필 이미지 -->
+                                <a href="${contextPath}/member/myPage/info">
+                                    <!-- 프로필 이미지 변경하는 페이지 생기면 그쪽으로 -->
+
+                                    <c:if test="${empty loginMember.profileImage}">
+                                        <img src="${contextPath}/resources/images/user.png" id="member-profile">
+                                    </c:if>
+
+                                    <c:if test="${!empty loginMember.profileImage}">
+                                        <img src="${contextPath}${loginMember.profileImage}" id="member-profile">
+                                    </c:if>
+
+                                </a>
+                            
+                                <!-- 회원 정보 + 로그아웃 버튼 -->
+                                <div class="my-info">
+                                    <div>
+                                        <a href="${contextPath}/member/myPage/info" id="nickname">${loginMember.memberNickname}</a>
+                                        
+                                        <a href="member/logout" id="logout-btn">&times;</a>
+                                    
+                                    </div>
+                                    
+                                    <p>
+                                        ${loginMember.memberEmail}
+                                    </p>
+                                    
+                                </div>
+                            
+                            </article>            
+                
+                            <!-- 마이페이지 -->
+                            <article id="signup-find-area">
                                 
-                            </section>
-                            
-                        </fieldset>
-                                                   
-                        <label for="saveId">
-                            <input type="checkbox" name="saveId" ${chk}> 아이디 저장
-                        </label>
-            
-            
-                        <!-- 회원가입/ID,PW찾기 -->
-                        <article id="signup-find-area">
-                            
-                            <button><a href="#">회원가입</a></button>
-                            <button><a href="#">ID/PW 찾기</a></button>
-                            
-                        </article>
-                        
-                    </form>
+                                <button id="myPageBtn"><a href="${contextPath}/member/myPage/info">마이페이지</a></button>
+                                
+                            </article>
+
+                        </c:otherwise>
+
+
+
+                    </c:choose>
+
 
                     <article id="main-project-area">
                         
@@ -93,8 +137,6 @@
             
             
                 
-                    
-                
             
                 </section>
 
@@ -102,13 +144,12 @@
                 <!-- 우측 어취브 홍보 부분 -->
                 <section class="content-2">
                 
+                    <img >
 
                     
                 </section>
 
             </section>
-
-
 
 
             
@@ -120,24 +161,10 @@
 
     </main>
         
-    <footer>
-        <p>
-            <article id="footer">
-                <a href="#">FAQ</a>
-                <span> | </span>
-                <a href="#">1:1문의</a>
-                <span> | </span>
-                <a href="#">이용약관</a>
-                <span> | </span>
-                <a href="#">개인정보처리방침</a>
-            </article>
-            
-            
-            Copyright &copy; KH Information Educational Institute A-class DevTeam2
-        </p>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-
+    <!-- jQuery Library -->
+    <script    src="https://code.jquery.com/jquery-3.6.0.min.js"    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="    crossorigin="anonymous"></script>
 
 </body>
 </html>

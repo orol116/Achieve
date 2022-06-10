@@ -27,5 +27,35 @@
 		WHERE MEMBER_NO = ?
 		AND MEMBER_PW = ?
 	</entry>
+	
+	<!-- 회원가입 -->
+	<entry key="signUp">
+		INSERT INTO MEMBER
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, ?,?,?,DEFAULT, ?, ?, DEFAULT, DEFAULT, DEFAULT)
+	</entry>
+	
+	
+	<entry key="secession">
+		UPDATE MEMBER SET
+		SECESSION_FL = 'Y'
+		WHERE MEMBER_NO = ?
+	</entry>
+	
+	<entry key ="emailDupCheck">
+
+	SELECT COUNT(*) FROM MEMBER
+	WHERE MEMBER_EMAIL = ?
+	AND SECESSION_FL = 'N'
+	
+	</entry>
+	
+	<entry key="nicknameDupCheck">
+	
+	SELECT COUNT(*) FROM MEMBER
+	WHERE MEMBER_NICK = ?
+	AND SECESSION_FL = 'N'
+	</entry>
+	
+	
 
 </properties>

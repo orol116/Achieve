@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.kh.Achieve.member.model.service.MemberService;
 import edu.kh.Achieve.member.model.vo.Member;
@@ -51,6 +52,16 @@ public class SignUpServlet extends HttpServlet{
 			MemberService service = new MemberService();
 			
 			int result = service.signUp(mem);
+			
+			HttpSession session = req.getSession();
+			
+			if(result>0) {
+				session.setAttribute("message", "회원가입 성공");
+			}else {
+				session.setAttribute("message", "회원가입 실패");
+			}
+			
+			resp.sendRedirect(req.getContextPath());
 			
 		}catch(Exception e) {
 			e.printStackTrace();

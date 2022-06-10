@@ -1,6 +1,5 @@
 package edu.kh.Achieve.member.model.vo;
 
-
 public class Member {
 	
 	private int memberNo;
@@ -13,6 +12,7 @@ public class Member {
 	private String secessionFlag;
 	private String suspensionFlag;
 	private String profileImage;
+	
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -84,4 +84,3 @@ public class Member {
 	
 
 }
-
