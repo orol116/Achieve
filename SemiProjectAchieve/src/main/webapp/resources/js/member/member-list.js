@@ -36,9 +36,9 @@ function selectAll(){ // 회원 전체 조회 함수
 
                 const br = document.createElement("br");
 
-                span1.innerText = item.memberNo; // 회원 번호
+                span1.innerText = "회원번호 : "+item.memberNo+"번"; // 회원 번호
 
-                span2.innerText = item.memberNickname; // 회원 닉네임
+                span2.innerText = "닉네임 : "+item.memberNickname; // 회원 닉네임
 
                 div3.append(span1,br,span2);
                   
