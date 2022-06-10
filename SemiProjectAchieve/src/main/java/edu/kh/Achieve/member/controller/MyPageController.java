@@ -21,7 +21,7 @@ public class MyPageController extends HttpServlet{
 		
 		String uri = req.getRequestURI();
 		String contextPath = req.getContextPath();
-		String command = uri.substring( (contextPath + "/myPage/").length() );
+		String command = uri.substring( (contextPath + "/member/myPage/").length() );
 		
 		MemberService service = new MemberService();
 		
@@ -31,6 +31,15 @@ public class MyPageController extends HttpServlet{
 				
 				String path = "/WEB-INF/views/member/myPage-info.jsp";
 				req.getRequestDispatcher(path).forward(req, resp);
+				
+				
+			} // info if문 끝
+			
+			
+			// -------------------------------------------------------------
+			
+			
+			if(command.equals("update")) {
 				
 				
 				// 파라미터 얻어오기(이름, 닉네임, 핸드폰번호)
@@ -70,10 +79,8 @@ public class MyPageController extends HttpServlet{
 				
 				// 결과 상관 없이 내 정보 화면 재요청
 				resp.sendRedirect(req.getContextPath() + "/member/myPage/info");
-			} // info if문 끝
-			
-			
-			// -------------------------------------------------------------
+				
+			} // update if문 끝
 			
 			
 			if(command.equals("changePw")) { // 비밀번호 변경
