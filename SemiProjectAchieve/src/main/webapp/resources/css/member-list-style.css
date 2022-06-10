@@ -45,6 +45,11 @@
     margin: 0 20px;
 }
 
+.manager-list{
+    height: auto;
+    margin: 10px;
+}
+
 .member-list{
     height: auto;
     margin: 10px;
@@ -55,6 +60,9 @@
 
 
 .member-list>.member-status{
+    font-size: 0.8em;
+}
+.manager-list>.member-status{
     font-size: 0.8em;
 }
 
