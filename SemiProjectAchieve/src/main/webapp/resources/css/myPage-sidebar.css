@@ -19,6 +19,7 @@
 
 .menu li{
     margin-top: 10px;
+    position: relative;
 }
 
 .menu a {
@@ -32,11 +33,10 @@
 
 .menu div {
     position: absolute;
-    left: 80px;
+    left: 40px;
     line-height: 1.5;
     font-size: 1em;
     font-family: 'Noto Sans KR';
-    padding: 0 0 0 80px;
 }
 
 .menu ::before {
@@ -51,14 +51,3 @@
 .menu li:nth-child(3) a::before{ content: '\e896'; }
 .menu li:nth-child(4) a::before{ content: '\e898'; }
 .menu li:nth-child(5) a::before{ content: '\e9ba'; }
-
-@media screen and (max-width:1023px) {
-    .menu {
-        width: 60px;
-    }
-}
-@media screen and (max-width:560px) {
-    .menu #expand-menu:not(:checked) ~ ul {
-        display: none;
-    }
-}
