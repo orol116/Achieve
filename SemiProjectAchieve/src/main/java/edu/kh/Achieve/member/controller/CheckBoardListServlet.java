@@ -19,50 +19,33 @@ public class CheckBoardListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		try {
-			// 쿼리스트링 얻어오기 == 파라미터 얻어오기
-			// /board/list?type=1
-			int type = Integer.parseInt(req.getParameter("type"));
-			
-			// nav 메뉴(공지사항, 자유게시판, 질문게시판) 선택 시
 			// 쿼리스트링에 cp(current page)가 없음 - > cp=1고정
 			int cp = 1;
 			
-			// 페이지네이션의 번호 선택 시
-			// 쿼리스트링에 cp가 있음 -> cp = 쿼리스트링의 cp값
+			// 페이지네이션의 번호 선택 시 쿼리스트링에 cp가 있음 -> cp = 쿼리스트링의 cp값
 			if(req.getParameter("cp") != null) { // 쿼리스트링에 "cp"가 존재 한다면
 				cp = Integer.parseInt(req.getParameter("cp"));
 			}
 			
 			CheckBoardService service = new CheckBoardService();
-			// 게시판 이름, 페이지네이션 객체, 게시글 리스트를 한 번에 반환하는 Service 호출
 			
-			Map<String, Object> map = null;
+			Map<String, Object> map = service.selectCheckBoardList(cp);
 			
-			if( req.getParameter("key") == null) { // 일반 목록 조회
-				
-				map= service.selectCheckBoardList(type, cp);
-				
-			}else { // 검섹 목록 조회
-				
-				String key = req.getParameter("key");
-				String query = req.getParameter("query");
-				
-				map = service.checkSearchBoardList(type, cp, key, query);
-			}
-			
-			// request 범위로 map을 세팅
 			req.setAttribute("map", map);
+			
+			// 게시판 이름, 페이지네이션 객체, 게시글 리스트를 한 번에 반환하는 Service 호출
 			
 			String path = "/WEB-INF/views/member/myPage-boardList.jsp";
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 			
 			dispatcher.forward(req, resp);
-			
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
 	}
-	
 }
+	
+

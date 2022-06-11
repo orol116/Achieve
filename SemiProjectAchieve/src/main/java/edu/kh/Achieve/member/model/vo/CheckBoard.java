@@ -12,8 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CheckBoard {
-		
-		private int boardNo;
+
 		private String boardTitle;
 		private String boardContent;
 		private String createDate;
@@ -22,7 +21,8 @@ public class CheckBoard {
 		private String boardState;
 		private int memberNo;
 		private String memberNickname;
-		private int boardCode;
+		private String profileImage;
+
 
 	}
 
