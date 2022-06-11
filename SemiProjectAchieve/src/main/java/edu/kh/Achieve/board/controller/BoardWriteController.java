@@ -32,7 +32,13 @@ public class BoardWriteController extends HttpServlet {
 			// 게시글 수정 기능은 향후에 추가
 			
 			String path = "/WEB-INF/views/board/board-write.jsp";
+			
+			List<Board> boardTypeList = new BoardService().selectboardTypeList();
+			req.setAttribute("boardTypeList", boardTypeList);
+			
+			
 			req.getRequestDispatcher(path).forward(req, resp);
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,7 +55,7 @@ public class BoardWriteController extends HttpServlet {
 			
 			HttpSession session = req.getSession();
 			String root = session.getServletContext().getRealPath("/");
-			String folderPath = "/resources/images/board/";
+			String folderPath = "/resources/boardAttachment/";
 			String filePath = root + folderPath;
 			
 			String encoding = "UTF-8";
@@ -58,16 +64,8 @@ public class BoardWriteController extends HttpServlet {
 			
 			Enumeration<String> files = mpReq.getFileNames();
 			
-			List<BoardAttachment> boardAttachmentList = null;
-					// new ArrayList<BoardAttachment>();
+			List<BoardAttachment> boardAttachmentList = new ArrayList<BoardAttachment>();
 			
-			BoardService service = new BoardService();
-			
-			List<Board> boardTypeList = service.selectboardTypeList();
-			req.setAttribute("boardTypeList", boardTypeList);
-
-			
-			/*
 			
 			while (files.hasMoreElements()) {
 				String name = files.nextElement();
@@ -99,7 +97,7 @@ public class BoardWriteController extends HttpServlet {
 			detail.setBoardContent(boardContent);
 			detail.setMemberNo(memberNo);
 			
-
+			BoardService service = new BoardService();
 	
 			String mode = mpReq.getParameter("mode");
 			
@@ -121,7 +119,6 @@ public class BoardWriteController extends HttpServlet {
 				
 			}
 
-			 */
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

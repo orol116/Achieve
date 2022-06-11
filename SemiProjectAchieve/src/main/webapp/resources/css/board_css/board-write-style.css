@@ -49,7 +49,6 @@
 /* 이미지 영역 */
 .add-content{
     display: flex;
-    justify-content: space-between;
 }
 
 
@@ -64,6 +63,16 @@
     cursor: pointer;
     text-align: center;
     margin-top: 20px;
+}
+
+.add-content > span:nth-of-type(1){
+    margin-top: 24px;
+    margin-left: 30px;
+}
+
+.add-content > span:nth-of-type(2){
+    margin-top: 25px;
+    margin-left: 30px;
 }
 
 /* file 타입 input */
@@ -123,4 +132,11 @@
     display: inline-block;
     position: relative;
     left: 700px;
+}
+
+#board-type{
+    margin-bottom: 15px;
+    margin-left: 140px;
+    height: 30px;
+    width: 110px;
 }
