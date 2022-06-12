@@ -20,38 +20,41 @@
         <!-- header -->
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-        <!-- 아이디, 비번 찾기 -->
-        <section class="findId-content">
+       <!-- 아이디, 비번 찾기 -->
+       <section class="findIdPw-content">
 
-            <!-- 아이디 찾기 -->
-            <section class="findId-main">
-                <div id="findId-container">
-                    <h1 id="findId-title">아이디 / 비밀번호 찾기</h1>
+        <!-- 아이디 찾기 -->
+            <section class="find-main">
+                <h1 id="find-title">아이디 / 비밀번호 찾기</h1>
+                
+                <form action="findIdSubmit" method="post" name="findId-form" onsubmit="return findInputValidate()">
+                    <!-- onsubmit으로 input이 변화가 없으면 제출X -->
 
-                    <form action="findIdSubmit" method="post" name="findId-form" onsubmit="return findIdInputValidate()">
-                        <!-- onsubmit으로 input이 변화가 없으면 제출X -->
-                            
-                            <div class="findId-detail-row" id="memberName">
-                                <div>이름</div>            
-                                <input class="findId-detail-input" name="memberName" type="text" placeholder="이름을 입력해주세요.">
-                            </div>
+                    <div id="find-container">
 
-                            <div class="findId-detail-row" id="memberBirthday">
-                                <div>생년월일</div>            
-                                <input class="findId-detail-input" name="memberBirthday" type="text" onkeyup="addHypen(this);" placeholder="- 없이 8자리">
-                            </div>
+                        <div class="find-detail-row" id="memberName">
+                            <div>이름</div>            
+                            <input class="find-detail-input" name="memberName" type="text" placeholder="유저일">
+                        </div>
 
+                        <div class="find-detail-row" id="memberBirthday">
+                            <div>생년월일</div>            
+                            <input class="find-detail-input" name="memberBirthday" type="text" onkeyup="addHypen(this);" placeholder="1992-11-17 ( - 없이 8자리)">
+                        </div>
 
-                            <!-- 반환되는 아이디 목록이 있든 없든 아이디 찾기 버튼은 뒤로 가기 버튼으로 바뀌어야 함 -->
-
-                            <!-- 아이디 찾기는 ajax를 통해 비동기 조회 -->
-                            <!-- 비밀번호 찾기는 메일 발송 -->
-                            <div class="findId-button-area">
-                                <button id="findIdBtn">아이디 찾기</button>
-                                <button id="findPwBtn">비밀번호 찾기</button>
-                            </div>
-                    </form>
-                </div>
+                        <div class="findId-button-area">
+                            <button id="findIdBtn">아이디 찾기</button>
+                        </div>
+                        
+                        <!-- 밑줄용 -->
+                        <div id="blank"></div>
+                        
+                        <!-- 비밀번호 찾기는 비밀번호 찾기 창으로 넘어간 뒤 메일 ajax 통한 메일 발송 -->
+                        <!-- 비밀번호 찾기 페이지로 넘어가게 하고 싶음!! -->
+                        <a id="moveToFindPw" href="#">비밀번호 재설정</a>
+                        
+                    </div>
+                </form>
             </section>
         </section>
     </main>

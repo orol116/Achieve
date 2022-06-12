@@ -373,4 +373,10 @@ INSERT INTO MEMBER
 VALUES(SEQ_MEMBER_NO.NEXTVAL, 'user02@achieve.co.kr', 'pass02!', '유저이', '사브레', TO_DATE('1992-11-17', 'YYYY/MM/DD'), '01017171717', 
 DEFAULT, DEFAULT, NULL);
 
+-- PROJECT 테이블 샘플 데이터 추가
+INSERT INTO PROJECT
+VALUES(SEQ_PROJECT_NO.NEXTVAL, '프로젝트 이름입니다', \
+'1', '5', DEFAULT, '프로젝트 소개입니다!',
+MEMBER_NO() -- join문 쓸 수 있더????????
 
+)
