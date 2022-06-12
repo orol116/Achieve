@@ -22,7 +22,8 @@
 
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-        <form action="#" enctype="multipart/form-data" method="POST" class="board-write">
+        <form action="#" enctype="multipart/form-data" method="POST" class="board-write"
+            onsubmit="return writeValidate()">
 
             <div class="title-area">
                 <!-- 제목 -->
@@ -37,7 +38,7 @@
                     <label for="img0">첨부파일</label>
                     <input type="file" class="inputImage" id="img0" name="0">
 
-                    <span id="attachName"></span><span id="attachSize"></span>
+                    <span id="attachName"></span><span id="attachSize"></span><span class="deleteAttach">&times;</span>
                 </div>
 
 
@@ -79,6 +80,8 @@
                 <input type="hidden" name="type" value="1">
 
             </div>
+
+            <input type="hidden" name="deleteList" id="deleteList" value="">
         </form>
 
 
