@@ -6,10 +6,9 @@ function selectReplyList(){
         url:contextPath+"/reply/selectReplyList",
         data:{"boardNo":boardNo},
         type:"GET",
-        dataType:"JSON", // JSON 형태의 문자열 응답 데이터를 JS객ㅊ로 자동 변환
+        dataType:"JSON", // JSON 형태의 문자열 응답 데이터를 JS객체로 자동 변환
         success : function(rList){
             // rList : 반환 받은 댓글 목록(List)
-            console.log(rList);
 
             // 화면에 출력되어있는 댓글 목록 삭제
             const replyList = document.getElementById("reply-list"); // ul태그
@@ -86,7 +85,6 @@ function selectReplyList(){
                     replyRow.append(replyBtnArea);
                 }
 
-
                 // 댓글 목록(ul)에 행(li) 추가
                 replyList.append(replyRow);
             }
@@ -95,8 +93,6 @@ function selectReplyList(){
         error: function(req, status, error){
             console.log("에러발생")
             console.log(req.responseText)
-
-
         }
 
     });

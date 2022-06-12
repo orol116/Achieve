@@ -7,9 +7,10 @@
         <ul id="reply-list">
            
             <c:forEach var="reply" items="${rList}">
+
                 <li class="reply-row">
 
-                    <p class="reply-writer">
+                    <p class="reply-writer"> 
                         <!-- 프로필 이미지가 없을 경우 -->
                         <c:if test="${empty reply.profileImage}">
                             <img src="${contextPath}/resources/images/user.png">
@@ -37,6 +38,7 @@
                     </c:if>
 
                 </li>
+                
             </c:forEach>
         </ul>
     </div>
