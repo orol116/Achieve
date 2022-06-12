@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achieve</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/index.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
     <script src="https://kit.fontawesome.com/35f111b89d.js" crossorigin="anonymous"></script>
     
@@ -83,7 +84,7 @@
                             <article class="login-area">
 	            			
                                 <!-- 회원 프로필 이미지 -->
-                                <a href="${contextPath}/member/myPage/info">
+                                <a href="${contextPath}/member/myPage/profile">
                                     <!-- 프로필 이미지 변경하는 페이지 생기면 그쪽으로 -->
 
                                     <c:if test="${empty loginMember.profileImage}">
@@ -129,7 +130,7 @@
 
                     <article id="main-project-area">
                         
-                        <button type="button"><a href="#">프로젝트 만들기</a></button><br>
+                        <button type="button"><a href="${contextPath}/project/PJ/create">프로젝트 만들기</a></button><br>
                         <button type="button"><a href="#">프로젝트 찾기</a></button>
 
         
