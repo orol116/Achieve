@@ -42,36 +42,31 @@
 
             <!-- 아이디 찾기 -->
             <section class="find-main">
-                <h1 id="find-title">아이디 / 비밀번호 찾기</h1>
+                <h1 id="find-title">비밀번호 재설정</h1>
                 
-                <form action="findIdSubmit" method="post" name="findId-form" onsubmit="return findIdInputValidate()">
+                <form action="findPwSubmit" method="post" name="findId-form" onsubmit="return findIdInputValidate()">
                     <!-- onsubmit으로 input이 변화가 없으면 제출X -->
 
                     <div id="find-container">
 
-                        <div class="find-detail-row" id="memberName">
-                            <div>이름</div>            
-                            <input class="find-detail-input" name="memberName" type="text" placeholder="유저일">
+                        <div class="find-detail-row" id="certiChar">
+                            <div>보안문자 입력</div>            
+                            <input class="find-detail-input" name="certiChar" type="text">
                         </div>
-
-                        <div class="find-detail-row" id="memberBirthday">
-                            <div>생년월일</div>            
-                            <input class="find-detail-input" name="memberBirthday" type="text" onkeyup="addHypen(this);" placeholder="1992-11-17 ( - 없이 8자리)">
+                        
+                        <div class="find-detail-row" id="memberPw">
+                            <div>새로운 비밀번호</div>            
+                            <input class="find-detail-input" name="memberPw" type="password">
+                            <span>영어, 숫자, 특수문자(!,@,#,-,_) 6~30 글자 사이로 작성해주세요</span>
                         </div>
 
                         <div class="findId-button-area">
-                            <button id="findIdBtn">아이디 찾기</button>
+                            <button id="findPwBtn">비밀번호 재설정</button>
                         </div>
-                        
-                        <!-- 밑줄용 -->
-                        <div id="blank"></div>
-                        
-                        <!-- 비밀번호 찾기는 비밀번호 찾기 창으로 넘어간 뒤 메일 ajax 통한 메일 발송 -->
-                        <!-- 비밀번호 찾기 페이지로 넘어가게 하고 싶음!! -->
-                        <a id="moveToFindPw" href="#">비밀번호 재설정</a>
-                        
                     </div>
+
                 </form>
+
             </section>
         </section>
     </main>
