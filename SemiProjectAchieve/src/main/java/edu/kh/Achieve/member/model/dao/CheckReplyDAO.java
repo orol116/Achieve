@@ -13,7 +13,6 @@ import java.util.Properties;
 
 
 import edu.kh.Achieve.member.model.vo.CheckBoard;
-import edu.kh.Achieve.member.model.vo.CheckBoardDetail;
 import edu.kh.Achieve.member.model.vo.CheckPagination;
 
 public class CheckReplyDAO {

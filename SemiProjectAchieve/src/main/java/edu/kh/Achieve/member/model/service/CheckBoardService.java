@@ -21,7 +21,7 @@ public class CheckBoardService {
 	 * @return map
 	 * @throws Exception
 	 */
-	public Map<String, Object> selectCheckBoardList( int cp) throws Exception{
+	public Map<String, Object> selectCheckBoardList(int cp) throws Exception{
 
 		Connection conn = getConnection();
 		
@@ -39,7 +39,6 @@ public class CheckBoardService {
 		
 		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
 		Map<String, Object> map = new HashMap<String, Object>();
-		
 		
 //		map.put("boardName", boardName);
 		map.put("pagination", pagination);

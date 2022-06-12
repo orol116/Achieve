@@ -35,6 +35,7 @@ public class BoardMainController extends HttpServlet {
 			List<Board> boardTypeList = service.selectboardTypeList();
 			req.setAttribute("boardTypeList", boardTypeList);
 			
+			
 			Map<String, Object> map = null;
 			
 			if (req.getParameter("key") == null) {

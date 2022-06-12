@@ -35,7 +35,7 @@
                 <div class="add-content">
 
                     <label for="img0">첨부파일</label>
-                    <input type="file" class="inputImage" id="img0" name="file" onchange="onchange();" multiple>
+                    <input type="file" class="inputImage" id="img0" name="0">
 
                     <span id="attachName"></span><span id="attachSize"></span>
                 </div>
@@ -57,14 +57,15 @@
                     <select name="board-type" id="board-type">
                         <option value="">게시판 선택</option>
                         <c:forEach var="boardType" items="${boardTypeList}">
-                            <option value="${boardType.boardCode}">${boardType.boardName}</option>
+                            <c:if test="${boardType.boardCode != 1}">
+                                <option value="${boardType.boardCode}">${boardType.boardName}</option>
+                            </c:if>
                         </c:forEach>
                     </select>
 
                     <!-- 버튼 영역 -->
                     <div class="board-btn-area">
                         <button type="submit" id="writebtn">등록</button>
-                        <button type="submit" id="writebtn">임시저장</button>
                         <button type="button" id="goToListBtn">목록으로</button>
                     </div>
 

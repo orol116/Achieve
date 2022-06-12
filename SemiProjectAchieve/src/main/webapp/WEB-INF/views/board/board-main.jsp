@@ -31,8 +31,6 @@
             <!-- 왼쪽 사이드 메뉴 -->
             <section class="myPage-sideMenu">
                 <div id="sideMenu-list">
-                    <!-- <h2><a href="#">마이페이지</a></h2> -->
-
 
                     <br>
 
@@ -63,7 +61,9 @@
 
 
                     <div class="btn-area">
-                        <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&cp=${param.cp}'">글쓰기</button>
+                        <c:if test="${param.type != 1}">
+                            <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&cp=${param.cp}'">글쓰기</button>
+                        </c:if>
                     </div>
 
                     <div class="list-wrapper">

@@ -134,7 +134,6 @@ public class BoardService {
 			
 		}
 		
-		// 트랜잭션 처리
 		if (result > 0) commit(conn);
 		else {
 			rollback(conn);

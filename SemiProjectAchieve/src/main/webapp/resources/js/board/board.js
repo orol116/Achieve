@@ -52,3 +52,15 @@
     }
 })();
 
+
+// 첨부파일 이름, 파일 크기 출력
+const attach =  document.getElementById("img0");
+attach.onchange = () => {
+    const selectedFile = attach.files[0];
+    const attachName = document.getElementById("attachName");
+    const attachSize = document.getElementById("attachSize");
+
+    attachName.innerText = selectedFile.name;
+    attachSize.innerText = (selectedFile.size) / 1024 + 'KB';
+  };
+

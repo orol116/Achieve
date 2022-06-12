@@ -181,7 +181,9 @@ form > label{
     flex-basis: 45%;
 }
 
-/* 하단 버튼 */
+
+
+/* 버튼 공통 */
 article > button{
     height: 40px;
     background-color: rgb(14, 25, 78);
@@ -189,22 +191,24 @@ article > button{
     cursor: pointer;
 }
 
-/* 하단 버튼 a태그 */
-button > a{
+/* 로그인 전 form 내부 버튼 a태그 */
+#signup-find-area a{
     color: white;
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
-    text-align: center;
-    
-    /* display: flex; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 마이페이지 버튼 */
 #signup-find-area > #myPageBtn{
     flex-basis: 100%;
     margin-bottom: 10px;
-        
+    
 }
 
 /* 프로젝트 만들기/찾기 영역 */
@@ -218,6 +222,19 @@ button > a{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 프로젝트 버튼 a태그 */
+#main-project-area a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }

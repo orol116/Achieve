@@ -415,38 +415,5 @@ public class BoardDAO {
 		
 	}
 	
-	/** 게시판 종류 코드(타입) 조회 DAO
-	 * @param conn
-	 * @return boardTypeList
-	 * @throws Exception
-	 */
-	public List<Board> selectboardTypeCode(Connection conn) throws Exception {
-		
-		List<Board> boardCode = new ArrayList<Board>();
-		
-		try {
-			String sql = prop.getProperty("selectboardTypeList");
-			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			
-			while (rs.next()) {
-				
-				Board bd = new Board();
-				
-				bd.setBoardCode(rs.getInt("BOARD_CD"));
-				
-				boardCode.add(bd);
-			}
-			
-		} finally {
-			close(rs);
-			close(stmt);
-		}
-		
-		return boardCode;
-		
-	}
-
 
 }
