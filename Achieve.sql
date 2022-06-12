@@ -369,3 +369,10 @@ WHERE BOARD_NM = '공지사항';
 
 
 ALTER TABLE BOARD ADD  CHAR(3) DEFAULT 'N' NOT NULL;
+
+-- MEMBER 테이블 샘플데이터 추가(FOR 생년월일 확인)
+INSERT INTO MEMBER 
+VALUES(SEQ_MEMBER_NO.NEXTVAL, 'user02@achieve.co.kr', 'pass02!', '유저이', '사브레', TO_DATE('1992-11-17', 'YYYY/MM/DD'), '01017171717', 
+DEFAULT, DEFAULT, NULL);
+
+
