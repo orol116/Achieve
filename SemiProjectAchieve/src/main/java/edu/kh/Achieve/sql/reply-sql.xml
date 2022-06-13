@@ -19,7 +19,7 @@ ORDER BY REPLY_NO
 
 <entry key="insertReply">
 INSERT INTO REPLY
-VALUES(SEQ_RNO.NEXTVAL, ?, DEFAULT, DEFAULT, ?, ?)
+VALUES(SEQ_REPLY_NO.NEXTVAL, ?, DEFAULT, DEFAULT, ?, ?)
 </entry>
 
 <entry key="deleteReply">

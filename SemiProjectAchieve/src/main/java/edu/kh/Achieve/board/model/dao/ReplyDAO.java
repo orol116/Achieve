@@ -28,7 +28,7 @@ public class ReplyDAO {
 		try {
 			prop= new Properties();
 			
-			String filePath = ReplyDAO.class.getResource("/edu/kh/community2/sql/reply-sql.xml").getPath();
+			String filePath = ReplyDAO.class.getResource("/edu/kh/Achieve/sql/reply-sql.xml").getPath();
 			
 			prop.loadFromXML(new FileInputStream(filePath));
 			
@@ -92,8 +92,8 @@ public class ReplyDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, reply.getReplyContent());
-			pstmt.setInt(2, reply.getMemberNo());
-			pstmt.setInt(3, reply.getBoardNo());
+			pstmt.setInt(2, reply.getBoardNo());
+			pstmt.setInt(3, reply.getMemberNo());
 			
 			result = pstmt.executeUpdate();
 			

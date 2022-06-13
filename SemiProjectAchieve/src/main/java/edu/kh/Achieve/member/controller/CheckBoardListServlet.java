@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import edu.kh.Achieve.member.model.service.CheckBoardService;
 import edu.kh.Achieve.member.model.vo.Member;
 
-@WebServlet("/member/BoardList")
+@WebServlet("/member/List")
 public class CheckBoardListServlet extends HttpServlet {
 
 	@Override
@@ -30,10 +30,12 @@ public class CheckBoardListServlet extends HttpServlet {
 			
 			// 로그인 회원 번호
 			HttpSession session = req.getSession();
-			
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			
 			int memNo = loginMember.getMemberNo();
+			
+//			String memNick = loginMember.getMemberNickname();
+			
 		
 			// /board/list?type=1 (작성글)
 			// /board/list?type=2 (댓글)
@@ -43,12 +45,13 @@ public class CheckBoardListServlet extends HttpServlet {
 			CheckBoardService service = new CheckBoardService();
 			
 			Map<String, Object> map = null;
-	
+			
 			
 			if(type == 1) {
 				map = service.selectBoardList(cp, type, memNo);
 				
 			}else if(type == 2) {
+				
 				map = service.selectReplyList(cp,type,memNo);
 			}
 			
@@ -58,6 +61,7 @@ public class CheckBoardListServlet extends HttpServlet {
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 			
 			req.setAttribute("map", map);
+		
 			
 			dispatcher.forward(req, resp);
 
