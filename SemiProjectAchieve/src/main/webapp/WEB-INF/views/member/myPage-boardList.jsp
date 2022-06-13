@@ -6,6 +6,9 @@
 <c:set var = "boardList" value="${map.boardList}"/>
 <c:set var = "listBoardCount" value="${map.listBoardCount}"/>
 
+<c:set var = "replyList" value="${map.replyList}"/>
+<c:set var = "listReplyCount" value="${map.listReplyCount}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,8 +60,8 @@
                 <ul class="list-group">
                     <li> <a href="#">회원정보 수정 </a> </li>
                     <li> <a href="#">비밀번호 변경 </a> </li>
-                    <li> <a href="${contextPath}/member/BoardList?type=1">내가 쓴 글 보기 </a> </li>
-                    <li> <a href="${contextPath}/member/BoardList?type=2">내가 쓴 댓글 보기 </a> </li>
+                    <li> <a href="${contextPath}/member/List?memNo=${param.memNo}&type=1">내가 쓴 글 보기 </a> </li>
+                    <li> <a href="${contextPath}/member/List?memNo=${param.memNo}&type=2">내가 쓴 댓글 보기 </a> </li>
                     <li> <a href="#">회원 탈퇴 </a> </li>
                 </ul>
 
@@ -75,15 +78,15 @@
                     <span class="myPage-grade">등급 :</span>
                     <div class="myPage-info">
                         <span class="myPage-words">작성 글 : ${listBoardCount}</span>
-                        <span class="myPage-reply">작성 댓글 : </span>
+                        <span class="myPage-reply">작성 댓글 : ${listReplyCount}</span>
                     </div>
                 </div>  
 
                 <!-- 쿼리스트링  -->
                 <div class="myPage-third">
                     <div class="myPage-third1">
-                    <a href="${contextPath}/member/BoardList?memNo=${param.memNo}&type=1">작성글</a>
-                    <a href="${contextPath}/member/BoardList?memNo=${param.memNo}&type=2">작성댓글</a>
+                    <a href="${contextPath}/member/List?memNo=${param.memNo}&type=1">작성글</a>
+                    <a href="${contextPath}/member/List?memNo=${param.memNo}&type=2">작성댓글</a>
                     <a href="#">가입한 프로젝트 보기</a>
                     </div>
                     <div class="myPage-third2">

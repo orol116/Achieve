@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import edu.kh.Achieve.member.model.service.CheckBoardService;
 
-@WebServlet("/boardList/delete")
+@WebServlet("/List/delete")
 public class BoardDeleteServlet extends HttpServlet{
 
 	@Override

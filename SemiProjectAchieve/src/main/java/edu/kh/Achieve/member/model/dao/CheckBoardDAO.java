@@ -68,7 +68,7 @@ public class CheckBoardDAO {
 	 * @return listName
 	 * @throws Exception
 	 */
-	public String selectBoardListName(Connection conn, int type, int memNo) throws Exception{
+	public String selectListName(Connection conn, int type, int memNo) throws Exception{
 		String listName = null;
 		
 		try{
@@ -187,10 +187,10 @@ public class CheckBoardDAO {
 		return result;
 	}
 	
-	//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
 	
 	
-	/** 작성 댓글 수 조회 DAO
+	/** 작성 댓글 조회 DAO
 	 * @param conn
 	 * @param type
 	 * @param memNo
@@ -217,16 +217,15 @@ public class CheckBoardDAO {
 		return listReplyCount;
 	}
 
-	/** 작성 댓글 목록 조회 DAO
+	/** 작성 댓글 목록 
 	 * @param conn
 	 * @param pagination
 	 * @param type
 	 * @param memNo
-	 * @return replyList
+	 * @return 
 	 * @throws Exception
 	 */
 	public List<CheckReply> selectReplyList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception{
-
 		List<CheckReply> replyList = new ArrayList<CheckReply>();
 		
 		try {
@@ -245,15 +244,15 @@ public class CheckBoardDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				
 				CheckReply reply = new CheckReply();
 				
 				reply.setReplyNo(rs.getInt("REPLY_NO"));
 				reply.setReplyContent(rs.getString("REPLY_CONTENT"));
 				reply.setReplyDate(rs.getString("REPLY_DT"));
-				reply.setBoardNo(rs.getInt("BOARD_NO"));
-				
+			
 				replyList.add(reply);
-				
+			
 			}
 			
 		}finally {
