@@ -102,17 +102,18 @@ function findInputValidate(){
 
 
 function findIdList(){
-
+console.log(memberName.value)
+console.log(memberBirthday.value)
     $.ajax({
         // 현재 페이지 : 메인페이지
         url : contextPath + "/findId",
-        data : {"memberName" : memberName, "memberBirthday" : memberBirthday},
+        data : {"memberName" : memberName.value, "memberBirthday" : memberBirthday.value},
         type : "post",
         dataType : "JSON",
         success : function(idList){
-
+            console.log(idList)
             // 메인화면 비우기
-            const findIdContainer = document.getElementById("findId-container");
+            const findIdContainer = document.getElementById("find-container");
             findIdContainer.innerHTML = "";
 
             // 아이디 조회 div-container 생성
@@ -138,12 +139,14 @@ function findIdList(){
                 // 아이디 데이터가 보이는 행 추가
                 const idRow = document.createElement("div");
                 idRow.classList.add("idList-row");
-                idRow.innerText = id;
+                idRow.innerText = id.memberEmail;
 
                 // 아이디 조회 container에 행 추가
                 findIdList.append(idRow);
 
             } 
+
+            findIdContainer.append(findIdList)
         } else{ // 아이디 리스트 X
 
             // 안내 문구 생성

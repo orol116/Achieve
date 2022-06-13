@@ -30,12 +30,12 @@ public class findIdServlet extends HttpServlet{
 		// 파라미터 얻어오기
 		String memberName = req.getParameter("memberName");
 		String memberBirthday = req.getParameter("memberBirthday");
-		
+		System.out.println(memberName);
+		System.out.println(memberBirthday);
 		try {
 			MemberService service = new MemberService();
 			List<Member> idList = service.findIdAll(memberName, memberBirthday);
-			
-			// memberBirthday는 00-00-00 형태로 들어오는데 db에서 조회할 때 포맷이 다르면 조회가 안 되지 않...?
+			System.out.println(idList);
 			
 			new Gson().toJson(idList, resp.getWriter());
 			

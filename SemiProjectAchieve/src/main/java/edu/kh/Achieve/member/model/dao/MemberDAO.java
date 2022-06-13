@@ -338,7 +338,7 @@ public class MemberDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				Member member = new Member();
 				member.setMemberEmail(rs.getString(1));
 				
