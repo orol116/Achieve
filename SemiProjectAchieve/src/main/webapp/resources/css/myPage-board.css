@@ -27,12 +27,39 @@ myPage-row{
     width: 70%;
 }
 
-
 .list-table > thead>tr>th{
     background-color: #0e194e;
     color: white;
 }
-/* a태그 공통 설정 */
+/* 작성글/ 작성댓글/ 가입 등등 */
+.myPage-third{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 상단 a 태그들 공통 설정 */
+div.myPage-third1>a{
+    color: black;
+    text-decoration:none;
+    padding-right: 6px;
+}
+/* 첫번째 a태그  */
+div.myPage-third1>a:nth-of-type(1){
+   text-decoration: underline ;
+    color : #0e194e;
+    padding-bottom: 5px;
+    font-weight: 700;
+}
+div.myPage-third1>a:nth-of-type(3){
+    letter-spacing: -0.7px;
+}
+div.myPage-third2>a{
+    color: black;
+    text-decoration:none;
+    letter-spacing: -0.7px;
+    padding-right: 5px;
+}
+
 .board-list a{
     text-decoration: none;
     color: black;
@@ -42,6 +69,7 @@ myPage-row{
     text-decoration: underline;
     color: #0e194e;
 }
+
 
 /* 게시판 목록 화면 전체 영역 설정 */
 .board-list{

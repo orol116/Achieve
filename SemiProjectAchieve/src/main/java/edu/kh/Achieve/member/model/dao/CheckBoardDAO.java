@@ -20,23 +20,48 @@ public class CheckBoardDAO {
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
 	private Properties prop;
 	
 	public CheckBoardDAO() {
 		
 		try {
 			prop = new Properties();
-			
 			String filePath = CheckBoardDAO.class.getResource("/edu/kh/Achieve/sql/checkBoard-sql.xml").getPath();
-			
 			prop.loadFromXML(new FileInputStream(filePath));
 			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-	/** 게시글 목록 조회 DAO
+	
+	/** 작성글 수 조회 DAO
+	 * @param conn
+	 * @param memNo 
+	 * @return listCount
+	 * @throws Exception
+	 */
+	public int getBoardListCount(Connection conn , int type, int memNo) throws Exception{
+		
+		int listCount = 0;
+		
+		try{
+			String sql = prop.getProperty("getBoardListCount");
+			
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				listCount = rs.getInt(1);
+			}
+		}finally{
+			close(rs);
+			close(pstmt);
+		}
+		return listCount;
+		
+	}
+	
+	/** 작성글 목록 조회 DAO
 	 * @param conn
 	 * @param type
 	 * @return listName
@@ -63,34 +88,9 @@ public class CheckBoardDAO {
 		
 		return listName;
 	}
-	/** 작성글 수 조회 DAO
-	 * @param conn
-	 * @param memNo 
-	 * @return listCount
-	 * @throws Exception
-	 */
-	public int getListCount(Connection conn , int type, int memNo) throws Exception{
-		
-		int listCount = 0;
-		
-		try{
-	String sql = prop.getProperty("getListCount");
-			
-			pstmt= conn.prepareStatement(sql);
-			pstmt.setInt(1, memNo);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				listCount = rs.getInt(1);
-			}
-		}finally{
-			close(rs);
-			close(pstmt);
-		}
-		return listCount;
-		
-	}
 
-	/** 게시판에서 일정한 범위의 목록 조회 DAO
+
+	/** 작성글에서 일정한 범위의 목록 조회 DAO
 	 * @param conn
 	 * @param pagination
 	 * @param type
@@ -138,7 +138,7 @@ public class CheckBoardDAO {
 	}
 
 	
-	/** 다음 게시글 번호 조회 DAO
+	/** 다음 작성글 번호 조회 DAO
 	 * @param conn
 	 * @return boardNo
 	 * @throws Exception
@@ -163,7 +163,7 @@ public class CheckBoardDAO {
 		return boardNo;
 	}
 
-	/** 게시글 삭제 DAO
+	/** 작성글 삭제 DAO
 	 * @param conn 
 	 * @param boardNo
 	 * @return result
@@ -184,6 +184,31 @@ public class CheckBoardDAO {
 		}
 		
 		return result;
+	}
+	/** 작성 댓글 조회 DAO
+	 * @param conn
+	 * @param type
+	 * @param memNo
+	 * @return listCount
+	 * @throws Exception
+	 */
+	public int getReplyListCount(Connection conn, int type, int memNo) throws Exception{
+		int listCount = 0;
+		
+		try{
+			String sql = prop.getProperty("getReplyListCount");
+			
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				listCount = rs.getInt(1);
+			}
+		}finally{
+			close(rs);
+			close(pstmt);
+		}
+		return listCount;
 	}
 
 

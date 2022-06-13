@@ -4,6 +4,7 @@
 <!-- map에 저장된 값을 각각 변수에 저장 -->
 <c:set var = "pagination" value="${map.pagination}"/>
 <c:set var = "boardList" value="${map.boardList}"/>
+<c:set var = "listCount" value="${map.listCount}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,17 +74,21 @@
                     <span class="myPage-nickname">닉네임</span>
                     <span class="myPage-grade">등급 :</span>
                     <div class="myPage-info">
-                        <span class="myPage-visit">방문 :</span>
-                        <span class="myPage-words">작성 글 :</span>
+                        <span class="myPage-words">작성 글 : ${listCount}</span>
                         <span class="myPage-reply">작성 댓글 :</span>
                     </div>
                 </div>  
 
                 <!-- 쿼리스트링  -->
                 <div class="myPage-third">
+                    <div class="myPage-third1">
                     <a href="${contextPath}/member/BoardList?memNo=${param.memNo}&type=1">작성글</a>
                     <a href="${contextPath}/member/BoardList?memNo=${param.memNo}&type=2">작성댓글</a>
                     <a href="#">가입한 프로젝트 보기</a>
+                    </div>
+                    <div class="myPage-third2">
+                    <a href="#">삭제한 게시글</a>
+                    </div>
                 </div>      
 
                 <div class="list-wrapper">
