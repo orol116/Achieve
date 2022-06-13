@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아이디 / 비밀번호 찾기</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/findId-style.css">
 
 
@@ -54,7 +54,7 @@
                         
                         <!-- 비밀번호 찾기는 비밀번호 찾기 창으로 넘어간 뒤 메일 ajax 통한 메일 발송 -->
                         <!-- 비밀번호 찾기 페이지로 넘어가게 하고 싶음!! -->
-                        <a id="moveToFindPw" href="#">비밀번호 재설정</a>
+                        <a id="moveToFindPw" href="${contextPath}/findPw.jsp">비밀번호 재설정</a>
                         
                     </div>
                 </form>
