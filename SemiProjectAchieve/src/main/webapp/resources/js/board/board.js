@@ -1,3 +1,9 @@
+const inputImage = document.getElementsByClassName("inputImage");
+const attach = document.getElementById("img0");
+const deleteSet = new Set();
+const preview = document.getElementsByClassName("preview");
+const deleteAttach = document.getElementsByClassName("deleteAttach")[0];
+
 (function() {
 
     const goToListBtn = document.getElementById("goToListBtn");
@@ -54,7 +60,6 @@
 
 
 // 첨부파일 이름, 파일 크기 출력
-const attach =  document.getElementById("img0");
 attach.onchange = () => {
     const selectedFile = attach.files[0];
     const attachName = document.getElementById("attachName");
@@ -69,6 +74,7 @@ function writeValidate(){
 
     const boardTitle = document.getElementsByName("boardTitle")[0];
     const boardContent = document.getElementById("boardContent");
+    const boardOption = document.getElementById("boardOption");
 
     if (boardTitle.value.trim().length == 0) {
         alert("제목을 입력해주세요!");
@@ -82,9 +88,29 @@ function writeValidate(){
         boardContent.focus();
         return false;
     }
+    if (boardOption.value.trim().length == 0){
+        alert("게시판 종류를 선택해주세요!");
+        boardOption.value = "";
+        boardOption.focus();
+        return false;
+    }
 
     deleteList.value = Array.from(deleteSet);
 
     return true;
 }
 
+(function() {
+
+    deleteAttach.addEventListener("click", function() {
+
+        if (document.getElementById("img0").value != "") {
+            document.getElementById("img0").value = "";
+            document.getElementById("attachName").innerText = "";
+            document.getElementById("attachSize").innerText = "";
+            //deleteSet.add(i);
+        }
+
+    })
+        
+})();

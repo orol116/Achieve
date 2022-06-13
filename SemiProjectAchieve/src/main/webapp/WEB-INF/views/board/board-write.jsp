@@ -35,10 +35,11 @@
             <div class="content-area">
                 <div class="add-content">
 
-                    <label for="img0">첨부파일</label>
+                    <label for="img0">첨부파일<img class="preview" src="${img0}"></label>
                     <input type="file" class="inputImage" id="img0" name="0">
 
                     <span id="attachName"></span><span id="attachSize"></span><span class="deleteAttach">&times;</span>
+
                 </div>
 
 
@@ -53,13 +54,13 @@
 
                 <div class="bottom-area">
 
-                    <input type="hidden" name="type" value="${param.type}">
+                    <!-- <input type="hidden" name="type" value="${param.type}"> -->
 
                     <select name="board-type" id="board-type">
-                        <option value="">게시판 선택</option>
+                        <option value="0">게시판 선택</option>
                         <c:forEach var="boardType" items="${boardTypeList}">
                             <c:if test="${boardType.boardCode != 1}">
-                                <option value="${boardType.boardCode}">${boardType.boardName}</option>
+                                <option value="${boardType.boardCode}" id="boardOption">${boardType.boardName}</option>
                             </c:if>
                         </c:forEach>
                     </select>
@@ -77,7 +78,7 @@
                 <input type="hidden" name="mode" value="insert">
 
                 <!-- 게시판 구분 -->
-                <input type="hidden" name="type" value="1">
+                <!-- <input type="hidden" name="type" value="1"> -->
 
             </div>
 
