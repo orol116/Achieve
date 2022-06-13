@@ -67,11 +67,37 @@ function selectAll(){ // 회원 전체 조회 함수
     });
 }
 
+function selectAllCount(){
+    $.ajax({
+        url: "selectAllCount",
+        success : function(count){
+
+            const memberCount = document.getElementById("member-count");
+            memberCount.innerHTML ="";
+
+            const h4 = document.createElement("h4");
+            h4.innerText = "클래스 구성원"
+            
+            console.log(count);
+
+            const span = document.createElement("span");
+            span.innerText = "총 " + count + "명";
+
+            memberCount.append(h4,span);
+
+        },
+        error : function(){
+            console.log("에러발생")
+        }
+    })
+}
+
 // 일정 시간 마다 회원 목록 조회
 
 // 즉시 실행 함수(속도 빠름, 변수명 중복문제 해결)
 (function(){
 
+    selectAllCount();
     selectAll(); // 함수 호출 -> 회원 목록을 1차적으로 먼저 조회
 
     // window.setInterval(함수, 딜레이(ms))

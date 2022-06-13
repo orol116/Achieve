@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/sidebar.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
-    <script src="https://kit.fontawesome.com/51bf4ad8d5.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body>

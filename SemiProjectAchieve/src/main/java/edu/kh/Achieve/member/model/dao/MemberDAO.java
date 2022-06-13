@@ -319,6 +319,31 @@ public class MemberDAO {
 	}
 
 
+	public int selectAllCount(Connection conn) throws Exception{
+		
+		int count = 0;
+		
+		try {
+			String sql = prop.getProperty("selectAllCount");
+			
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		}finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return count;
+	}
+
+
 
 	
 	
