@@ -10,6 +10,7 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/signUp-style.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
     <script src="https://kit.fontawesome.com/51bf4ad8d5.js" crossorigin="anonymous"></script>
 

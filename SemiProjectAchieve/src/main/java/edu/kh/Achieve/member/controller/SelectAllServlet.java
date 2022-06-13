@@ -26,7 +26,7 @@ public class SelectAllServlet extends HttpServlet{
 			
 			int count = service.selectAllCount();
 			
-			 resp.getWriter().print(count); ;
+			resp.getWriter().print(count); ;
 		
 		}catch(Exception e) {
 			e.printStackTrace();

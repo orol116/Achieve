@@ -1,6 +1,9 @@
 package edu.kh.Achieve.board.model.service;
 
-import static edu.kh.Achieve.common.JDBCTemplate.*;
+import static edu.kh.Achieve.common.JDBCTemplate.close;
+import static edu.kh.Achieve.common.JDBCTemplate.commit;
+import static edu.kh.Achieve.common.JDBCTemplate.getConnection;
+import static edu.kh.Achieve.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.HashMap;
@@ -13,6 +16,7 @@ import edu.kh.Achieve.board.model.vo.BoardAttachment;
 import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.board.model.vo.Pagination;
 import edu.kh.Achieve.common.Util;
+import edu.kh.community2.board.model.vo.BoardImage;
 
 public class BoardService {
 	
@@ -161,6 +165,51 @@ public class BoardService {
 		
 		return boardTypeList;
 	}
+	
+	
+	public int deleteBoard(int boardNo) throws Exception{
+
+		Connection conn = getConnection();
+		
+		int result = dao.deleteBoard(boardNo, conn);
+		
+		if(result>0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 게시글 상세조회 service
+	 * 
+	 * @param boardNo
+	 * @return detail
+	 * @throws Exception
+	 */
+	public BoardDetail selectBoardDetail(int boardNo) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		// 1) 게시글 (BOARD 테이블) 내용만 조회
+		BoardDetail detail = dao.selectBoarDetail(conn, boardNo);
+		
+		if(detail != null) { // 게시글 상세 조회 결과가 있을 경우에 
+			
+		// 2) 게시글에 첨부된 이미지(BOARD_IMG 테이블) 조회
+			List<BoardImage> imageList = dao.selectImageList(conn, boardNo);
+			
+			// -> 조회된 imageList 를 BoardDetail 객체에 세팅
+			
+			detail.setImageList(imageList);
+		}
+		
+		close(conn);
+		
+		return detail;
+	}
+	
+	
 	
 
 }

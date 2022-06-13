@@ -78,8 +78,6 @@ function selectAllCount(){
             const h4 = document.createElement("h4");
             h4.innerText = "클래스 구성원"
             
-            console.log(count);
-
             const span = document.createElement("span");
             span.innerText = "총 " + count + "명";
 

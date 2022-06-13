@@ -330,7 +330,6 @@ public class MemberDAO {
 			
 			rs = stmt.executeQuery(sql);
 			
-			
 			if(rs.next()) {
 				count = rs.getInt(1);
 			}
