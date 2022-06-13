@@ -1,6 +1,6 @@
 package edu.kh.Achieve.board.model.dao;
 
-import static edu.kh.Achieve.common.JDBCTemplate.*;
+import static edu.kh.Achieve.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -8,9 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import edu.kh.Achieve.board.model.vo.Board;
@@ -413,6 +411,62 @@ public class BoardDAO {
 		
 		return boardType;
 		
+	}
+
+	public int deleteBoard(int boardNo, Connection conn) throws Exception{
+		
+		int result = 0;
+
+		try {
+			String sql = prop.getProperty("deleteBoard");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
+	public BoardDetail selectBoarDetail(Connection conn, int boardNo) throws Exception{
+		
+		BoardDetail detail = null;
+		try{
+			
+			String sql = prop.getProperty("selectBoarDetail");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardNo);
+			rs=pstmt.executeQuery()	;
+			
+			if(rs.next()) {
+				detail = new BoardDetail();
+				
+				detail.setBoardNo(rs.getInt(1));
+				detail.setBoardTitle(rs.getString(2));
+				detail.setBoardContent(rs.getString(3));
+				detail.setCreateDate(rs.getString(4));
+				detail.setUpdateDate(rs.getString(5));
+				detail.setReadCount(rs.getInt(6));
+				detail.setMemberNickname(rs.getString(7));
+				detail.setProfileImage(rs.getString(8));
+				detail.setMemberNo(rs.getInt(9));
+				detail.setBoardName(rs.getString(10));
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return detail;
 	}
 	
 

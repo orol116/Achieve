@@ -17,6 +17,7 @@ public class CheckBoard {
 		private String boardContent;
 		private String createDate;
 		private String updateDate;
+		private int boardNo;
 		private int readCount;
 		private String boardState;
 		private int memberNo;
