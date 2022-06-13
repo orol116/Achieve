@@ -6,10 +6,13 @@ import static edu.kh.Achieve.common.JDBCTemplate.getConnection;
 import static edu.kh.Achieve.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.Achieve.member.model.dao.MemberDAO;
 import edu.kh.Achieve.member.model.vo.Member;
+import edu.kh.Achieve.project.model.vo.Project;
 
 public class MemberService {
 	
@@ -179,6 +182,23 @@ public class MemberService {
 	}
 
 
+
+	/**
+	 * 아이디 찾기 아이디 조회
+	 * @param memberName
+	 * @param memberBirthday
+	 * @return idList
+	 * @throws Exception
+	 */
+	public List<Member> findIdAll(String memberName, String memberBirthday) throws Exception{
+		Connection conn = getConnection();
+		List<Member> idList = dao.findIdAll(conn, memberName, memberBirthday);
+		close(conn);	
+		
+		return idList;
+	}
+	
+
 	public int selectAllCount() throws Exception{
 		Connection conn = getConnection();
 		
@@ -187,6 +207,25 @@ public class MemberService {
 		close(conn);
 		
 		return count;
+
+	}
+
+
+	/** 내가 참여중인 프로젝트 조회 Service
+	 * @param loginMember
+	 * @throws Exception
+	 * @return projectList
+	 */
+	public List<Project> selectMyJoinProjectService(Member loginMember) throws Exception {
+
+		Connection conn = getConnection();
+		
+		List<Project> projectList = dao.selectMyJoinProjectService(conn, loginMember);
+		
+		close(conn);	
+		
+		return projectList;
+		
 	}
 
 

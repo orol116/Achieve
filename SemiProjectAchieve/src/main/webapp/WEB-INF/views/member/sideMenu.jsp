@@ -5,8 +5,8 @@
     <div class="menu">
         <ul>
             <li><a href="${contextPath}/member/myPage/profile" class="item"><div>프로필 수정</div></a></li>
-            <li><a href="${contextPath}/member/BoardList?type=1" class="item"><div>내가 쓴 글</div></a></li>
-            <li><a href="${contextPath}/member/BoardList?type=2" class="item"><div>내가 쓴 댓글</div></a></li>
+            <li><a href="${contextPath}/member/List?memNo=${param.memNo}&type=1" class="item"><div>내가 쓴 글</div></a></li>
+            <li><a href="${contextPath}/member/List?memNo=${param.memNo}&type=2" class="item"><div>내가 쓴 댓글</div></a></li>
             <li><a href="${contextPath}/member/myPage/changePw" class="item"><div>비밀번호 변경</div></a></li>
             <li><a href="${contextPath}/member/myPage/secession" class="item"><div>회원 탈퇴</div></a></li>
         </ul>

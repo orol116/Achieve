@@ -77,6 +77,21 @@
 	ORDER BY MEMBER_NO
 	</entry>
 	
+	<entry key="findIdList">
+		SELECT MEMBER_EMAIL
+		FROM MEMBER
+		WHERE MEMBER_NM = ?
+		AND TO_CHAR(MEMBER_BIRTH,'YYYY-MM-DD') = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
+	<!-- 내가 참여중인 프로젝트 조회 -->
+	<entry key="selectMyJoinProject">
+		SELECT PROJECT.PROJECT_NO , PROJECT_NM
+		FROM PROJECT
+		JOIN PROJECT_MEMBER ON(PROJECT.PROJECT_NO = PROJECT_MEMBER.PROJECT_NO)
+		WHERE PROJECT.MEMBER_NO = ?
+	</entry>
 	
 
 </properties>

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아이디 / 비밀번호 찾기</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/findId-style.css">
 
 
@@ -20,35 +20,44 @@
         <!-- header -->
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-        <!-- 아이디, 비번 찾기 -->
-        <section class="findId-content">
+       <!-- 아이디, 비번 찾기 -->
+       <section class="findIdPw-content">
 
-            <!-- 아이디 찾기 -->
-            <section class="findId-main">
-                <div id="findId-container">
-                    <h1 id="findId-title">아이디 / 비밀번호 찾기</h1>
+        <!-- 아이디 찾기 -->
+            <section class="find-main">
+                <h1 id="find-title">아이디 / 비밀번호 찾기</h1>
+                
+                <!-- 주소를 어떻게 하지용???? -->
+                <!-- 현재 페이지 : /SemiProjectAchieve/ -->
+                <!-- 목표 페이지 : /SemiProjectAchieve/findId -->
+                <form action="findId" method="post" name="findId-form" onsubmit="return findInputValidate()">
+                    <!-- onsubmit으로 input이 변화가 없으면 제출X -->
 
-                    <form action="findIdSubmit" method="post" name="findId-form" onsubmit="return findIdInputValidate()">
-                        <!-- onsubmit으로 input이 변화가 없으면 제출X -->
-                            
-                            <div class="findId-detail-row" id="memberName">
-                                <div>이름</div>            
-                                <input class="findId-detail-input" name="memberName" type="text" placeholder="이름을 입력해주세요.">
-                            </div>
+                    <div id="find-container">
 
-                            <div class="findId-detail-row" id="memberBirthday">
-                                <div>생년월일</div>            
-                                <input class="findId-detail-input" name="memberBirthday" type="text" onkeyup="addHypen(this);" placeholder="- 없이 8자리">
-                            </div>
+                        <div class="find-detail-row" id="memberName">
+                            <div>이름</div>            
+                            <input class="find-detail-input" name="memberName" type="text" placeholder="유저일">
+                        </div>
 
-                            <!-- 아이디 찾기는 ajax를 통해 비동기 조회 -->
-                            <!-- 비밀번호 찾기는 메일 발송 -->
-                            <div class="findId-button-area">
-                                <button id="findIdBtn">아이디 찾기</button>
-                                <button id="findPwBtn">비밀번호 찾기</button>
-                            </div>
-                    </form>
-                </div>
+                        <div class="find-detail-row" id="memberBirthday">
+                            <div>생년월일</div>            
+                            <input class="find-detail-input" name="memberBirthday" type="text" onkeyup="addHypen(this);" placeholder="1992-11-17 ( - 없이 8자리)">
+                        </div>
+
+                        <div class="findId-button-area">
+                            <button type="button" id="findIdBtn" onclick="findIdList()">아이디 찾기</button>
+                        </div>
+                        
+                        <!-- 밑줄용 -->
+                        <div id="blank"></div>
+                        
+                        <!-- 비밀번호 찾기는 비밀번호 찾기 창으로 넘어간 뒤 메일 ajax 통한 메일 발송 -->
+                        <!-- 비밀번호 찾기 페이지로 넘어가게 하고 싶음!! -->
+                        <a id="moveToFindPw" href="${contextPath}/findPw.jsp">비밀번호 재설정</a>
+                        
+                    </div>
+                </form>
             </section>
         </section>
     </main>
@@ -66,7 +75,7 @@
     </script>
 
     <!-- findIdPw.js 연결 -->
-    <script src="${contextPath}/resources/js/member/findIdPw.js"></script>
+    <script src="${contextPath}/resources/js/findIdPw.js"></script>
 
 </body>
 </html>

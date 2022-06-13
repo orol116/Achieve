@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%-- <c:set var="projectCode" value="${projectList}" /> --%>
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -71,7 +75,7 @@
                                 <article id="signup-find-area">
                                     
                                     <button type="button"><a href="${contextPath}/member/signUp" id="main-singUp">회원가입</a></button>
-                                    <button type="button"><a href="#" id="main-find">ID/PW 찾기</a></button>
+                                    <button type="button"><a href="${contextPath}/findId" id="main-find">ID/PW 찾기</a></button>
                                     
                                 </article>
                                 
@@ -161,27 +165,15 @@
                         </c:when>
 
                         <c:otherwise>
-
-                            <div class="project-join">
-                                <ul>
-                                    <h2>참여중인 프로젝트 1</h2>
-                                
-                                    <li><a href="#">새로운 글1</a></li>
-                                    <li><a href="#">새로운 글2</a></li>
-                                    <li><a href="#">새로운 글3</a></li>
-                                </ul>
-                                
-                            </div>
-        
-                            <div class="project-join">
-                                <ul>
-                                    <h2>참여중인 프로젝트 2</h2>
-                                
-                                    <li><a href="#">새로운 글1</a></li>
-                                    <li><a href="#">새로운 글2</a></li>
-                                    <li><a href="#">새로운 글3</a></li>
-                                </ul>
-                            </div>
+                            
+                            <c:forEach var="project" items="${projectList}">
+                                <div class="project-join">
+                                    <ul>
+                                        <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}">${project.projectName}</a></h2>
+                                    </ul>
+                                </div>
+                                <input type="hidden" name="projectNo" value="${project.projectNo}">
+                            </c:forEach>
 
                         </c:otherwise>
 

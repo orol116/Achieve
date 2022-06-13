@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${boardName}</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/sideMenu.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/board-main-style.css">
 
@@ -32,7 +32,7 @@
             <section class="myPage-sideMenu">
                 <div id="sideMenu-list">
 
-                    <br>
+                    <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1">000 프로젝트</a></div>
 
                     <c:forEach var="boardType" items="${boardTypeList}">
                         <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}">${boardType.boardName}</a></div>

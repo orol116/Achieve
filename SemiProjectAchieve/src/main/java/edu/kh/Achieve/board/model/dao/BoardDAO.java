@@ -15,6 +15,7 @@ import edu.kh.Achieve.board.model.vo.Board;
 import edu.kh.Achieve.board.model.vo.BoardAttachment;
 import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.board.model.vo.Pagination;
+import edu.kh.Achieve.project.model.vo.Project;
 
 public class BoardDAO {
 	
@@ -384,7 +385,7 @@ public class BoardDAO {
 	 * @return boardTypeList
 	 * @throws Exception
 	 */
-	public List<Board> selectboardType(Connection conn) throws Exception {
+	public List<Board> selectboardType(Connection conn, Project projectNo) throws Exception {
 
 		List<Board> boardType = new ArrayList<Board>();
 		
@@ -438,9 +439,11 @@ public class BoardDAO {
 	public BoardDetail selectBoarDetail(Connection conn, int boardNo) throws Exception{
 		
 		BoardDetail detail = null;
+		
 		try{
+			System.out.println(boardNo);
 			
-			String sql = prop.getProperty("selectBoarDetail");
+			String sql = prop.getProperty("selectBoardDetail");
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardNo);
@@ -461,12 +464,47 @@ public class BoardDAO {
 				detail.setBoardName(rs.getString(10));
 			}
 			
+			
 		}finally {
 			close(rs);
 			close(pstmt);
 		}
 		
 		return detail;
+	}
+
+	public List<BoardAttachment> selectAttachmentList(Connection conn, int boardNo) throws Exception{
+		
+		List<BoardAttachment> attachmentList = new ArrayList<>();
+		
+		try {
+			
+			String sql = prop.getProperty("selectAttachmentList");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				BoardAttachment attachment = new BoardAttachment();
+				
+				attachment.setAttachmentNo(rs.getInt(1));
+				attachment.setAttachmentReName(rs.getString(2));
+				attachment.setAttachmentOriginal(rs.getString(3));
+				attachment.setAttachmentLevel(rs.getInt(4));
+				attachment.setBoardNo(rs.getInt(5));
+				
+				attachmentList.add(attachment);
+			}
+		
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return attachmentList;
 	}
 	
 

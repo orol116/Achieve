@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
+<c:set var = "replyList" value="${map2.replyList}"/>
+<c:set var = "listReplyCount" value="${map2.listReplyCount}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,79 +92,32 @@
                             </tr>
                         </thead>
     
-                        <tbody class="board-list">
-                            <tr>
-                                <td class="list-chkbox"><input type="checkbox"></td>
-                                <td>
-                                    <a href="#">
-                                    <div class="inner_list">댓글 내용 <br></div>
-                                    <div class="comment-date">작성일 : 2022-05-29<br></div>
-                                    <div class="comment_title">게시글 제목[5]</div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="list-chkbox"><input type="checkbox"></td>
-                                <td>
-                                    <a href="#">
-                                        <div class="inner_list">댓글 내용 <br></div>
-                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
-                                        <div class="comment_title">게시글 제목[5]</div>
-                                        </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="list-chkbox"><input type="checkbox"></td>
-                                <td>
-                                    <a href="#">
-                                        <div class="inner_list">댓글 내용 <br></div>
-                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
-                                        <div class="comment_title">게시글 제목[5]</div>
-                                        </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="list-chkbox"><input type="checkbox"></td>
-                                <td>
-                                    <a href="#">
-                                        <div class="inner_list">댓글 내용 <br></div>
-                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
-                                        <div class="comment_title">게시글 제목[5]</div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="list-chkbox"><input type="checkbox"></td>
-                                <td>
-                                    <a href="#">
-                                        <div class="inner_list">댓글 내용 <br></div>
-                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
-                                        <div class="comment_title">게시글 제목[5]</div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="list-chkbox"><input type="checkbox"></td>
-                                <td>
-                                    <a href="#">
-                                        <div class="inner_list">댓글 내용 <br></div>
-                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
-                                        <div class="comment_title">게시글 제목[5]</div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="list-chkbox"><input type="checkbox"></td>
-                                <td>
-                                    <a href="#" >
-                                        <div class="inner_list">댓글 내용 <br></div>
-                                        <div class="comment-date">작성일 : 2022-05-29<br></div>
-                                        <div class="comment_title">게시글 제목[5]</div>
-                                    </a>
-                                </td>
-                            </tr>
-                           
-                            
+                        <tbody class="reply-list">
+                            <c:choose>
+                                <c:when test="${empty replyList}">
+                                <!-- 작성글 목록 조회 결과가 비어있다면 -->
+                                    <tr>
+                                        <th colspan="5">작성 댓글이 존재하지 않습니다.</th>
+                                    </tr>
+                                </c:when>
+
+                                <c:otherwise>
+                                <!-- 작성글 목록 조회 결과가 비어있지않다면 -->
+                                    <!-- 향상된 for문 처럼 사용 -->
+                                    <c:forEach var ="reply" items="{$replyList}">
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>${reply.replyNo}</td>
+                                            <td>
+                                                <a href="#">${reply.replyContent}</a>
+                                            </td>
+                                            <td>${reply.replyDate}</td>
+                                            <td></td>
+                                        </tr>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
+
                         </tbody>
     
                     </table>

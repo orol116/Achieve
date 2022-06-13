@@ -8,6 +8,7 @@ import java.util.Map;
 import edu.kh.Achieve.member.model.dao.CheckBoardDAO;
 import edu.kh.Achieve.member.model.vo.CheckBoard;
 import edu.kh.Achieve.member.model.vo.CheckPagination;
+import edu.kh.Achieve.member.model.vo.CheckReply;
 
 public class CheckBoardService {
 
@@ -23,10 +24,10 @@ public class CheckBoardService {
 		Connection conn = getConnection();
 
 		// 1. 작성글 수 조회
-		int listCount = dao.getBoardListCount(conn, type, memNo);
+		int listBoardCount = dao.getBoardListCount(conn, type, memNo);
 		
 		// 2. 작성글 수 + 현재 페이지(cp)를 이용해 페이지네이션 객체 생성
-		CheckPagination pagination = new CheckPagination(cp, listCount);
+		CheckPagination pagination = new CheckPagination(cp, listBoardCount);
 		
 		// 3. 작성글 목록 조회
 		List<CheckBoard> boardList = dao.selectBoardList(conn, pagination, type, memNo);
@@ -36,10 +37,10 @@ public class CheckBoardService {
 		
 		map.put("type", type);
 		map.put("memNo", memNo);
+//		map1.put("memNick", memNick);
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
-		map.put("listCount", listCount);
-		
+		map.put("listBoardCount", listBoardCount);
 		
 		close(conn);
 		
@@ -77,10 +78,25 @@ public class CheckBoardService {
 		Connection conn = getConnection();
 
 		// 1. 작성댓글 수 조회
-		int listCount = dao.getReplyListCount(conn, type, memNo);
+		int listReplyCount = dao.getReplyListCount(conn, type, memNo);
 		
+		// 2. 작성댓글 수 + 현재 페이지(cp)를 이용해 페이지네이션 객체 생성
+		CheckPagination pagination = new CheckPagination(cp, listReplyCount);
 		
-		return null;
+		// 3. 작성댓글 목록 조회
+		List<CheckReply> replyList = dao.selectReplyList(conn, pagination, type, memNo);
+		
+		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+//		map1.put("memNick", memNick);
+		map.put("pagination", pagination);
+		map.put("replyList", replyList);
+		map.put("listReplyCount", listReplyCount);
+		
+		close(conn);
+		
+		return map; // map 객체 반환
 	}
 
 
