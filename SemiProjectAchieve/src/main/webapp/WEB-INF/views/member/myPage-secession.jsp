@@ -9,7 +9,7 @@
     <title>My Page - secession</title>
 
    <!-- 헤더, 푸터 위한 main.css -->
-   <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+   <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">

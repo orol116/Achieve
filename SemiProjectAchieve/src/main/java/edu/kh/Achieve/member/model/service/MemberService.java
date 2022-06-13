@@ -211,6 +211,22 @@ public class MemberService {
 	}
 
 
+	/**
+	 * 비밀번호 재설정을 위한 아이디, 이름, 생년월일 일치 확인 Service
+	 * @param memberEmail
+	 * @param memberName
+	 * @param memberBirthday
+	 * @return result
+	 * @throws Exception
+	 */
+	public int checkPw(String memberEmail, String memberName, String memberBirthday) throws Exception {
+		Connection conn = getConnection();
+		int result = dao.checkPw(conn, memberEmail, memberName, memberBirthday);
+		close(conn);
+		return result;
+	}
+	
+	
 	/** 내가 참여중인 프로젝트 조회 Service
 	 * @param loginMember
 	 * @throws Exception
@@ -227,7 +243,6 @@ public class MemberService {
 		return projectList;
 		
 	}
-
 
 
 

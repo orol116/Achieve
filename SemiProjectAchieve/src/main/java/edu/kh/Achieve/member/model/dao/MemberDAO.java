@@ -419,6 +419,38 @@ public class MemberDAO {
 	}
 
 
+	/**
+	 * 비밀번호 재설정을 위한 아이디, 이름, 생년월일 일치 확인 DAO
+	 * @param conn
+	 * @param memberEmail
+	 * @param memberName
+	 * @param memberBirthday
+	 * @return result
+	 * @throws Exception
+	 */
+	public int checkPw(Connection conn, String memberEmail, String memberName, String memberBirthday) throws Exception{
+		int result = 0;
+		try {
+			String sql = prop.getProperty("checkPw");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberEmail);
+			pstmt.setString(2, memberName);
+			pstmt.setString(3, memberBirthday);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+
 
 	
 	

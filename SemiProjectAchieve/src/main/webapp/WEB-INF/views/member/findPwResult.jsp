@@ -32,7 +32,7 @@
                 <div id="find-container">
 
                     <div class="find-detail-row" id="memberEmail">
-                        <div>아이디(이메일)</div>            
+                        <div>보안문자 입력</div>            
                         <input class="find-detail-input" name="memberEmail" type="text" placeholder="user01@achieve.co.kr">
                     </div>
                     
