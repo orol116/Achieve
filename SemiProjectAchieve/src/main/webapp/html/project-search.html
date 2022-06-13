@@ -23,11 +23,16 @@
             </section>
 
             <section>
-                <article class="project-title">
-        
-                <!-- 나중에 프로젝트 타이틀 들어오는 자리 -->
+                <!-- 프로젝트 타이틀 들어오는 자리 -->
+                <c:if test="${!empty sessionScope.projectName}">
                     
-                </article>
+                    <article class="project-title">
+    
+                        프로젝트 어취브
+                <!-- 조건:프로젝트 이름이 있으면 가져와서 h2로 세팅 -->
+                
+                    </article>
+                </c:if>
             </section>
             
             

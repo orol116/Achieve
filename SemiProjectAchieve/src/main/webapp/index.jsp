@@ -130,8 +130,8 @@
 
                     <article id="main-project-area">
                         
-                        <button type="button"><a href="${contextPath}/project/PJ/create">프로젝트 만들기</a></button><br>
-                        <button type="button"><a href="#">프로젝트 찾기</a></button>
+                        <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
+                        <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 찾기</a></button>
 
         
                     </article>
