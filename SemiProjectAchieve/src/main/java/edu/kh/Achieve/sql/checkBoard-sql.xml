@@ -11,6 +11,13 @@
 		AND MEMBER_NO=?
 	</entry>
 	
+	<!-- 회원 닉네임, 프로필 이미지 조회 DAO -->
+	<entry key="selectMemList">
+		SELECT MEMBER_NICK , MEMBER_PROFILE
+		FROM MEMBER
+		WHERE MEMBER_NO = ?
+	</entry>
+	
 	<!-- 작성글에서 일정한 범위의 목록 조회 -->
 	<entry key="selectBoardList">
 		SELECT * FROM(

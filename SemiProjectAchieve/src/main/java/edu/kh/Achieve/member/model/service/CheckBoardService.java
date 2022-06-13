@@ -9,6 +9,7 @@ import edu.kh.Achieve.member.model.dao.CheckBoardDAO;
 import edu.kh.Achieve.member.model.vo.CheckBoard;
 import edu.kh.Achieve.member.model.vo.CheckPagination;
 import edu.kh.Achieve.member.model.vo.CheckReply;
+import edu.kh.Achieve.member.model.vo.Member;
 
 public class CheckBoardService {
 
@@ -19,12 +20,15 @@ public class CheckBoardService {
 	 * @return map
 	 * @throws Exception
 	 */
-	public Map<String, Object> selectBoardList(int cp, int type, int memNo) throws Exception{
+	public Map<String, Object> selectBoardList(int cp, int type, int memNo, String memNick, String pImage) throws Exception{
 
 		Connection conn = getConnection();
 
 		// 1. 작성글 수 조회
 		int listBoardCount = dao.getBoardListCount(conn, type, memNo);
+		
+		// 1-1 로그인 회원 닉네임, 사진 조회
+		List<Member> memList = dao.selectMemberDetail(conn, memNick, pImage,memNo);
 		
 		// 2. 작성글 수 + 현재 페이지(cp)를 이용해 페이지네이션 객체 생성
 		CheckPagination pagination = new CheckPagination(cp, listBoardCount);
@@ -37,10 +41,11 @@ public class CheckBoardService {
 		
 		map.put("type", type);
 		map.put("memNo", memNo);
-//		map1.put("memNick", memNick);
-		map.put("pagination", pagination);
+		map.put("memNick", memNick);
+		map.put("pImage", pImage);
 		map.put("boardList", boardList);
 		map.put("listBoardCount", listBoardCount);
+		map.put("pagination", pagination);
 		
 		close(conn);
 		

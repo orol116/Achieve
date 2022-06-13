@@ -4,9 +4,10 @@
 <!-- map에 저장된 값을 각각 변수에 저장 -->
 <c:set var = "pagination" value="${map.pagination}"/>
 <c:set var = "boardList" value="${map.boardList}"/>
-<c:set var = "listBoardCount" value="${map.listBoardCount}"/>
-
+<c:set var = "memNick" value="${map.memNick}"/>
+<c:set var = "pImage" value="${map.pImage}"/>
 <c:set var = "replyList" value="${map.replyList}"/>
+<c:set var = "listBoardCount" value="${map.listBoardCount}"/>
 <c:set var = "listReplyCount" value="${map.listReplyCount}"/>
 
 <!DOCTYPE html>
@@ -58,11 +59,11 @@
                 <h1>마이페이지</h1>
 
                 <ul class="list-group">
-                    <li> <a href="#">회원정보 수정 </a> </li>
-                    <li> <a href="#">비밀번호 변경 </a> </li>
+                    <li> <a href="${contextPath}/member/myPage/profile">회원정보 수정 </a> </li>
+                    <li> <a href="${contextPath}/member/myPage/changePw">비밀번호 변경 </a> </li>
                     <li> <a href="${contextPath}/member/List?memNo=${param.memNo}&type=1">내가 쓴 글 보기 </a> </li>
                     <li> <a href="${contextPath}/member/List?memNo=${param.memNo}&type=2">내가 쓴 댓글 보기 </a> </li>
-                    <li> <a href="#">회원 탈퇴 </a> </li>
+                    <li> <a href="${contextPath}/member/myPage/secession">회원 탈퇴 </a> </li>
                 </ul>
 
             </section>
@@ -70,11 +71,11 @@
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
             <section class="myPage-main">
                 <div class="myPage-first">
-                    <a href="#"><img src="${contextPath}/resources/images/user.png" id="profile-logo"></a>
+                    <a href="${contextPath}/member/myPage/profile">${pImage}</a>
                 </div>
 
                 <div class="myPage-second">
-                    <span class="myPage-nickname">닉네임</span>
+                    <span class="myPage-nickname">${memNick}</span>
                     <span class="myPage-grade">등급 :</span>
                     <div class="myPage-info">
                         <span class="myPage-words">작성 글 : ${listBoardCount}</span>
@@ -109,7 +110,7 @@
                         <tbody class="board-list">
 
                             <c:choose>
-                                <c:when test="${empty boardList}">
+                                <c:when test="${empty boardList}" >
                                 <!-- 작성글 목록 조회 결과가 비어있다면 -->
                                     <tr>
                                         <th colspan="5">작성글이 존재하지 않습니다.</th>
@@ -152,7 +153,7 @@
                 <div class="pagination-area">
 
                     <!-- pagination a태그에 사용될 공통주소 저장한 변수 선언 -->
-                    <c:set var="url" value="BoardList?type=${param.type}&cp="/>
+                    <c:set var="url" value="List?type=${param.type}&cp="/>
                     <ul class="pagination">
                         <!-- 첫페이지로 이동 -->
                         <li><a href="${url}1">&lt;&lt;</a></li>
