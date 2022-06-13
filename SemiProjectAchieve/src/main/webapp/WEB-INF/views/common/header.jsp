@@ -9,13 +9,16 @@
         </section>
 
         <section>
-            <article class="project-title">
-
-            <!-- 나중에 프로젝트 타이틀 들어오는 자리 -->
-
-            <!-- 조건:param에 프로젝트 이름이 있으면 가져와서 h2로 세팅 -->
+            <!-- 프로젝트 타이틀 들어오는 자리 -->
+            <c:if test="${!empty sessionScope.projectName}">
                 
-            </article>
+                <article class="project-title">
+
+                    <!-- 조건:프로젝트 이름이 있으면 가져와서 el 세팅 / 임시세팅 -->
+                    ${projectName}
+                    
+                </article>
+            </c:if>
         </section>
         
         
