@@ -10,6 +10,8 @@ body{
     /* 공통 class */
     width: auto;
     height: auto;
+
+    min-height: 600px;
 }
 
 /* 페이지 제목 */

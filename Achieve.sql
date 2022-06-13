@@ -417,6 +417,8 @@ SELECT
                WHERE EMAIL = 'knbdh9782@naver.com'
                AND C_NUMBER = '6jJZWz')  = 1
 
+
+
       THEN NVL( (SELECT '1' FROM CERTIFICATION
                   WHERE EMAIL = 'knbdh9782@naver.com'
                   AND ISSUE_DT + (INTERVAL '5' MINUTE) >= SYSDATE) , '2') 
@@ -429,6 +431,16 @@ FROM DUAL;
 SELECT MEMBER_EMAIL
 FROM MEMBER
 WHERE MEMBER_NM = '유저일'
+AND TO_CHAR(MEMBER_BIRTH,'YYYY-MM-DD') = '2022-06-06'
+AND SECESSION_FL = 'N';
+
+
+
+-- 비밀번호 찾기를 위한 회원 일치 여부 확인
+SELECT COUNT(*)
+FROM MEMBER
+WHERE MEMBER_EMAIL = 'user01@achieve.co.kr'
+AND MEMBER_NM = '유저일'
 AND TO_CHAR(MEMBER_BIRTH,'YYYY-MM-DD') = '2022-06-06'
 AND SECESSION_FL = 'N';
 
