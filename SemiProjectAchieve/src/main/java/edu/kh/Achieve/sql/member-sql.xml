@@ -77,6 +77,14 @@
 	ORDER BY MEMBER_NO
 	</entry>
 	
+	<entry key="findIdList">
+		SELECT MEMBER_EMAIL
+		FROM MEMBER
+		WHERE MEMBER_NM = ?
+		AND TO_CHAR(MEMBER_BIRTH,'YYYY-MM-DD') = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
 	
 
 </properties>
