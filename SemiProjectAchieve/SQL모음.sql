@@ -47,7 +47,7 @@ SELECT * FROM BOARD;
          VALUES(SEQ_BOARD_NO.NEXTVAL, 
                  SEQ_BOARD_NO.CURRVAL || '번째 게시글',
                  SEQ_BOARD_NO.CURRVAL || '번째 게시글 내용 입니다.',
-                 DEFAULT, DEFAULT, DEFAULT, DEFAULT,1,1
+                 DEFAULT, DEFAULT, DEFAULT, DEFAULT,1,2, 1
          );
     END LOOP;
  END;
@@ -58,6 +58,8 @@ SELECT * FROM BOARD;
 
 --PW 변경
 -- ALTER TABLE MEMBER MODIFY "MEMBER_PW" VARCHAR2(100);
+
+INSERT INTO REPLY VALUES(SEQ_REPLY_NO.NEXTVAL, '댓글 샘플2', SYSDATE, DEFAULT, 8, 1);
 
 
 -- user01 PW 변경

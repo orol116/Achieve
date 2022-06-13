@@ -36,7 +36,7 @@ COMMENT ON COLUMN "MEMBER"."SUSPENSION_FL" IS '정지 여부(Y/N)';
 COMMENT ON COLUMN "MEMBER"."MEMBER_PROFILE" IS '프로필 사진';
 
 -- 회원 번호 시퀀스
-CREATE SEQUENCE SEQ_MEMBER_NO;
+CREATE SEQUENCE SEQ_REPLY_NO;
 
 CREATE SEQUENCE SEQ_IMG_NO;
 
@@ -372,9 +372,52 @@ VALUES(SEQ_MEMBER_NO.NEXTVAL, 'user02@achieve.co.kr', 'pass02!', '유저이', '�
 DEFAULT, DEFAULT, NULL);
 
 -- PROJECT 테이블 샘플 데이터 추가
-INSERT INTO PROJECT
-VALUES(SEQ_PROJECT_NO.NEXTVAL, '프로젝트 이름입니다', \
-'1', '5', DEFAULT, '프로젝트 소개입니다!',
-MEMBER_NO() -- join문 쓸 수 있더????????
+CREATE SEQUENCE SEQ_PROJECT_NO;
 
-)
+ALTER TABLE BOARD DROP COLUMN PROJECT_NO;
+ALTER TABLE BOARD ADD PROJECT_NO NUMBER;
+
+ALTER TABLE BOARD MODIFY (PROJECT_NO NOT NULL);
+
+ALTER TABLE BOARD 
+ADD CONSTRAINT FK_PROJECT_NO FOREIGN KEY(PROJECT_NO)
+REFERENCES PROJECT(PROJECT_NO);
+
+INSERT INTO PROJECT
+VALUES(SEQ_PROJECT_NO.NEXTVAL, '샘플 프로젝트 3', '5', DEFAULT, '프로젝트 소개입니다!', 1);
+-- JOIN USING(MEMBER_NO);
+
+DELETE FROM BOARD;
+
+COMMIT;
+
+
+-- 이메일 인증 테이블 생성
+CREATE TABLE CERTIFICATION (
+   EMAIL VARCHAR2(50) PRIMARY KEY,
+   C_NUMBER CHAR(6) NOT NULL,
+   ISSUE_DT DATE DEFAULT SYSDATE
+);   
+
+SELECT EMAIL, C_NUMBER,
+   TO_CHAR(ISSUE_DT, 'YYYY-MM-DD HH24:MI:SS')
+ FROM CERTIFICATION;
+
+-- 일정 시간이 지난 후를 조회하는 방법
+SELECT TO_CHAR(SYSDATE + (INTERVAL '5' MINUTE), 'YYYY-MM-DD HH24:MI:SS') 
+FROM DUAL;
+
+SELECT 
+   -- 이메일, 인증번호가 일치하는 행이 있는지를 찾음 -> 있으면 1, 없으면 NULL
+   --> 1이면 THEN 구문 수행  , NULL이면 ELSE 수행
+   CASE WHEN (SELECT '1' FROM CERTIFICATION
+               WHERE EMAIL = 'knbdh9782@naver.com'
+               AND C_NUMBER = '6jJZWz')  = 1
+
+      THEN NVL( (SELECT '1' FROM CERTIFICATION
+                  WHERE EMAIL = 'knbdh9782@naver.com'
+                  AND ISSUE_DT + (INTERVAL '5' MINUTE) >= SYSDATE) , '2') 
+
+      ELSE '3'	
+   END			
+FROM DUAL; 

@@ -164,22 +164,13 @@
 
                             <div class="project-join">
                                 <ul>
-                                    <h2>참여중인 프로젝트 1</h2>
-                                
-                                    <li><a href="#">새로운 글1</a></li>
-                                    <li><a href="#">새로운 글2</a></li>
-                                    <li><a href="#">새로운 글3</a></li>
+                                    <h2><a href="#">참여중인 프로젝트 1</a></h2>
                                 </ul>
-                                
                             </div>
         
                             <div class="project-join">
                                 <ul>
-                                    <h2>참여중인 프로젝트 2</h2>
-                                
-                                    <li><a href="#">새로운 글1</a></li>
-                                    <li><a href="#">새로운 글2</a></li>
-                                    <li><a href="#">새로운 글3</a></li>
+                                    <h2><a href="#">참여중인 프로젝트 2</a></h2>
                                 </ul>
                             </div>
 
