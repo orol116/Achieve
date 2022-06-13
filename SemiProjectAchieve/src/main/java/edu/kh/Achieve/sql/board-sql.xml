@@ -13,8 +13,6 @@
 	<entry key="selectboardTypeList">
 		SELECT BOARD_NM, BOARD_CD 
 		FROM BOARD_TYPE
-		JOIN BOARD USING (BOARD_CD)
-		WHERE PROJECT_NO = ?
 		ORDER BY BOARD_CD
 	</entry>
 	

@@ -31,7 +31,7 @@ public class BoardMainController extends HttpServlet {
 			
 			BoardService service = new BoardService();
 			
-			List<Board> boardTypeList = service.selectboardTypeList();
+			List<Board> boardTypeList = service.selectboardTypeList(projectNo);
 			req.setAttribute("boardTypeList", boardTypeList);
 			
 			
