@@ -96,7 +96,6 @@ public class CheckBoardService {
 //		map.put("memNick", memNick);
 		map.put("pagination", pagination);
 		map.put("boardList", replyList);
-		map.put("listBoardCount", listReplyCount);
 		
 		close(conn);
 		
