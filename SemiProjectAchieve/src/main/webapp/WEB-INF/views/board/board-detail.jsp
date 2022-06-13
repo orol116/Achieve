@@ -38,7 +38,7 @@
                     </c:if>
                     <c:if test="${!empty detail.profileImage}">
                         <!-- 프로필 이미지가 있는 경우 -->
-                        <img src="${contextPath}${detail.profileImage}">
+                        <img src="${contextPath}${detail.profileImage}" style="border-radius: 50%;">
                     </c:if>
                     <span>${detail.memberNickname}</span>
                 </div>
@@ -103,15 +103,14 @@
 
 
 
-
             <!-- 내용 -->
             <div class="board-content">
                 ${detail.boardContent}
             </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-        <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
+            <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
 
             <!-- 버튼 -->
             <div class="board-btn-area">
@@ -144,8 +143,6 @@
 
 
 
-        <!-- 댓글 부분 jsp -->
-        <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
 
     </main>
 
@@ -158,23 +155,23 @@
     <!-- jQuery 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <script src="${contextPath}/resources/js/board/board.js"></script>
-
+    
     <script>
         // 댓글 관련 JS 코드에 필요한 값을 전역 변수로 선언
-
+        
         // 최상위 주소
         const contextPath = "${contextPath}";
-
+        
         // 게시글 번호
         const boardNo = "${detail.boardNo}";
-
+        
         // 로그인 한 회원 번호
         const loginMemberNo = "${loginMember.memberNo}"; // 로그인 안 되어있으면 ""; 빈 문자열 반환
+        
+        </script>
 
-    </script>
 
-    
+    <script src="${contextPath}/resources/js/board/board.js"></script>
 
     
     <script src="${contextPath}/resources/js/board/reply.js"></script>
