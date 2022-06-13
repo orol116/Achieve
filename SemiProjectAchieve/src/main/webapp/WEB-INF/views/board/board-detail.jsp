@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -11,16 +12,16 @@
 
     <!-- 헤더, 푸터 위한 main.css -->
     <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/board/board-detail-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/board/reply-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/board_css/board-detail-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/board_css/reply-style.css">
 
 </head>
 <body>
     <main>
         <!-- header -->
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
 
 
 
@@ -51,7 +52,6 @@
                     <p> <span>조회수</span> ${detail.readCount} </p>
                 </div>
             </div>
-
 
 
 
@@ -141,7 +141,6 @@
             </div>
 
         </section>
-
 
 
 

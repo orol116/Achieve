@@ -9,8 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>구성원 조회 페이지</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/member-list-style.css">
-    <!-- <link rel="stylesheet" href="${contextPath}/resources/css/main.css"> -->
-    <!-- <link rel="stylesheet" href="${contextPath}/resources/css/board_css/header.css"> -->
     <link rel="stylesheet" href="${contextPath}/resources/css/sidebar.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
@@ -23,12 +21,9 @@
 
     <main>
 
+        <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"></jsp:include>
 
         <section id="board-member">
-
-          <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"></jsp:include>
-
-
 
             <div id="member-content">
 
