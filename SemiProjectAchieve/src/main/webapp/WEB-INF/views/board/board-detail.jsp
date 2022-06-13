@@ -38,7 +38,7 @@
                     </c:if>
                     <c:if test="${!empty detail.profileImage}">
                         <!-- 프로필 이미지가 있는 경우 -->
-                        <img src="${contextPath}${detail.profileImage}">
+                        <img src="${contextPath}${detail.profileImage}" style="border-radius: 50%;">
                     </c:if>
                     <span>${detail.memberNickname}</span>
                 </div>
@@ -56,11 +56,11 @@
 
 
             <!-- 이미지가 있을 경우 -->
-            <c:if test="${!empty detail.imageList}">
+            <c:if test="${!empty detail.attachmentList}">
                 
                 <!-- 썸네일이 있을 경우 변수 생성 -->
-                <c:if test="${detail.imageList[0].imageLevel == 0}">
-                    <c:set var="thumbnail" value="${detail.imageList[0]}" />
+                <c:if test="${detail.attachmentList[0].attachmentLevel == 0}">
+                    <c:set var="thumbnail" value="${detail.attachmentList[0]}" />
                     <!-- page scope : 페이지 어디서든 사용 가능 -->
                 </c:if>
 
@@ -69,8 +69,8 @@
                     <h5>썸네일</h5>
                     <div class="img-box">
                         <div class="boardImg thumbnail">
-                            <img src="${contextPath}${thumbnail.imageReName}">
-                            <a href="${contextPath}${thumbnail.imageReName}" download="${thumbnail.imageOriginal}">다운로드</a>
+                            <img src="${contextPath}${thumbnail.attachmentReName}">
+                            <a href="${contextPath}${thumbnail.attachmentReName}" download="${thumbnail.attachmentOriginal}">다운로드</a>
                         </div>
                     </div>
                 </c:if>
@@ -86,14 +86,14 @@
                 </c:if>
 
                 <!-- 이미지가 있는 경우 -->
-                <c:if test="${fn:length(detail.imageList) > start}">
+                <c:if test="${fn:length(detail.attachmentList) > start}">
                     <!-- 업로드 이미지 영역  -->
                     <h5>업로드 이미지</h5>
                     <div class="img-box">
-                        <c:forEach var="i" begin="${start}" end="${fn:length(detail.imageList) -1}">
+                        <c:forEach var="i" begin="${start}" end="${fn:length(detail.attachmentList) -1}">
                             <div class="boardImg">
-                                <img src="${contextPath}${detail.imageList[i].imageReName}">
-                                <a href="${contextPath}${detail.imageList[i].imageReName}" download="${detail.imageList[i].imageOriginal}">다운로드</a>
+                                <img src="${contextPath}${detail.attachmentList[i].attachmentReName}">
+                                <a href="${contextPath}${detail.attachmentList[i].attachmentReName}" download="${detail.attachmentList[i].attachmentOriginal}">다운로드</a>
                             </div>  
                         </c:forEach>
                     </div>
@@ -103,15 +103,14 @@
 
 
 
-
             <!-- 내용 -->
             <div class="board-content">
                 ${detail.boardContent}
             </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-        <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
+            <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
 
             <!-- 버튼 -->
             <div class="board-btn-area">
@@ -144,8 +143,6 @@
 
 
 
-        <!-- 댓글 부분 jsp -->
-        <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
 
     </main>
 
@@ -158,23 +155,23 @@
     <!-- jQuery 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <script src="${contextPath}/resources/js/board/board.js"></script>
-
+    
     <script>
         // 댓글 관련 JS 코드에 필요한 값을 전역 변수로 선언
-
+        
         // 최상위 주소
         const contextPath = "${contextPath}";
-
+        
         // 게시글 번호
         const boardNo = "${detail.boardNo}";
-
+        
         // 로그인 한 회원 번호
         const loginMemberNo = "${loginMember.memberNo}"; // 로그인 안 되어있으면 ""; 빈 문자열 반환
+        
+        </script>
 
-    </script>
 
-    
+    <script src="${contextPath}/resources/js/board/board.js"></script>
 
     
     <script src="${contextPath}/resources/js/board/reply.js"></script>

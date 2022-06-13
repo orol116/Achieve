@@ -16,7 +16,7 @@ function selectReplyList(){
 
             // rList에 저장된 요소를 하나씩 접근
             for(let reply of rList){
-                
+                ``
                 // 행
                 const replyRow = document.createElement("li");
                 replyRow.classList.add("reply-row");

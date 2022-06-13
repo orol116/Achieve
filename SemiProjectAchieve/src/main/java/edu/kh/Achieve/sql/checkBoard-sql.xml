@@ -4,14 +4,6 @@
 <comment>checkBoard-sql.xml</comment>
 
 
-
-	<!-- 게시글 이름 조회 -->
-<!-- 	<entry key="selectListName">
-		SELECT BOARD_NM 
-		FROM BOARD_TYPE
-		WHERE MEMBER_NO = ?
-	</entry>
-	 -->
 	<!-- 작성글 수 조회 -->
 	<entry key="getBoardListCount">
 		SELECT COUNT(*) FROM BOARD
@@ -32,7 +24,6 @@
 		        ORDER BY BOARD_NO DESC
 		    )
 		WHERE RNUM BETWEEN ? AND ?
-
 	</entry>
 	
 	<!-- 최신 작성글 조회 -->
@@ -43,7 +34,6 @@
 		            TO_CHAR(CREATE_DT, 'YYYY-MM-DD') AS CREATE_DT, 
 		            READ_COUNT
 		        FROM BOARD
-		        JOIN MEMBER USING(MEMBER_NO)
 		        WHERE BOARD_ST = 'N'
 		        ORDER BY CREATE_DT DESC
 		    ) A
@@ -57,6 +47,28 @@
 		BOARD_ST = 'Y'
 		WHERE BOARD_NO = ?	
 	</entry>
-
+	
+	<!-- 이하 댓글 PART -->
+	
+	<!-- 작성 댓글 수 조회-->
+	<entry key="getReplyListCount">
+		SELECT COUNT(*) FROM REPLY
+		WHERE REPLY_ST = 'N'
+		AND MEMBER_NO=?
+	</entry>
+	
+		<!-- 작성 댓글에서 일정한 범위의 목록 조회 -->
+	<entry key="selectReplyList">
+	SELECT * FROM(
+		SELECT ROWNUM RNUM, A.* FROM (
+			SELECT REPLY_NO, REPLY_CONTENT,
+			TO_CHAR(REPLY_DT, 'YYYY-MM-DD') AS REPLY_DT
+			FROM REPLY
+			WHERE MEMBER_NO = ?
+			AND REPLY_ST = 'N') A
+			ORDER BY REPLY_NO DESC
+		)
+	WHERE RNUM BETWEEN ? AND ?	
+	</entry>
 
 </properties>
