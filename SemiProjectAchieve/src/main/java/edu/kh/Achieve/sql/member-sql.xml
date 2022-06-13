@@ -85,6 +85,15 @@
 		AND SECESSION_FL = 'N'
 	</entry>
 	
+	<entry key="checkPw">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = ?
+		AND MEMBER_NM = ?
+		AND TO_CHAR(MEMBER_BIRTH, 'YYYY-MM-DD') = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
 	
 
 </properties>

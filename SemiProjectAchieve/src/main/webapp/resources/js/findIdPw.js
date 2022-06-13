@@ -95,11 +95,6 @@ function findInputValidate(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-// 조건과 일치하는 회원 목록(아이디) 조회(ajax)
-// 일단 쓰긴 썼는데 그냥 jsp 페이지 하나 더 만들었으면 되지 않았나 싶고????? 
-// 어떤 게 더 나을 지는... 물어보고 결정합쉬다~
-// html 아이디 속성값들을 많이 바꿔서 나중에 일일히 확인해야함!!! 
-
 
 function findIdList(){
 console.log(memberName.value)
@@ -167,7 +162,7 @@ console.log(memberBirthday.value)
     });
 }
 
-/*
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 // 비밀번호 재설정을 위한 인증번호 발송(메일) 버튼에 이벤트 추가
@@ -175,25 +170,34 @@ const sendEmailBtn = document.getElementById("sendEmailBtn");
 
 sendEmailBtn.addEventListener("click", function(){
 
-    if(checkObj.memberEmail){ // 유효한 이메일이 작성되어 있을 경우에만 메일 보내기
-        $.ajax({
-            // 현재 페이지 : 메인페이지 / 보내고자 하는 페이지 : /sendEmail
-            url : "sendEmail",
-            data : {"inputEmail" : memberEmail.value},
-            type : "GET",
-            success : function(result){
-                console.log("이메일 발송 성공");
-                console.log(result);
+    if( findInputValidate() ){
+       console.log(memberEmail.value);
+       console.log(memberName.value);
+       console.log(memberBirthday.value);
 
-                // 인증 버튼이 클릭되어 정상적으로 메일이 보내졌음을 checkOnbj에 기록
-                checkObj.sendEmail = true;
+        $.ajax({
+            // 현재 페이지 : /findPw / 보내고자 하는 페이지 : /sendEmail
+            url : "findPw",
+            data : {"memberEmail" : memberEmail.value, 
+                    "memberName" : memberName.value,
+                    "memberBirthday" : memberBirthday.value},
+            type : "post",
+            async : false,
+            success : function(result){
+                if(result > 0){
+                    alert("이메일 발송 성공");
+                    location.href="findPwResult";
+                }else{
+                    alert("이메일 발송 실패...");
+                }
+                
             },
             error : function(){
                 console.log("이메일 발송 실패");
             }
         });
 
-        alert("인증 번호가 발송되었습니다. 이메일을 확인해주세요.")
     }
+
 });
-*/
+
