@@ -14,6 +14,9 @@ main{
 .content{
     height: 800px;
     display: flex;
+    /* 필요한 페이지에서는 
+    height: auto;
+    추가해주세요 */
 }
 
 .content-1{flex-basis: 25%;}
