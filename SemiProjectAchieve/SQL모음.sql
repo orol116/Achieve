@@ -27,7 +27,7 @@ ALTER TABLE BOARD
 MODIFY "UPDATE_DT" NULL;
 
 -- BOARD_NO 시퀀스
-CREATE SEQUENCE SEQ_BOARD_NO;
+CREATE SEQUENCE SEQ_REPLY_NO;
 
 -- BOARD_TYPE 데이터 삽입
 INSERT INTO BOARD_TYPE VALUES(1, '공지사항');
@@ -40,13 +40,13 @@ SELECT * FROM BOARD;
 
 -- BOARD 테이블 샘플 데이터 삽입(PL/ SQL)
  BEGIN
-     FOR I IN 1..20 LOOP
+     FOR I IN 1.. 7 LOOP
 
          INSERT INTO BOARD
          VALUES(SEQ_BOARD_NO.NEXTVAL, 
                  SEQ_BOARD_NO.CURRVAL || '번째 게시글',
                  SEQ_BOARD_NO.CURRVAL || '번째 게시글 내용 입니다.',
-                 DEFAULT, DEFAULT, DEFAULT, DEFAULT,1,2, 
+                 DEFAULT, DEFAULT, DEFAULT, DEFAULT,1,2,1
          );
     END LOOP;
  END;
@@ -54,8 +54,8 @@ SELECT * FROM BOARD;
 
 -- REPLY 테이블 샘플 데이터 삽입
 INSERT INTO REPLY
-         VALUES(SEQ_BOARD_NO.NEXTVAL, 
-                 SEQ_BOARD_NO.CURRVAL || '번째 댓글',
+         VALUES(SEQ_REPLY_NO.NEXTVAL, 
+                 SEQ_REPLY_NO.CURRVAL || '번째 댓글',
                  DEFAULT, DEFAULT,2,1);
 
 INSERT INTO REPLY

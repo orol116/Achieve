@@ -27,6 +27,7 @@
 	</entry>
 	
 	<!-- 최신 작성글 조회 -->
+	
 	<entry key="selectBoardMainList">
 		SELECT * FROM(
 		    SELECT ROWNUM RNUM, A.* FROM(

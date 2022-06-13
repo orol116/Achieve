@@ -62,33 +62,33 @@ public class CheckBoardDAO {
 		
 	}
 	
-	/** 작성글 목록 조회 DAO
-	 * @param conn
-	 * @param type
-	 * @return listName
-	 * @throws Exception
-	 */
-	public String selectListName(Connection conn, int type, int memNo) throws Exception{
-		String listName = null;
-		
-		try{
-			String sql = prop.getProperty("selectListName");
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, memNo);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				listName = rs.getString(1);
-			}
-			
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		
-		return listName;
-	}
+//	/** 작성글 목록 조회 DAO
+//	 * @param conn
+//	 * @param type
+//	 * @return listName
+//	 * @throws Exception
+//	 */
+//	public String selectBoardListName(Connection conn, int type, int memNo) throws Exception{
+//		String listName = null;
+//		
+//		try{
+//			String sql = prop.getProperty("selectListName");
+//			
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, memNo);
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				listName = rs.getString(1);
+//			}
+//			
+//		}finally {
+//			close(rs);
+//			close(pstmt);
+//		}
+//		
+//		return listName;
+//	}
 
 
 	/** 작성글에서 일정한 범위의 목록 조회 DAO
@@ -190,7 +190,7 @@ public class CheckBoardDAO {
 	//-------------------------------------------------------------------------
 	
 	
-	/** 작성 댓글 조회 DAO
+	/** 작성 댓글 수 조회 DAO
 	 * @param conn
 	 * @param type
 	 * @param memNo

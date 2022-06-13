@@ -124,7 +124,7 @@
                                                 <a href="#">${board.boardTitle}</a>
                                             </td>
                                             <td>${board.createDate}</td>
-                                            <td>&{board.readCount}</td>
+                                            <td>${board.readCount}</td>
                                         </tr>
                                     </c:forEach>
                                 </c:otherwise>

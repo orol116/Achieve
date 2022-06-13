@@ -66,6 +66,7 @@ public class CheckBoardService {
 		
 		return result;
 	}
+	
 	/** 작성 댓글 조회 Service
 	 * @param cp
 	 * @param type
@@ -86,11 +87,21 @@ public class CheckBoardService {
 		// 3. 작성댓글 목록 조회
 		List<CheckReply> replyList = dao.selectReplyList(conn, pagination, type, memNo);
 		
+		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-		
-		
-		return null;
-	}
 
+		map.put("type", type);
+		map.put("memNo", memNo);
+//		map.put("memNick", memNick);
+		map.put("pagination", pagination);
+		map.put("boardList", replyList);
+		map.put("listBoardCount", listReplyCount);
+		
+		close(conn);
+		
+		return map; // map 객체 반환
+	
+	}
 
 }
