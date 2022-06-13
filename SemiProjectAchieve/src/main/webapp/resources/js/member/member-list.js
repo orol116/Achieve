@@ -34,14 +34,24 @@ function selectAll(){ // 회원 전체 조회 함수
                 const span2 = document.createElement("span");
                 span2.classList.add("name")
 
+                const img = document.createElement("img");
+                if(item.profileImage != null){
+                    
+                    img.setAttribute("src",  contextPath+item.profileImage)
+                }else{
+                    
+                    img.setAttribute("src",  contextPath+"/resources/images/user.png")
+                }
+
                 const br = document.createElement("br");
 
-                span1.innerText = item.memberNo; // 회원 번호
+                span1.innerText = "회원번호 : "+item.memberNo+"번"; // 회원 번호
 
-                span2.innerText = item.memberNickname; // 회원 닉네임
+                span2.innerText = "닉네임 : "+item.memberNickname; // 회원 닉네임
 
                 div3.append(span1,br,span2);
-                  
+                
+                div2.append(img);
                 div2.append(div3);
                 div1.append(div2);
 
@@ -57,15 +67,39 @@ function selectAll(){ // 회원 전체 조회 함수
     });
 }
 
+function selectAllCount(){
+    $.ajax({
+        url: "selectAllCount",
+        success : function(count){
+
+            const memberCount = document.getElementById("member-count");
+            memberCount.innerHTML ="";
+
+            const h4 = document.createElement("h4");
+            h4.innerText = "클래스 구성원"
+            
+            const span = document.createElement("span");
+            span.innerText = "총 " + count + "명";
+
+            memberCount.append(h4,span);
+
+        },
+        error : function(){
+            console.log("에러발생")
+        }
+    })
+}
+
 // 일정 시간 마다 회원 목록 조회
 
 // 즉시 실행 함수(속도 빠름, 변수명 중복문제 해결)
 (function(){
 
+    selectAllCount();
     selectAll(); // 함수 호출 -> 회원 목록을 1차적으로 먼저 조회
 
     // window.setInterval(함수, 딜레이(ms))
-    setInterval(selectAll, 100000000000000);
+    setInterval(selectAll, 100000);
     // 함수 이름만 작성하면 함수가 실행되는게 아니라 함수 코드가 대입되는 것이다. 
     // -> 10초마다 selectAll 함수를 수행하게 된다.
 

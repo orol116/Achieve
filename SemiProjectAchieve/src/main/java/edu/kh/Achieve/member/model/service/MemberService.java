@@ -179,6 +179,17 @@ public class MemberService {
 	}
 
 
+	public int selectAllCount() throws Exception{
+		Connection conn = getConnection();
+		
+		int count  = dao.selectAllCount(conn);
+		
+		close(conn);
+		
+		return count;
+	}
+
+
 
 
 }

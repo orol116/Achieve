@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.oreilly.servlet.MultipartRequest;
 
 import edu.kh.Achieve.board.model.service.BoardService;
@@ -14,13 +21,6 @@ import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.common.MyRenamePolicy;
 import edu.kh.Achieve.member.model.vo.Member;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 @WebServlet("/board/write")
 public class BoardWriteController extends HttpServlet {
 	
@@ -29,7 +29,25 @@ public class BoardWriteController extends HttpServlet {
 		
 		try {
 
-			// 게시글 수정 기능은 향후에 추가
+			String mode = req.getParameter("mode"); // insert mode / update mode 구분
+			
+			// insert는 별도 처리 없이 jsp로 위임만 하면 된다.
+			
+			// update는 기존 게시글 내용을 조회하는 처리가 필요함
+			if(mode.equals("update")) {
+				
+				int boardNo = Integer.parseInt(req.getParameter("no")); 
+				
+				// 게시글 상세 조회 서비스를 이용해서 기존 내용 조회
+				// new BoardService() : 객체를 생성해서 변수에 저장을 안한 상태 -> 1회성 사용하겠다는 의미!
+				BoardDetail detail = new BoardService().selectBoardDetail(boardNo);
+				
+				// 개행 문자처리 해제(<br> -> \n)
+				detail.setBoardContent(detail.getBoardContent().replaceAll("<br>", "\n"));
+				
+				req.setAttribute("detail", detail); // jsp에서 사용할 수 있도록 req에 값 세팅
+				
+			}
 			
 			String path = "/WEB-INF/views/board/board-write.jsp";
 			
@@ -87,7 +105,7 @@ public class BoardWriteController extends HttpServlet {
 			
 			String boardTitle = mpReq.getParameter("boardTitle");
 			String boardContent = mpReq.getParameter("boardContent");
-			int boardCode = Integer.parseInt(mpReq.getParameter("type"));
+			int boardCode = Integer.parseInt(mpReq.getParameter("board-type"));
 			
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			int memberNo = loginMember.getMemberNo();

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 
     <link rel="stylesheet" href="${contextPath}/resources/css/board/board-detail-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/board/reply-style.css">
 
 </head>
 <body>
@@ -30,7 +31,13 @@
 
 
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+        <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
 
     </main>
+    
+    <script src="${contextPath}/resources/js/board/reply.js"></script>
+
 </body>
+</html>
