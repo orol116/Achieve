@@ -194,22 +194,22 @@ public class BoardService {
 		// 1) 게시글 (BOARD 테이블) 내용만 조회
 		BoardDetail detail = dao.selectBoarDetail(conn, boardNo);
 		
+		System.out.println(detail);
+		
 		if(detail != null) { // 게시글 상세 조회 결과가 있을 경우에 
 			
 		// 2) 게시글에 첨부된 이미지(BOARD_IMG 테이블) 조회
-			List<BoardImage> imageList = dao.selectImageList(conn, boardNo);
+			List<BoardAttachment> attachmentList = dao.selectAttachmentList(conn, boardNo);
 			
 			// -> 조회된 imageList 를 BoardDetail 객체에 세팅
 			
-			detail.setImageList(imageList);
+			detail.setAttachmentList(attachmentList);
 		}
 		
 		close(conn);
 		
 		return detail;
 	}
-	
-	
 	
 
 }

@@ -22,6 +22,7 @@ public class BoardDeleteServlet extends HttpServlet{
 			
 			int type = Integer.parseInt(req.getParameter("type"));
 			int boardNo = Integer.parseInt(req.getParameter("no"));
+			
 			int result = new BoardService().deleteBoard(boardNo);
 			
 			HttpSession session = req.getSession();
