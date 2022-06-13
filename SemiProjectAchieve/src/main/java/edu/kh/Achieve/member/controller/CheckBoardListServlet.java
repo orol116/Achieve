@@ -30,14 +30,15 @@ public class CheckBoardListServlet extends HttpServlet {
 			
 			// 로그인 회원 번호
 			HttpSession session = req.getSession();
+			
 			Member loginMember = (Member)session.getAttribute("loginMember");
+			
 			int memNo = loginMember.getMemberNo();
 		
 			// /board/list?type=1 (작성글)
 			// /board/list?type=2 (댓글)
 			int type = Integer.parseInt(req.getParameter("type"));
 	
-			
 			// 게시판 이름, 페이지네이션 객체, 게시글 리스트를 한 번에 반환하는 Service 호출
 			CheckBoardService service = new CheckBoardService();
 			
@@ -48,25 +49,16 @@ public class CheckBoardListServlet extends HttpServlet {
 				map = service.selectBoardList(cp, type, memNo);
 				
 			}else if(type == 2) {
-				
+				map = service.selectReplyList(cp,type,memNo);
 			}
 			
-			
-//		if( req.getParameter("key") == null) { // 일반 목록 조회
-//			
-//		}
-//		}else { // 검섹 목록 조회
-//			
-//			String key = req.getParameter("key");
-//			String query = req.getParameter("query");
-//			
-//			map = service.searchBoardList(memberNo,cp, key, query);
-		
 			
 			String path = "/WEB-INF/views/member/myPage-boardList.jsp";
 			
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+			
 			req.setAttribute("map", map);
+			
 			dispatcher.forward(req, resp);
 
 		}catch(Exception e){

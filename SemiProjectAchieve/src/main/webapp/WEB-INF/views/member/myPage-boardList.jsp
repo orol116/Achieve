@@ -4,6 +4,7 @@
 <!-- map에 저장된 값을 각각 변수에 저장 -->
 <c:set var = "pagination" value="${map.pagination}"/>
 <c:set var = "boardList" value="${map.boardList}"/>
+<c:set var = "listCount" value="${map.listCount}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,14 +52,13 @@
             <!-- 왼쪽 사이드 메뉴 -->
         
             <section class="left-side">
-
                 <h1>마이페이지</h1>
 
                 <ul class="list-group">
                     <li> <a href="#">회원정보 수정 </a> </li>
                     <li> <a href="#">비밀번호 변경 </a> </li>
-                    <li> <a href="#">내가 쓴 글 보기 </a> </li>
-                    <li> <a href="#">내가 쓴 댓글 보기 </a> </li>
+                    <li> <a href="${contextPath}/member/BoardList?type=1">내가 쓴 글 보기 </a> </li>
+                    <li> <a href="${contextPath}/member/BoardList?type=2">내가 쓴 댓글 보기 </a> </li>
                     <li> <a href="#">회원 탈퇴 </a> </li>
                 </ul>
 
@@ -74,24 +74,28 @@
                     <span class="myPage-nickname">닉네임</span>
                     <span class="myPage-grade">등급 :</span>
                     <div class="myPage-info">
-                        <span class="myPage-visit">방문 :</span>
-                        <span class="myPage-words">작성 글 :</span>
+                        <span class="myPage-words">작성 글 : ${listCount}</span>
                         <span class="myPage-reply">작성 댓글 :</span>
                     </div>
                 </div>  
 
                 <!-- 쿼리스트링  -->
                 <div class="myPage-third">
-                    <a href="${contextPath}/member/BoardList?memNo=1&type=1">작성글</a>
-                    <a href="#">작성댓글</a>
+                    <div class="myPage-third1">
+                    <a href="${contextPath}/member/BoardList?memNo=${param.memNo}&type=1">작성글</a>
+                    <a href="${contextPath}/member/BoardList?memNo=${param.memNo}&type=2">작성댓글</a>
                     <a href="#">가입한 프로젝트 보기</a>
+                    </div>
+                    <div class="myPage-third2">
+                    <a href="#">삭제한 게시글</a>
+                    </div>
                 </div>      
 
                 <div class="list-wrapper">
                     <table class="list-table">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>선택</th>
                                 <th>글번호</th>
                                 <th>제목</th>
                                 <th>작성일</th>
@@ -114,12 +118,12 @@
                                     <!-- 향상된 for문 처럼 사용 -->
                                     <c:forEach var ="board" items="${boardList}">
                                         <tr>
-                                            <td><input type="checkbox">${board.boardNo}</td>
-                                            <td>1</td>
+                                            <td><input type="checkbox"></td>
+                                            <td>${board.boardNo}</td>
                                             <td>
                                                 <a href="#">${board.boardTitle}</a>
                                             </td>
-                                            <td>${board.createDate}/td>
+                                            <td>${board.createDate}</td>
                                             <td>&{board.readCount}</td>
                                         </tr>
                                     </c:forEach>
