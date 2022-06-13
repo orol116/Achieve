@@ -8,10 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import edu.kh.Achieve.member.model.vo.Member;
+import edu.kh.Achieve.project.model.vo.Project;
 
 public class MemberDAO {
 	
@@ -375,6 +378,44 @@ public class MemberDAO {
 		
 		return count;
 
+	}
+
+	/** 내가 참여중인 프로젝트 조회 DAO
+	 * @param conn
+	 * @param loginMember
+	 * @return projectList
+	 * @throws Exception
+	 */
+	public List<Project> selectMyJoinProjectService(Connection conn, Member loginMember) throws Exception {
+		
+		List<Project> projectList = new ArrayList<Project>();
+
+		try {
+			
+			String sql = prop.getProperty("selectMyJoinProject");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, loginMember.getMemberNo());
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				
+				Project project = new Project();
+				
+				project.setProjectNo(rs.getInt(1));
+				project.setProjectName(rs.getString(2));
+
+				projectList.add(project);
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return projectList;
+		
 	}
 
 

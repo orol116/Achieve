@@ -15,6 +15,7 @@ import edu.kh.Achieve.board.model.vo.Board;
 import edu.kh.Achieve.board.model.vo.BoardAttachment;
 import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.board.model.vo.Pagination;
+import edu.kh.Achieve.project.model.vo.Project;
 
 public class BoardDAO {
 	
@@ -384,7 +385,7 @@ public class BoardDAO {
 	 * @return boardTypeList
 	 * @throws Exception
 	 */
-	public List<Board> selectboardType(Connection conn) throws Exception {
+	public List<Board> selectboardType(Connection conn, Project projectNo) throws Exception {
 
 		List<Board> boardType = new ArrayList<Board>();
 		

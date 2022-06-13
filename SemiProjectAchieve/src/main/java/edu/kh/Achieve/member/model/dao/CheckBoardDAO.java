@@ -15,6 +15,7 @@ import edu.kh.Achieve.board.model.vo.Pagination;
 import edu.kh.Achieve.member.model.vo.CheckBoard;
 import edu.kh.Achieve.member.model.vo.CheckPagination;
 import edu.kh.Achieve.member.model.vo.CheckReply;
+import edu.kh.Achieve.member.model.vo.Member;
 
 public class CheckBoardDAO {
 
@@ -88,6 +89,48 @@ public class CheckBoardDAO {
 		}
 		
 		return listName;
+	}
+
+
+
+	/** 회원 닉네임, 프로필 이미지 조회 DAO
+	 * @param memNick
+	 * @param pImage
+	 * @return memberList
+	 * @throws Exception
+	 */
+	public List<Member> selectMemberDetail(Connection conn, String memNick, String pImage, int memNo) throws Exception {
+
+		List<Member> memList = new ArrayList<Member>();
+		
+		try {
+			
+			
+			String sql = prop.getProperty("selectMemList");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Member mem = new Member();
+				
+				mem.setMemberNickname(rs.getString("MEMBER_NICK"));
+				mem.setProfileImage(rs.getString("MEMBER_PROFILE"));
+	
+				memList.add(mem);
+			}
+			
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return memList;
 	}
 
 
@@ -262,7 +305,6 @@ public class CheckBoardDAO {
 		
 		return replyList;
 	}
-
 
 
 }

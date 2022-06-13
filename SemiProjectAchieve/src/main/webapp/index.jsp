@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%-- <c:set var="projectCode" value="${projectList}" /> --%>
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -130,8 +134,8 @@
 
                     <article id="main-project-area">
                         
-                        <button type="button"><a href="${contextPath}/project/PJ/create">프로젝트 만들기</a></button><br>
-                        <button type="button"><a href="#">프로젝트 찾기</a></button>
+                        <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
+                        <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 찾기</a></button>
 
         
                     </article>
@@ -161,18 +165,15 @@
                         </c:when>
 
                         <c:otherwise>
-
-                            <div class="project-join">
-                                <ul>
-                                    <h2><a href="#">참여중인 프로젝트 1</a></h2>
-                                </ul>
-                            </div>
-        
-                            <div class="project-join">
-                                <ul>
-                                    <h2><a href="#">참여중인 프로젝트 2</a></h2>
-                                </ul>
-                            </div>
+                            
+                            <c:forEach var="project" items="${projectList}">
+                                <div class="project-join">
+                                    <ul>
+                                        <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}">${project.projectName}</a></h2>
+                                    </ul>
+                                </div>
+                                <input type="hidden" name="projectNo" value="${project.projectNo}">
+                            </c:forEach>
 
                         </c:otherwise>
 

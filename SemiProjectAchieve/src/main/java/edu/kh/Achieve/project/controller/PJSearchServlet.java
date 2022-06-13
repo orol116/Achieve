@@ -1,7 +1,6 @@
-package edu.kh.Achieve.member.controller;
+package edu.kh.Achieve.project.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,22 +12,53 @@ import javax.servlet.http.HttpSession;
 
 import edu.kh.Achieve.member.model.service.MemberService;
 import edu.kh.Achieve.member.model.vo.Member;
+import edu.kh.Achieve.project.model.service.ProjectService;
 import edu.kh.Achieve.project.model.vo.Project;
 
-@WebServlet("/member/login")
-public class LoginServlet extends HttpServlet{
+@WebServlet("/project/PJ/PJSearch" ) //"/project/PJ/member/login"
+public class PJSearchServlet extends HttpServlet{
+	
 	
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//로그인 정보 있으면 가져오기
+		HttpSession session = req.getSession();
+		
+		if(session.getAttribute("loginMember") != null){
+			Member loginMember = (Member)(session.getAttribute("loginMember"));
+		}
+		
+		
+		//비공개가 아닌 모든 프로젝트를 검색해서 페이지네이션으로 가져오기
+		
+		String path = "/WEB-INF/views/project/PJSearch.jsp";
+		
+		req.getRequestDispatcher(path).forward(req, resp);
+		
+	}
+	
+	
+	
+	/** 프로젝트 검색페이지 내 로그인 기능
+	 *
+	 */
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//프로젝트 검색 페이지에서도 로그인은 가능
+		
 		String inputEmail = req.getParameter("inputEmail");
 		String inputPw = req.getParameter("inputPw");
+		String path = null;
 		
-		// 파라미터를 VO에 세팅
+		// 파라미터를 mem에 세팅
 		Member mem = new Member();
 		mem.setMemberEmail(inputEmail);
 		mem.setMemberPw(inputPw);
 		
 		try {
+			
 			MemberService service = new MemberService();
 			
 			// 입력된 이메일과 비밀번호가 일치하는 회원 조회
@@ -39,9 +69,9 @@ public class LoginServlet extends HttpServlet{
 			// 1. session 객체 얻어오기
 			HttpSession session = req.getSession();
 			
-			if(loginMember != null) {
+			if(loginMember != null) { //로그인 정보가 있으면
+				
 				// 로그인 한 회원의 회원 정보를 session에 세팅
-				// session에 loginMember라는 객체로 담겨있음!! 
 				session.setAttribute("loginMember", loginMember);
 				
 				// 특정 시간 후 요청 없을 시 세션 만료
@@ -61,20 +91,15 @@ public class LoginServlet extends HttpServlet{
 				
 				resp.addCookie(c);
 				
-				List<Project> projectList = service.selectMyJoinProjectService(loginMember);
-				session.setAttribute("projectList", projectList);
-				
-				System.out.println(projectList);
-				
 			} else {
 				session.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			}
 			
-			resp.sendRedirect(req.getContextPath());
 			
-		} catch(Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 	}
 
 }
