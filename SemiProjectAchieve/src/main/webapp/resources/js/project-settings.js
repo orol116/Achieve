@@ -20,6 +20,8 @@ nameChangeBtn.addEventListener("click", function(){
 
     console.log(PJNameChange.value);
 
+    
+
     });
    
 
@@ -37,7 +39,7 @@ document.getElementById("text-all").addEventListener("click", function(){
     console.log(sendAll.value);
 
     if(sendAll.value == ""){
-        alert("전송할 내용이 없습니다!")
+        alert("전송할 내용이 없습니다!");
     }
 
 });
@@ -76,6 +78,41 @@ const showValue = (target) =>{
     console.log(target.value);
 
     alert(target.value + "로 변경됩니다.");
+
+    const openStatus = (target.options[target.selectedIndex].text);
+
+    console.log("openStatus" + openStatus);
+
+
+    if(openStatus == "공개"){
+
+        openStatus.value == "Y";
+    }
+
+    if(openStatus == "클래스명 공개"){
+
+        openStatus.value == "P"
+    }
+
+    if(openStatus == "비공개"){
+
+        openStatus.value == "N"
+
+    }
+
+    $.ajax({
+        url : "openStatusChange",
+        data : {"openStatus" : openStatus.value},
+        type : "GET",
+        success : function(){
+
+            alert(target.value + "로 변경됩니다.");
+
+        },
+        error : function(){
+            console.log("에러발생");
+        }
+    });
 
 };
 

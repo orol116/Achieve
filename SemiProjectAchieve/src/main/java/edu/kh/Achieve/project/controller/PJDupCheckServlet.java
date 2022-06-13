@@ -8,27 +8,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/project/PJ/create")
-public class PJSettings extends HttpServlet{
-	
+import edu.kh.Achieve.project.model.service.ProjectService;
+
+@WebServlet("/project/PJDupCheck")
+public class PJDupCheckServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		String path = "/WEB-INF/views/project/PJSettings.jsp";
+
+		String projectName = req.getParameter("projectName");
 		
-		req.getRequestDispatcher(path).forward(req, resp);
+		try {
+			
+			ProjectService service = new ProjectService();
+			
+			int result = service.PJDupCheck(projectName);
+			
+			resp.getWriter().print(result);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		
-		
-	}
-	
-	
 
 }

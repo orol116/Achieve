@@ -2,9 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <!-- map에 저장된 값을 각각 변수에 저장 -->
-<c:set var = "boardName" value=${map.boardName}/>
-<c:set var = "pagination" value=${map.pagination}/>
-<c:set var = "boardList" value=${map.boardList}/>
+<c:set var = "pagination" value="${map.pagination}"/>
+<c:set var = "boardList" value="${map.boardList}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +52,7 @@
         
             <section class="left-side">
 
-                <h1>마이페이지- 작성글</h1>
+                <h1>마이페이지</h1>
 
                 <ul class="list-group">
                     <li> <a href="#">회원정보 수정 </a> </li>
@@ -81,8 +80,9 @@
                     </div>
                 </div>  
 
+                <!-- 쿼리스트링  -->
                 <div class="myPage-third">
-                    <a href="#">작성글</a>
+                    <a href="${contextPath}/member/BoardList?memNo=1&type=1">작성글</a>
                     <a href="#">작성댓글</a>
                     <a href="#">가입한 프로젝트 보기</a>
                 </div>      
@@ -102,7 +102,7 @@
                         <tbody class="board-list">
 
                             <c:choose>
-                                <c:when test="${emptu boardList}">
+                                <c:when test="${empty boardList}">
                                 <!-- 작성글 목록 조회 결과가 비어있다면 -->
                                     <tr>
                                         <th colspan="5">작성글이 존재하지 않습니다.</th>
@@ -125,11 +125,7 @@
                                     </c:forEach>
                                 </c:otherwise>
                             </c:choose>
-                           
-                            
-                            
-                           
-                            
+
                         </tbody>
     
                     </table>
@@ -147,27 +143,34 @@
                 </div>
     
                 <div class="pagination-area">
-                    <ul class="pagination">
-                      
-                        
-                        <li><a href="#">&lt;&lt;</a></li>
-                        <li><a href="#">&lt;</a></li>
-                        
-                        <!-- li*10>a{$} -->
-                        <li><a class="current">1</a></li>
-    
-                        <li><a href="${contextPath}/member/BoardList?cp=2">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#">10</a></li>
 
-                        <li><a href="#">&gt;</a></li>
-                        <li><a href="#">&gt;&gt;</a></li>
+                    <!-- pagination a태그에 사용될 공통주소 저장한 변수 선언 -->
+                    <c:set var="url" value="BoardList?type=${param.type}&cp="/>
+                    <ul class="pagination">
+                        <!-- 첫페이지로 이동 -->
+                        <li><a href="${url}1">&lt;&lt;</a></li>
+
+                        <!-- 이전목록 마지막 번호로 이동 -->
+                        <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
+                        
+                        <!-- 범위가 정해진 일반 for문 사용 -->
+                        <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                            <c:choose>
+                                <c:when test="${i == pagination.currentPage}">
+                                    <li><a class="current">${i}</a></li>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <li><a href="${url}${i}">${i}</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+
+                        <!-- 다음 목록 시작 번호로 이동 -->
+                        <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
+
+                        <!-- 끝 페이지로 이동-->
+                        <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
                         
                     </ul>
                 </div>

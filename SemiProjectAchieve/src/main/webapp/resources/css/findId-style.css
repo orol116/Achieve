@@ -6,38 +6,38 @@ body{
 
 
 /* 아이디, 비번 찾기 영역 */
-.findId-content{ 
+.findIdPw-content{ 
     /* 공통 class */
     width: auto;
     height: auto;
-
-    display: flex;
-    justify-content: center;
 }
 
 /* 페이지 제목 */
-#findId-title{
+#find-title{
     font-size: 2em;
     margin: 60px 0;
+
+    text-align: center;
 }
 
 /* 행 */
-.findId-detail-row{
-    margin: 20px 0;
+.find-detail-row{
+    margin: 30px 0;
+    text-align: center;
 }
 
 /* 행 이름 */
-.findId-detail-row > div{
+.find-detail-row > div{
     font-size: 1.1em;
     font-weight: bold;
 
-    padding: 5px 0;
+    padding: 15px 0;
 
     color: #504d4d;
 }
 
 /* input */
-.findId-detail-input{
+.find-detail-input{
     width: 380px;
     height: 40px;
 
@@ -52,11 +52,48 @@ body{
     outline: 0;
 }
 
+
+/* 아이디 찾기 버튼 영역 */
 .findId-button-area{
     text-align: center;
 }
 
 .findId-button-area button{
+    width: 380px;
+    height: 40px;
+
+    margin: 35px 0;
+
+    font-weight: bold;
+    font-size: 1.1em;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: white;
+    color: #0e194e;
+    border: 2px solid #0e194e;
+
+    cursor: pointer;
+}
+
+.findId-button-area button:hover{
+    background-color: #0e194e;
+    color: white;
+}
+
+/* 밑줄용 */
+#blank{
+    margin: 40px 0;
+    border-bottom: 2px solid #b4b4b4;
+}
+
+/* 비밀번호 찾기 버튼 영역 */
+.findPw-button-area{
+    text-align: center;
+}
+
+.findPw-button-area button{
     width: 190px;
     height: 40px;
 
@@ -68,19 +105,27 @@ body{
     border: none;
     border-radius: 5px;
 
-    background-color: #0e194e;
-    color: white;
+    background-color: white;
+    color: #0e194e;
+    border: 2px solid #0e194e;
 
     cursor: pointer;
 }
 
-.findId-button-areav button:hover{
-    background-color: white;
-    color: #0e194e;
-    border: 2px solid #0e194e;
+.findPw-button-area button:hover{
+    background-color: #0e194e;
+    color: white;
 }
 
+/* 비밀번호 재설정 a태그 */
+#moveToFindPw{
+    display: block;
+    text-align: center;
 
+    color: #504d4d;
+
+    margin: 60px 0;
+}
 
 
 /* 조회된 아이디 리스트 */
@@ -90,6 +135,7 @@ body{
 
     font-size: 1.3em;
 
+    margin: auto;
     margin-bottom: 60px;
 }
 
@@ -110,3 +156,10 @@ body{
     margin: 15px 0;
     color: #504d4d;
 }
+
+/* 비밀번호 재설정 안내 문구 */
+#memberPw > span{
+    display: block;
+    color: #504d4d;
+}
+
