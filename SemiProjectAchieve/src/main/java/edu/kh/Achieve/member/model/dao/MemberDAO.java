@@ -318,6 +318,40 @@ public class MemberDAO {
 	}
 
 
+	/**
+	 * 아이디 찾기 아이디 조회
+	 * @param conn
+	 * @param memberName
+	 * @param memberBirthday
+	 * @return idList
+	 * @throws Exception
+	 */
+	public List<Member> findIdAll(Connection conn, String memberName, String memberBirthday) throws Exception {
+		List<Member> idList = new ArrayList<Member>();
+		
+		try {
+			String sql = prop.getProperty("findIdList");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberName);
+			pstmt.setString(2, memberBirthday);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Member member = new Member();
+				member.setMemberEmail(rs.getString(1));
+				
+				idList.add(member);
+			}
+
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return idList;
+	}
+
+
 
 	
 	

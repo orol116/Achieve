@@ -179,6 +179,22 @@ public class MemberService {
 	}
 
 
+	/**
+	 * 아이디 찾기 아이디 조회
+	 * @param memberName
+	 * @param memberBirthday
+	 * @return idList
+	 * @throws Exception
+	 */
+	public List<Member> findIdAll(String memberName, String memberBirthday) throws Exception{
+		Connection conn = getConnection();
+		List<Member> idList = dao.findIdAll(conn, memberName, memberBirthday);
+		close(conn);	
+		
+		return idList;
+	}
+
+
 
 
 }

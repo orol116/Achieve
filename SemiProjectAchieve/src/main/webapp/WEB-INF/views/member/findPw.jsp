@@ -20,18 +20,25 @@
         <!-- header -->
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-       <!-- 아이디, 비번 찾기 -->
-       <section class="findIdPw-content">
+        <!-- 아이디, 비번 찾기 -->
+        <section class="findIdPw-content">
 
-        <!-- 아이디 찾기 -->
+            <!-- 아이디 찾기 -->
             <section class="find-main">
-                <h1 id="find-title">아이디 / 비밀번호 찾기</h1>
+                <h1 id="find-title">비밀번호 재설정</h1>
                 
-                <form action="findIdSubmit" method="post" name="findId-form" onsubmit="return findInputValidate()">
+
+
+                <form action="findPwSubmit" method="post" name="findId-form" onsubmit="return findPwInputValidate()">
                     <!-- onsubmit으로 input이 변화가 없으면 제출X -->
 
                     <div id="find-container">
 
+                        <div class="find-detail-row" id="memberEmail">
+                            <div>아이디(이메일)</div>            
+                            <input class="find-detail-input" name="memberEmail" type="text" placeholder="user01@achieve.co.kr">
+                        </div>
+                        
                         <div class="find-detail-row" id="memberName">
                             <div>이름</div>            
                             <input class="find-detail-input" name="memberName" type="text" placeholder="유저일">
@@ -42,19 +49,16 @@
                             <input class="find-detail-input" name="memberBirthday" type="text" onkeyup="addHypen(this);" placeholder="1992-11-17 ( - 없이 8자리)">
                         </div>
 
-                        <div class="findId-button-area">
-                            <button id="findIdBtn">아이디 찾기</button>
+
+                        <!-- 비밀번호 찾기는 메일 ajax 통한 메일 발송 -->
+                        <div class="findPw-button-area">
+                            <button id="backToFindIdBtn">뒤로 가기</button>
+                            <button id="sendEmailBtn">인증번호 발송(메일)</button>
                         </div>
-                        
-                        <!-- 밑줄용 -->
-                        <div id="blank"></div>
-                        
-                        <!-- 비밀번호 찾기는 비밀번호 찾기 창으로 넘어간 뒤 메일 ajax 통한 메일 발송 -->
-                        <!-- 비밀번호 찾기 페이지로 넘어가게 하고 싶음!! -->
-                        <a id="moveToFindPw" href="#">비밀번호 재설정</a>
-                        
                     </div>
+
                 </form>
+
             </section>
         </section>
     </main>
@@ -73,6 +77,7 @@
 
     <!-- findIdPw.js 연결 -->
     <script src="${contextPath}/resources/js/findIdPw.js"></script>
+
 
 </body>
 </html>
