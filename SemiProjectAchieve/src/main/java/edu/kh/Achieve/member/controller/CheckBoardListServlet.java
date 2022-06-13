@@ -33,22 +33,21 @@ public class CheckBoardListServlet extends HttpServlet {
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			
 			int memNo = loginMember.getMemberNo();
+			String memNick = loginMember.getMemberNickname();
+			String pImage = loginMember.getProfileImage();
 			
-//			String memNick = loginMember.getMemberNickname();
-			
-		
 			// /board/list?type=1 (작성글)
 			// /board/list?type=2 (댓글)
 			int type = Integer.parseInt(req.getParameter("type"));
 	
-			// 게시판 이름, 페이지네이션 객체, 게시글 리스트를 한 번에 반환하는 Service 호출
+			//  페이지네이션 객체, 게시글 리스트를 한 번에 반환하는 Service 호출
 			CheckBoardService service = new CheckBoardService();
 			
 			Map<String, Object> map = null;
 			
 			
 			if(type == 1) {
-				map = service.selectBoardList(cp, type, memNo);
+				map = service.selectBoardList(cp, type, memNo, memNick, pImage);
 				
 			}else if(type == 2) {
 				
