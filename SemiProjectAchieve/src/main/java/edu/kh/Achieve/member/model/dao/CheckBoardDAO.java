@@ -14,6 +14,7 @@ import java.util.Properties;
 import edu.kh.Achieve.board.model.vo.Pagination;
 import edu.kh.Achieve.member.model.vo.CheckBoard;
 import edu.kh.Achieve.member.model.vo.CheckPagination;
+import edu.kh.Achieve.member.model.vo.CheckReply;
 
 public class CheckBoardDAO {
 
@@ -42,7 +43,7 @@ public class CheckBoardDAO {
 	 */
 	public int getBoardListCount(Connection conn , int type, int memNo) throws Exception{
 		
-		int listCount = 0;
+		int listBoardCount = 0;
 		
 		try{
 			String sql = prop.getProperty("getBoardListCount");
@@ -51,13 +52,13 @@ public class CheckBoardDAO {
 			pstmt.setInt(1, memNo);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				listCount = rs.getInt(1);
+				listBoardCount = rs.getInt(1);
 			}
 		}finally{
 			close(rs);
 			close(pstmt);
 		}
-		return listCount;
+		return listBoardCount;
 		
 	}
 	
@@ -185,6 +186,10 @@ public class CheckBoardDAO {
 		
 		return result;
 	}
+	
+	//-------------------------------------------------------------------------
+	
+	
 	/** 작성 댓글 조회 DAO
 	 * @param conn
 	 * @param type
@@ -193,7 +198,8 @@ public class CheckBoardDAO {
 	 * @throws Exception
 	 */
 	public int getReplyListCount(Connection conn, int type, int memNo) throws Exception{
-		int listCount = 0;
+	
+		int listReplyCount = 0;
 		
 		try{
 			String sql = prop.getProperty("getReplyListCount");
@@ -202,13 +208,60 @@ public class CheckBoardDAO {
 			pstmt.setInt(1, memNo);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				listCount = rs.getInt(1);
+				listReplyCount = rs.getInt(1);
 			}
 		}finally{
 			close(rs);
 			close(pstmt);
 		}
-		return listCount;
+		return listReplyCount;
+	}
+
+	/** 작성 댓글 목록 조회 DAO
+	 * @param conn
+	 * @param pagination
+	 * @param type
+	 * @param memNo
+	 * @return replyList
+	 * @throws Exception
+	 */
+	public List<CheckReply> selectReplyList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception{
+
+		List<CheckReply> replyList = new ArrayList<CheckReply>();
+		
+		try {
+			String sql = prop.getProperty("selectReplyList");
+			
+			// BETWEEN 구문에 들어갈 범위 계산
+			int start =  (pagination.getCurrentPage() - 1) * pagination.getLimit() +1;
+			int end = start + pagination.getLimit()-1;
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CheckReply reply = new CheckReply();
+				
+				reply.setReplyNo(rs.getInt("REPLY_NO"));
+				reply.setReplyContent(rs.getString("REPLY_CONTENT"));
+				reply.setReplyDate(rs.getString("REPLY_DT"));
+				reply.setBoardNo(rs.getInt("BOARD_NO"));
+				
+				replyList.add(reply);
+				
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return replyList;
 	}
 
 

@@ -4,7 +4,7 @@
 <!-- map에 저장된 값을 각각 변수에 저장 -->
 <c:set var = "pagination" value="${map.pagination}"/>
 <c:set var = "boardList" value="${map.boardList}"/>
-<c:set var = "listCount" value="${map.listCount}"/>
+<c:set var = "listBoardCount" value="${map.listBoardCount}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,8 +74,8 @@
                     <span class="myPage-nickname">닉네임</span>
                     <span class="myPage-grade">등급 :</span>
                     <div class="myPage-info">
-                        <span class="myPage-words">작성 글 : ${listCount}</span>
-                        <span class="myPage-reply">작성 댓글 :</span>
+                        <span class="myPage-words">작성 글 : ${listBoardCount}</span>
+                        <span class="myPage-reply">작성 댓글 : </span>
                     </div>
                 </div>  
 
@@ -142,7 +142,7 @@
                     </div>
                     <div>
                     <a class="insertBtn">삭제</a>
-                    <a class="insertBtn">글쓰기</a>
+                    <a class="insertBtn" href="${contextPath}/board/write?mode=insert&type=2&cp=">글쓰기</a>
                     </div>
                 </div>
     

@@ -30,10 +30,12 @@ public class CheckBoardListServlet extends HttpServlet {
 			
 			// 로그인 회원 번호
 			HttpSession session = req.getSession();
-			
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			
 			int memNo = loginMember.getMemberNo();
+			
+			String memNick = loginMember.getMemberNickname();
+			
 		
 			// /board/list?type=1 (작성글)
 			// /board/list?type=2 (댓글)
@@ -43,7 +45,6 @@ public class CheckBoardListServlet extends HttpServlet {
 			CheckBoardService service = new CheckBoardService();
 			
 			Map<String, Object> map = null;
-	
 			
 			if(type == 1) {
 				map = service.selectBoardList(cp, type, memNo);
