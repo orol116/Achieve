@@ -179,6 +179,7 @@ public class MemberService {
 	}
 
 
+
 	/**
 	 * 아이디 찾기 아이디 조회
 	 * @param memberName
@@ -192,6 +193,18 @@ public class MemberService {
 		close(conn);	
 		
 		return idList;
+	}
+	
+
+	public int selectAllCount() throws Exception{
+		Connection conn = getConnection();
+		
+		int count  = dao.selectAllCount(conn);
+		
+		close(conn);
+		
+		return count;
+
 	}
 
 

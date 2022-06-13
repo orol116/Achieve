@@ -305,6 +305,7 @@ public class MemberDAO {
 				
 				mem.setMemberNo( rs.getInt(1) );
 				mem.setMemberNickname(rs.getString(2));
+				mem.setProfileImage(rs.getString(3));
 				
 				list.add(mem); // 리스트 추가
 			}
@@ -349,6 +350,31 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		return idList;
+	}
+
+		
+	public int selectAllCount(Connection conn) throws Exception{
+		
+		int count = 0;
+		
+		try {
+			String sql = prop.getProperty("selectAllCount");
+			
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		}finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return count;
+
 	}
 
 
