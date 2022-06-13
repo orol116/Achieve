@@ -28,7 +28,7 @@ public class ReplyDAO {
 		try {
 			prop= new Properties();
 			
-			String filePath = ReplyDAO.class.getResource("/edu/kh/community2/sql/reply-sql.xml").getPath();
+			String filePath = ReplyDAO.class.getResource("/edu/kh/Achieve/sql/reply-sql.xml").getPath();
 			
 			prop.loadFromXML(new FileInputStream(filePath));
 			
