@@ -42,15 +42,13 @@ public class ReplyService {
 		reply.setReplyContent(Util.XSSHandling(reply.getReplyContent()));
 		
 		
-		
 		// 개행문자 변경 처리
 		// textarea에 줄바꿈 문자 입력시 \n , \r, \r\n, \n\r 중 하나로 입력이 된다(브라우저, os따라 다름)
 		// 이 문자들을 html 에서 줄바꿈으로 인식할 수 있도록 "<br>" 태그로 변경
-//		reply.getReplyContent().replaceAll("정규 표현식", "바꿀 문자열");
+		// reply.getReplyContent().replaceAll("정규 표현식", "바꿀 문자열");
+
 		
-		
-		// 
-//		reply.setReplyContent(reply.getReplyContent().replaceAll("(\n|\r|\r\n|\n\r)", "<br>"));
+		// reply.setReplyContent(reply.getReplyContent().replaceAll("(\n|\r|\r\n|\n\r)", "<br>"));
 		
 		reply.setReplyContent(Util.newLineHandling(reply.getReplyContent()));
 		
