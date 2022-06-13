@@ -97,7 +97,7 @@ attach.onchange = () => {
 
     attachName.innerText = selectedFile.name;
     attachSize.innerText = (selectedFile.size) / 1024 + 'KB';
-  };
+};
 
 // 게시글 작성 유효성 검사
 function writeValidate(){

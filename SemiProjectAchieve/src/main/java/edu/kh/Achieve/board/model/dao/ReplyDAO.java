@@ -92,8 +92,8 @@ public class ReplyDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, reply.getReplyContent());
-			pstmt.setInt(2, reply.getMemberNo());
-			pstmt.setInt(3, reply.getBoardNo());
+			pstmt.setInt(2, reply.getBoardNo());
+			pstmt.setInt(3, reply.getMemberNo());
 			
 			result = pstmt.executeUpdate();
 			
