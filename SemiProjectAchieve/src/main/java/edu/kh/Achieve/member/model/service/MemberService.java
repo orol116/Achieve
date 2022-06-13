@@ -6,10 +6,13 @@ import static edu.kh.Achieve.common.JDBCTemplate.getConnection;
 import static edu.kh.Achieve.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.Achieve.member.model.dao.MemberDAO;
 import edu.kh.Achieve.member.model.vo.Member;
+import edu.kh.Achieve.project.model.vo.Project;
 
 public class MemberService {
 	
@@ -205,6 +208,24 @@ public class MemberService {
 		
 		return count;
 
+	}
+
+
+	/** 내가 참여중인 프로젝트 조회 Service
+	 * @param loginMember
+	 * @throws Exception
+	 * @return projectList
+	 */
+	public List<Project> selectMyJoinProjectService(Member loginMember) throws Exception {
+
+		Connection conn = getConnection();
+		
+		List<Project> projectList = dao.selectMyJoinProjectService(conn, loginMember);
+		
+		close(conn);	
+		
+		return projectList;
+		
 	}
 
 

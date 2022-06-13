@@ -16,7 +16,6 @@ import edu.kh.Achieve.board.model.vo.BoardAttachment;
 import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.board.model.vo.Pagination;
 import edu.kh.Achieve.common.Util;
-import edu.kh.community2.board.model.vo.BoardImage;
 
 public class BoardService {
 	

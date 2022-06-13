@@ -1,7 +1,6 @@
 package edu.kh.Achieve.board.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kh.Achieve.board.model.service.BoardService;
 import edu.kh.Achieve.board.model.vo.Board;
-import edu.kh.Achieve.board.model.vo.BoardDetail;
+
 
 @WebServlet("/board/main")
 public class BoardMainController extends HttpServlet {
@@ -25,7 +24,7 @@ public class BoardMainController extends HttpServlet {
 		try {
 		
 			int type = Integer.parseInt(req.getParameter("type"));
-			
+			int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 			int cp = 1;
 			
 			if (req.getParameter("cp") != null) cp = Integer.parseInt(req.getParameter("cp"));

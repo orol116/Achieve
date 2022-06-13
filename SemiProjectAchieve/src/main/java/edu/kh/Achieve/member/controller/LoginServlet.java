@@ -1,6 +1,8 @@
 package edu.kh.Achieve.member.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.kh.Achieve.member.model.service.MemberService;
 import edu.kh.Achieve.member.model.vo.Member;
+import edu.kh.Achieve.project.model.vo.Project;
 
 @WebServlet("/member/login")
 public class LoginServlet extends HttpServlet{
@@ -57,6 +60,12 @@ public class LoginServlet extends HttpServlet{
 				c.setPath(req.getContextPath());
 				
 				resp.addCookie(c);
+				
+				List<Project> projectList = service.selectMyJoinProjectService(loginMember);
+				session.setAttribute("projectList", projectList);
+				
+				System.out.println(projectList);
+				
 			} else {
 				session.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			}

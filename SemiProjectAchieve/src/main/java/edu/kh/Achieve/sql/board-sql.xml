@@ -11,7 +11,10 @@
 	
 	<!-- 게시판 종류 조회 -->
 	<entry key="selectboardTypeList">
-		SELECT BOARD_NM, BOARD_CD FROM BOARD_TYPE
+		SELECT BOARD_NM, BOARD_CD 
+		FROM BOARD_TYPE
+		JOIN BOARD USING (BOARD_CD)
+		WHERE PROJECT_NO = ?
 		ORDER BY BOARD_CD
 	</entry>
 	
