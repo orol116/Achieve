@@ -12,8 +12,9 @@ import lombok.ToString;
 public class CheckReply {
 	
 	private int replyNo;
+	private int boardNo;
 	private String replyContent;
-	private String createDate;
+	private String replyDate;
 	private int memberNo;
 	private String memberNickName;
 	private String profileImage;
