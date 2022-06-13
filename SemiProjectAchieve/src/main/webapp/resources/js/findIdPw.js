@@ -9,26 +9,14 @@ checkObj = {
 
 // 생년월일 입력 시 하이픈 자동 생성
 function addHypen(obj) {
-    var number = obj.value.replace(/[^0-9]/g, "");
-    var bday = "";
 
-    // 년 
-    if(number.length < 5){
-        return number;
-    } else if(number.length < 7){ 
-        // 6개의 숫자가 입력되었을 때 년(4자리) 뒤에 - 추가
-        bday += number.substr(0,4);
-        bday += "-";
-        bday += number.substr(4);
-    } else if(number.length < 9){ 
-        // 8개의 숫자 입력되었을 때, 년(4자리)와 월(2자리) 뒤에 - 추가
-        bday += number.substr(0,4);
-        bday += "-";
-        bday += number.substr(4,6);
-        bday += "-";
-        bday += number.substr(6);      
-    } 
-    obj.value = bday;
+    let birth_len = obj.value.length;
+    if (this.keyCode==8){
+        obj.value = obj.value.slice(0,birth_len)
+        return 0;
+    }else if(birth_len==4 || birth_len==7){
+        obj.value += '-';
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,12 +107,9 @@ function findIdList(){
         // 현재 페이지 : 메인페이지
         url : contextPath + "/findId",
         data : {"memberName" : memberName, "memberBirthday" : memberBirthday},
-        type : "get",
+        type : "post",
         dataType : "JSON",
         success : function(idList){
-
-            // 쫌 생각해보자... 그냥 forward 하는 게 더 나을 수도... 
-            // idList : 반환 받은 아이디 목록
 
             // 메인화면 비우기
             const findIdContainer = document.getElementById("findId-container");
@@ -133,6 +118,12 @@ function findIdList(){
             // 아이디 조회 div-container 생성
             const findIdList = document.createElement("div");
             findIdList.classList.add("findIdList");
+
+
+            if(idList != null){
+            // 쫌 생각해보자... 그냥 forward 하는 게 더 나을 수도... 
+            // idList : 반환 받은 아이디 목록
+
 
             // 아이디 조회 리스트의 h1 생성
             const findIdListTitle = document.createElement("h1");
@@ -149,31 +140,20 @@ function findIdList(){
                 idRow.classList.add("idList-row");
                 idRow.innerText = id;
 
-                // 아이디 조회 container에 h1, 행 추가
+                // 아이디 조회 container에 행 추가
                 findIdList.append(idRow);
-            }
 
-            // btn-area 추가
-            const findIdBtnArea = document.createElement("div");
-            findIdBtnArea.classList.add("findId-button-area");
+            } 
+        } else{ // 아이디 리스트 X
 
-            // btn 2개 추가
-            // 1) 뒤로 가기(history.back() 사용...??? )
-            const backBtn = document.createElement("button");
-            backBtn.innerText = "뒤로 가기"
-            // 1-1) 뒤로 가기 기능 추가를 위한 속성 추가... 를 어떻게 해야 하지??? 
+            // 안내 문구 생성
+            const h2 = document.createElement("h2");
+            h2.innerText = "일치하는 회원이 없습니다.";
 
-            // 2) 비밀번호 찾기(누르면 메일 보내도록 하고 싶음!!)
-            const findPwBtn = document.createElement("button");
-            findPwBtn.innerText = "비밀번호 찾기";
-            // 2-1) 아이디 속성 추가
-            findPwBtn.setAttribute("id", "findPwBtn");
-            // 2-2) onclick 속성 추가(도 해야 하나?????????)
-            findPwBtn.setAttribute("onclick", "findPwBtn");
+            findIdList.append(h2);
 
+        }
 
-            // btn-area에 btn 추가
-            findIdBtnArea.append(backBtn, findPwBtn);
 
         },
         error : function(req, status, error){
@@ -184,7 +164,7 @@ function findIdList(){
     });
 }
 
-
+/*
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 // 비밀번호 재설정을 위한 인증번호 발송(메일) 버튼에 이벤트 추가
@@ -213,4 +193,4 @@ sendEmailBtn.addEventListener("click", function(){
         alert("인증 번호가 발송되었습니다. 이메일을 확인해주세요.")
     }
 });
-
+*/

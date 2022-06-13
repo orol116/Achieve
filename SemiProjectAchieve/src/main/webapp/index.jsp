@@ -71,7 +71,7 @@
                                 <article id="signup-find-area">
                                     
                                     <button type="button"><a href="${contextPath}/member/signUp" id="main-singUp">회원가입</a></button>
-                                    <button type="button"><a href="#" id="main-find">ID/PW 찾기</a></button>
+                                    <button type="button"><a href="${contextPath}/findId" id="main-find">ID/PW 찾기</a></button>
                                     
                                 </article>
                                 

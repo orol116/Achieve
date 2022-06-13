@@ -378,3 +378,10 @@ VALUES(SEQ_PROJECT_NO.NEXTVAL, '프로젝트 이름입니다', \
 MEMBER_NO() -- join문 쓸 수 있더????????
 
 )
+;
+-- 아이디 찾기 아이디 조회
+SELECT MEMBER_EMAIL
+FROM MEMBER
+WHERE MEMBER_NM = '유저일'
+AND TO_CHAR(MEMBER_BIRTH,'YYYY-MM-DD') = '2022-06-06'
+AND SECESSION_FL = 'N';
