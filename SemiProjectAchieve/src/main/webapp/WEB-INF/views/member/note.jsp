@@ -33,17 +33,17 @@
                 <c:choose>
                         
                     <c:when test="${empty note.noteList}">
-                        <div class="notice-list">                                
+                        <div class="notice-list" id="noNote">                                
                             <p>알림이 없습니다</p>
                         </div>
                     </c:when>
 
                     <c:otherwise>
                         
-                        <!-- 쪽지는 list로 확인만 가능하게, 링크 연결 X / 현재 el 임시 작성 -->
+                        <!-- 쪽지는 list로 확인만 가능하게, 링크 연결 X / 현재 el 등 임시 작성 -->
                         <c:forEach var="project" items="${noteList}">
                             <div class="notice-list">
-                                <div>${note.sendeNo}</div>
+                                <div>${note.senderNo}</div>
                                 <p>${note.noteContent}</p>
                             </div>
                             <input type="hidden" name="noteNo" value="${note.noteNo}">

@@ -483,8 +483,11 @@ JOIN BOARD ON(BOARD.BOARD_CD = BOARD_TYPE.BOARD_CD)
 WHERE PROJECT_NO = 1
 AND NOT EXISTS 
 ORDER BY BOARD_CD;
+<<<<<<< HEAD
 
 
 
 select * from project
 where OPEN_ST = 'Y';
+=======
+>>>>>>> origin/main

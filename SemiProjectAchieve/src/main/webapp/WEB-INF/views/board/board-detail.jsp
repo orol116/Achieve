@@ -55,19 +55,22 @@
 
 
 
-            <!-- 이미지가 있을 경우 -->
+            <!-- 첨부 파일이  있을 경우 -->
             <c:if test="${!empty detail.attachmentList}">
 
-                <!-- 업로드 파일 영역  -->
-                <h5>업로드 파일</h5>
-                <div class="img-box">
-                    <c:forEach var="i" begin="0" end="${fn:length(detail.attachmentList) -1}">
-                        <div class="boardImg">
-                            <img src="${contextPath}${detail.attachmentList[i].attachmentReName}">
-                            <a href="${contextPath}${detail.attachmentList[i].attachmentReName}" download="${detail.attachmentList[i].attachmentOriginal}">${detail.attachmentList[i].attachmentOriginal} 다운로드</a>
-                        </div>  
-                    </c:forEach>
-                </div>
+                    <!-- 업로드 파일 영역  -->
+                    <h5>업로드 파일</h5> 
+
+                    <div class="file-box">
+                        <c:forEach var="i" begin="0" end="${fn:length(detail.attachmentList) -1}">
+                            <div class="boardFile">
+
+                                <a href="${contextPath}${detail.attachmentList[i].attachmentReName}" 
+                                download="${detail.attachmentList[i].attachmentOriginal}">${detail.attachmentList[i].attachmentOriginal} 다운로드</a>
+
+                            </div>  
+                        </c:forEach>
+                    </div>
 
             </c:if>
 
@@ -97,10 +100,9 @@
                         <!-- 파라미터에 cp가 있을 경우 param.cp -->
                         <c:set var="cp" value="${param.cp}" />
                     </c:if>
-
                                                                     <!-- detail?type=1&cp=3&no=100 -->
                                                                     <!-- detail?no=1522&type=2 -->
-                    <button id="updateBtn" onclick="location.href='write?mode=update&type=${param.type}&cp=${cp}&no=${detail.boardNo}'">수정</button>
+                    <button id="updateBtn" onclick="location.href='write?mode=update&type=${param.type}&projectNo=${param.projectNo}&no=${detail.boardNo}&cp=${cp}'">수정</button>
                     <button id="deleteBtn">삭제</button>
                 </c:if>
 

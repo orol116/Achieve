@@ -61,7 +61,6 @@ public class CheckBoardListServlet extends HttpServlet {
 			
 			req.setAttribute("map", map);
 		
-			
 			dispatcher.forward(req, resp);
 
 		}catch(Exception e){
