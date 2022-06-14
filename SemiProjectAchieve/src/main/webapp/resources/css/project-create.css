@@ -109,7 +109,8 @@ header > section:nth-of-type(2){
     font-size: 20px;
     border: solid 2px black;
     margin: 20px;
-    
+    margin-left: 90px;
+    margin-top: 0;
 
 }
 
@@ -124,7 +125,7 @@ header > section:nth-of-type(2){
 
 
 
-#className{
+#projectName{
     display: flex;
     width: 230px;
     height: 40px;
@@ -162,6 +163,9 @@ select[name="classCategory"]{
     justify-content: center;
     align-items: center;
     margin: 20px;
+    margin-right: 40px;
+    margin-top: 0;
+    
 }
 
 .classPage-right label{
