@@ -97,9 +97,9 @@ public class CheckBoardService {
 		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-//		map.put("memNick", memNick);
-//		map.put("pImage", pImage);
-//		map.put("pagination", pagination);
+		map.put("memNick", memNick);
+		map.put("pImage", pImage);
+		map.put("pagination", pagination);
 		map.put("replyList", replyList);
 		map.put("listReplyCount", listReplyCount);
 		
