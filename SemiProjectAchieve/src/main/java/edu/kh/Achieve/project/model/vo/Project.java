@@ -19,5 +19,6 @@ public class Project {
 	private String openStatus;
 	private String projectIntro;
 	
+	private String projectManagerNickname;
 }
 
