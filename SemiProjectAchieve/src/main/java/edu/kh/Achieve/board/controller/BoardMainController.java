@@ -27,11 +27,9 @@ public class BoardMainController extends HttpServlet {
 			int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 			int cp = 1;
 			
-			
 			if (req.getParameter("cp") != null) cp = Integer.parseInt(req.getParameter("cp"));
 			
 			BoardService service = new BoardService();
-			
 
 			String projectName = service.selectProjectName(projectNo);
 			req.setAttribute("projectName", projectName);

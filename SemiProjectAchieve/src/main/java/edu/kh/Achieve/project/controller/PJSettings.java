@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/project/PJ/create")
+@WebServlet("/project/PJSettings")
 public class PJSettings extends HttpServlet{
 	
 	
@@ -20,15 +20,6 @@ public class PJSettings extends HttpServlet{
 		req.getRequestDispatcher(path).forward(req, resp);
 		
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		
-		
-	}
-	
 	
 
 }

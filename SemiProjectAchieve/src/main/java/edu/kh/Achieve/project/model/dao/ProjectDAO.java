@@ -1,6 +1,7 @@
 package edu.kh.Achieve.project.model.dao;
 
-import static edu.kh.Achieve.common.JDBCTemplate.close;
+import static edu.kh.Achieve.common.JDBCTemplate.*;
+
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
 
 import edu.kh.Achieve.project.model.vo.Project;
 
@@ -48,6 +50,8 @@ public class ProjectDAO {
 		
 		try {
 			String sql = prop.getProperty("createProject");
+			
+			
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -115,6 +119,46 @@ public class ProjectDAO {
 		
 		return result;
 	}
+	
+	
+	
+
+	/** 프로젝트 공개/ 비공개 변경  DAO
+	 * @param conn
+	 * @param openStatus
+	 * @return
+	 * @throws Exception
+	 */
+	public int changeStatus(Connection conn, String openStatus) throws Exception{
+
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("changeStatus");
+			
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, openStatus);
+			
+			result = pstmt.executeUpdate();
+			
+		
+		}finally {
+			
+			close(pstmt);
+			
+			
+		}
+
+		
+
+		return result;
+	}
+	
+	
 
 	public List<Project> searchAll(Connection conn) throws Exception{
 
@@ -146,4 +190,72 @@ public class ProjectDAO {
 		return list;
 	}
 
+  
+	/** 프로젝트 소개 변경 DAO
+	 * @param conn
+	 * @param projecItntro
+	 * @return result
+	 * @throws Exception
+	 */
+	public int IntroEdit(Connection conn, String projectIntro)throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("IntroEdit");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, projectIntro);
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+			
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		
+		
+		
+		return result;
+	}
+
+	public int changePJName(Connection conn, String projectName) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("changePJName");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, projectName);
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+			
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		
+		
+		return result;
+	}
+
+	
+	
+	
+	
+	
+	
 }

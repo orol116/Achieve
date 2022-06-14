@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>project-sql.xml</comment>
+
+
+	<entry key="createProject">
+	INSERT INTO PROJECT
+	VALUES(SEQ_PROJECT_NO.NEXTVAL, ? 
+	, ?, ? , ? , ? , ?)
+	</entry>
+	
+	
+	<entry key="PJDupCheck">
+	SELECT COUNT(*) FROM PROJECT
+	WHERE PROJECT_NM = ?
+	
+	
+	</entry>
+	
+	
+	<entry key="changeStatus">
+	
+	UPDATE PROJECT SET
+	OPEN_ST = ?
+	WHERE PROJECT_NO = 5
+	</entry>
+	
+	<entry key="IntroEdit">
+	UPDATE PROJECT SET
+	PROJECT_INTRO = ?
+	WHERE PROJECT_NO = 5
+	</entry>
+	
+	<entry key="changePJName">
+	UPDATE PROJECT SET
+	PROJECT_NM = ?
+	WHERE PROJECT_NO = 5
+	
+	</entry>
+	
+	
+
+</properties>

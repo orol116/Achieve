@@ -33,7 +33,7 @@ public class ProjectService {
 	}
 
 	
-	/** 프로젝트 이름 중복검사 servlet
+	/** 프로젝트 이름 중복검사 service
 	 * @param projectName
 	 * @return result
 	 * @throws Exception
@@ -66,6 +66,63 @@ public class ProjectService {
 		close(conn);
 		
 		return list;
+    
+  }
+	
+	/** 프로젝트 공개/ 비공개 변경 service
+	 * @param openStatus
+	 * @return result
+	 * @throws Exception
+	 */
+	public int changeStatus(String openStatus)throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.changeStatus(conn,openStatus );
+		
+		if(result > 0) commit(conn);
+		else		   rollback(conn);
+		
+		
+		
+		
+		return result;
+	}
+
+
+	/** 프로젝트 소개 변경 service
+	 * @param projectIntro
+	 * @return result
+	 * @throws Exception
+	 */
+	public int IntroEdit(String projectIntro) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		int result = dao.IntroEdit(conn, projectIntro);
+		
+		if(result > 0) commit(conn);
+		else		   rollback(conn);
+		
+		
+		
+		return result;
+	}
+
+
+	
+	public int changePJName(String projectName) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.changePJName(conn,projectName);
+		
+		if(result > 0) commit(conn);
+		else		   rollback(conn);
+		
+		
+		
+		return result;
 	}
 
 }
