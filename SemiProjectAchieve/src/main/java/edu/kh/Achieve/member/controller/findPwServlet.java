@@ -41,9 +41,9 @@ public class findPwServlet extends HttpServlet {
 
 		try {
 			MemberService service = new MemberService();
-			System.out.println(memberEmail);
-			System.out.println(memberName);
-			System.out.println(memberBirthday);
+//			System.out.println(memberEmail);
+//			System.out.println(memberName);
+//			System.out.println(memberBirthday);
 			
 			int result = service.checkPw(memberEmail, memberName, memberBirthday);
 			System.out.println(result);
@@ -138,13 +138,12 @@ public class findPwServlet extends HttpServlet {
 				// req.getRequestDispatcher(path).forward(req, resp);
 
 				// 이메일 인증번호 생성 서비스 호출 후 결과 반환
-				
-				
-				
+				// 인증번호를 받은 이메일, 인증번호, 인증번호 발급 시간(sysdate) -> db 삽입
+				int certiResult = service.insertCertification(memberEmail, cNumber);
 				
 				// resp.getWriter().print(result);
 				req.getSession().setAttribute("memberEmail", memberEmail);
-				resp.getWriter().print(1);
+				resp.getWriter().print(certiResult);
 
 			} else {
 				resp.getWriter().print(result);
