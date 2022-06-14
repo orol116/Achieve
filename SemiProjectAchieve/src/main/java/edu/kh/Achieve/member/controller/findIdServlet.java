@@ -30,12 +30,11 @@ public class findIdServlet extends HttpServlet{
 		// 파라미터 얻어오기
 		String memberName = req.getParameter("memberName");
 		String memberBirthday = req.getParameter("memberBirthday");
-		System.out.println(memberName);
-		System.out.println(memberBirthday);
+
+		
 		try {
 			MemberService service = new MemberService();
 			List<Member> idList = service.findIdAll(memberName, memberBirthday);
-			System.out.println(idList);
 			
 			new Gson().toJson(idList, resp.getWriter());
 			

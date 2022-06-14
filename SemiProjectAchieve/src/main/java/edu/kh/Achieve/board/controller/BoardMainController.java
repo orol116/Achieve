@@ -32,9 +32,12 @@ public class BoardMainController extends HttpServlet {
 			
 			BoardService service = new BoardService();
 			
+<<<<<<< HEAD
 			String projectName = service.selectProjectName(projectNo);
 			req.setAttribute("projectName", projectName);
 
+=======
+>>>>>>> f4c703a0d5710db0d28d05da218376fe6e530c90
 			List<Board> boardTypeList = service.selectboardTypeList(projectNo);
 			req.setAttribute("boardTypeList", boardTypeList);
 			

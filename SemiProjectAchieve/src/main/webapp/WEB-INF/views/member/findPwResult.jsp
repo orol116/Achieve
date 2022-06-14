@@ -28,31 +28,31 @@
                 <h1 id="find-title">비밀번호 재설정</h1>
                 
 
-
-                <div id="find-container">
-
-                    <div class="find-detail-row" id="memberEmail">
-                        <div>아이디(이메일)</div>            
-                        <input class="find-detail-input" name="memberEmail" type="text" placeholder="user01@achieve.co.kr">
+                <form action="findPwResult" method="post">
+                    <div id="find-container">
+    
+                        <div class="find-detail-row" id="certiChar">
+                            <div>보안문자 입력</div>            
+                            <input class="find-detail-input" name="certiChar" type="text" placeholder="보안문자 8자리">
+                        </div>
+                        
+                        <div class="find-detail-row" id="memberPw">
+                            <div>새로운 비밀번호 입력</div>            
+                            <input class="find-detail-input" name="memberPw" type="password">
+                        </div>
+    
+                        <div class="find-detail-row" id="memberPwCheck">
+                            <div>새로운 비밀번호 확인</div>            
+                            <input class="find-detail-input" name="memberPwCheck" type="password">
+                        </div>
+    
+    
+                        <div class="findPw-button-area">
+                            <button id="setNewPwBtn">비밀번호 재설정</button>
+                        </div>
                     </div>
-                    
-                    <div class="find-detail-row" id="memberName">
-                        <div>이름</div>            
-                        <input class="find-detail-input" name="memberName" type="text" placeholder="유저일">
-                    </div>
 
-                    <div class="find-detail-row" id="memberBirthday">
-                        <div>생년월일</div>            
-                        <input class="find-detail-input" name="memberBirthday" type="text" onkeyup="addHypen(this);" placeholder="1992-11-17 ( - 없이 8자리)">
-                    </div>
-
-
-                    <!-- 비밀번호 찾기는 메일 ajax 통한 메일 발송 -->
-                    <div class="findPw-button-area">
-                        <button id="backToFindIdBtn">뒤로 가기</button>
-                        <button id="sendEmailBtn">인증번호 발송(메일)</button>
-                    </div>
-                </div>
+                </form>
 
 
             </section>

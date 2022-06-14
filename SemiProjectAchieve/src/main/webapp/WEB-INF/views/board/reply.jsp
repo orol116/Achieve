@@ -18,7 +18,7 @@
                         
                         <!-- 프로필 이미지가 있을 경우 -->
                         <c:if test="${!empty reply.profileImage}">
-                            <img src="${contextPath}${reply.profileImage}">
+                            <img src="${contextPath}${reply.profileImage}" style="border-radius: 50%">
                         </c:if>
 
                         <span>${reply.memberNickname}</span>

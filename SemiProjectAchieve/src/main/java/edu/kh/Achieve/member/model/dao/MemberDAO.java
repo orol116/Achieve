@@ -419,6 +419,99 @@ public class MemberDAO {
 	}
 
 
+	/**
+	 * 비밀번호 재설정을 위한 아이디, 이름, 생년월일 일치 확인 DAO
+	 * @param conn
+	 * @param memberEmail
+	 * @param memberName
+	 * @param memberBirthday
+	 * @return result
+	 * @throws Exception
+	 */
+	public int checkPw(Connection conn, String memberEmail, String memberName, String memberBirthday) throws Exception{
+		int result = 0;
+		try {
+			String sql = prop.getProperty("checkPw");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberEmail);
+			pstmt.setString(2, memberName);
+			pstmt.setString(3, memberBirthday);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+	/**
+	 * 일치하는 메일 주소가 있는 경우 인증번호 update DAO
+	 * @param conn
+	 * @param memberEmail
+	 * @param cNumber
+	 * @return certiResult
+	 * @throws Exception
+	 */
+	public int updateCertification(Connection conn, String memberEmail, String cNumber) throws Exception{
+
+		int certiResult = 0;
+		
+		try {
+			String sql = prop.getProperty("updateCertification");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cNumber);
+			pstmt.setString(2, memberEmail);
+			
+			certiResult = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return certiResult;
+	}
+
+
+	/**
+	 * 일치하는 메일 주소가 없는 경우 인증번호 insert DAO
+	 * @param conn
+	 * @param memberEmail
+	 * @param cNumber
+	 * @return
+	 * @throws Exception
+	 */
+	public int insertCertification(Connection conn, String memberEmail, String cNumber) throws Exception {
+		
+		int certiResult = 0;
+		
+		try {
+			String sql = prop.getProperty("insertCertification");
+			
+	         pstmt = conn.prepareStatement(sql);
+	         
+	         pstmt.setString(1, memberEmail);
+	         pstmt.setString(2, cNumber);
+	         
+	         certiResult = pstmt.executeUpdate();
+
+		}finally {
+			
+			close(pstmt);
+		}
+		
+		return certiResult;
+	}
+
+
 
 	
 	

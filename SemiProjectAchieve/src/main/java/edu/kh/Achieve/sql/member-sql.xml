@@ -85,6 +85,15 @@
 		AND SECESSION_FL = 'N'
 	</entry>
 	
+	<entry key="checkPw">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = ?
+		AND MEMBER_NM = ?
+		AND TO_CHAR(MEMBER_BIRTH, 'YYYY-MM-DD') = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
 	<!-- 내가 참여중인 프로젝트 조회 -->
 	<entry key="selectMyJoinProject">
 		SELECT PROJECT.PROJECT_NO , PROJECT_NM
@@ -93,5 +102,18 @@
 		WHERE PROJECT.MEMBER_NO = ?
 	</entry>
 	
+	
+	<!-- 인증번호 update -->
+	<entry key="updateCertification">
+		UPDATE CERTIFICATION SET 
+		C_NUMBER = ?,
+		ISSUE_DT = SYSDATE
+		WHERE EMAIL = ?
+	</entry>
+	
+	<!-- 인증번호 INSERT -->
+	<entry key="insertCertification">
+		INSERT INTO CERTIFICATION VALUES(?,?,SYSDATE)
+	</entry>
 
 </properties>
