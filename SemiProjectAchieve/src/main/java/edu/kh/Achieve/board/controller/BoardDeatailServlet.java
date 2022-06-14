@@ -47,9 +47,18 @@ public class BoardDeatailServlet extends HttpServlet{
 			
 			dispathcer.forward(req, resp);
 			
+		
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+	}
+	
+	
 }
