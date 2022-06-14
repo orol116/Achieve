@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.kh.Achieve.board.model.service.BoardService;
 import edu.kh.Achieve.board.model.service.ReplyService;
@@ -25,7 +26,7 @@ public class BoardDeatailServlet extends HttpServlet{
 //			파라미터 중 게시글 번호(no) 얻어오기
 			int boardNo = Integer.parseInt(req.getParameter("no"));
 			int projectNo = 1;
-//					Integer.parseInt(req.getParameter("projectNo"));
+//			Integer.parseInt(req.getParameter("projectNo"));
 			
 			BoardService  service = new BoardService();
 
@@ -54,11 +55,6 @@ public class BoardDeatailServlet extends HttpServlet{
 		
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-	}
 	
 	
 }
