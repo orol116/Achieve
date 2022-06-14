@@ -69,8 +69,15 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-		<!--  특정 게시판에서 조건을 만족하는 게시글 수 조회 -->
-	<entry key="searchListCount">
+	<!--  특정 게시판에서 조건을 만족하는 게시글 수 조회 -->
+	<entry key="searchListCount1">
+		SELECT COUNT(*) FROM BOARD 
+		JOIN MEMBER USING(MEMBER_NO)
+		WHERE BOARD_ST = 'N'
+		AND PROJECT_NO = ?
+	</entry>
+	
+	<entry key="searchListCount2">
 		SELECT COUNT(*) FROM BOARD 
 		JOIN MEMBER USING(MEMBER_NO)
 		WHERE BOARD_ST = 'N'
@@ -87,12 +94,24 @@
 		         READ_COUNT 
 		      FROM BOARD
 		      JOIN MEMBER USING(MEMBER_NO)
+		      WHERE BOARD_ST = 'N'
+		      AND PROJECT_NO = ?
+	</entry>
+	
+	<entry key="searchBoardList2">
+		SELECT * FROM(
+		   SELECT ROWNUM RNUM, A.* FROM(
+		      SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICK, 
+		         TO_CHAR( CREATE_DT, 'YYYY-MM-DD' ) AS CREATE_DT, 
+		         READ_COUNT 
+		      FROM BOARD
+		      JOIN MEMBER USING(MEMBER_NO)
 		      WHERE BOARD_CD = ?
 		      AND BOARD_ST = 'N'
 		      AND PROJECT_NO = ?
 	</entry>
 	
-	<entry key="searchBoardList2">
+	<entry key="searchBoardList3">
 	      ORDER BY BOARD_NO DESC
 		   ) A
 		)
