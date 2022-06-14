@@ -5,7 +5,6 @@
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="boardList" value="${map.boardList}" />
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,10 +31,10 @@
             <section class="myPage-sideMenu">
                 <div id="sideMenu-list">
 
-                    <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1">000 프로젝트</a></div>
+                    <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1&projectNo=${param.projectNo}">${projectName}</a></div>
 
                     <c:forEach var="boardType" items="${boardTypeList}">
-                        <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}">${boardType.boardName}</a></div>
+                        <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}&projectNo=${param.projectNo}">${boardType.boardName}</a></div>
                     </c:forEach>
 
                     <br>
@@ -62,7 +61,7 @@
 
                     <div class="btn-area">
                         <c:if test="${param.type != 1}">
-                            <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&cp=${param.cp}'">글쓰기</button>
+                            <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&projectNo=${param.projectNo}&cp=${param.cp}'">글쓰기</button>
                         </c:if>
                     </div>
 
@@ -107,7 +106,7 @@
 
                     <div class="pagination-area">
 
-                        <c:set var="url" value="main?type=${param.type}&cp="/>
+                        <c:set var="url" value="main?type=${param.type}&projectNo=${param.projectNo}&cp="/>
 
                         <ul class="pagination">
 
@@ -140,6 +139,7 @@
     
                 <form action="#" method="get" id="boardSearch">
                     <input type="hidden" name="type" value="${param.type}">
+                    <input type="hidden" name="projectNo" value="${param.projectNo}">
     
                     <select name="key" id="search-key">
                         <option value="t">제목</option>

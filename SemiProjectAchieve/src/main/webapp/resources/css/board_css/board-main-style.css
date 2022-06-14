@@ -180,10 +180,12 @@
 }
 
 
-.project-main{
-    font-size: 20px;
-}
 
 #sideMenu-list{
     margin-top: 40px;
+    width: 100%;
+}
+
+.project-main{
+    font-size: 20px;
 }

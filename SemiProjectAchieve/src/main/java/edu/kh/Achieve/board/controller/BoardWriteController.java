@@ -29,6 +29,7 @@ public class BoardWriteController extends HttpServlet {
 		
 		try {
 
+			int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 			String mode = req.getParameter("mode"); // insert mode / update mode 구분
 			
 			// insert는 별도 처리 없이 jsp로 위임만 하면 된다.
@@ -40,7 +41,7 @@ public class BoardWriteController extends HttpServlet {
 				
 				// 게시글 상세 조회 서비스를 이용해서 기존 내용 조회
 				// new BoardService() : 객체를 생성해서 변수에 저장을 안한 상태 -> 1회성 사용하겠다는 의미!
-				BoardDetail detail = new BoardService().selectBoardDetail(boardNo);
+				BoardDetail detail = new BoardService().selectBoardDetail(boardNo, projectNo);
 				
 				// 개행 문자처리 해제(<br> -> \n)
 				detail.setBoardContent(detail.getBoardContent().replaceAll("<br>", "\n"));
@@ -51,7 +52,7 @@ public class BoardWriteController extends HttpServlet {
 			
 			String path = "/WEB-INF/views/board/board-write.jsp";
 			
-			List<Board> boardTypeList = new BoardService().selectboardTypeList();
+			List<Board> boardTypeList = new BoardService().selectboardTypeList(projectNo);
 			req.setAttribute("boardTypeList", boardTypeList);
 			
 			
@@ -69,6 +70,7 @@ public class BoardWriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		try {
+
 			int maxSize = 1024 * 1024 * 500; // 500MB 제한 (수정 가능)
 			
 			HttpSession session = req.getSession();
@@ -106,6 +108,8 @@ public class BoardWriteController extends HttpServlet {
 			String boardTitle = mpReq.getParameter("boardTitle");
 			String boardContent = mpReq.getParameter("boardContent");
 			int boardCode = Integer.parseInt(mpReq.getParameter("board-type"));
+			int projectNo = Integer.parseInt(mpReq.getParameter("projectNo"));
+			session.setAttribute("projectNo", projectNo);
 			
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			int memberNo = loginMember.getMemberNo();
@@ -121,7 +125,7 @@ public class BoardWriteController extends HttpServlet {
 			
 			if (mode.equals("insert")) { // 삽입
 				
-				int boardNo = service.insertBoard(detail, boardAttachmentList, boardCode);
+				int boardNo = service.insertBoard(detail, boardAttachmentList, boardCode, projectNo);
 				String path = null;
 				
 				if (boardNo > 0) {
@@ -130,7 +134,7 @@ public class BoardWriteController extends HttpServlet {
 					
 				} else {
 					session.setAttribute("message", "게시글 등록 실패");
-					path = "write?mode=" + mode + "&type=" + boardCode;
+					path = "write?mode=" + mode + "&type=" + boardCode + "&projectNo=" + projectNo;
 				}
 				
 				resp.sendRedirect(path);
