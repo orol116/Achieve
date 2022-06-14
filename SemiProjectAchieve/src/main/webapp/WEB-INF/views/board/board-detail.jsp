@@ -57,47 +57,17 @@
 
             <!-- 이미지가 있을 경우 -->
             <c:if test="${!empty detail.attachmentList}">
-                
-                <!-- 썸네일이 있을 경우 변수 생성 -->
-                <c:if test="${detail.attachmentList[0].attachmentLevel == 0}">
-                    <c:set var="thumbnail" value="${detail.attachmentList[0]}" />
-                    <!-- page scope : 페이지 어디서든 사용 가능 -->
-                </c:if>
 
-                <!-- 썸네일 영역 (썸네일이 있을 경우) -->
-                <c:if test="${!empty thumbnail}">
-                    <h5>썸네일</h5>
-                    <div class="img-box">
-                        <div class="boardImg thumbnail">
-                            <img src="${contextPath}${thumbnail.attachmentReName}">
-                            <a href="${contextPath}${thumbnail.attachmentReName}" download="${thumbnail.attachmentOriginal}">다운로드</a>
-                        </div>
-                    </div>
-                </c:if>
-
-                <c:if test="${empty thumbnail}">
-                    <!-- 썸네일이 없을 경우 -->
-                    <c:set var="start" value="0" />
-                </c:if>
-
-                <c:if test="${!empty thumbnail}">
-                    <!-- 썸네일이 있을 경우 -->
-                    <c:set var="start" value="1" />
-                </c:if>
-
-                <!-- 이미지가 있는 경우 -->
-                <c:if test="${fn:length(detail.attachmentList) > start}">
-                    <!-- 업로드 이미지 영역  -->
-                    <h5>업로드 이미지</h5>
-                    <div class="img-box">
-                        <c:forEach var="i" begin="${start}" end="${fn:length(detail.attachmentList) -1}">
-                            <div class="boardImg">
-                                <img src="${contextPath}${detail.attachmentList[i].attachmentReName}">
-                                <a href="${contextPath}${detail.attachmentList[i].attachmentReName}" download="${detail.attachmentList[i].attachmentOriginal}">다운로드</a>
-                            </div>  
-                        </c:forEach>
-                    </div>
-                </c:if>
+                <!-- 업로드 파일 영역  -->
+                <h5>업로드 파일</h5>
+                <div class="img-box">
+                    <c:forEach var="i" begin="0" end="${fn:length(detail.attachmentList) -1}">
+                        <div class="boardImg">
+                            <img src="${contextPath}${detail.attachmentList[i].attachmentReName}">
+                            <a href="${contextPath}${detail.attachmentList[i].attachmentReName}" download="${detail.attachmentList[i].attachmentOriginal}">${detail.attachmentList[i].attachmentOriginal} 다운로드</a>
+                        </div>  
+                    </c:forEach>
+                </div>
 
             </c:if>
 
@@ -168,11 +138,11 @@
         // 로그인 한 회원 번호
         const loginMemberNo = "${loginMember.memberNo}"; // 로그인 안 되어있으면 ""; 빈 문자열 반환
         
-        </script>
+    </script>
+
 
 
     <script src="${contextPath}/resources/js/board/board.js"></script>
-
     
     <script src="${contextPath}/resources/js/board/reply.js"></script>
 
