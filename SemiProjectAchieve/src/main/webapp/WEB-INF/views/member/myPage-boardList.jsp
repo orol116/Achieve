@@ -158,7 +158,7 @@
                                                 <!-- 향상된 for문 처럼 사용 -->
                                                 <c:forEach var ="board" items="${boardList}">
                                                     <tr>
-                                                        <td><input type="checkbox" id="myCheckbox" name="chooseBoard"></td>
+                                                        <td><input type="checkbox" name="chooseBoard"></td>
                                                         <td>${board.boardNo}</td>
                                                         <td><a href="#">${board.boardTitle}</a></td>
                                                         <td>${board.createDate}</td>
@@ -190,13 +190,11 @@
                                                 </c:when>
 
                                                 <c:otherwise>
-                                                <!-- 작성글 목록 조회 결과가 비어있지않다면 -->
+                                                <!-- 작성댓글 목록 조회 결과가 비어있지않다면 -->
                                                     <!-- 향상된 for문 처럼 사용 -->
                                                     <c:forEach var ="reply" items="${replyList}">
                                                         <tr>
-                                                            <td class="list-chkbox">
-                                                                <input type="checkbox" id="myCheckbox" name="chooseReply">
-                                                            </td>
+                                                            <td class="list-chkbox"><input type="checkbox" name="chooseReply"></td>
                                                             
                                                             <td id="reply-list-part">
                                                                 <a href="#" >
@@ -208,33 +206,35 @@
                                                                         <div class="comment_title">${board.boardTitle}</div>
                                                                     </c:forEach>
                                                                 </a>
-                                                            </td>
-                                                        </tr>
-                                                    
+                                                                </td>
+                                                            </tr>
+                                                            <div class="btn-area">
+                                                                <div id="checkAll">
+                                                                    <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
+                                                                </div>
+                                                                <div>
+                                                                <a class="insertBtn" id="deleteBtn">삭제</a>
+                                                                <c:choose>
+                                                                    <c:when test="${param.type==1}">
+                                                                        <a class="insertBtn" href="#">글쓰기</a>
+                                                                    </c:when>
+                                                                </c:choose>
+                                                                </div>
+                                                            </div>
                                                 </c:otherwise>
                                             </c:choose>
-
+                                        
+                                        </tbody>
                                     </c:otherwise>
-                                </c:choose>
-                            </form>
-                        </tbody>
+                            </c:choose>
+                        </form>
+                            
+                        
                     </table>
     
                 </div>
     
-                <div class="btn-area">
-                    <div id="checkAll">
-                        <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
-                    </div>
-                    <div>
-                    <a class="insertBtn" id="deleteBtn">삭제</a>
-                    <c:choose>
-                        <c:when test="${param.type==1}">
-                            <a class="insertBtn" href="${contextPath}/board/write?mode=insert&type=3&projectno=1&cp=">글쓰기</a>
-                        </c:when>
-                    </c:choose>
-                    </div>
-                </div>
+                
     
                 <div class="pagination-area">
 
