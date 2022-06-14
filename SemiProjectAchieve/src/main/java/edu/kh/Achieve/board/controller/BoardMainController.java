@@ -27,23 +27,27 @@ public class BoardMainController extends HttpServlet {
 			int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 			int cp = 1;
 			
+			
 			if (req.getParameter("cp") != null) cp = Integer.parseInt(req.getParameter("cp"));
 			
 			BoardService service = new BoardService();
 			
-			List<Board> boardTypeList = service.selectboardTypeList();
+			String projectName = service.selectProjectName(projectNo);
+			req.setAttribute("projectName", projectName);
+
+			List<Board> boardTypeList = service.selectboardTypeList(projectNo);
 			req.setAttribute("boardTypeList", boardTypeList);
 			
 			
 			Map<String, Object> map = null;
 			
 			if (req.getParameter("key") == null) {
-				map = service.selectBoardMain(type, cp);
+				map = service.selectBoardMain(type, cp, projectNo);
 			} else {
 				String key = req.getParameter("key");
 				String query = req.getParameter("query");
 				
-				map = service.searchBoardList(type, cp, key, query);
+				map = service.searchBoardList(type, cp, key, query, projectNo);
 			}
 			
 			req.setAttribute("map", map);

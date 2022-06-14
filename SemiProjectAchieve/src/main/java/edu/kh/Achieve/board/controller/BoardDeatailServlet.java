@@ -24,10 +24,12 @@ public class BoardDeatailServlet extends HttpServlet{
 		try {
 //			파라미터 중 게시글 번호(no) 얻어오기
 			int boardNo = Integer.parseInt(req.getParameter("no"));
+			int projectNo = 1;
+//					Integer.parseInt(req.getParameter("projectNo"));
 			
 			BoardService  service = new BoardService();
 
-			BoardDetail detail = service.selectBoardDetail(boardNo);
+			BoardDetail detail = service.selectBoardDetail(boardNo, projectNo);
 			
 			System.out.println(boardNo);
 			
@@ -45,7 +47,7 @@ public class BoardDeatailServlet extends HttpServlet{
 			
 			dispathcer.forward(req, resp);
 			
-		}catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		

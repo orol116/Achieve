@@ -45,7 +45,7 @@ public class BoardDAO {
 	 * @return boardName
 	 * @throws Exception
 	 */
-	public String selectBoardName(Connection conn, int type) throws Exception {
+	public String selectBoardName(Connection conn, int type, int projectNo) throws Exception {
 		
 		String boardName = null;
 		
@@ -54,6 +54,7 @@ public class BoardDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, type);
+			pstmt.setInt(2, projectNo);
 			
 			rs = pstmt.executeQuery();
 			
@@ -73,15 +74,17 @@ public class BoardDAO {
 	 * @return listCount
 	 * @throws Exception
 	 */
-	public int getNewListCount(Connection conn) throws Exception {
+	public int getNewListCount(Connection conn, int projectNo) throws Exception {
 		
 		int listCount = 0;
 		
 		try {
 			String sql = prop.getProperty("selectNewListCount");
 			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
 			
 			if (rs.next()) listCount = rs.getInt(1);
 			
@@ -99,7 +102,7 @@ public class BoardDAO {
 	 * @return listCount
 	 * @throws Exception
 	 */
-	public int getListCount(Connection conn, int type) throws Exception {
+	public int getListCount(Connection conn, int type, int projectNo) throws Exception {
 		
 		int listCount = 0;
 		
@@ -108,6 +111,7 @@ public class BoardDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, type);
+			pstmt.setInt(2, projectNo);
 			
 			rs = pstmt.executeQuery();
 			
@@ -128,7 +132,7 @@ public class BoardDAO {
 	 * @return boardList
 	 * @throws Exception
 	 */
-	public List<Board> selectBoardMainList(Connection conn, Pagination pagination) throws Exception {
+	public List<Board> selectBoardMainList(Connection conn, Pagination pagination, int projectNo) throws Exception {
 
 		List<Board> boardList = new ArrayList<Board>();
 		
@@ -140,8 +144,9 @@ public class BoardDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(1, projectNo);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -174,7 +179,7 @@ public class BoardDAO {
 	 * @return boardList
 	 * @throws Exception
 	 */
-	public List<Board> selectBoardMain(Connection conn, Pagination pagination, int type) throws Exception {
+	public List<Board> selectBoardMain(Connection conn, Pagination pagination, int type, int projectNo) throws Exception {
 		
 		List<Board> boardList = new ArrayList<Board>();
 		
@@ -187,8 +192,9 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, type);
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
+			pstmt.setInt(2, projectNo);
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -221,7 +227,7 @@ public class BoardDAO {
 	 * @return listCount
 	 * @throws Exception
 	 */
-	public int searchListCount(Connection conn, int type, String condition) throws Exception {
+	public int searchListCount(Connection conn, int type, String condition, int projectNo) throws Exception {
 
 		int listCount = 0;
 		
@@ -230,6 +236,7 @@ public class BoardDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, type);
+			pstmt.setInt(2, projectNo);
 			
 			rs = pstmt.executeQuery();
 			
@@ -253,7 +260,7 @@ public class BoardDAO {
 	 * @return boardList
 	 * @throws Exception
 	 */
-	public List<Board> searchBoardList(Connection conn, Pagination pagination, int type, String condition) throws Exception {
+	public List<Board> searchBoardList(Connection conn, Pagination pagination, int type, String condition, int projectNo) throws Exception {
 
 		List<Board> boardList = new ArrayList<Board>();
 		
@@ -269,8 +276,9 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, type);
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
+			pstmt.setInt(2, projectNo);
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -329,7 +337,7 @@ public class BoardDAO {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int insertBoard(Connection conn, BoardDetail detail, int boardCode) throws Exception {
+	public int insertBoard(Connection conn, BoardDetail detail, int boardCode, int projectNo) throws Exception {
 		
 		int result = 0;
 		
@@ -342,6 +350,7 @@ public class BoardDAO {
 			pstmt.setString(3, detail.getBoardContent());
 			pstmt.setInt(4, detail.getMemberNo());
 			pstmt.setInt(5, boardCode);
+			pstmt.setInt(6, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -358,7 +367,7 @@ public class BoardDAO {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int insertBoardAttachment(Connection conn, BoardAttachment attachmentt) throws Exception {
+	public int insertBoardAttachment(Connection conn, BoardAttachment attachmentt, int projectNo) throws Exception {
 
 		int result = 0;
 		
@@ -370,6 +379,7 @@ public class BoardDAO {
 			pstmt.setString(2, attachmentt.getAttachmentOriginal());
 			pstmt.setInt(3, attachmentt.getAttachmentLevel());
 			pstmt.setInt(4, attachmentt.getBoardNo());
+			pstmt.setInt(5, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -385,15 +395,17 @@ public class BoardDAO {
 	 * @return boardTypeList
 	 * @throws Exception
 	 */
-	public List<Board> selectboardType(Connection conn, Project projectNo) throws Exception {
+	public List<Board> selectboardType(Connection conn, int projectNo) throws Exception {
 
 		List<Board> boardType = new ArrayList<Board>();
 		
 		try {
 			String sql = prop.getProperty("selectboardTypeList");
 			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				
@@ -436,7 +448,7 @@ public class BoardDAO {
 		return result;
 	}
 
-	public BoardDetail selectBoarDetail(Connection conn, int boardNo) throws Exception{
+	public BoardDetail selectBoarDetail(Connection conn, int boardNo, int projectNo) throws Exception{
 		
 		BoardDetail detail = null;
 		
@@ -447,6 +459,7 @@ public class BoardDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, projectNo);
 			rs=pstmt.executeQuery()	;
 			
 			if(rs.next()) {
@@ -505,6 +518,35 @@ public class BoardDAO {
 		}
 		
 		return attachmentList;
+	}
+
+	/** 프로젝트 이름 조회 DAO
+	 * @param conn
+	 * @param projectNo
+	 * @return projectName
+	 * @throws Exception
+	 */
+	public String selectProjectName(Connection conn, int projectNo) throws Exception {
+		
+		String projectName = null;
+		
+		try {
+			String sql = prop.getProperty("selectProjectName");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) projectName = rs.getString(1);
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return projectName;
+
 	}
 	
 

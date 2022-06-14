@@ -138,7 +138,6 @@ function writeValidate(){
             document.getElementById("img0").value = "";
             document.getElementById("attachName").innerText = "";
             document.getElementById("attachSize").innerText = "";
-            //deleteSet.add(i);
         }
 
     })
