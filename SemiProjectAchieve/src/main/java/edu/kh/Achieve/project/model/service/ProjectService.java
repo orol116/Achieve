@@ -3,6 +3,7 @@ package edu.kh.Achieve.project.model.service;
 import static edu.kh.Achieve.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 import edu.kh.Achieve.project.model.dao.ProjectDAO;
 import edu.kh.Achieve.project.model.vo.Project;
@@ -50,6 +51,21 @@ public class ProjectService {
 		
 		
 		return result;
+	}
+
+
+	/** 프로젝트 검색 조회 페이지 Service
+	 * @return
+	 */
+	public List<Project> searchAll() throws Exception{
+		
+		Connection conn = getConnection();
+		
+		List<Project> list = dao.searchAll(conn);
+		
+		close(conn);
+		
+		return list;
 	}
 
 }

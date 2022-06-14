@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import edu.kh.Achieve.project.model.vo.Project;
@@ -112,6 +114,36 @@ public class ProjectDAO {
 		
 		
 		return result;
+	}
+
+	public List<Project> searchAll(Connection conn) throws Exception{
+
+		List<Project> list = new ArrayList<Project>();
+		
+		try {
+			String sql = prop.getProperty("searchAll");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while( rs.next() ) {
+				Project pro = new Project();
+				
+				pro.setProjectName(rs.getString(1) );
+				pro.setProjectManager(rs.getInt(2)); //매니저 번호
+				pro.setProjectQuota(rs.getString(3)); //정원
+				pro.setProjectIntro(rs.getString(4));
+				
+				
+				list.add(pro); // 리스트 추가
+			}
+			
+		}finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return list;
 	}
 
 }

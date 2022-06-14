@@ -51,3 +51,10 @@
 .notice-list *{
     margin-right: 5px;
 }
+
+/* 알림없음 중앙정렬 */
+#noNote{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
