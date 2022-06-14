@@ -160,6 +160,12 @@ public class ProjectDAO {
 	
 	
 
+	/**
+	 * 프로젝트 전체 가져오기
+	 * @param conn
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Project> searchAll(Connection conn) throws Exception{
 
 		List<Project> list = new ArrayList<Project>();
@@ -174,7 +180,7 @@ public class ProjectDAO {
 				Project pro = new Project();
 				
 				pro.setProjectName(rs.getString(1) );
-				pro.setProjectManager(rs.getInt(2)); //매니저 번호
+				pro.setProjectManagerNickname(rs.getString(2)); //관리자 닉네임
 				pro.setProjectQuota(rs.getString(3)); //정원
 				pro.setProjectIntro(rs.getString(4));
 				
