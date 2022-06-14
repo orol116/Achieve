@@ -137,6 +137,7 @@ public class BoardDAO {
 		List<Board> boardList = new ArrayList<Board>();
 		
 		try {
+
 			String sql = prop.getProperty("selectBoardMainList");
 			
 			int start = (pagination.getCurrentPage() - 1) * pagination.getLimit() + 1;
@@ -232,11 +233,23 @@ public class BoardDAO {
 		int listCount = 0;
 		
 		try {
-			String sql = prop.getProperty("searchListCount") + condition;
 			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, type);
-			pstmt.setInt(2, projectNo);
+			String sql = null;
+			
+			
+			if (type == 1) {
+				sql = prop.getProperty("searchListCount1") + condition;
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, projectNo);
+				
+			} else {
+				sql = prop.getProperty("searchListCount2") + condition;
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, type);
+				pstmt.setInt(2, projectNo);
+			}	
 			
 			rs = pstmt.executeQuery();
 			
@@ -266,20 +279,33 @@ public class BoardDAO {
 		
 		try {
 			
-			String sql = prop.getProperty("searchBoardList1")
-					+ condition
-					+ prop.getProperty("searchBoardList2");
+			String sql = null;
 			
 			int start = (pagination.getCurrentPage() - 1) * pagination.getLimit() + 1;
 			int end   = start + pagination.getLimit() - 1;
 			
-			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, type);
-			pstmt.setInt(2, projectNo);
-			pstmt.setInt(3, start);
-			pstmt.setInt(4, end);
-			
+			if (type == 1) {
+				sql = prop.getProperty("searchBoardList1")
+						+ condition
+						+ prop.getProperty("searchBoardList3");
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, projectNo);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+				
+			} else {
+				sql = prop.getProperty("searchBoardList2")
+						+ condition
+						+ prop.getProperty("searchBoardList3");
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, type);
+				pstmt.setInt(2, projectNo);
+				pstmt.setInt(3, start);
+				pstmt.setInt(4, end);
+			}
+
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
