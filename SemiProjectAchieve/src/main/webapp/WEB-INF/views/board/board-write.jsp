@@ -71,7 +71,6 @@
                         <button type="button" id="goToListBtn">목록으로</button>
                     </div>
 
-                    say hello
                 </div>
 
                 <!-- 숨겨진 값(hidden) -->
