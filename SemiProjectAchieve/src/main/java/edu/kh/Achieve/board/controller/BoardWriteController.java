@@ -43,6 +43,7 @@ public class BoardWriteController extends HttpServlet {
 				// new BoardService() : 객체를 생성해서 변수에 저장을 안한 상태 -> 1회성 사용하겠다는 의미!
 				BoardDetail detail = new BoardService().selectBoardDetail(boardNo, projectNo);
 				
+				System.out.println(detail);
 				// 개행 문자처리 해제(<br> -> \n)
 				detail.setBoardContent(detail.getBoardContent().replaceAll("<br>", "\n"));
 				
