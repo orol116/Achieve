@@ -5,8 +5,8 @@ body{margin:0;} /* body태그가 가지고있는 기본 마진 제거 */
 
 /* 마이페이지 영역 */
 .myPage-content{
-    width: 1000px;
-    height: 900px;
+    width: auto;
+    height: auto;
     margin: 50px auto;
 
     display: flex;
@@ -14,7 +14,7 @@ body{margin:0;} /* body태그가 가지고있는 기본 마진 제거 */
 
 /* 왼쪽 사이드 메뉴 */
 .left-side{
-    width: 20%;
+    width: 25%;
 }
 .left-side>h1{
     padding-left: 40px;
@@ -102,107 +102,6 @@ body{margin:0;} /* body태그가 가지고있는 기본 마진 제거 */
     background-color: #f2f2f2;
 }
 
-
-main{
-   width:  1140px;
-   margin: auto;
-}
-
-/* header */
-header{
-    height: 75px;
-    display: flex; /* flex 형식으로 변경 -> 내부 요소를 유연하게 정렬/배치 */
-    position: sticky;
-    top:0; /* 최상단에 붙임 */
-    border-bottom: 1px solid lightgray;
-    background-color: white;
-}
-header>section:nth-child(1){
-   flex-basis: 20%;
-
-}
-header>section:nth-child(2){
-    flex-basis: 60%;
-}
-header>section:nth-child(3){
-    flex-basis: 20%;
-    margin: 20px;
-    
-}
-
-header>section>*{
-    display: inline-block;
-    align-items: center;
-}
-
-#fav-logo{width: 30px; }
-#note-logo{width: 30px; margin: 0;}
-
-
-/* 로고 */
-header>section:nth-of-type(1){
-    display: flex;
-
-}
-header>section>div>*{
-    display: inline-block;
- 
-    text-decoration: none;
-    color: black;
-    padding: 5px;
-}
-
-#home-logo{
-    width: 70px;
-    margin-left: 7em;
-  
-    /* 이미지는 width/height 둘 중 하나만 지정 시
-    나머지 방향의 크기가 같은 비율로 지정됨 */
-}
-
-/* header 스타일 */
-header>section:nth-of-type(2){
-    font-size: 20px;
-    border: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    letter-spacing: -2px;
-
-}
-
 #profile-logo{
     width: 70px;
 }
-.team_name{
-    width: 500px;
-    padding: 2px;
-    border-radius: 5px;
-    display: flex;
-}
-
-
-
-  /* footer 스타일 */
-footer{
-    height: 150px;
-    background-color: rgb(224, 224, 224);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-footer>article>*{
- font-size:15px;
-}
-footer>pre{
-    font-size: 12px;
-    color:black;
-
-}
-footer a{
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-}
-

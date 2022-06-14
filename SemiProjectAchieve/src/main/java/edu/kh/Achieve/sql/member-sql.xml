@@ -115,5 +115,23 @@
 	<entry key="insertCertification">
 		INSERT INTO CERTIFICATION VALUES(?,?,SYSDATE)
 	</entry>
-
+	
+	<!-- 인증번호 일치여부 확인 -->
+	<entry key="checkCerti">
+		SELECT COUNT(*) FROM CERTIFICATION
+		WHERE EMAIL = ?
+		AND C_NUMBER = ?
+	</entry>
+	
+	<!-- 비밀번호 재설정 -->
+	<entry key="resetPw">
+		UPDATE MEMBER SET 
+		MEMBER_PW = ?
+		WHERE MEMBER_EMAIL = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
+	
+	
+	
 </properties>
