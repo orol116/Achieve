@@ -17,7 +17,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>작성글</title>
+
+    <!-- 헤더 푸터 -->
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+
+    <!-- 사이드바 -->
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
+
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-inquire-main.css">
+
+    <!-- 사이드바 아이콘 사용을 위한 링크 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
 
     <c:choose>
         <c:when test="${param.type==1}">
@@ -29,53 +40,22 @@
         </c:otherwise>
     </c:choose>
 </head>    
+
 <body>
     <main>
 
-        <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
-        <header>
-            <!-- 클릭 시 메인페이지로 이동하는 로고 -->
-            <section>
-                <a href="${contextPath}">
-                    <img src="${contextPath}/resources/images/Achieve_logo.png" id="home-logo">
-                </a>
-            </section>
+         <!-- header -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-            <section>
-                <!-- form 내부 input태그 값을 서버 또는 페이지로 전달 -->
-                <div id="team_name">팀 프로젝트 명</div>
-            </section>
 
-            <section>
-                <div>
-                    <a href="#">
-                        <img src="${contextPath}/resources/images/favorit.png" id="fav-logo">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="${contextPath}/resources/images/note.png" id="note-logo">
-                    </a>
-                </div>
-            </section>
-    
-        </header>
+
+
         <!-- 마이페이지- 내정보 -->
         <section class="myPage-content">
+
             <!-- 왼쪽 사이드 메뉴 -->
-        
-            <section class="left-side">
-                <h1>마이페이지</h1>
+            <jsp:include page="/WEB-INF/views/member/sideMenu.jsp" />
 
-                <ul class="list-group">
-                    <li> <a href="${contextPath}/member/myPage/profile">회원정보 수정 </a> </li>
-                    <li> <a href="${contextPath}/member/myPage/changePw">비밀번호 변경 </a> </li>
-                    <li> <a href="${contextPath}/member/List?memNo=${param.memNo}&type=1">내가 쓴 글 보기 </a> </li>
-                    <li> <a href="${contextPath}/member/List?memNo=${param.memNo}&type=2">내가 쓴 댓글 보기 </a> </li>
-                    <li> <a href="${contextPath}/member/myPage/secession">회원 탈퇴 </a> </li>
-                </ul>
-
-            </section>
             
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
             <section class="myPage-main">
@@ -273,22 +253,9 @@
 
     </main>
 
-    <footer>
-       
-       <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
-        <article>
-            <a href="#">FAQ</a>
-            <span>|</span>
-            <a href="#">1:1문의</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보취급방침</a>
-        </article>
-         <pre>서울특별시 중구 남대문로 120 대일빌딩 A강의장</pre>
-         <pre>KH A-class 개발2팀</pre>
-        
-    </footer>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
 
 
 <script>
@@ -301,6 +268,10 @@
     
 
 
+<<<<<<< HEAD
+    <script src="${contextPath}/resources/js/member/myPage-post.js"></script>
+=======
     <script src="${contextPath}/resources/js/member/myPage-boardList.js""></script>
+>>>>>>> origin/main
 </body>
 </html>
