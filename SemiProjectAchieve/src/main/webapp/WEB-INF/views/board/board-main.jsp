@@ -34,7 +34,7 @@
                     <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1&projectNo=${param.projectNo}">${projectName}</a></div>
 
                     <c:forEach var="boardType" items="${boardTypeList}">
-                        <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}&projectNo=${param.projectNo}">${boardType.boardName}</a></div>
+                        <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}&projectNo=${param.projectNo}&cp=1">${boardType.boardName}</a></div>
                     </c:forEach>
 
                     <br>
@@ -90,7 +90,9 @@
                                         <c:forEach var="board" items="${boardList}">
                                             <tr>
                                                 <td>${board.boardNo}</td>
-                                                <td>${board.boardTitle}</td>
+                                                <td>
+                                                    <a href="detail?no=${board.boardNo}&cp=${pagination.currentPage}&type=${param.type}&projectNo=${param.projectNo}${sURL}">${board.boardTitle}</a>
+                                                </td>
                                                 <td>${board.memberNickname}</td>
                                                 <td>${board.createDate}</td>
                                                 <td>${board.readCount}</td>

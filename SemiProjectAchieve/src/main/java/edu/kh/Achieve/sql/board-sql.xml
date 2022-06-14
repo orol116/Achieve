@@ -14,10 +14,8 @@
 	<entry key="selectboardTypeList">
 		SELECT BOARD_NM,BOARD_CD 
 		FROM BOARD_TYPE
-<<<<<<< HEAD
 		WHERE PROJECT_NO = ?
-=======
->>>>>>> f4c703a0d5710db0d28d05da218376fe6e530c90
+
 		ORDER BY BOARD_CD
 	</entry>
 	

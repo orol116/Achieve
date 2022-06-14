@@ -169,7 +169,7 @@
                             <c:forEach var="project" items="${projectList}">
                                 <div class="project-join">
                                     <ul>
-                                        <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}">${project.projectName}</a></h2>
+                                        <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a></h2>
                                     </ul>
                                 </div>
                                 <input type="hidden" name="projectNo" value="${project.projectNo}">
