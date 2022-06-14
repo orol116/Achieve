@@ -159,7 +159,7 @@
                                 <tr>                                    
                                     <th>프로젝트</th>
                                     <th>관리자</th>
-                                    <th>참여자 수</th>
+                                    <th>정원</th>
                                     <th>프로젝트 설명</th>
                                 </tr>
                             </thead>
@@ -228,6 +228,8 @@
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <script src="../resources/js/project-search.js"></script>
     
 </body>
 </html>
