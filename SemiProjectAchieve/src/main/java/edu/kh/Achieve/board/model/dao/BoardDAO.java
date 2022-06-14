@@ -385,7 +385,7 @@ public class BoardDAO {
 	 * @return boardTypeList
 	 * @throws Exception
 	 */
-	public List<Board> selectboardType(Connection conn, Project projectNo) throws Exception {
+	public List<Board> selectboardType(Connection conn, int projectNo) throws Exception {
 
 		List<Board> boardType = new ArrayList<Board>();
 		

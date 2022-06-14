@@ -48,7 +48,7 @@
     
     
                         <div class="findPw-button-area">
-                            <button id="sendEmailBtn">비밀번호 변경</button>
+                            <button id="setNewPwBtn">비밀번호 재설정</button>
                         </div>
                     </div>
 
