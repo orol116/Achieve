@@ -71,14 +71,17 @@ public class CheckBoardService {
 		
 		return result;
 	}
+	
 	/** 작성 댓글 조회 Service
 	 * @param cp
 	 * @param type
 	 * @param memNo
+	 * @param pImage 
+	 * @param memNick 
 	 * @return map
 	 * @throws Exception
 	 */
-	public Map<String, Object> selectReplyList(int cp, int type, int memNo) throws Exception{
+	public Map<String, Object> selectReplyList(int cp, int type, int memNo, String memNick, String pImage) throws Exception{
 
 		Connection conn = getConnection();
 
@@ -94,8 +97,9 @@ public class CheckBoardService {
 		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-//		map1.put("memNick", memNick);
-		map.put("pagination", pagination);
+//		map.put("memNick", memNick);
+//		map.put("pImage", pImage);
+//		map.put("pagination", pagination);
 		map.put("replyList", replyList);
 		map.put("listReplyCount", listReplyCount);
 		

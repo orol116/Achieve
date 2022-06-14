@@ -9,6 +9,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
+
 public class Project {
 	
 	private int projectNo;
