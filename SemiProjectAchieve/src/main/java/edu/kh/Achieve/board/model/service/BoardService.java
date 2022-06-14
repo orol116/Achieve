@@ -154,11 +154,11 @@ public class BoardService {
 	 * @return boardTypeList
 	 * @throws Exception
 	 */
-	public List<Board> selectboardTypeList() throws Exception {
+	public List<Board> selectboardTypeList(int projectNo) throws Exception {
 
 		Connection conn = getConnection();
 		
-		List<Board> boardTypeList = dao.selectboardType(conn);
+		List<Board> boardTypeList = dao.selectboardType(conn, projectNo);
 	
 		close(conn);
 		
