@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 import edu.kh.Achieve.member.model.service.MemberService;
 
 @WebServlet("/findPw")
-public class findPwServlet extends HttpServlet {
+public class FindPwServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
