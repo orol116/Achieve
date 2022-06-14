@@ -19,6 +19,7 @@ const deleteAttach = document.getElementsByClassName("deleteAttach")[0];
 
             const params = new URL(location.href).searchParams;
             const type = "type=" + params.get("type"); // type=1
+            const projectNo = "projectNo=" + params.get("projectNo");
 
             let cp;
 
@@ -28,7 +29,7 @@ const deleteAttach = document.getElementsByClassName("deleteAttach")[0];
                 cp = "cp=1";
             }
 
-            url += type + "&" + cp;
+            url += type + "&" + projectNo + "&" + cp;
             location.href = url;
         });
     }
@@ -138,7 +139,6 @@ function writeValidate(){
             document.getElementById("img0").value = "";
             document.getElementById("attachName").innerText = "";
             document.getElementById("attachSize").innerText = "";
-            //deleteSet.add(i);
         }
 
     })

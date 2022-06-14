@@ -63,8 +63,7 @@ public class LoginServlet extends HttpServlet{
 				
 				List<Project> projectList = service.selectMyJoinProjectService(loginMember);
 				session.setAttribute("projectList", projectList);
-				
-				System.out.println(projectList);
+
 				
 			} else {
 				session.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");

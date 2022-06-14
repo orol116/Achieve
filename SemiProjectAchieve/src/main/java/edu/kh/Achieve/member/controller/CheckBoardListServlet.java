@@ -51,7 +51,7 @@ public class CheckBoardListServlet extends HttpServlet {
 				
 			}else if(type == 2) {
 				
-				map = service.selectReplyList(cp,type,memNo);
+				map = service.selectReplyList(cp,type,memNo,memNick, pImage);
 			}
 			
 			

@@ -96,8 +96,12 @@ myPage-row{
 }
 .list-table >thead >tr > :last-child{
     width: 90%; 
-    text-align: left;
     padding: 0;
+}
+
+td#reply-list-part {
+  
+    text-align: left !important;
 }
 
 .inner_list{

@@ -245,5 +245,39 @@ public class MemberService {
 	}
 
 
+	/**
+	 * 인증 번호를 db에 삽입하는 Service
+	 * @param memberEmail
+	 * @param cNumber
+	 * @return certiResult
+	 * @throws Exception
+	 */
+	public int insertCertification(String memberEmail, String cNumber) throws Exception {
+		
+		Connection conn = getConnection();
+				
+		// 1) 세션을 통해 전달받은 이메일과 일치하는 값이 있으면 수정(UPDATE)
+		int certiResult = dao.updateCertification(conn, memberEmail, cNumber);
+		
+		// 2) 일치하는 이메일이 없는 경우 -> 처음으로 인증 번호를 발급 받은 것으로 삽입(
+		if(certiResult == 0) {
+			certiResult = dao.insertCertification(conn, memberEmail, cNumber);
+			
+		}
+		
+		if(certiResult > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);		
+		
+		return certiResult;
+	}
+
+	
+	
+	
+	
+	
+
 
 }

@@ -16,6 +16,7 @@ import edu.kh.Achieve.board.model.vo.BoardAttachment;
 import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.board.model.vo.Pagination;
 import edu.kh.Achieve.common.Util;
+import edu.kh.Achieve.project.model.vo.Project;
 
 public class BoardService {
 	
@@ -27,18 +28,18 @@ public class BoardService {
 	 * @return map
 	 * @throws Exception
 	 */
-	public Map<String, Object> selectBoardMain(int type, int cp) throws Exception {
+	public Map<String, Object> selectBoardMain(int type, int cp, int projectNo) throws Exception {
 	
 		Connection conn = getConnection();
 		
-		String boardName = dao.selectBoardName(conn, type);
+		String boardName = dao.selectBoardName(conn, type, projectNo);
 		
 		int listCount = 0;
 		
 		if (type == 1) {
-			listCount = dao.getNewListCount(conn);
+			listCount = dao.getNewListCount(conn, projectNo);
 		} else {
-			listCount = dao.getListCount(conn, type);
+			listCount = dao.getListCount(conn, type, projectNo);
 		}
 		
 		
@@ -47,9 +48,9 @@ public class BoardService {
 		List<Board> boardList = null;
 		
 		if (type == 1) { // 최신글 조회
-			boardList = dao.selectBoardMainList(conn, pagination);
+			boardList = dao.selectBoardMainList(conn, pagination, projectNo);
 		} else {
-			boardList = dao.selectBoardMain(conn, pagination, type);
+			boardList = dao.selectBoardMain(conn, pagination, type, projectNo);
 		}
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardName", boardName);
@@ -69,11 +70,11 @@ public class BoardService {
 	 * @return map
 	 * @throws Exception
 	 */
-	public Map<String, Object> searchBoardList(int type, int cp, String key, String query) throws Exception {
+	public Map<String, Object> searchBoardList(int type, int cp, String key, String query, int projectNo) throws Exception {
 
 		Connection conn = getConnection();
 		
-		String boardName = dao.selectBoardName(conn, type);
+		String boardName = dao.selectBoardName(conn, type, projectNo);
 		
 		String condition = null;
 		
@@ -84,11 +85,11 @@ public class BoardService {
 		case "w" : condition = " AND MEMBER_NICK LIKE '%"+query+"%' "; break;
 		}
 		
-		int listCount = dao.searchListCount(conn, type, condition);
+		int listCount = dao.searchListCount(conn, type, condition, projectNo);
 		
 		Pagination pagination = new Pagination(cp, listCount);
 		
-		List<Board> boardList = dao.searchBoardList(conn, pagination, type, condition);
+		List<Board> boardList = dao.searchBoardList(conn, pagination, type, condition, projectNo);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardName", boardName);
@@ -109,7 +110,7 @@ public class BoardService {
 	 * @return boardNo
 	 * @throws Exception
 	 */
-	public int insertBoard(BoardDetail detail, List<BoardAttachment> boardAttachmentList, int boardCode) throws Exception {
+	public int insertBoard(BoardDetail detail, List<BoardAttachment> boardAttachmentList, int boardCode, int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
 
@@ -122,13 +123,13 @@ public class BoardService {
 
 		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
 		
-		int result = dao.insertBoard(conn, detail, boardCode);
+		int result = dao.insertBoard(conn, detail, boardCode, projectNo);
 		
 		if (result > 0) {
 			for (BoardAttachment image : boardAttachmentList) { 
 				image.setBoardNo(boardNo);
 				
-				result = dao.insertBoardAttachment(conn, image);
+				result = dao.insertBoardAttachment(conn, image, projectNo);
 				
 				if (result == 0) {
 					break;
@@ -186,12 +187,12 @@ public class BoardService {
 	 * @return detail
 	 * @throws Exception
 	 */
-	public BoardDetail selectBoardDetail(int boardNo) throws Exception{
+	public BoardDetail selectBoardDetail(int boardNo, int projectNo) throws Exception{
 		
 		Connection conn = getConnection();
 		
 		// 1) 게시글 (BOARD 테이블) 내용만 조회
-		BoardDetail detail = dao.selectBoarDetail(conn, boardNo);
+		BoardDetail detail = dao.selectBoarDetail(conn, boardNo, projectNo);
 		
 		System.out.println(detail);
 		
@@ -208,6 +209,23 @@ public class BoardService {
 		close(conn);
 		
 		return detail;
+	}
+
+	/** 프로젝트 이름 조회 Service
+	 * @param projectNo
+	 * @return projectName
+	 * @throws Exception
+	 */
+
+	public String selectProjectName(int projectNo) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		String projectName = dao.selectProjectName(conn, projectNo);
+		
+		close(conn);
+		
+		return projectName;
 	}
 	
 
