@@ -12,6 +12,10 @@
     
     <link rel="stylesheet" href="../resources/css/project-settings.css">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="${contextPath}/resources/css/FAQ.css">
+
 
     </style>
 
@@ -24,48 +28,68 @@
 		<jsp:include page="/WEB-INF/views/common/sideMenu.jsp"/>
 
         <div class="body">
-            <form action="PJSettings.jsp" method="POST" name="PJSettings-form">
+            
                 <div class="setting-main">
 
                     <div name="setting-header" id="infor-first">
                         프로젝트 설정 
                     </div>
 
-                    <div name="setting-body" class="setting-body">
-                        참여자 관리 (차단, 탈퇴) <button id="member-control">변경</button>
-                    </div>
+                    
+                        <div name="setting-body" class="setting-body">
+                            참여자 관리 (차단, 탈퇴) <button id="member-control">변경</button>
+                        </div>
+                  
 
-                    <div name="setting-body" class="setting-body">
-                        프로젝트 공개
 
-                        <select name="project-public" id="project-public" onchange="showValue(this)">
-                            <option value="공개">공개</option>
-                            <option value="클래스명 공개">클래스명 공개</option>
-                            <option value="비공개">비공개</option>
-
-                        </select>
-                            
-                    </div>
-
-                    <div name="setting-body" class="setting-body">
-                            
-
-                        클래스 이름 변경 <button id="nameChangeBtn">변경</button>
-                        <input type="text" id="PJNameChange" name="PJNameChange"
-                        placeholder="기존 프로젝트 이름" maxlength="20" autocomplete="off">
-                    </div>
-
-                    <div name="setting-body" class="setting-body">
-                        과제 관리 <button id="homework-control">변경</button>
-                    </div>
-
-                    <div name="setting-body" class="setting-body">
-                        전체 쪽지 발송 <button id="text-all">발송</button>
+                    
+                        <div name="setting-body" class="setting-body">
+                            프로젝트 공개
                         
-                    </div>
-                    <textarea placeholder="전체 쪽지는 여기에 작성하세요." id="sendAll-text"></textarea>
+                            <select name="project-public" id="project-public" onchange="showValue(this)">
+                                <option value="Y">공개</option>
+                                <option value="P">클래스명 공개</option>
+                                <option value="N">비공개</option>
+
+                            </select>
+                                
+                        </div>
+                    
+
+                    
+                        <div name="setting-body" class="setting-body">
+                                
+
+                            클래스 이름 변경 <button id="nameChangeBtn">변경</button>
+                            <input type="text" id="PJNameChange" name="PJNameChange"
+                             maxlength="20" autocomplete="off">
+                        </div>
+                    
+
+                    
+                        <div name="setting-body" class="setting-body">
+                            과제 관리 <button id="homework-control">변경</button>
+                        </div>
+                    
+
+                    
+                        <div name="setting-body" class="setting-body">
+                            전체 쪽지 발송 <button id="text-all">발송</button>
+                            
+                        </div>
+                        <textarea placeholder="전체 쪽지는 여기에 작성하세요." id="sendAll-text"></textarea>
+                    
+
+                    
+                        <div name="setting-body" class="setting-body">
+                            소개 수정 <button id="IntroEditBtn">수정</button>
+                            
+                        </div>
+                        <textarea placeholder="바꿀 소개를 작성하세요." id="projectIntro">개발2팀입니당</textarea>
+                    
 
 
+<<<<<<< HEAD
                     <div name="setting-body" class="setting-body">
                         소개 수정 <button id="intro-edit">수정</button>
                         
@@ -75,12 +99,19 @@
                     <div name="setting-body" class="setting-body">
                         공지 작성 <button id="write-notice"><a href="${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1">작성</a></button>
                     </div>
+=======
+                    
+                        <div name="setting-body" class="setting-body">
+                            공지 작성 <button id="write-notice">작성</button>
+                        </div>
+                    
+>>>>>>> 8d2bd4aeed1a255c00745116519909c976c25da3
                     
 
 
 
                 </div>
-            </form>
+           
         </div>
 
         
@@ -90,9 +121,16 @@
 
 
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <script src="../resources/js/project-settings.js"></script>
+    
+    <script src="${contextPath}/resources/js/PJSettings.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    
+
+    
 
 
     
