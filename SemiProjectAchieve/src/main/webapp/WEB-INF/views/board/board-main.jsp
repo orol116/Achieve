@@ -41,6 +41,9 @@
                     <div class="sideMenu-list-row"><a href="#">내가 쓴 글</a></div>
                     <div class="sideMenu-list-row"><a href="#">내가 쓴 댓글</a></div>
                     <div class="sideMenu-list-row"><a href="#">마이페이지</a></div>
+
+                    <br>
+                    <div class="sideMenu-list-row"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
                 </div>
             </section>
 

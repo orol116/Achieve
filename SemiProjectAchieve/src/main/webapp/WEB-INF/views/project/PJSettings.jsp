@@ -73,7 +73,7 @@
                     <textarea placeholder="바꿀 소개를 작성하세요." id="intro-text">개발2팀입니당</textarea>
 
                     <div name="setting-body" class="setting-body">
-                        공지 작성 <button id="write-notice">작성</button>
+                        공지 작성 <button id="write-notice"><a href="${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1">작성</a></button>
                     </div>
                     
 
