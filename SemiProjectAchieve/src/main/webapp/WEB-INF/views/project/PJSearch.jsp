@@ -70,7 +70,7 @@
                             <article id="signup-find-area">
                                 
                                 <button type="button"><a href="${contextPath}/member/signUp" id="main-singUp">회원가입</a></button>
-                                <button type="button"><a href="#" id="main-find">ID/PW 찾기</a></button>
+                                <button type="button"><a href="${contextPath}/findId" id="main-find">ID/PW 찾기</a></button>
                                 
                             </article>
                             
@@ -130,7 +130,7 @@
                 <article id="main-project-area">
                     
                     <!-- 요청주소 확인 반드시 필요 -->
-                    <button type="button"><a href="${contextPath}/project/PJ/create">프로젝트 만들기</a></button><br>
+                    <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
                     <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 찾기</a></button>
 
 

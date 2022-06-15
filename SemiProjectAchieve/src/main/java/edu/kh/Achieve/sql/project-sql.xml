@@ -112,5 +112,14 @@
 	
 	
 	
+	<entry key="dropMember">
+	UPDATE MEMBER SET
+	SUSPENSION_FL = 'Y'
+	WHERE MEMBER_NO = ?
+	
+	
+	</entry>
+	
+	
 
 </properties>
