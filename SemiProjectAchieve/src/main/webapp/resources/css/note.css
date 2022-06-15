@@ -53,8 +53,8 @@
 }
 
 /* 알림없음 중앙정렬 */
-#noNote{
-    display: flex;
-    align-items: center;
+.noNote{
+    /* display: flex;
+    align-items: center; */
     justify-content: center;
 }

@@ -100,6 +100,9 @@
                         <c:if test="${param.type==2}"> 
                             <span class="myPage-reply">작성한 댓글 : ${listReplyCount}</span>
                         </c:if>
+                        <c:if test="${param.type==3}"> 
+                            <span></span>
+                        </c:if>
                     </div>
                 </div> 
 
@@ -109,16 +112,10 @@
                         <a href="${contextPath}/member/List?memNo=${memNo}&type=2">작성댓글</a>
                         <a href="${contextPath}/member/List?memNo=${memNo}&type=3">가입한 프로젝트 보기</a>
                     </div>
-                        <c:choose>
-                            <c:when test ="${param.type==1}">
-                                <div class="myPage-third2">
-                                <a href="#">삭제한 게시글</a>
-                                </div>
-                            </c:when>
-                        </c:choose>
                 </div>      
 
                 <div class="list-wrapper">
+<<<<<<< HEAD
 
 
                     <table class="list-table">
@@ -162,6 +159,14 @@
                                     </c:when>
 
                                     <c:when test="${param.type==2}">
+=======
+                    <form action="delete" name="list-form">
+                        <table class="list-table">
+                        <!-- /SemiProjectAchieve/member/delete/List -->
+                            <input type="hidden" name="type" value="${param.type}">
+                                <c:choose>
+                                    <c:when test="${param.type==1}">
+>>>>>>> b6d1ded8229e43c17d2f5d58232dde7e45f2f3bb
                                         <thead>
                                             <tr>
                                                 <th>선택</th>
@@ -239,9 +244,68 @@
 
                                         </tbody>
 
+<<<<<<< HEAD
                                     </c:otherwise>
                             </c:choose>
                     </table>
+=======
+                                        <c:otherwise>
+
+                                            <thead>
+                                                <tr>
+                                                    <th>프로젝트 번호</th>
+                                                    <th>프로젝트 이름</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="board-list">
+                                                <c:choose>
+                                                    <c:when test="${empty projectList}" >
+                                                        <!-- 프로젝트 목록 조회 결과가 비어있다면 -->
+                                                        <tr>
+                                                            <th colspan="5">가입한 프로젝트가 존재하지 않습니다.</th>
+                                                        </tr>
+                                                    </c:when>
+
+                                                    <c:otherwise>
+                                                    <!-- 가입한 프로젝트 목록 결과가 비어있지않다면 -->
+                                                        <!-- 향상된 for문 처럼 사용 -->
+                                                        <c:forEach var ="project" items="${projectList}">
+                                                            <tr>
+                                                                <td>
+                                                                    <div>${project.projectNo}</div>
+                                                                </td>
+                                                                
+                                                                <td id="reply-list-part">
+                                                                    <a href="#" >
+                                                                        <div class="inner_list">${project.projectNM}<br></div>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </c:forEach>  
+                                                    </c:otherwise>
+                                                </c:choose>
+
+                                            </tbody>
+
+                                        </c:otherwise>
+                                </c:choose>
+                        </table>
+
+
+                        <div class="btn-area">
+                            <div id="checkAll">
+                                <label for="ckAll"><input type="checkbox" id="ckAll" value='selectall' onclick='selectAll(this)'>전체선택</label>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn" id="deleteBtn">삭제</button>
+                           
+                                <c:if test="${param.type==1}">
+                                    <a class="btn" href="#">글쓰기</a>
+                                </c:if>
+                            </div>
+                        </div>
+                    </form>
+>>>>>>> b6d1ded8229e43c17d2f5d58232dde7e45f2f3bb
                 </div>
     
                 <form action="delete" name="list-form">
@@ -296,14 +360,7 @@
         </section>
 
     </main>
-
-    <footer>
-       
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-        
-    </footer>
-
-
     <script src="${contextPath}/resources/js/member/myPage-boardList.js""></script>
 
 </body>
