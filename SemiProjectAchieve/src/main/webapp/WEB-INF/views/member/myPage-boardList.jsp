@@ -113,7 +113,7 @@
                 </div>      
 
                 <div class="list-wrapper">
-                    <form action="delete" name="list-form">
+                    <form action="delete" name="list-form" onsubmit="return ckBox()">
                         <table class="list-table">
                         <!-- /SemiProjectAchieve/member/delete/List -->
                             <input type="hidden" name="type" value="${param.type}">
@@ -145,7 +145,9 @@
                                                         <tr>
                                                             <td><input type="checkbox" name="cBoard" value="${board.boardNo}"></td>
                                                             <td>${board.boardNo}</td>
-                                                            <td><a href="#">${board.boardTitle}</a></td>
+
+                                                            <!-- /board/detail -->
+                                                            <td><a href="${contextPath}/board/detail?no=${board.boardNo}&projectNo=${board.projectNo}">${board.boardTitle}</a></td>
                                                             <td>${board.createDate}</td>
                                                             <td>${board.readCount}</td>
                                                         </tr>
@@ -181,7 +183,8 @@
                                                                 </td>
                                                                 
                                                                 <td id="reply-list-part">
-                                                                    <a href="#" >
+                                                                    <!-- http://localhost:10005/SemiProjectAchieve/board/detail?no=87&projectNo=2 -->
+                                                                    <a href="${contextPath}/board/detail?no=${reply.boardNo}&projectNo=${reply.projectNo}" >
                                                                         <div class="inner_list">${reply.replyContent}<br></div>
                                                                         <div class="comment-date">${reply.replyDate}<br></div>
                                                                         <div class="comment_title">${reply.boardTitle}</div>
@@ -221,7 +224,8 @@
                                                                 </td>
                                                                 
                                                                 <td id="reply-list-part">
-                                                                    <a href="#" >
+                                                                    <!-- http://localhost:10005/SemiProjectAchieve/board/main?type=1&projectNo=2&cp=1 -->
+                                                                    <a href="${contextPath}/board/main?type=${project.boardNo}&projectNo=${project.projectNo}&cp=1" >
                                                                         <div class="inner_list">${project.projectNM}<br></div>
                                                                     </a>
                                                                 </td>
@@ -236,13 +240,13 @@
                                 </c:choose>
                         </table>
 
-
+                        
                         <div class="btn-area">
                             <div id="checkAll">
                                 <label for="ckAll"><input type="checkbox" id="ckAll" value='selectall' onclick='selectAll(this)'>전체선택</label>
                             </div>
                             <div>
-                                <button type="submit" class="btn" id="deleteBtn">삭제</button>
+                                <button type="submit" class="btn" id="deleteBtn" >삭제</button>
                            
                                 <c:if test="${param.type==1}">
                                     <a class="btn" href="#">글쓰기</a>

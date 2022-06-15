@@ -104,12 +104,11 @@ public class CheckBoardService {
 		map.put("pagination", pagination);
 		map.put("replyList", replyList);
 		map.put("listReplyCount", listReplyCount);
-		
+	
 		close(conn);
 		
 		return map; // map 객체 반환
 	}
-
 
 
 	/** 작성글 삭제 Service
@@ -129,7 +128,6 @@ public class CheckBoardService {
 		close(conn);
 		
 		return result;
-		
 		
 	}
 

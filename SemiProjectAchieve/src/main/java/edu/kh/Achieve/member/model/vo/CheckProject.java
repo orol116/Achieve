@@ -15,5 +15,6 @@ public class CheckProject {
 	private String memberNickName;
 	private int projectNo;
 	private String projectNM;
+	private int boardNo;
 
 }
