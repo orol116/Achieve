@@ -82,10 +82,7 @@ function selectAll(){ // 회원 전체 조회 함수
                                     dropBtn.classList.add("drop");
                                     backBtn.classList.add("none");
                                     
-                                    dropBtn.innerText = "탈퇴";
-                                    dropBtn.style.width = "50px";
-                                    dropBtn.style.marginRight = "5px";
-                                    
+                                    // dropBtn.innerText = "탈퇴";
 
                         
                                 }else{
@@ -119,9 +116,7 @@ function selectAll(){ // 회원 전체 조회 함수
                                     dropBtn.classList.remove("drop");
                                     dropBtn.classList.add("none");
 
-                                    backBtn.innerText = "가입 중";
-                                    backBtn.style.width = "50px";
-                                    backBtn.style.marginRight = "5px";
+                                    // backBtn.innerText = "가입 중";
                                     
 
                                 }else{
