@@ -98,6 +98,9 @@
                         <c:if test="${param.type==2}"> 
                             <span class="myPage-reply">작성한 댓글 : ${listReplyCount}</span>
                         </c:if>
+                        <c:if test="${param.type==3}"> 
+                            <span></span>
+                        </c:if>
                     </div>
                 </div> 
 
@@ -107,17 +110,9 @@
                         <a href="${contextPath}/member/List?memNo=${memNo}&type=2">작성댓글</a>
                         <a href="${contextPath}/member/List?memNo=${memNo}&type=3">가입한 프로젝트 보기</a>
                     </div>
-                        <c:choose>
-                            <c:when test ="${param.type==1}">
-                                <div class="myPage-third2">
-                                <a href="#">삭제한 게시글</a>
-                                </div>
-                            </c:when>
-                        </c:choose>
                 </div>      
 
                 <div class="list-wrapper">
-
                     <form action="delete" name="list-form">
                         <table class="list-table">
                         <!-- /SemiProjectAchieve/member/delete/List -->
@@ -244,7 +239,7 @@
 
                         <div class="btn-area">
                             <div id="checkAll">
-                                <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
+                                <label for="ckAll"><input type="checkbox" id="ckAll" value='selectall' onclick='selectAll(this)'>전체선택</label>
                             </div>
                             <div>
                                 <button type="submit" class="btn" id="deleteBtn">삭제</button>
@@ -296,14 +291,7 @@
         </section>
 
     </main>
-
-    <footer>
-       
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-        
-    </footer>
-
-
     <script src="${contextPath}/resources/js/member/myPage-boardList.js""></script>
 
 </body>

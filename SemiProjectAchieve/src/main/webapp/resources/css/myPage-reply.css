@@ -78,7 +78,7 @@ myPage-row{
 }
 
 .list-table td{
-    height: 70px;
+    height: 60px;
     padding: 0;
 }
 
@@ -133,6 +133,7 @@ div.myPage-third2>a{
 
 td#reply-list-part {
     text-align: left !important;
+    padding-left: 30px;
 }
 
 .inner_list{

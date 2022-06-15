@@ -47,7 +47,7 @@ div.myPage-third1>a{
 div.myPage-third1>a:nth-of-type(3){
    text-decoration: underline ;
     color : #0e194e;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
     font-weight: 700;
 }
 div.myPage-third1>a:nth-of-type(3){
@@ -82,6 +82,7 @@ div.myPage-third2>a{
 .list-wrapper{
     width: 100%;
     min-height: 560px;
+  
 }
 
 /* 목록 출력 테이블 */
