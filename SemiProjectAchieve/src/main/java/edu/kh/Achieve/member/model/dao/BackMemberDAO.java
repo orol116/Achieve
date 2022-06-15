@@ -11,7 +11,7 @@ import edu.kh.Achieve.project.model.dao.ProjectDAO;
 
 import static edu.kh.Achieve.common.JDBCTemplate.*;
 
-public class DropMemberDAO {
+public class BackMemberDAO {
 	
 	private Statement stmt;
 	private PreparedStatement pstmt;
@@ -19,7 +19,7 @@ public class DropMemberDAO {
 	
 	private Properties prop;
 	
-	public DropMemberDAO() {
+	public BackMemberDAO() {
 		try {
 			prop = new Properties();
 			
@@ -36,17 +36,17 @@ public class DropMemberDAO {
 	
 	
 
-	public int dropMember(Connection conn, String dropMemberNo) throws Exception {
+	public int backMember(Connection conn, String backMemberNo) throws Exception {
 		
 		int result = 0;
 		
 		try {
 			
-			String sql = prop.getProperty("dropMember");
+			String sql = prop.getProperty("backMember");
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dropMemberNo);
+			pstmt.setString(1, backMemberNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -55,7 +55,6 @@ public class DropMemberDAO {
 			close(pstmt);
 			
 		}
-		
 		
 		return result;
 	}

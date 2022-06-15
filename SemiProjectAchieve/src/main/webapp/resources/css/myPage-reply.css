@@ -78,7 +78,7 @@ myPage-row{
 }
 
 .list-table td{
-    height: 70px;
+    height: 60px;
     padding: 0;
 }
 
@@ -92,7 +92,7 @@ myPage-row{
 }
 
 .list-table >thead> tr > :first-child{ 
-    width: 10%; 
+    width: 12%; 
 }
 .list-table >thead >tr > :last-child{
     width: 90%; 
@@ -121,6 +121,9 @@ div.myPage-third1>a:nth-of-type(2){
 div.myPage-third1>a:nth-of-type(3){
     letter-spacing: -0.7px;
 }
+
+
+
 div.myPage-third2>a{
     color: black;
     text-decoration:none;
@@ -129,8 +132,8 @@ div.myPage-third2>a{
 }
 
 td#reply-list-part {
-
     text-align: left !important;
+    padding-left: 30px;
 }
 
 .inner_list{
@@ -175,10 +178,10 @@ td#reply-list-part {
     padding-left: 25px;
 }
 
-a.insertBtn{
+.btn{
     margin-right: 8px;
-    width: 60px;
-    height: 100%;
+    width: 55px;
+    height: 90%;
 
     background-color: white;
     border: 1px solid #0e194e;

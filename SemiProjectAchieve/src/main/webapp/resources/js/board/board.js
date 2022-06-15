@@ -77,8 +77,10 @@ const deleteAttach = document.getElementsByClassName("deleteAttach")[0];
 
             const type = "&type="+params.get("type"); // &type=1
 
+            const projectNo = "&projectNo="+params.get("projectNo"); // 
+
             // url에 쿼리스트링 추가
-            url+= no + type; // delete?no=1508&type=1
+            url+= no + projectNo+ type; // delete?no=1508&type=1
 
             if(confirm("정말로 삭제하시겠습니까?")){
                 location.href= url; // get 방식으로 url에 요청
@@ -105,9 +107,9 @@ function writeValidate(){
         boardTitle.focus();
         return false;
     }
-    if (boardContent.value.trim().length == 0) {
+    if (CKEDITOR.instances.boardContent.getData().length == 0) {
         alert("내용을 입력해주세요!");
-        boardContent.value = "";
+        //CKEDITOR.instances.boardContent.getData() = "";
         boardContent.focus();
         return false;
     }
@@ -118,7 +120,7 @@ function writeValidate(){
         return false;
     }
 
-    deleteList.value = Array.from(deleteSet);
+    // deleteList.value = Array.from(deleteSet);
 
     return true;
 }

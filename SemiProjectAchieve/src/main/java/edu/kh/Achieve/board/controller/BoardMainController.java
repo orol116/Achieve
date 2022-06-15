@@ -10,9 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.kh.Achieve.board.model.service.BoardService;
 import edu.kh.Achieve.board.model.vo.Board;
+import edu.kh.Achieve.member.model.vo.Member;
 
 
 @WebServlet("/board/main")
@@ -37,6 +39,11 @@ public class BoardMainController extends HttpServlet {
 			List<Board> boardTypeList = service.selectboardTypeList(projectNo);
 			req.setAttribute("boardTypeList", boardTypeList);
 			
+			HttpSession session = req.getSession();
+			Member loginMember = (Member)session.getAttribute("loginMember");
+			
+			int memberNo = loginMember.getMemberNo();
+			req.setAttribute("memberNo", memberNo);
 			
 			Map<String, Object> map = null;
 			

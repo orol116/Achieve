@@ -1,6 +1,6 @@
 package edu.kh.Achieve.board.model.dao;
 
-import static edu.kh.Achieve.common.JDBCTemplate.close;
+import static edu.kh.Achieve.common.JDBCTemplate.*;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -15,7 +15,6 @@ import edu.kh.Achieve.board.model.vo.Board;
 import edu.kh.Achieve.board.model.vo.BoardAttachment;
 import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.board.model.vo.Pagination;
-import edu.kh.Achieve.project.model.vo.Project;
 
 public class BoardDAO {
 	
@@ -371,12 +370,15 @@ public class BoardDAO {
 			String sql = prop.getProperty("insertBoard");
 			
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setInt(1, detail.getBoardNo());
 			pstmt.setString(2, detail.getBoardTitle());
 			pstmt.setString(3, detail.getBoardContent());
 			pstmt.setInt(4, detail.getMemberNo());
 			pstmt.setInt(5, boardCode);
 			pstmt.setInt(6, projectNo);
+			
+			
 			
 			result = pstmt.executeUpdate();
 			
@@ -452,7 +454,7 @@ public class BoardDAO {
 		
 	}
 
-	public int deleteBoard(int boardNo, Connection conn) throws Exception{
+	public int deleteBoard(int boardNo, int projectNo, Connection conn) throws Exception{
 		
 		int result = 0;
 
@@ -462,6 +464,7 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -479,8 +482,6 @@ public class BoardDAO {
 		BoardDetail detail = null;
 		
 		try{
-			System.out.println(boardNo);
-			
 			String sql = prop.getProperty("selectBoardDetail");
 			
 			pstmt = conn.prepareStatement(sql);
@@ -496,11 +497,17 @@ public class BoardDAO {
 				detail.setBoardContent(rs.getString(3));
 				detail.setCreateDate(rs.getString(4));
 				detail.setUpdateDate(rs.getString(5));
-				detail.setReadCount(rs.getInt(6));
+				
+				int boardReadCount = rs.getInt(6);
+				boardReadCount++;
+				detail.setReadCount(boardReadCount);
+				
 				detail.setMemberNickname(rs.getString(7));
 				detail.setProfileImage(rs.getString(8));
 				detail.setMemberNo(rs.getInt(9));
 				detail.setBoardName(rs.getString(10));
+				
+				updateReadCount(conn, boardReadCount, boardNo);
 			}
 			
 			
@@ -510,6 +517,32 @@ public class BoardDAO {
 		}
 		
 		return detail;
+	}
+	
+	/** 게시글 조회수 증가 DAO
+	 * @param conn
+	 * @param boardReadCount
+	 * @param boardNo
+	 * @throws Exception
+	 */
+	public void updateReadCount(Connection conn, int boardReadCount, int boardNo) throws Exception {
+		
+		try {
+			String sql = "UPDATE BOARD SET READ_COUNT = ? WHERE BOARD_NO = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardReadCount);
+			pstmt.setInt(2, boardNo);
+			
+			pstmt.executeUpdate();
+			
+			commit(conn);
+			
+		} finally {
+			close(pstmt);
+		}
+		
+//		return;
 	}
 
 	public List<BoardAttachment> selectAttachmentList(Connection conn, int boardNo) throws Exception{
@@ -538,7 +571,7 @@ public class BoardDAO {
 				attachmentList.add(attachment);
 			}
 		
-		}finally {
+		} finally {
 			close(rs);
 			close(pstmt);
 		}
@@ -574,6 +607,106 @@ public class BoardDAO {
 		return projectName;
 
 	}
+
+	/** 게시글 수정
+	 * 
+	 * @param conn
+	 * @param detail
+	 * @return
+	 */
+	public int updateBoard(Connection conn, BoardDetail detail) throws Exception{
+		
+	int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("updateBoard");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, detail.getBoardTitle());
+			pstmt.setString(2, detail.getBoardContent());
+			pstmt.setInt(3, detail.getBoardNo());
+			pstmt.setInt(4, detail.getProjectNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateBoardAttachment(Connection conn, BoardAttachment attach) throws Exception{
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateBoardAttachment");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, attach.getAttachmentReName());
+			pstmt.setString(2, attach.getAttachmentOriginal());
+			pstmt.setInt(3, attach.getBoardNo());
+			pstmt.setInt(4, attach.getAttachmentLevel());
+			pstmt.setInt(5, attach.getProjectNo());
+			
+			result = pstmt.executeUpdate()	;
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertBoardAttachment(Connection conn, BoardAttachment attach) throws Exception {
+		int result = 0;
+		
+		try {
+			//String sql = prop.getProperty("insertBoardImage");
+
+			String sql = prop.getProperty("insertBoardAttachment");
+
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, attach.getAttachmentReName());
+			pstmt.setString(2, attach.getAttachmentOriginal());
+			pstmt.setInt(3, attach.getAttachmentLevel());
+			pstmt.setInt(4, attach.getBoardNo());
+			pstmt.setInt(5, attach.getProjectNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteBoardAttachment(Connection conn, String deleteList, int boardNo, int projectNo) throws Exception {
+	int result = 0;
+		
+		try {
+			// 완성되지 않은 sql
+			String sql = prop.getProperty("deleteBoardImage")+deleteList+")";
+			
+			pstmt= conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, projectNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+
 	
 
 }

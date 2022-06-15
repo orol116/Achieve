@@ -268,7 +268,7 @@ public class ProjectDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Project> selectProjectList(Connection conn, Pagination pagination) throws Exception{
+	public List<Project> selectProjectList(Connection conn, int memberNo, Pagination pagination) throws Exception{
 
 
 		List<Project> projectList = new ArrayList<Project>();
@@ -282,20 +282,22 @@ public class ProjectDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				Project pro = new Project();
 				
-				pro.setProjectName(rs.getString(1) );
-				pro.setProjectManagerNickname(rs.getString(2)); //관리자 닉네임
-				pro.setProjectQuota(rs.getString(3)); //정원
-				pro.setProjectIntro(rs.getString(4));
-				
-				
+				pro.setProjectNo(rs.getInt("PROJECT_NO"));
+				pro.setProjectName(rs.getString("PROJECT_NM"));
+				pro.setProjectManagerNickname(rs.getString("MEMBER_NICK"));
+				pro.setProjectQuota(rs.getString("PROJECT_QUOTA"));
+				pro.setProjectIntro(rs.getString("PROJECT_INTRO"));
+				pro.setParticipateStatus(rs.getString("P_ST"));
+								
 				projectList.add(pro);
 			}
 			

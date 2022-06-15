@@ -1,76 +1,57 @@
-document.getElementById("search1").addEventListener("click", function(){
 
-    const input = document.getElementById("in1");
-    const div = document.getElementById("result1");
+// 댓글을 불러오는 방식처럼 들어가는 함수
 
+function noteList(){
 
-    // AJAX 코드 작성(jQuery 방식) -> jQuery 라이브러리가 추가 되어 있는지 확인
     $.ajax({
-        //    /community/member/selectOne
-        url : "member/selectOne",
-        data : {"memberEmail" : input.value},
-        type : "POST",
+        url : contextPath + "/note",
+        data : {"memberNo" : memberNo}, //전달이 되는지?
+        type : "GET",
+        dataType : "JSON", 
 
-        dataType : "JSON",  // dataType : 응답데이터 형식을 지정
-                            // -> "JSON"으로 지정 시 자동으로 JS 객체로 변환
+        success : function(nList){
+            //nList : 반환 받은 알림 목록
+            console.log(nList);
 
-        success : function(member){ 
+            //화면에 있는 목록 삭제
+            const noteList = document.getElementById("noteList");
+            noteList.innerHTML = "";
 
-            console.log(member); // JS 객체 형태 문자열
-                                // 단, dataType : "JSON" 추가 후 -> JS 객체
+            if(nList != null){
 
-            // JSON.parse(문자열) : 문자열(JSON) -> JS 객체로 변환
-            //console.log(  JSON.parse(member)    ); 
+                //nList 에 저장된 요소를 하나씩
+                for(let note of nList){
+                    
+                    //발신자
+                    const sender = document.createElement("div");
+                                        
+                    //알림 내용
+                    const noteContent = document.createElement("p");
+                    noteContent.innerHTML = note.noteContent; 
+                    //br 처럼 줄바꿈요소가 있기때문에 단순 문자열 X
+                    
 
-            // 1) div에 작성된 내용 모두 삭제
-            div.innerHTML = "";
-
-            if(member != null){ // 회원 정보 존재 O
-
-                // 2) ul 요소 생성
-                const ul = document.createElement("ul");
-
-                // 3) li 요소 생성 * 5 + 내용 추가
-                const li1 = document.createElement("li");
-                li1.innerText = "이메일 : " + member.memberEmail;
-
-                const li2 = document.createElement("li");
-                li2.innerText = "닉네임 : " + member.memberNickname;
-
-                const li3 = document.createElement("li");
-                li3.innerText = "전화번호 : " + member.memberTel;
-
-                const li4 = document.createElement("li");
-                li4.innerText = "주소 : " + member.memberAddress;
-
-                const li5 = document.createElement("li");
-                li5.innerText = "가입일 : " + member.enrollDate;
-
-                // 4) ul에 li를 순서대로 추가
-                ul.append(li1, li2, li3, li4, li5);
-
-                // 5) div에 ul 추가
-                div.append(ul);
-
-            } else { // 회원 정보 존재 X
-
-                // 1) h4 요소 생성
-                const h4 = document.createElement("h4");
-
-                // 2) 내용 추가
-                h4.innerText = "일치하는 회원이 없습니다";
-
-                // 3) 색 추가
-                h4.style.color = "red";
-
-                // 4) div에 추가
-                div.append(h4);
+                    //noteList에 자식요소로 추가
+                    noteList.append(sender,noteContent);                    
+                    
+                }
+                
+            } else {
+                //알림없으면 
+                
+                //없는 내용을 만들어서 자식으로 추가
+                noteList.classList.add("noNote");
+                const p = document.createElement("p");
+                p.innerText = "알림이 없습니다";
+                
+                noteList.append(p);
             }
 
+
         },
-        error : function(request, status, error){
-            console.log("AJAX 에러 발생");
-            console.log("상태코드 : " + request.status); // 404, 500
+        error : function(req,status,error){
+            console.log("에러 발생");
+            console.log(req.responseText);
         }
     });
-});
+}

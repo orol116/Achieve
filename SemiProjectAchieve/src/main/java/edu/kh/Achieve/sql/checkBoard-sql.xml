@@ -52,7 +52,7 @@
 	<entry key="deleteBoard">
 		UPDATE BOARD SET
 		BOARD_ST = 'Y'
-		WHERE BOARD_NO = ?	
+		WHERE BOARD_NO IN (	
 	</entry>
 	
 	<!-- 이하 댓글 PART -->
@@ -66,16 +66,48 @@
 	
 		<!-- 작성 댓글에서 일정한 범위의 목록 조회 -->
 	<entry key="selectReplyList">
+		SELECT * FROM(
+			SELECT ROWNUM RNUM, A.* FROM (
+				SELECT REPLY_NO, REPLY_CONTENT, BOARD_TITLE,
+				TO_CHAR(REPLY_DT, 'YYYY-MM-DD') AS REPLY_DT
+				FROM REPLY
+				JOIN BOARD USING(BOARD_NO)
+				WHERE REPLY.MEMBER_NO = ?
+				AND REPLY_ST = 'N') A
+				ORDER BY REPLY_NO DESC
+			)
+		WHERE RNUM BETWEEN ? AND ?
+
+	</entry>
+	
+	<!-- 댓글 삭제 -->
+	<entry key="deleteReply">
+		UPDATE REPLY SET
+		REPLY_ST = 'Y'
+		WHERE REPLY_NO IN (	
+	</entry>
+	
+	<!-- 이하 프로젝트 PART -->
+	
+	<!-- 가입한 프로젝트 수 조회 -->
+	<entry key ="getProjectListCount">
+		SELECT COUNT(*) FROM PROJECT
+		WHERE OPEN_ST = 'Y'
+		AND MEMBER_NO=?
+	</entry>
+	
+	<!--  가입한 프로젝트 목록 조회 -->
+	<entry key="selectProjectList">
 	SELECT * FROM(
 		SELECT ROWNUM RNUM, A.* FROM (
-			SELECT REPLY_NO, REPLY_CONTENT,
-			TO_CHAR(REPLY_DT, 'YYYY-MM-DD') AS REPLY_DT
-			FROM REPLY
+			SELECT PROJECT_NO, PROJECT_NM
+			FROM PROJECT
 			WHERE MEMBER_NO = ?
-			AND REPLY_ST = 'N') A
-			ORDER BY REPLY_NO DESC
+			AND OPEN_ST = 'Y') A
+			ORDER BY PROJECT_NO DESC
 		)
-	WHERE RNUM BETWEEN ? AND ?	
+	WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
 
 </properties>

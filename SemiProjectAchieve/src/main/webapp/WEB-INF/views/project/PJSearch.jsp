@@ -30,117 +30,61 @@
 
             <section class="content-1">
         
-                <c:choose>
-
-                    <c:when test="${empty sessionScope.loginMember}">
-
-                        <form action="member/login" method="post" name="login-form" onsubmit="return loginValidate()">
-                        
-                            <!-- 아이디(이메일)/비밀번호/로그인 -->
-                            <fieldset id="id-pw-area">
-                                
-                                <section>
-                                    <input type="text" name="inputEmail" placeholder="아이디(이메일)" value="${cookie.saveId.value}">
-                                    <input type="password" name="inputPw" placeholder="비밀번호">
-                                </section>
-                                
-                                <section>
-                                    
-                                    <button type="submit">로그인</button>
-                                    
-                                </section>
-                                
-                            </fieldset>
-
-                            <!-- 쿠키에 saveId가 있는 경우 -->
-                            <c:if test="${!empty cookie.saveId.value}">
-                                
-                                <!-- chk변수 생성(page scope) -->
-                                <c:set var="chk" value="checked"/>
-                            
-                            
-                            </c:if>
-                                                    
-                            <label for="saveId">
-                                <input type="checkbox" name="saveId" ${chk} id="saveId"> 아이디 저장
-                            </label>
+                <!-- 회원 정보 -->
+                <article class="login-area">
                 
+                    <!-- 회원 프로필 이미지 -->
+                    <a href="${contextPath}/member/myPage/profile">
+                        <!-- 프로필 이미지 변경하는 페이지 생기면 그쪽으로 -->
+
+                        <c:if test="${empty loginMember.profileImage}">
+                            <img src="${contextPath}/resources/images/user.png" id="member-profile">
+                        </c:if>
+
+                        <c:if test="${!empty loginMember.profileImage}">
+                            <img src="${contextPath}${loginMember.profileImage}" id="member-profile">
+                        </c:if>
+
+                    </a>
                 
-                            <!-- 회원가입/ID,PW찾기 -->
-                            <article id="signup-find-area">
-                                
-                                <button type="button"><a href="${contextPath}/member/signUp" id="main-singUp">회원가입</a></button>
-                                <button type="button"><a href="${contextPath}/findId" id="main-find">ID/PW 찾기</a></button>
-                                
-                            </article>
+                    <!-- 회원 정보 + 로그아웃 버튼 -->
+                    <div class="my-info">
+                        <div>
+                            <a href="${contextPath}/member/myPage/info" id="nickname">${loginMember.memberNickname}</a>
                             
-                        </form>
-                                
-                    </c:when>
-
-                    <c:otherwise>
-
-                        <article class="login-area">
+                            <a href="member/logout" id="logout-btn">&times;</a>
                         
-                            <!-- 회원 프로필 이미지 -->
-                            <a href="${contextPath}/member/myPage/profile">
-                                <!-- 프로필 이미지 변경하는 페이지 생기면 그쪽으로 -->
-
-                                <c:if test="${empty loginMember.profileImage}">
-                                    <img src="${contextPath}/resources/images/user.png" id="member-profile">
-                                </c:if>
-
-                                <c:if test="${!empty loginMember.profileImage}">
-                                    <img src="${contextPath}${loginMember.profileImage}" id="member-profile">
-                                </c:if>
-
-                            </a>
+                        </div>
                         
-                            <!-- 회원 정보 + 로그아웃 버튼 -->
-                            <div class="my-info">
-                                <div>
-                                    <a href="${contextPath}/member/myPage/info" id="nickname">${loginMember.memberNickname}</a>
-                                    
-                                    <a href="member/logout" id="logout-btn">&times;</a>
-                                
-                                </div>
-                                
-                                <p>
-                                    ${loginMember.memberEmail}
-                                </p>
-                                
-                            </div>
+                        <p>
+                            ${loginMember.memberEmail}
+                        </p>
                         
-                        </article>            
-            
-                        <!-- 마이페이지 -->
-                        <article id="signup-find-area">
-                            
-                            <button id="myPageBtn"><a href="${contextPath}/member/myPage/info">마이페이지</a></button>
-                            
-                        </article>
-
-                    </c:otherwise>
-
-
-
-                </c:choose> 
+                    </div>
                 
+                </article>            
+    
+                <!-- 마이페이지 -->
+                <article id="signup-find-area">
+                    
+                    <button id="myPageBtn"><a href="${contextPath}/member/myPage/info">마이페이지</a></button>
+                    
+                </article>
 
                 <article id="main-project-area">
                     
                     <!-- 요청주소 확인 반드시 필요 -->
                     <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
-                    <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 찾기</a></button>
+                    <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 조회</a></button>
 
 
                 </article>
-            
+                
+
             </section>
 
-        
-    
-        
+                    
+                
             
         
     
@@ -149,10 +93,10 @@
                 
                 <div id="project-area">
             
-                    <h1 class="project-name">프로젝트 찾기</h1>
+                    <h1 class="project-name">프로젝트 조회</h1>
                     
                     <div class="btn-area">
-                        <button id="insertBtn">프로젝트 만들기</button>
+                       
                     </div>
 
                     <div class="list-wrapper">
@@ -164,16 +108,17 @@
                                     <th>관리자</th>
                                     <th>정원</th>
                                     <th>프로젝트 설명</th>
+                                    <th>가입</th>
                                 </tr>
                             </thead>
         
-                            <tbody>                                                                  
+                            <tbody>            
                                 
                                 <c:choose>
                                     <c:when test="${empty projectList}">
                                         <!-- 목록 조회 결과가 빈 경우 -->
                                         <tr>
-                                            <th colspan="4">프로젝트가 존재하지 않습니다.</th>
+                                            <th colspan="5">프로젝트가 존재하지 않습니다.</th>
                                         </tr>
                                     </c:when>
 
@@ -183,11 +128,26 @@
                                         <c:forEach var="project" items="${projectList}">
                                             <tr>                                    
                                                 <td>
-                                                    <a href="#">${project.projectName}</a>
+                                                    <!-- 가입이 되어있지 않으면 프로젝트의 메인페이지로 넘어가기-->
+                                                    <c:if test="${project.participateStatus == 0}">
+                                                        <a href="${contextPath}/board/main?projectNo=${project.projectNo}">${project.projectName}</a>
+                                                    </c:if>
+                                                    <!-- 가입이 되어있으면 프로젝트의 최신글 페이지 -->
+                                                    <c:if test="${project.participateStatus == 1}">
+                                                        <a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a>
+                                                    </c:if>
+
                                                 </td>
-                                                <td>${project.projectManeger}</td>
-                                                <td>${project.projectQouta}</td>
-                                                <td>${project.projectIntro}.</td>
+                                                <td>${project.projectManagerNickname}</td>
+                                                <td>${project.projectQuota}</td>
+                                                <td>${project.projectIntro}</td>
+                                                <td>
+                                                    <c:if test="${project.participateStatus == 0}">
+                                                        <div class="btn-area">
+                                                            <button id="requestBtn"><a href="${contextPath}/board/main?projectNo=${project.projectNo}">가입 신청</a></button>
+                                                        </div>
+                                                    </c:if>
+                                                </td>
                                             </tr>
                                         </c:forEach>
 

@@ -33,6 +33,8 @@ public class CheckBoardListServlet extends HttpServlet {
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			
 			int memNo = loginMember.getMemberNo();
+			System.out.println(memNo);
+
 			String memNick = loginMember.getMemberNickname();
 			String pImage = loginMember.getProfileImage();
 			
@@ -47,20 +49,24 @@ public class CheckBoardListServlet extends HttpServlet {
 			
 			
 			if(type == 1) {
+
 				map = service.selectBoardList(cp, type, memNo, memNick, pImage);
-				
+			
 			}else if(type == 2) {
 				
-				map = service.selectReplyList(cp,type,memNo,memNick, pImage);
-			}
+				map = service.selectReplyList(cp, type, memNo, memNick, pImage);
 			
+			}else if(type == 3) {
+				
+				map = service.selectProjectList(cp, type, memNo, memNick, pImage);
+			
+			}
+
+			req.setAttribute("map", map);
+			req.setAttribute("memNo", memNo);
 			
 			String path = "/WEB-INF/views/member/myPage-boardList.jsp";
-			
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
-			
-			req.setAttribute("map", map);
-		
 			dispatcher.forward(req, resp);
 
 		}catch(Exception e){

@@ -9,15 +9,11 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class CheckReply {
+public class CheckProject {
 	
-	private int replyNo;
-	private int boardNo;
-	private String replyContent;
-	private String replyDate;
 	private int memberNo;
 	private String memberNickName;
-	private String profileImage;
-	private String boardTitle;
+	private int projectNo;
+	private String projectNM;
 
 }

@@ -48,15 +48,24 @@
                     <c:if test="${!empty detail.updateDate}">
                         <!-- updateDate가 존재하는 경우 -->
                         <p> <span>마지막 수정일</span> ${detail.updateDate} </p>
-                    </c:if>
+                    </c:if> 
                     <p> <span>조회수</span> ${detail.readCount} </p>
                 </div>
             </div>
 
 
 
-            <!-- 첨부 파일이  있을 경우 -->
-            <c:if test="${!empty detail.attachmentList}">
+          
+
+
+
+            <!-- 내용 -->
+            <div class="board-content">
+                ${detail.boardContent}
+            </div>
+
+              <!-- 첨부 파일이  있을 경우 -->
+                <c:if test="${!empty detail.attachmentList}">
 
                     <!-- 업로드 파일 영역  -->
                     <h5>업로드 파일</h5> 
@@ -66,20 +75,13 @@
                             <div class="boardFile">
 
                                 <a href="${contextPath}${detail.attachmentList[i].attachmentReName}" 
-                                download="${detail.attachmentList[i].attachmentOriginal}">${detail.attachmentList[i].attachmentOriginal} 다운로드</a>
+                                download="${detail.attachmentList[i].attachmentOriginal}">${detail.attachmentList[i].attachmentOriginal}</a>
 
                             </div>  
                         </c:forEach>
                     </div>
 
-            </c:if>
-
-
-
-            <!-- 내용 -->
-            <div class="board-content">
-                ${detail.boardContent}
-            </div>
+               </c:if>
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
