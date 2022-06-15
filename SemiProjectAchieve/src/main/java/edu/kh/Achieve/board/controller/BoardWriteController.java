@@ -108,6 +108,8 @@ public class BoardWriteController extends HttpServlet {
 			String boardTitle = mpReq.getParameter("boardTitle");
 			String boardContent = mpReq.getParameter("boardContent");
 			int boardCode = Integer.parseInt(mpReq.getParameter("board-type"));
+			
+			
 			int projectNo = Integer.parseInt(mpReq.getParameter("projectNo"));
 			session.setAttribute("projectNo", projectNo);
 			

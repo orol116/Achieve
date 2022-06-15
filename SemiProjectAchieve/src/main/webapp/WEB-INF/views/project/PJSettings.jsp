@@ -86,29 +86,10 @@
                             
                         </div>
                         <textarea placeholder="바꿀 소개를 작성하세요." id="projectIntro">개발2팀입니당</textarea>
-                    
 
-
-<<<<<<< HEAD
-                    <div name="setting-body" class="setting-body">
-                        소개 수정 <button id="intro-edit">수정</button>
-                        
-                    </div>
-                    <textarea placeholder="바꿀 소개를 작성하세요." id="intro-text">개발2팀입니당</textarea>
-
-                    <div name="setting-body" class="setting-body">
-                        공지 작성 <button id="write-notice"><a href="${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1">작성</a></button>
-                    </div>
-=======
-                    
                         <div name="setting-body" class="setting-body">
-                            공지 작성 <button id="write-notice">작성</button>
+                            공지 작성 <button id="write-notice"><a href="${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1">작성</a></button>
                         </div>
-                    
->>>>>>> 8d2bd4aeed1a255c00745116519909c976c25da3
-                    
-
-
 
                 </div>
            
