@@ -18,7 +18,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>작성글</title>
+
+    <!-- 헤더 푸터 -->
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+
+    <!-- 사이드바 -->
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
+
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-inquire-main.css">
+
+    <!-- 사이드바 아이콘 사용을 위한 링크 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
 
     <c:choose>
         <c:when test="${param.type==1}">
@@ -41,21 +52,38 @@
 
 
 </head>    
+
 <body>
     <main>
+<<<<<<< HEAD
         <header>
             <!-- 클릭 시 메인페이지로 이동하는 로고 -->
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     
         </header>
+=======
+
+         <!-- header -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
+
+
+
+>>>>>>> origin/main
         <!-- 마이페이지- 내정보 -->
         <section class="myPage-content">
+
             <!-- 왼쪽 사이드 메뉴 -->
+<<<<<<< HEAD
         
             <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>
             <!-- <section class="left-side">
 
             </section> -->
+=======
+            <jsp:include page="/WEB-INF/views/member/sideMenu.jsp" />
+
+>>>>>>> origin/main
             
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
             <section class="myPage-main">
@@ -241,16 +269,26 @@
 
     </main>
 
+<<<<<<< HEAD
     <footer>
        
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         
     </footer>
+=======
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+>>>>>>> origin/main
 
 
 
 
 
+<<<<<<< HEAD
+    <script src="${contextPath}/resources/js/member/myPage-post.js"></script>
+=======
     <script src="${contextPath}/resources/js/member/myPage-boardList.js""></script>
+>>>>>>> origin/main
 </body>
 </html>

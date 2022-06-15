@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
+<c:set var="pagination" value="${map.pagination}" />
+<c:set var="projectList" value="${map.projectList}" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +70,7 @@
                             <article id="signup-find-area">
                                 
                                 <button type="button"><a href="${contextPath}/member/signUp" id="main-singUp">회원가입</a></button>
-                                <button type="button"><a href="#" id="main-find">ID/PW 찾기</a></button>
+                                <button type="button"><a href="${contextPath}/findId" id="main-find">ID/PW 찾기</a></button>
                                 
                             </article>
                             
@@ -127,7 +130,7 @@
                 <article id="main-project-area">
                     
                     <!-- 요청주소 확인 반드시 필요 -->
-                    <button type="button"><a href="${contextPath}/project/PJ/create">프로젝트 만들기</a></button><br>
+                    <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
                     <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 찾기</a></button>
 
 
@@ -164,16 +167,35 @@
                                 </tr>
                             </thead>
         
-                            <tbody>
-                                <tr>                                    
-                                    <td>
-                                        <a href="#">프로젝트명은12자까지한줄</a>
-                                    </td>
-                                    <td>유저일</td>
-                                    <td>8</td>
-                                    <td>홈페이지를 제작하는 프로젝트입니다.</td>
-                                </tr>
-                                                                                                
+                            <tbody>                                                                  
+                                
+                                <c:choose>
+                                    <c:when test="${empty projectList}">
+                                        <!-- 목록 조회 결과가 빈 경우 -->
+                                        <tr>
+                                            <th colspan="4">프로젝트가 존재하지 않습니다.</th>
+                                        </tr>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <!-- 목록 조회 결과가 비어있지 않다면 -->
+
+                                        <c:forEach var="project" items="${projectList}">
+                                            <tr>                                    
+                                                <td>
+                                                    <a href="#">${project.projectName}</a>
+                                                </td>
+                                                <td>${project.projectManeger}</td>
+                                                <td>${project.projectQouta}</td>
+                                                <td>${project.projectIntro}.</td>
+                                            </tr>
+                                        </c:forEach>
+
+                                    </c:otherwise>
+                                    
+                                </c:choose>
+
+
                             </tbody>
                         </table>
                     </div>
@@ -181,24 +203,33 @@
         
 
                     <div class="pagination-area">
+
+                        <c:set var="url" value="list?type=${param.type}&cp="/>
+                
                         <ul class="pagination">
-                            <li><a href="#">&lt;&lt;</a></li>
-                            <li><a href="#">&lt;</a></li>
+                        
+                            <li><a href="${url}1${sURL}">&lt;&lt;</a></li>
         
-                            <li><a class="current">1</a></li>
+                            <li><a href="${url}${pagination.prevPage}${sURL}">&lt;</a></li>
         
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">6</a></li>
-                            <li><a href="#">7</a></li>
-                            <li><a href="#">8</a></li>
-                            <li><a href="#">9</a></li>
-                            <li><a href="#">10</a></li>
+                            <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
         
-                            <li><a href="#">&gt;</a></li>
-                            <li><a href="#">&gt;&gt;</a></li>
+                                <c:choose>
+                                    <c:when test="${i == pagination.currentPage}">
+                                        <li><a class="current">${i}</a></li>
+                                    </c:when>
+        
+                                    <c:otherwise>
+                                        <li><a href="${url}${i}${sURL}">${i}</a></li>        
+                                    </c:otherwise>
+                                </c:choose>
+        
+                            </c:forEach>
+                            
+                            <li><a href="${url}${pagination.nextPage}${sURL}">&gt;</a></li>
+        
+                            <li><a href="${url}${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
+        
                         </ul>
                     </div>
 
@@ -207,14 +238,14 @@
 
 
 
-                <form action="#" method="get" id="projectSearch">
+                <form action="#" method="get" id="projectSearch" onsubmit="return searchValidate()">
 
                     <select name="key">
                         <option value="t">프로젝트명</option>
                         <option value="c">관리자</option>
                     </select>
 
-                    <input type="text" name="query" placeholder="검색어를 입력해주세요.">
+                    <input type="text" name="query" id="search-query" placeholder="검색어를 입력해주세요.">
 
                     <button>검색</button>
 
@@ -229,7 +260,10 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <script src="../resources/js/project-search.js"></script>
+     <!-- jQuery Library -->
+     <script    src="https://code.jquery.com/jquery-3.6.0.min.js"    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="    crossorigin="anonymous"></script>
+
+    <script src="${contextPath}/resources/js/project-search.js"></script>
     
 </body>
 </html>

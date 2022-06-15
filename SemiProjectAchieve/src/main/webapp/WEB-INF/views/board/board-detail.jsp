@@ -48,7 +48,7 @@
                     <c:if test="${!empty detail.updateDate}">
                         <!-- updateDate가 존재하는 경우 -->
                         <p> <span>마지막 수정일</span> ${detail.updateDate} </p>
-                    </c:if>
+                    </c:if> 
                     <p> <span>조회수</span> ${detail.readCount} </p>
                 </div>
             </div>

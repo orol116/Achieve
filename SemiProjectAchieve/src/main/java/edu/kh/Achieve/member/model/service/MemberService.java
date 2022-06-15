@@ -273,6 +273,32 @@ public class MemberService {
 		return certiResult;
 	}
 
+
+	/**
+	 * 인증번호 일치 여부 확인 및 비밀번호 재설정
+	 * @param memberEmail
+	 * @param certiChar
+	 * @param memberPw
+	 * @return result
+	 * @throws Exception
+	 */
+	public int checkCerti(String memberEmail, String certiChar, String memberPw) throws Exception {
+		
+		Connection conn = getConnection();
+		int result = dao.checkCerti(conn, memberEmail, certiChar);
+		
+		if(result > 0) {
+			// 인증번호 일치
+			result = dao.resetPw(conn, memberPw, memberEmail); // 1 : 재설정 성공 / 0 : 실패
+		} 
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+
+		close(conn);
+		return result;
+	}
+
 	
 	
 	

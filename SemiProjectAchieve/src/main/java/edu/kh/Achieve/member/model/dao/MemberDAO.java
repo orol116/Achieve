@@ -309,6 +309,7 @@ public class MemberDAO {
 				mem.setMemberNo( rs.getInt(1) );
 				mem.setMemberNickname(rs.getString(2));
 				mem.setProfileImage(rs.getString(3));
+				mem.setSuspensionFlag(rs.getString(4));
 				
 				list.add(mem); // 리스트 추가
 			}
@@ -509,6 +510,69 @@ public class MemberDAO {
 		}
 		
 		return certiResult;
+	}
+
+
+	/**
+	 * 인증번호 일치여부 확인 DAO
+	 * @param conn
+	 * @param memberEmail
+	 * @param certiChar
+	 * @return result
+	 * @throws Exception
+	 */
+	public int checkCerti(Connection conn, String memberEmail, String certiChar) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("checkCerti");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberEmail);
+			pstmt.setString(2, certiChar);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	/**
+	 * 비밀번호 재설정 DAO
+	 * @param conn
+	 * @param memberPw
+	 * @param memberEmail
+	 * @return result
+	 * @throws Exception
+	 */
+	public int resetPw(Connection conn, String memberPw, String memberEmail) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("resetPw");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberPw);
+			pstmt.setString(2, memberEmail);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 

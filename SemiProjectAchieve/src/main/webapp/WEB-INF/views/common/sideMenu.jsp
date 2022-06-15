@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-    
+    <section class="sideMenu">
         <div class="menu">
-            <label for="expand-menu"><div>메뉴</div></label>
-            <input type="checkbox" id="expand-menu" name="expand-menu">
             <ul>
                 <li><a href="#" class="item"><div>프로필</div></a></li>
                 <li><a href="#" class="item"><div>개인정보변경</div></a></li>
@@ -15,3 +13,4 @@
                 <li><a href="#" class="item"><div>초대</div></a></li>
             </ul>
         </div>
+    </section>
