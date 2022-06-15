@@ -412,7 +412,29 @@ SELECT EMAIL, C_NUMBER,
 SELECT TO_CHAR(SYSDATE + (INTERVAL '5' MINUTE), 'YYYY-MM-DD HH24:MI:SS') 
 FROM DUAL;
 
+select * from certification;
 
+-- 인증번호 일치 여부 확인
+SELECT COUNT(*) FROM CERTIFICATION
+WHERE EMAIL = '12128_17@naver.com'
+AND C_NUMBER = '2yIK3u2o';
+
+-- 회원번호 조회
+SELECT MEMBER_NO FROM MEMBER
+WHERE MEMBER_EMAIL = '12128_17@naver.com';
+
+-- 인증번호 일치하는 회원의 회원 번호 조회 (사용X)
+-- SELECT (SELECT MEMBER_NO FROM MEMBER 
+--         WHERE MEMBER_EMAIL = '12128_17@naver.com'
+--         AND SECESSION_FL='N') MEMBER_NO
+-- FROM CERTIFICATION
+-- WHERE EMAIL = '12128_17@naver.com'
+-- AND C_NUMBER = '2yIK3u2o';
+
+-- 비밀번호 재설정
+UPDATE MEMBER SET 
+MEMBER_PW = 'pass11@'
+WHERE MEMBER_EMAIL = '12128_17@naver.com';
 
 
 
@@ -461,3 +483,11 @@ JOIN BOARD ON(BOARD.BOARD_CD = BOARD_TYPE.BOARD_CD)
 WHERE PROJECT_NO = 1
 AND NOT EXISTS 
 ORDER BY BOARD_CD;
+<<<<<<< HEAD
+
+
+
+select * from project
+where OPEN_ST = 'Y';
+=======
+>>>>>>> origin/main

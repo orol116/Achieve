@@ -12,7 +12,7 @@ public class MyRenamePolicy implements FileRenamePolicy {
 	@Override
 	public File rename(File originalFile) {
 
-		long currentTime = System.currentTimeMillis();
+		long currentTime = System.currentTimeMillis(); 
 		// 1970년 1월 1일 오전 9시 부터 현재 시간 까지의 경과한 ms를 반환
 
 		SimpleDateFormat ft = new SimpleDateFormat("yyyyMMddHHmmss");

@@ -12,6 +12,9 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/FAQ.css">
 
+    <!-- 헤더, 푸터를 위한 css -->
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 

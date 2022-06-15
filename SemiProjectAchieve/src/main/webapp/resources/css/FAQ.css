@@ -1,14 +1,16 @@
 main{
-    width: 1400px;
+    width: 1200px;
+    min-height: 800px;
     margin: auto;
 
 }
 
 
 /* header */
+/*
 header{
     height: 200px;
-    display: flex; /* flex 형식으로 변경 -> 내부 요소를 유연하게 정렬/배치 */
+    display: flex; /* flex 형식으로 변경 -> 내부 요소를 유연하게 정렬/배치 
 }
 
 header > section:nth-of-type(1){
@@ -22,13 +24,13 @@ header > section:nth-of-type(3){
 }
 
 
-/* 로고 */
+/* 로고 
 header > section:nth-of-type(1){
     display : flex;
     justify-content: center;
     align-items : center;
 }
-
+*/
 
 #home-logo{
     width: 120px;
