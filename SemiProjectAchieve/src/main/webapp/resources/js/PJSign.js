@@ -1,7 +1,7 @@
-function selectAll(){ // 회원 전체 조회 함수
+function selectPJSign(){ // 회원 전체 조회 함수
     // ajax 코드
     $.ajax({
-        url :"selectAll",
+        url :"selectPJSign",
         dataType : "json", // 응답 데이터의 형식을 JSON으로 지정
                            // -> 자동으로 JS 객체로 변환됨
             success : function( list ){
@@ -32,11 +32,10 @@ function selectAll(){ // 회원 전체 조회 함수
                 span1.classList.add("status")
                 
                 const span2 = document.createElement("span");
-                span2.classList.add("name")
+                span2.classList.add("name");
 
                 const img = document.createElement("img");
-
-               if(item.profileImage != null){
+                if(item.profileImage != null){
                     
                     img.setAttribute("src",  contextPath+item.profileImage)
                 }else{
@@ -50,39 +49,30 @@ function selectAll(){ // 회원 전체 조회 함수
 
                 span2.innerText = "닉네임 : "+item.memberNickname; // 회원 닉네임
 
+                const accountBtn = document.createElement("button");
+                accountBtn.classList.add("accountBtn");
+                accountBtn.innerText = "승인";
+
                 const dropBtn = document.createElement("button");
-                const backBtn = document.createElement("button");
-
                 dropBtn.classList.add("dropBtn");
-                dropBtn.innerText = "탈퇴";
-                backBtn.classList.add("backBtn");
-                backBtn.innerText = "가입 중";
+                dropBtn.innerText = "거절";
 
-                if(item.suspensionFlag=='N'){
-                    backBtn.classList.add("back");
-                }else{
-                    dropBtn.classList.add("drop");
-                }
 
               
                 
-                    dropBtn.addEventListener("click",function(){
+                dropBtn.addEventListener("click",function(){
     
-                        $.ajax({
-                            url : "dropMember",
-                            data : {"memberNo":item.memberNo},
-                            type : "POST",
+                         $.ajax({
+                            url : "AccountMember",
+                            data : {"memberNo": item.memberNo, "projectNo": item.projectNo},
+                            type : "GET",
                             success : function(result){
                         
                                 if(result == 1){
                                     
-                                    alert("탈퇴되었습니다.")
+                                    alert("승인되었습니다.");
 
-                                    backBtn.classList.remove("back");
-                                    dropBtn.classList.add("drop");
-                                    backBtn.classList.add("none");
                                     
-                                    // dropBtn.innerText = "탈퇴";
 
                         
                                 }else{
@@ -94,45 +84,12 @@ function selectAll(){ // 회원 전체 조회 함수
                             error : function(){
                                 console.log("에러발생");
                             }
-                        });
-    
-    
-    
-                    });
-
-                    backBtn.addEventListener("click",function(){
-    
-                        $.ajax({
-                            url : "backMember",
-                            data : {"memberNo":item.memberNo},
-                            type : "POST",
-                            success : function(result){
+                        }); 
                         
-                                if(result == 1){
-                                    
-                                    alert("탈퇴 취소가 완료되었습니다..")
-
-                                    backBtn.classList.add("back");
-                                    dropBtn.classList.remove("drop");
-                                    dropBtn.classList.add("none");
-
-                                    // backBtn.innerText = "가입 중";
-                                    
-
-                                }else{
-                                    alert("실패.");
                         
-                                }
-                        
-                            },
-                            error : function(){
-                                console.log("에러발생");
-                            }
-                        });
     
     
-    
-                    });
+                    }); 
                 
 
 
@@ -140,11 +97,15 @@ function selectAll(){ // 회원 전체 조회 함수
                 div3.append(span1,br,span2);
                 
                 div2.append(img);
-                div2.append(div3, dropBtn, backBtn);
+                div2.append(div3, dropBtn);
                 div1.append(div2);
 
                 memberList.append(div1);
 
+                
+
+
+             
          
               
                 
@@ -159,9 +120,9 @@ function selectAll(){ // 회원 전체 조회 함수
     });
 }
 
-function selectAllCount(){
+function CountPJSign(){
     $.ajax({
-        url: "selectAllCount",
+        url: "CountPJSign",
         success : function(count){
 
             const memberCount = document.getElementById("member-count");
@@ -222,11 +183,11 @@ function dropMember(){
 // 즉시 실행 함수(속도 빠름, 변수명 중복문제 해결)
 (function(){
 
-    selectAllCount();
-    selectAll(); // 함수 호출 -> 회원 목록을 1차적으로 먼저 조회
+    CountPJSign();
+    selectPJSign(); // 함수 호출 -> 회원 목록을 1차적으로 먼저 조회
 
     // window.setInterval(함수, 딜레이(ms))
-    setInterval(selectAll, 100000);
+    setInterval(selectPJSign, 100000);
     // 함수 이름만 작성하면 함수가 실행되는게 아니라 함수 코드가 대입되는 것이다. 
     // -> 10초마다 selectAll 함수를 수행하게 된다.
 

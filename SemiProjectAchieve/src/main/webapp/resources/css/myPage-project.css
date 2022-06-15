@@ -43,11 +43,11 @@ div.myPage-third1>a{
     text-decoration:none;
     padding-right: 6px;
 }
-/* 첫번째 a태그  */
-div.myPage-third1>a:nth-of-type(1){
+/* 세번째 a태그  */
+div.myPage-third1>a:nth-of-type(3){
    text-decoration: underline ;
     color : #0e194e;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
     font-weight: 700;
 }
 div.myPage-third1>a:nth-of-type(3){
@@ -82,6 +82,7 @@ div.myPage-third2>a{
 .list-wrapper{
     width: 100%;
     min-height: 560px;
+  
 }
 
 /* 목록 출력 테이블 */
@@ -111,17 +112,19 @@ div.myPage-third2>a{
     text-align: center;
 }
 
-.list-table tr > *:nth-of-type(1){ 
-    width: 10%; 
+.list-table tr > *:nth-of-type(1){ width: 12%; }
+.list-table tr > *:nth-of-type(2){width: 88%;}
+
+.list-table >thead >tr > :last-child{
+    width: 90%; 
+    padding: 0;
 }
-.list-table tr > *:nth-of-type(2){width: 10%;}
-.list-table tr > td:nth-of-type(3){ 
-     width: 55%;
-     text-align: left;
-     padding-left: 35px;
-   }
-.list-table tr > *:nth-of-type(4){ width: 15%;}
-.list-table tr > *:nth-of-type(5){ width: 10%;}
+
+td#reply-list-part {
+
+    padding-left: 15px;
+    text-align: left !important;
+}
 
 /* 버튼 영역 */
 .btn-area{

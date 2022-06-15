@@ -124,6 +124,40 @@
 	
 	</entry>
 	
+	<!-- 회원가입 가입승인에 필요한 item불러오기 -->
+	<entry key="ProjectSign">
+	 SELECT MEMBER_NO, PROJECT_NO,ACCOUNT_FL,
+	  MEMBER_NICK, MEMBER_PROFILE
+	 FROM MEMBER
+	 JOIN PROJECT_SIGN USING(MEMBER_NO)
+	 WHERE PROJECT_NO = 1
+
+	
+	
+	
+	
+	</entry>
+	
+	<!--  PJ 가입승인 총인원 불러오기 -->
+	<entry key="selectPJ">
+	 SELECT COUNT(*)
+	 FROM PROJECT_SIGN
+	 WHERE PROJECT_NO = 1
+	
+	
+	
+	
+	</entry>
+	
+	
+	<entry key="accountMember">
+	 INSERT INTO PROJECT_MEMBER
+ 	 VALUES(?, ?)
+	
+	
+	
+	</entry>
+	
 	
 
 </properties>

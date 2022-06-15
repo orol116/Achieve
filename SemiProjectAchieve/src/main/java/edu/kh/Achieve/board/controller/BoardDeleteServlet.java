@@ -22,8 +22,9 @@ public class BoardDeleteServlet extends HttpServlet{
 			
 			int type = Integer.parseInt(req.getParameter("type"));
 			int boardNo = Integer.parseInt(req.getParameter("no"));
+			int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 			
-			int result = new BoardService().deleteBoard(boardNo);
+			int result = new BoardService().deleteBoard(boardNo, projectNo);
 			
 			HttpSession session = req.getSession();
 			String path = null;
@@ -31,7 +32,7 @@ public class BoardDeleteServlet extends HttpServlet{
 			
 			if(result>0) { // 성공
 				message = "게시글이 삭제되었습니다.";
-				path = "list?type="+type; // 해당 게시판 목록 1페이지
+				path = "main?type="+type+"&projectNo="+projectNo; // 해당 게시판 목록 1페이지
 			}else { // 실패
 				message = "게시글 삭제에 실패했습니다.";
 				path=req.getHeader("referer"); // 이전 요청 페이지 주소 == 상세 페이지 == referer

@@ -39,7 +39,7 @@ main{
     margin: 20px;
 
     border-radius: 5px;
-
+    background-color: aliceblue;
 
 }
 #member-count>h4{
@@ -80,12 +80,16 @@ main{
 }
 
 .member-img{
+    height: 80px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .member-status-name{
     padding: 5px;
+    width: 120px;
+    border-radius: 5px;
+    background-color: aliceblue;
 }
 
 .member-status-name>.status{

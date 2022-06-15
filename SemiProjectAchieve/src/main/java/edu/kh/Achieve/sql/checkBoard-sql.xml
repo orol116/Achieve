@@ -52,7 +52,7 @@
 	<entry key="deleteBoard">
 		UPDATE BOARD SET
 		BOARD_ST = 'Y'
-		WHERE BOARD_NO = ?	
+		WHERE BOARD_NO IN (	
 	</entry>
 	
 	<!-- 이하 댓글 PART -->
@@ -82,9 +82,31 @@
 	
 	<!-- 댓글 삭제 -->
 	<entry key="deleteReply">
-		UPDATE BOARD SET
-		BOARD_ST = 'Y'
-		WHERE REPLY_NO = ?	
+		UPDATE REPLY SET
+		REPLY_ST = 'Y'
+		WHERE REPLY_NO IN (	
+	</entry>
+	
+	<!-- 이하 프로젝트 PART -->
+	
+	<!-- 가입한 프로젝트 수 조회 -->
+	<entry key ="getProjectListCount">
+		SELECT COUNT(*) FROM PROJECT
+		WHERE OPEN_ST = 'Y'
+		AND MEMBER_NO=?
+	</entry>
+	
+	<!--  가입한 프로젝트 목록 조회 -->
+	<entry key="selectProjectList">
+	SELECT * FROM(
+		SELECT ROWNUM RNUM, A.* FROM (
+			SELECT PROJECT_NO, PROJECT_NM
+			FROM PROJECT
+			WHERE MEMBER_NO = ?
+			AND OPEN_ST = 'Y') A
+			ORDER BY PROJECT_NO DESC
+		)
+	WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 
