@@ -33,7 +33,8 @@ public class CheckBoardListServlet extends HttpServlet {
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			
 			int memNo = loginMember.getMemberNo();
-			
+			System.out.println(memNo);
+
 			String memNick = loginMember.getMemberNickname();
 			String pImage = loginMember.getProfileImage();
 			
@@ -60,7 +61,7 @@ public class CheckBoardListServlet extends HttpServlet {
 				map = service.selectProjectList(cp, type, memNo, memNick, pImage);
 			
 			}
-			
+
 			req.setAttribute("map", map);
 			req.setAttribute("memNo", memNo);
 			

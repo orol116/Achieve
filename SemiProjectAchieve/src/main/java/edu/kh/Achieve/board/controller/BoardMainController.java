@@ -40,10 +40,10 @@ public class BoardMainController extends HttpServlet {
 			req.setAttribute("boardTypeList", boardTypeList);
 			
 			HttpSession session = req.getSession();
-//			int memberNo = (int)session.getAttribute("loginMember.member");
+			Member loginMember = (Member)session.getAttribute("loginMember");
 			
-			System.out.println(session.getAttribute("loginMember.memberNo"));
-			
+			int memberNo = loginMember.getMemberNo();
+			req.setAttribute("memberNo", memberNo);
 			
 			Map<String, Object> map = null;
 			
