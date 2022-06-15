@@ -3,7 +3,11 @@ package edu.kh.Achieve.project.model.service;
 import static edu.kh.Achieve.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import edu.kh.Achieve.board.model.vo.Pagination;
 import edu.kh.Achieve.project.model.dao.ProjectDAO;
 import edu.kh.Achieve.project.model.vo.Project;
 
@@ -108,6 +112,82 @@ public class ProjectService {
 		
 		
 		return result;
+	}
+
+
+	/**
+	 * 프로젝트 찾기 목록 만드는 Service
+	 * @param cp
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String, Object> searchAll(int cp) throws Exception{
+		
+		Connection conn = getConnection();
+						
+		// 전체 프로젝트 수 조회 DAO
+		int listCount = dao.getListCount(conn);		
+		
+		
+		// 전체 프로젝트 수 + 현재 페이지(cp)를 이용해 페이지네이션 객체
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		// 목록 조회
+		List<Project> projectList = dao.selectProjectList(conn, pagination);
+		
+		
+		// 4. Map 객체를 생성하여 두 결과 객체를 모두 저장
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("pagination", pagination);
+		map.put("boardList", projectList);
+		
+		close(conn);
+		
+		return map; // Map 객체 반환
+	}
+
+
+	/**
+	 * 프로젝트 찾기에서 검색한 경우
+	 * @param cp
+	 * @param key
+	 * @param query
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String, Object> searchProjectList(int cp, String key, String query) throws Exception{
+
+		Connection conn = getConnection();
+				
+		// SQL 조건절에 추가될 구문(key, query 사용)
+		String condition = null; // 조건
+		
+		switch(key) {
+		case "t"  : condition = " AND PROJECT_NM LIKE '%" + query + "%' ";  break;
+		case "c"  : condition = " AND MEMBER_NICK LIKE '%" + query + "%' ";  break;
+		
+		}
+		
+		// 리스트에서 조건을 만족하는 프로젝트 수 조회
+		int listCount = dao.searchListCount(conn, condition);
+				
+		// listCount  + 현재 페이지(cp)를 이용해 페이지네이션 객체 생성
+		Pagination pagination = new Pagination(cp, listCount);		
+		
+		
+		// 조건을 만족하는 게시글 목록 조회
+		List<Project> projectList = dao.searchProjectList(conn, pagination, condition);
+		
+		// 결과를 하나의 Map에 모아서 반환
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("projectList", projectList);
+		
+		close(conn);
+		
+		return map;
 	}
 
 }

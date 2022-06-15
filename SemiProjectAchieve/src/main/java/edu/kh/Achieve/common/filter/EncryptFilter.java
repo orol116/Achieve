@@ -16,7 +16,7 @@ import edu.kh.Achieve.common.wrapper.EncryptWrapper;
 // 암호화를 적용해야 하는 요청 : 로그인, 회원가입, 비밀번호 변경, 회원탈퇴
 // 필터가 적용될 url이 여러 개인 경우 : String 배열 초기화 형태{ }로 작성
 @WebFilter(filterName = "encryptFilter", urlPatterns = {"/member/login", "/member/signUp", 
-		"/member/myPage/changePw", "/member/myPage/secession"} )
+		"/member/myPage/changePw", "/member/myPage/secession", "/findPwResult"} )
 public class EncryptFilter extends HttpFilter implements Filter {
 
 	public void init(FilterConfig fConfig) throws ServletException {}

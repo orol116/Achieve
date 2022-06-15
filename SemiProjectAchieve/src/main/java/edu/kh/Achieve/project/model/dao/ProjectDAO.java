@@ -8,9 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
-
+import edu.kh.Achieve.board.model.vo.Pagination;
 import edu.kh.Achieve.project.model.vo.Project;
 
 public class ProjectDAO {
@@ -158,6 +160,7 @@ public class ProjectDAO {
 	
 	
 
+  
 	/** 프로젝트 소개 변경 DAO
 	 * @param conn
 	 * @param projecItntro
@@ -217,6 +220,172 @@ public class ProjectDAO {
 		
 		
 		return result;
+	}
+
+	
+	
+	
+	/**
+	 * 전체 프로젝트 수 조회 DAO
+	 * @param conn
+	 * @return
+	 * @throws Exception
+	 */
+	public int getListCount(Connection conn) throws Exception{
+		
+		int listCount = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("getListCount");
+			
+				
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				listCount = rs.getInt(1);
+			}
+			
+			
+			
+		}finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return listCount;
+	}
+
+	
+	
+	/**
+	 * 프로젝트 목록 조회하는 DAO
+	 * @param conn
+	 * @param pagination
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Project> selectProjectList(Connection conn, Pagination pagination) throws Exception{
+
+
+		List<Project> projectList = new ArrayList<Project>();
+		
+		try {
+			String sql = prop.getProperty("selectProjectList");
+			
+			// BETWEEN 구문에 들어갈 범위 계산
+			int start =  ( pagination.getCurrentPage() - 1 ) * pagination.getLimit() + 1;
+			int end = start + pagination.getLimit() - 1;
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Project pro = new Project();
+				
+				pro.setProjectName(rs.getString(1) );
+				pro.setProjectManagerNickname(rs.getString(2)); //관리자 닉네임
+				pro.setProjectQuota(rs.getString(3)); //정원
+				pro.setProjectIntro(rs.getString(4));
+				
+				
+				projectList.add(pro);
+			}
+			
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return projectList;
+	}
+
+	
+	
+	/**
+	 * 분류를 만족하는 프로젝트 수 조회
+	 * @param conn
+	 * @param condition
+	 * @return
+	 * @throws Exception
+	 */
+	public int searchListCount(Connection conn, String condition) throws Exception{
+
+		int listCount = 0;
+		
+		try {
+			String sql = prop.getProperty("searchListCount")  + condition ;
+
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			if(rs.next()) {
+				listCount = rs.getInt(1);
+			}
+			
+		}finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return listCount;
+	}
+
+	/**
+	 * 검색어를 만족하는 
+	 * @param conn
+	 * @param pagination
+	 * @param condition
+	 * @return
+	 * @throws ex
+	 */
+	public List<Project> searchProjectList(Connection conn, Pagination pagination, String condition) throws Exception{
+
+		List<Project> projectList = new ArrayList<Project>();
+		
+		try {
+			
+			String sql = prop.getProperty("searchProjectList1")
+					   + condition
+					   + prop.getProperty("searchProjectList2");
+			
+			// BETWEEN 구문에 들어갈 범위 계산
+			int start =  ( pagination.getCurrentPage() - 1 ) * pagination.getLimit() + 1;
+			int end = start + pagination.getLimit() - 1;
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				Project pro = new Project();
+				
+				pro.setProjectName(rs.getString(1) );
+				pro.setProjectManagerNickname(rs.getString(2)); //관리자 닉네임
+				pro.setProjectQuota(rs.getString(3)); //정원
+				pro.setProjectIntro(rs.getString(4));
+				
+				
+				projectList.add(pro);
+			}
+			
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		return projectList;
 	}
 
 	

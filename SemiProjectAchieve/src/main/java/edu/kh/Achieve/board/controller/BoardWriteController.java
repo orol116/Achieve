@@ -130,7 +130,7 @@ public class BoardWriteController extends HttpServlet {
 				
 				if (boardNo > 0) {
 					session.setAttribute("message", "게시글이 등록되었습니다.");
-					path = "detail?no=" + boardNo + "&type=" + boardCode;
+					path = "detail?no=" + boardNo + "&type=" + boardCode + "&projectNo=" + projectNo;
 					
 				} else {
 					session.setAttribute("message", "게시글 등록 실패");

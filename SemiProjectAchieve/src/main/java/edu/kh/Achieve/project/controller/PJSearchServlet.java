@@ -1,7 +1,10 @@
 package edu.kh.Achieve.project.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -9,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import edu.kh.Achieve.member.model.service.MemberService;
 import edu.kh.Achieve.member.model.vo.Member;
@@ -22,19 +27,57 @@ public class PJSearchServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//로그인 정보 있으면 가져오기
-		HttpSession session = req.getSession();
+			
+		try {
+				
+				int cp = 1;
+				
+				// 페이지네이션의 번호 선택 시
+				// 쿼리스트링에 cp가 있음 --> cp = 쿼리스트링의 cp 값
+				if( req.getParameter("cp") != null  ) { // 쿼리스트링에 "cp"가 존재한다면
+					cp = Integer.parseInt( req.getParameter("cp") );
+				}
+						
+				ProjectService service = new ProjectService();
+				
+				
+				// 페이지네이션 객체, 프로젝트 리스트를 한 번에 반환하는 Service 호출
+				Map<String, Object> map = null;
+				
+				
+				
+				
+						
+				if( req.getParameter("key") == null ) { // 일반 목록 조회
+					
+					map = service.searchAll(cp);
+					
+				}else { // 검색 목록 조회
+					String key = req.getParameter("key");
+					String query = req.getParameter("query");
+					
+					map = service.searchProjectList(cp, key, query);
+					
+				}
+				
+				
+				
+				// request 범위로 map을 세팅
+				req.setAttribute("map", map);
+				
+					
+				String path = "/WEB-INF/views/project/PJSearch.jsp";
+				
+				RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+				
+				dispatcher.forward(req, resp);
+				
+				
 		
-		if(session.getAttribute("loginMember") != null){
-			Member loginMember = (Member)(session.getAttribute("loginMember"));
+			
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		
-		//비공개가 아닌 모든 프로젝트를 검색해서 페이지네이션으로 가져오기
-		
-		String path = "/WEB-INF/views/project/PJSearch.jsp";
-		
-		req.getRequestDispatcher(path).forward(req, resp);
 		
 	}
 	
