@@ -82,6 +82,7 @@
         
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+    <script src="${contextPath}/resources/js/note.js"></script>
 
 
 </body>
