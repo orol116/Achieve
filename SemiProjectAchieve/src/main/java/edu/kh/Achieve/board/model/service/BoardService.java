@@ -193,8 +193,6 @@ public class BoardService {
 		// 1) 게시글 (BOARD 테이블) 내용만 조회
 		BoardDetail detail = dao.selectBoarDetail(conn, boardNo, projectNo);
 		
-		System.out.println(detail);
-		
 		if(detail != null) { // 게시글 상세 조회 결과가 있을 경우에 
 			
 		// 2) 게시글에 첨부된 이미지(BOARD_IMG 테이블) 조회
@@ -237,10 +235,10 @@ public class BoardService {
 		
 		detail.setBoardTitle(Util.XSSHandling(detail.getBoardTitle()));
 		
-		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
-		
-		// 2) 개행문자 처리(내용)
-		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
+//		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
+//		
+//		// 2) 개행문자 처리(내용)
+//		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
 		
 		// 3) DAO 호출
 		int result = dao.updateBoard(conn, detail);
