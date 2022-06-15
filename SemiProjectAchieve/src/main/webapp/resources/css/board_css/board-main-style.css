@@ -196,6 +196,8 @@
 /* 가입하지 않은 회원이 보는 프로젝트 메인페이지 */
 .project-signup-content{
     width: 100%;
+
+    margin: 40px 0;
 }
 
 .project-signup-title{

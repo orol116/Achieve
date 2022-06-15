@@ -5,13 +5,13 @@
     <footer>
         <p>
             <article id="footer">
-                <a href="/SemiProjectAchieve/FAQ/firstFAQ">FAQ</a>
+                <a href="${contextPath}/FAQ/firstFAQ">FAQ</a>
                 <span> | </span>
-                <a href="${contextPath}/board/main?type=99&projectNo=${param.projectNo}&cp=1"">1:1문의</a>
+                <a href="${contextPath}/board/main?type=99&projectNo=${param.projectNo}&cp=1">1:1문의</a>
                 <span> | </span>
-                <a href="/SemiProjectAchieve/FAQ/terms/conditions">이용약관</a>
+                <a href="${contextPath}/FAQ/terms/conditions">이용약관</a>
                 <span> | </span>
-                <a href="/SemiProjectAchieve/FAQ/personal/info">개인정보처리방침</a>
+                <a href="${contextPath}/FAQ/personal/info">개인정보처리방침</a>
             </article>
             
             
