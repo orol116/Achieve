@@ -52,35 +52,30 @@
                         <div id="select-area">
                             <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/firstFAQ'">자주 묻는 질문</button>
                             <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/secondFAQ'">프로젝트 생성/관리</button>
-                            <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/thirdFAQ'">로그인/가입</button>
+                            <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/thirdFAQ'">회원 관련</button>
         
                         </div>
         
                         <ul class="FAQ">
+
                             <li>
                                 <input type="checkbox" id="FAQ-1">
-                                <label for="FAQ-1">계정을 탈퇴하고 싶어요.</label>
+                                <label for="FAQ-1">아이디와 비밀번호를 분실했어요.</label>
                                 <div>
-                                    <p>마이페이지의 회원 탈퇴 메뉴를 이용해주세요!</p>
+                                    <p>아이디는 조회가 가능합니다!</p>
+                                    <p>비밀번호는 가입했던 메일을 통해 재설정 해주세요!</p>
                                 </div>
                             </li>
-        
+
                             <li>
                                 <input type="checkbox" id="FAQ-2">
-                                <label for="FAQ-2">회원 정보를 변경하고 싶어요.</label>
+                                <label for="FAQ-2">회원가입을 하고 싶어요.</label>
                                 <div>
-                                    <p>마이페이지에서 변경할 수 있습니다!</p>
+                                    <p>메인 페이지에서 회원 가입 버튼을 클릭해주세요!</p>
+                                    <p>간단한 정보 입력으로 가입이 가능합니다!</p>
                                 </div>
                             </li>
-        
-                            <li>
-                                <input type="checkbox" id="FAQ-3">
-                                <label for="FAQ-3">비밀번호를 변경하고 싶어요.</label>
-                                <div>
-                                    <p>마이페이지의 비밀번호 변경 메뉴를 이용해주세요!</p>
-                                </div>
-                            </li>
-        
+
                         </ul>
         
                         
