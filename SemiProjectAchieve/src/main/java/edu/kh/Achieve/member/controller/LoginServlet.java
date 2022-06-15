@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet{
 			
 			// 입력된 이메일과 비밀번호가 일치하는 회원 조회
 			Member loginMember = service.login(mem);
-			
+
 			// Email, Pw 일치하는 회원 정보를 Session에 저장
 			
 			// 1. session 객체 얻어오기
@@ -63,7 +63,8 @@ public class LoginServlet extends HttpServlet{
 				
 				List<Project> projectList = service.selectMyJoinProjectService(loginMember);
 				session.setAttribute("projectList", projectList);
-
+				
+				
 				
 			} else {
 				session.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
