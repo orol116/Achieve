@@ -39,8 +39,11 @@
             <link rel="stylesheet" href="${contextPath}/resources/css/myPage-board.css"> 
         </c:when>
 
-        <c:otherwise>
+        <c:when test="${param.type==2}">
             <link rel="stylesheet" href="${contextPath}/resources/css/myPage-reply.css">
+        </c:when>
+        <c:otherwise>
+            <link rel="stylesheet" href="${contextPath}/resources/css/myPage-project.css">
         </c:otherwise>
     </c:choose>
 
@@ -100,13 +103,17 @@
 
                 <div class="myPage-third">
                     <div class="myPage-third1">
-                    <a href="${contextPath}/member/List?memNo=${memNo}&type=1">작성글</a>
-                    <a href="${contextPath}/member/List?memNo=${memNo}&type=2">작성댓글</a>
-                    <a href="${contextPath}/member/List?memNo=${memNo}&type=3">가입한 프로젝트 보기</a>
+                        <a href="${contextPath}/member/List?memNo=${memNo}&type=1">작성글</a>
+                        <a href="${contextPath}/member/List?memNo=${memNo}&type=2">작성댓글</a>
+                        <a href="${contextPath}/member/List?memNo=${memNo}&type=3">가입한 프로젝트 보기</a>
                     </div>
-                    <div class="myPage-third2">
-                    <a href="#">삭제한 게시글</a>
-                    </div>
+                        <c:choose>
+                            <c:when test ="${param.type==1}">
+                                <div class="myPage-third2">
+                                <a href="#">삭제한 게시글</a>
+                                </div>
+                            </c:when>
+                        </c:choose>
                 </div>      
 
                 <div class="list-wrapper">
