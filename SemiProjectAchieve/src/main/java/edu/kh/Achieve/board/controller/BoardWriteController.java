@@ -30,24 +30,18 @@ public class BoardWriteController extends HttpServlet {
 		try {
 
 			int projectNo = Integer.parseInt(req.getParameter("projectNo"));
-			String mode = req.getParameter("mode"); // insert mode / update mode 구분
-			
-			// insert는 별도 처리 없이 jsp로 위임만 하면 된다.
-			
-			// update는 기존 게시글 내용을 조회하는 처리가 필요함
+			String mode = req.getParameter("mode"); 
+
 			if(mode.equals("update")) {
 				
 				int boardNo = Integer.parseInt(req.getParameter("no")); 
 				
-				// 게시글 상세 조회 서비스를 이용해서 기존 내용 조회
-				// new BoardService() : 객체를 생성해서 변수에 저장을 안한 상태 -> 1회성 사용하겠다는 의미!
-				BoardDetail detail = new BoardService().selectBoardDetail(boardNo, projectNo);
 				
-				System.out.println(detail);
-				// 개행 문자처리 해제(<br> -> \n)
+				BoardDetail detail = new BoardService().selectBoardDetail(boardNo, projectNo);
+
 				detail.setBoardContent(detail.getBoardContent().replaceAll("<br>", "\n"));
 				
-				req.setAttribute("detail", detail); // jsp에서 사용할 수 있도록 req에 값 세팅
+				req.setAttribute("detail", detail); 
 				
 			}
 			

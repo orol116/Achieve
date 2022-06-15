@@ -120,7 +120,6 @@ function writeValidate(){
         return false;
     }
 
-    // deleteList.value = Array.from(deleteSet);
 
     return true;
 }

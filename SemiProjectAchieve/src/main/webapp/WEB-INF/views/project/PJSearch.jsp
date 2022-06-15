@@ -130,7 +130,7 @@
                                                 <td>
                                                     <!-- 가입이 되어있지 않으면 프로젝트의 메인페이지로 넘어가기-->
                                                     <c:if test="${project.participateStatus == 0}">
-                                                        <a href="${contextPath}/board/main?projectNo=${project.projectNo}">${project.projectName}</a>
+                                                        <a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}">${project.projectName}</a>
                                                     </c:if>
                                                     <!-- 가입이 되어있으면 프로젝트의 최신글 페이지 -->
                                                     <c:if test="${project.participateStatus == 1}">
@@ -144,7 +144,7 @@
                                                 <td>
                                                     <c:if test="${project.participateStatus == 0}">
                                                         <div class="btn-area">
-                                                            <button id="requestBtn"><a href="${contextPath}/board/main?projectNo=${project.projectNo}">가입 신청</a></button>
+                                                            <button id="requestBtn"><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}">가입 신청</a></button>
                                                         </div>
                                                     </c:if>
                                                 </td>

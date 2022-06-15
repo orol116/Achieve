@@ -281,5 +281,21 @@ public class BoardService {
 		return result;
 	}
 	
+	
+	/** 프로젝트 소개 조회 Service
+	 * @param projectNo
+	 * @return projectName
+	 * @throws Exception
+	 */
+
+	public String selectProjectIntro(int projectNo) throws Exception {
+		
+		Connection conn = getConnection();
+		String projectIntro = dao.selectProjectIntro(conn, projectNo);
+		close(conn);
+		
+		return projectIntro;
+	}
+	
 
 }

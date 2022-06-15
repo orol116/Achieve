@@ -169,7 +169,8 @@ public class CheckBoardDAO {
 				board.setBoardTitle(rs.getString("BOARD_TITLE"));
 				board.setCreateDate(rs.getString("CREATE_DT"));
 				board.setReadCount(rs.getInt("READ_COUNT"));
-
+				board.setProjectNo(rs.getInt("PROJECT_NO"));
+				
 				boardList.add(board);
 			
 			}
@@ -183,30 +184,6 @@ public class CheckBoardDAO {
 	}
 
 	
-	/** 다음 작성글 번호 조회 DAO
-	 * @param conn
-	 * @return boardNo
-	 * @throws Exception
-	 */
-	public int nextBoardNo(Connection conn) throws Exception {
-
-		int boardNo = 0;
-		
-		try {
-			String sql = prop.getProperty("nextBoardNo");
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			if(rs.next()) {
-				boardNo = rs.getInt(1);
-			}
-			
-		}finally {
-			close(stmt);
-			close(rs);
-		}
-		
-		return boardNo;
-	}
 
 	/** 작성글 삭제 DAO
 	 * @param conn 
@@ -295,6 +272,8 @@ public class CheckBoardDAO {
 				reply.setReplyContent(rs.getString("REPLY_CONTENT"));
 				reply.setReplyDate(rs.getString("REPLY_DT"));
 				reply.setBoardTitle(rs.getString("BOARD_TITLE"));
+				reply.setProjectNo(rs.getInt("PROJECT_NO"));
+				reply.setBoardNo(rs.getInt("BOARD_NO"));
 			
 				replyList.add(reply);
 			
@@ -397,6 +376,7 @@ public class CheckBoardDAO {
 				
 				project.setProjectNo(rs.getInt("PROJECT_NO"));
 				project.setProjectNM(rs.getString("PROJECT_NM"));
+//				project.setBoardNo(rs.getInt("BOARD_NO"));
 				
 				projectList.add(project);
 			
