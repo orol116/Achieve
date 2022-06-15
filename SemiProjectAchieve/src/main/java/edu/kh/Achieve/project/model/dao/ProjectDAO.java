@@ -294,7 +294,7 @@ public class ProjectDAO {
 				pro.setProjectManagerNickname(rs.getString(3));
 				pro.setProjectQuota(rs.getString(4));
 				pro.setProjectIntro(rs.getString(5));
-				pro.setParticipateStatus(rs.getInt(6));
+				pro.setParticipateStatus(rs.getString(6));
 								
 				projectList.add(pro);
 			}

@@ -58,11 +58,24 @@
                     <%-- <c:if test="${boardTypeList.boardCode} != 2"> --%>
                         <select name="board-type" id="board-type">
                             <option value="-1">게시판 선택</option>
-                            <c:forEach var="boardType" items="${boardTypeList}">
-                                <c:if test="${boardType.boardCode != 1}">
-                                    <option value="${boardType.boardCode}" id="boardOption">${boardType.boardName}</option>
-                                </c:if>
-                            </c:forEach>
+                            
+                                <c:choose>
+                                    <c:when  test="${param.type != 2}">
+
+                                        <c:forEach var="boardType" items="${boardTypeList}">
+                                            <c:if test="${boardType.boardCode != 1 && boardType.boardCode != 2}">
+                                                <option value="${boardType.boardCode}" id="boardOption">${boardType.boardName}</option>
+                                            </c:if>
+                                        </c:forEach>
+
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <option value="2" id="boardOption" selected>공지사항</option>
+                                    </c:otherwise>
+
+                                </c:choose>
+                                
                         </select>
                     <%-- </c:if> --%>
 
