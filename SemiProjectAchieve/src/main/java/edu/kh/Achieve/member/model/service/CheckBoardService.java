@@ -36,10 +36,11 @@ public class CheckBoardService {
 		
 		// 3. 작성글 목록 조회
 		List<CheckBoard> boardList = dao.selectBoardList(conn, pagination, type, memNo);
-		
+
 		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		
+		map.put("cp", cp);
 		map.put("type", type);
 //		map.put("memNo", memNo);
 		map.put("memNick", memNick);
@@ -47,6 +48,7 @@ public class CheckBoardService {
 		map.put("boardList", boardList);
 		map.put("listBoardCount", listBoardCount);
 		map.put("pagination", pagination);
+		
 		
 		close(conn);
 		

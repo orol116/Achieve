@@ -189,3 +189,64 @@
 .project-main{
     font-size: 20px;
 }
+
+
+
+
+/* 가입하지 않은 회원이 보는 프로젝트 메인페이지 */
+.project-signup-content{
+    width: 100%;
+}
+
+.project-signup-title{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.project-signup-title > h1{
+    font-size: 2.2em;
+}
+
+.project-signup-title > span{
+    font-size: 1.3em;
+}
+
+.project-signup-intro{
+    width: 80%;
+
+    margin: auto;
+
+}
+
+.project-signup-btn{
+    width: 380px;
+
+    margin: 80px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.project-signup-btn > *{
+    width: 180px;
+    height: 33px;
+
+    padding: 5px 10px;
+    border: 2px solid #0e194e;
+    background-color: white;
+    color: #0e194e;
+
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.project-signup-btn > *:hover{
+
+    background-color: #0e194e;
+    color: white;
+}

@@ -35,7 +35,6 @@ function selectAll(selectAll){
 
             if(confirm("정말로 삭제 하시겠습니까?")){
                 location.href = url; // get 방식으로 url 요청
-
             }
 
             return true;

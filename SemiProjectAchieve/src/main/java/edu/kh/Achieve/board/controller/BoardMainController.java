@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import edu.kh.Achieve.board.model.service.BoardService;
 import edu.kh.Achieve.board.model.vo.Board;
 import edu.kh.Achieve.member.model.vo.Member;
+import edu.kh.Achieve.project.model.service.ProjectService;
 
 
 @WebServlet("/board/main")
@@ -39,12 +40,21 @@ public class BoardMainController extends HttpServlet {
 			List<Board> boardTypeList = service.selectboardTypeList(projectNo);
 			req.setAttribute("boardTypeList", boardTypeList);
 			
+			
+//			프로젝트 리스트 가져오기
+			ProjectService pService = new ProjectService(); 
+
+			Map<String, Object> projectMap = null;
+			
 			HttpSession session = req.getSession();
-//			int memberNo = (int)session.getAttribute("loginMember.member");
+			Member loginMember = (Member)(session.getAttribute("loginMember"));
+			int memberNo = loginMember.getMemberNo();
+			projectMap = pService.searchAll(cp, memberNo);
 			
-			System.out.println(session.getAttribute("loginMember.memberNo"));
+			req.setAttribute("projectMap", projectMap);
 			
 			
+			// boardList 가져오기 위한 map
 			Map<String, Object> map = null;
 			
 			if (req.getParameter("key") == null) {
