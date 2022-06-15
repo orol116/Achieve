@@ -40,7 +40,7 @@
                     </c:forEach>
 
                     <br>
-                    <div class="sideMenu-list-row"><a href="#">내가 쓴 글</a></div>
+                    <div class="sideMenu-list-row"><a href="${contextPath}/member/List?">내가 쓴 글</a></div>
                     <div class="sideMenu-list-row"><a href="#">내가 쓴 댓글</a></div>
                     <div class="sideMenu-list-row"><a href="#">마이페이지</a></div>
 
