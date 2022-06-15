@@ -35,13 +35,14 @@ function selectAll(){ // 회원 전체 조회 함수
                 span2.classList.add("name")
 
                 const img = document.createElement("img");
-/*                 if(item.profileImage != null){
+
+               if(item.profileImage != null){
                     
                     img.setAttribute("src",  contextPath+item.profileImage)
                 }else{
                     
                     img.setAttribute("src",  contextPath+"/resources/images/user.png")
-                } */
+                } 
 
                 const br = document.createElement("br");
 
@@ -58,9 +59,9 @@ function selectAll(){ // 회원 전체 조회 함수
                 backBtn.innerText = "가입 중";
 
                 if(item.suspensionFlag=='N'){
-                    backBtn.style.backgroundColor='green'
+                    backBtn.classList.add("back");
                 }else{
-                    dropBtn.style.backgroundColor='red'
+                    dropBtn.classList.add("drop");
                 }
 
               
@@ -76,9 +77,12 @@ function selectAll(){ // 회원 전체 조회 함수
                                 if(result == 1){
                                     
                                     alert("탈퇴되었습니다.")
-                                    dropBtn.style.backgroundColor = "red";
-                                    backBtn.style.backgroundColor = "white";
-                                    dropBtn.innerText = "탈퇴됨";
+
+                                    backBtn.classList.remove("back");
+                                    dropBtn.classList.add("drop");
+                                    backBtn.classList.add("none");
+                                    
+                                    dropBtn.innerText = "탈퇴";
                                     dropBtn.style.width = "50px";
                                     dropBtn.style.marginRight = "5px";
                                     
@@ -110,8 +114,11 @@ function selectAll(){ // 회원 전체 조회 함수
                                 if(result == 1){
                                     
                                     alert("탈퇴 취소가 완료되었습니다..")
-                                    backBtn.style.backgroundColor = "green";
-                                    dropBtn.style.backgroundColor = "white";
+
+                                    backBtn.classList.add("back");
+                                    dropBtn.classList.remove("drop");
+                                    dropBtn.classList.add("none");
+
                                     backBtn.innerText = "가입 중";
                                     backBtn.style.width = "50px";
                                     backBtn.style.marginRight = "5px";

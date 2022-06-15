@@ -289,12 +289,12 @@ public class ProjectDAO {
 			while(rs.next()) {
 				Project pro = new Project();
 				
-				pro.setProjectNo(rs.getInt(1));
-				pro.setProjectName(rs.getString(2));
-				pro.setProjectManagerNickname(rs.getString(3));
-				pro.setProjectQuota(rs.getString(4));
-				pro.setProjectIntro(rs.getString(5));
-				pro.setParticipateStatus(rs.getInt(6));
+				pro.setProjectNo(rs.getInt("PROJECT_NO"));
+				pro.setProjectName(rs.getString("PROJECT_NM"));
+				pro.setProjectManagerNickname(rs.getString("MEMBER_NICK"));
+				pro.setProjectQuota(rs.getString("PROJECT_QUOTA"));
+				pro.setProjectIntro(rs.getString("PROJECT_INTRO"));
+				pro.setParticipateStatus(rs.getString("P_ST"));
 								
 				projectList.add(pro);
 			}

@@ -136,11 +136,11 @@ public class ProjectService {
 		List<Project> projectList = dao.selectProjectList(conn, memberNo, pagination);
 		
 		
-		// 4. Map 객체를 생성하여 두 결과 객체를 모두 저장
+		// Map 객체를 생성하여 두 결과 객체를 모두 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		map.put("pagination", pagination);
-		map.put("boardList", projectList);
+		map.put("projectList", projectList);
 		
 		close(conn);
 		

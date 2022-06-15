@@ -114,22 +114,6 @@
         
                             <tbody>            
                                 
-                                <!-- 확인용 임시 작성 -->
-                                <tr>                                    
-                                    <td>
-                                        <a href="#">프로젝트명은10자추천</a>
-                                    </td>
-                                    <td>유저일</td>
-                                    <td>8</td>
-                                    <td>홈페이지를 제작하는 프로젝트입니다.</td>
-                                    <td>
-                                        <div class="btn-area">
-                                            <button id="requestBtn"><a href="${contextPath}">가입 신청</a></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- 확인용 임시 작성 -->
-                                
                                 <c:choose>
                                     <c:when test="${empty projectList}">
                                         <!-- 목록 조회 결과가 빈 경우 -->
@@ -144,15 +128,25 @@
                                         <c:forEach var="project" items="${projectList}">
                                             <tr>                                    
                                                 <td>
-                                                    <a href="#">${project.projectName}</a>
+                                                    <!-- 가입이 되어있지 않으면 프로젝트의 메인페이지로 넘어가기-->
+                                                    <c:if test="${project.participateStatus == 0}">
+                                                        <a href="${contextPath}/board/main?projectNo=${project.projectNo}">${project.projectName}</a>
+                                                    </c:if>
+                                                    <!-- 가입이 되어있으면 프로젝트의 최신글 페이지 -->
+                                                    <c:if test="${project.participateStatus == 1}">
+                                                        <a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a>
+                                                    </c:if>
+
                                                 </td>
-                                                <td>${project.projectManeger}</td>
-                                                <td>${project.projectQouta}</td>
+                                                <td>${project.projectManagerNickname}</td>
+                                                <td>${project.projectQuota}</td>
                                                 <td>${project.projectIntro}</td>
                                                 <td>
-                                                    <div class="btn-area">
-                                                        <button id="requestBtn"><a href="${contextPath}">가입 신청</a></button>
-                                                    </div>
+                                                    <c:if test="${project.participateStatus == 0}">
+                                                        <div class="btn-area">
+                                                            <button id="requestBtn"><a href="${contextPath}/board/main?projectNo=${project.projectNo}">가입 신청</a></button>
+                                                        </div>
+                                                    </c:if>
                                                 </td>
                                             </tr>
                                         </c:forEach>
