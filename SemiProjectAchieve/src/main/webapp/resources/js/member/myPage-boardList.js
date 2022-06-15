@@ -21,7 +21,7 @@ function selectAll(selectAll){
             //현재 /List?memNo=&type=1'
 
             //이후 /delete?type=1&cBoard=1
-            //이후 /delete?type=2&cReply=1
+            //이후 /delete/board?type=1&cBoard=95
             const params = new URL(location.href).searchParams;
 
             // 2) 원하는 파라미터만 얻어와 변수에 저장
@@ -36,6 +36,7 @@ function selectAll(selectAll){
 
             if(confirm("정말로 삭제 하시겠습니까?")){
                 location.href = url; // get 방식으로 url 요청
+
             }
         });
 

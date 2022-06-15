@@ -50,7 +50,7 @@ body{margin:0;} /* body태그가 가지고있는 기본 마진 제거 */
 
 /* 마이페이지 공통부분 */
 .myPage-main{
-    width: 75%;
+    width: 100%;
     padding: 0 30px;
 }
 
@@ -104,4 +104,6 @@ body{margin:0;} /* body태그가 가지고있는 기본 마진 제거 */
 
 #profile-logo{
     width: 70px;
+    height: 70px;
+    border-radius: 50%;
 }

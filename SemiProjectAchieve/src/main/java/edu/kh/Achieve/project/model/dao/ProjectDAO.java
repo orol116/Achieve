@@ -13,7 +13,9 @@ import java.util.List;
 import java.util.Properties;
 
 import edu.kh.Achieve.board.model.vo.Pagination;
+import edu.kh.Achieve.member.model.vo.Member;
 import edu.kh.Achieve.project.model.vo.Project;
+import edu.kh.Achieve.project.model.vo.ProjectSign;
 
 public class ProjectDAO {
 	
@@ -289,12 +291,12 @@ public class ProjectDAO {
 			while(rs.next()) {
 				Project pro = new Project();
 				
-				pro.setProjectNo(rs.getInt(1));
-				pro.setProjectName(rs.getString(2));
-				pro.setProjectManagerNickname(rs.getString(3));
-				pro.setProjectQuota(rs.getString(4));
-				pro.setProjectIntro(rs.getString(5));
-				pro.setParticipateStatus(rs.getInt(6));
+				pro.setProjectNo(rs.getInt("PROJECT_NO"));
+				pro.setProjectName(rs.getString("PROJECT_NM"));
+				pro.setProjectManagerNickname(rs.getString("MEMBER_NICK"));
+				pro.setProjectQuota(rs.getString("PROJECT_QUOTA"));
+				pro.setProjectIntro(rs.getString("PROJECT_INTRO"));
+				pro.setParticipateStatus(rs.getString("P_ST"));
 								
 				projectList.add(pro);
 			}
@@ -389,11 +391,110 @@ public class ProjectDAO {
 		
 		return projectList;
 	}
+	
+	
+	
+
+	/** 가입승인할 회원 조회 DAO
+	 * @param conn
+	 * @return list
+	 * @throws Exception
+	 */
+	public List<ProjectSign> selectPJSign(Connection conn)throws Exception{
+		
+		List<ProjectSign> list = new ArrayList<ProjectSign>();
+		
+		try {
+			
+			String sql = prop.getProperty("ProjectSign");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				ProjectSign PJSign = new ProjectSign();
+				
+				
+				PJSign.setMemberNo(rs.getInt(1));
+				PJSign.setProjectNo(rs.getInt(2));
+				PJSign.setAccountFlag(rs.getString(3));
+				PJSign.setMemberNickname(rs.getString(4));
+				PJSign.setProfileImage(rs.getString(5));
+				
+				
+				list.add(PJSign);
+				
+			}
+			
+		}finally {
+			
+			close(rs);
+			close(stmt);	
+			
+		}
+		
+		
+		return list;
+	}
+
+	/** PJ 가입승인 총 인원 DAO
+	 * @param conn
+	 * @return count
+	 * @throws Exception
+	 */
+	public int selectPJ(Connection conn) throws Exception{
+		
+		int count = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("selectPJ");
+			
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		}finally {
+			close(rs);
+			close(stmt);
+			
+		}
+		
+		
+		return count;
+	}
 
 	
-	
-	
-	
-	
+	public int accountMember(Connection conn, int memberNo, int projectNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("accountMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, projectNo);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		
+		return result;
+	}
+
+
 	
 }

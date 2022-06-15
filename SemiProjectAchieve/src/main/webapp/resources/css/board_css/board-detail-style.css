@@ -64,23 +64,24 @@
     font-weight: bold;
 }
 
-.img-box{
+.file-box{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
 }
 
 /* 이미지를 감싸는 div */
-.boardImg{
-    width: 230px;
-    height: 230px;
+.boardFile{
+    width: auto;
+    height: auto;
 
     display: inline-block;
     text-align: center;
 }
 
-.boardImg img{
-    max-width: 90%;
-    max-height: 90%;
+.boardFile a{
+    text-decoration: none;
 }
 
 .thumbnail{
