@@ -1,6 +1,7 @@
 package edu.kh.Achieve.board.model.dao;
 
 import static edu.kh.Achieve.common.JDBCTemplate.close;
+import static edu.kh.community2.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -15,7 +16,6 @@ import edu.kh.Achieve.board.model.vo.Board;
 import edu.kh.Achieve.board.model.vo.BoardAttachment;
 import edu.kh.Achieve.board.model.vo.BoardDetail;
 import edu.kh.Achieve.board.model.vo.Pagination;
-import edu.kh.Achieve.project.model.vo.Project;
 
 public class BoardDAO {
 	
@@ -573,6 +573,83 @@ public class BoardDAO {
 		
 		return projectName;
 
+	}
+
+	/** 게시글 수정
+	 * 
+	 * @param conn
+	 * @param detail
+	 * @return
+	 */
+	public int updateBoard(Connection conn, BoardDetail detail) throws Exception{
+		
+	int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("updateBoard");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, detail.getBoardTitle());
+			pstmt.setString(2, detail.getBoardContent());
+			pstmt.setInt(3, detail.getBoardNo());
+			pstmt.setInt(4, detail.getProjectNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateBoardAttachment(Connection conn, BoardAttachment attach) throws Exception{
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateBoardAttachment");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, attach.getAttachmentReName());
+			pstmt.setString(2, attach.getAttachmentOriginal());
+			pstmt.setInt(3, attach.getBoardNo());
+			pstmt.setInt(4, attach.getAttachmentLevel());
+			pstmt.setInt(5, attach.getProjectNo());
+			
+			result = pstmt.executeUpdate()	;
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int insertBoardAttachment(Connection conn, BoardAttachment attach) throws Exception {
+		int result = 0;
+		
+		try {
+			//String sql = prop.getProperty("insertBoardImage");
+
+			String sql = prop.getProperty("insertBoardAttachment");
+
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, image.getImageReName());
+			pstmt.setString(2, image.getImageOriginal());
+			pstmt.setInt(3, image.getImageLevel());
+			pstmt.setInt(4, image.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}finally{
+			close(pstmt);
+		}
+		
+		return result;
 	}
 	
 

@@ -28,6 +28,12 @@ public class MyPageController extends HttpServlet{
 		
 		MemberService service = new MemberService();
 		
+		HttpSession session = req.getSession();
+		Member loginMember = (Member)(session.getAttribute("loginMember"));
+		int memberNo = loginMember.getMemberNo();
+		
+		session.setAttribute("memNo", memberNo);
+		
 		try {
 			
 			if(command.equals("info")) { // 내 정보 수정
@@ -48,13 +54,6 @@ public class MyPageController extends HttpServlet{
 				String memberNickname = req.getParameter("memberNickname");
 				String memberTel = req.getParameter("memberTel");
 				
-				// 세션에서 로그인 회원정보 얻어오기
-				HttpSession session = req.getSession();
-				Member loginMember = (Member)(session.getAttribute("loginMember"));
-				
-				// 로그인 한 회원의 회원 번호
-				int memberNo = loginMember.getMemberNo();
-				
 				// 수정에 필요한 정보를 모아둔 Member 객체 생성
 				Member mem = new Member();
 				
@@ -62,6 +61,8 @@ public class MyPageController extends HttpServlet{
 				mem.setMemberName(memberName);
 				mem.setMemberNickname(memberNickname);
 				mem.setMemberTel(memberTel);
+				
+	
 				
 				// 회원 정보 수정 후 결과 반환
 				int result = service.updateMember(mem);
@@ -77,6 +78,7 @@ public class MyPageController extends HttpServlet{
 				} else {
 					session.setAttribute("message", "회원 정보 수정 실패");
 				}
+				
 				
 				// 결과 상관 없이 내 정보 화면 재요청
 				resp.sendRedirect(req.getContextPath() + "/member/myPage/info");
@@ -100,13 +102,6 @@ public class MyPageController extends HttpServlet{
 				// 파라미터 얻어오기(현재 비밀번호, 새 비밀번호)
 				String currentPw = req.getParameter("currentPw");
 				String newPw = req.getParameter("newPw");
-				
-				// 세션에서 로그인 회원정보 얻어오기
-				HttpSession session = req.getSession();
-				Member loginMember = (Member)(session.getAttribute("loginMember"));
-				
-				// 로그인 한 회원의 회원 번호
-				int memberNo = loginMember.getMemberNo();
 				
 				// 비밀번호 변경 후 결과 반환
 				int result = service.changePw(currentPw, newPw, memberNo);
@@ -144,11 +139,6 @@ public class MyPageController extends HttpServlet{
 			
 			
 			if(command.equals("secessionSubmit")) {
-				
-				// 로그인 회원 번호 얻어오기
-				HttpSession session = req.getSession();
-				Member loginMember = (Member)(session.getAttribute("loginMember"));
-				int memberNo = loginMember.getMemberNo();
 				
 				// 회원 탈퇴 후 결과 반환
 				int result = service.secession(memberNo);
@@ -190,10 +180,7 @@ public class MyPageController extends HttpServlet{
 				
 				int maxSize = 1024 * 1024 * 20;
 				//			   1KB    1MB   20MB
-						
-				
-				HttpSession session = req.getSession();
-				
+
 				String root = session.getServletContext().getRealPath("/");
 				// C:\workspace\SemiProject_Achieve\src\main\webapp
 				
@@ -211,10 +198,6 @@ public class MyPageController extends HttpServlet{
 				String encoding = "UTF-8";
 				
 				MultipartRequest mpReq = new MultipartRequest(req, filePath, maxSize, encoding, new MyRenamePolicy());
-				
-				// 프로필 이미지 변경 Service 호출 시 필요한 값
-				Member loginMember = (Member)session.getAttribute("loginMember");
-				int memberNo = loginMember.getMemberNo();
 
 				// DB에 삽입 될 프로필 이미지 경로
 				// 단, x 버튼이 클릭되면(input태그 value값이 1이면) null 대입
@@ -248,18 +231,6 @@ public class MyPageController extends HttpServlet{
 			
 			
 			// ------------------------------------------------------
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			
 		} catch(Exception e) {
 			e.printStackTrace();

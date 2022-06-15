@@ -66,16 +66,26 @@
 	
 		<!-- 작성 댓글에서 일정한 범위의 목록 조회 -->
 	<entry key="selectReplyList">
-	SELECT * FROM(
-		SELECT ROWNUM RNUM, A.* FROM (
-			SELECT REPLY_NO, REPLY_CONTENT,
-			TO_CHAR(REPLY_DT, 'YYYY-MM-DD') AS REPLY_DT
-			FROM REPLY
-			WHERE MEMBER_NO = ?
-			AND REPLY_ST = 'N') A
-			ORDER BY REPLY_NO DESC
-		)
-	WHERE RNUM BETWEEN ? AND ?	
+		SELECT * FROM(
+			SELECT ROWNUM RNUM, A.* FROM (
+				SELECT REPLY_NO, REPLY_CONTENT, BOARD_TITLE,
+				TO_CHAR(REPLY_DT, 'YYYY-MM-DD') AS REPLY_DT
+				FROM REPLY
+				JOIN BOARD USING(BOARD_NO)
+				WHERE REPLY.MEMBER_NO = ?
+				AND REPLY_ST = 'N') A
+				ORDER BY REPLY_NO DESC
+			)
+		WHERE RNUM BETWEEN ? AND ?
+
 	</entry>
+	
+	<!-- 댓글 삭제 -->
+	<entry key="deleteReply">
+		UPDATE BOARD SET
+		BOARD_ST = 'Y'
+		WHERE REPLY_NO = ?	
+	</entry>
+	
 
 </properties>

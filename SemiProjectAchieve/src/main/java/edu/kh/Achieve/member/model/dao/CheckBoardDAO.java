@@ -215,19 +215,21 @@ public class CheckBoardDAO {
 	 */
 	public int deleteBoard(Connection conn, int boardNo) throws Exception {
 
-		int result = 0;
+		int result1 = 0;
 		
 		try {
 			String sql = prop.getProperty("deleteBoard");
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardNo);
-			result = pstmt.executeUpdate();
+			
+			result1 = pstmt.executeUpdate();
 			
 		}finally {
 			close(pstmt);
 		}
 		
-		return result;
+		return result1;
 	}
 	
 //-------------------------------------------------------------------------
@@ -293,6 +295,7 @@ public class CheckBoardDAO {
 				reply.setReplyNo(rs.getInt("REPLY_NO"));
 				reply.setReplyContent(rs.getString("REPLY_CONTENT"));
 				reply.setReplyDate(rs.getString("REPLY_DT"));
+				reply.setBoardTitle(rs.getString("BOARD_TITLE"));
 			
 				replyList.add(reply);
 			
@@ -304,6 +307,31 @@ public class CheckBoardDAO {
 		}
 		
 		return replyList;
+	}
+
+	/** 댓글 삭제 DAO
+	 * @param conn
+	 * @param replyNo
+	 * @return result2
+	 * @throws Exception
+	 */
+	public int deleteReply(Connection conn, int replyNo) throws Exception{
+
+		int result2 = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteReply");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(2, replyNo);
+			
+			result2 = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		
+		return result2;
 	}
 
 

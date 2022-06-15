@@ -28,7 +28,7 @@
             <div class="title-area">
                 <!-- 제목 -->
                 <h1 class="board-title">
-                    <input type="text" name="boardTitle" placeholder="제목을 입력해주세요.">
+                    <input type="text" name="boardTitle" placeholder="제목을 입력해주세요." value="${detail.boardTitle}">
                 </h1>
             </div>
 
@@ -45,11 +45,10 @@
 
                 <!-- 내용 -->
                 <div class="board-content">
-                    <textarea name="boardContent" id="boardContent"></textarea>
+                    <textarea name="boardContent" id="boardContent">${detail.boardContent}</textarea>
                     <script>
                     CKEDITOR.replace('boardContent', {height: 500});
                     </script>
-
                 </div>
 
                 <div class="bottom-area">
