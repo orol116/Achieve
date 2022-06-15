@@ -34,7 +34,6 @@ public class BoardDeleteServlet extends HttpServlet{
 			}
 			
 			
-			
 			String path = null;
 			String message = null;
 			
