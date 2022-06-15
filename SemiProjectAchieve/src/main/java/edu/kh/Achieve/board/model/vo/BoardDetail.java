@@ -24,6 +24,9 @@ public class BoardDetail {
 	private int memberNo;
 	private String boardName;
 	
+	// 프로젝트 번호
+	private int projectNo;
+	
 	// 첨부파일
 	private List<BoardAttachment> attachmentList;
 }
