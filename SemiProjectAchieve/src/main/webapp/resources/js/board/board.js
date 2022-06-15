@@ -107,7 +107,7 @@ function writeValidate(){
     }
     if (CKEDITOR.instances.boardContent.getData().length == 0) {
         alert("내용을 입력해주세요!");
-        CKEDITOR.instances.boardContent.getData() = "";
+        //CKEDITOR.instances.boardContent.getData() = "";
         boardContent.focus();
         return false;
     }
@@ -118,7 +118,7 @@ function writeValidate(){
         return false;
     }
 
-    deleteList.value = Array.from(deleteSet);
+    // deleteList.value = Array.from(deleteSet);
 
     return true;
 }
