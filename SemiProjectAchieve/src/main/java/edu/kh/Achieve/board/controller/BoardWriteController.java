@@ -87,6 +87,7 @@ public class BoardWriteController extends HttpServlet {
 			
 			List<BoardAttachment> boardAttachmentList = new ArrayList<BoardAttachment>();
 			
+			int projectNo = Integer.parseInt(mpReq.getParameter("projectNo"));
 			
 			while (files.hasMoreElements()) {
 				String name = files.nextElement();
@@ -101,6 +102,7 @@ public class BoardWriteController extends HttpServlet {
 					attachment.setAttachmentOriginal(original);
 					attachment.setAttachmentReName(folderPath + rename);
 					attachment.setAttachmentLevel(Integer.parseInt(name));
+					attachment.setProjectNo(projectNo);
 					
 					boardAttachmentList.add(attachment);
 				}
@@ -109,7 +111,8 @@ public class BoardWriteController extends HttpServlet {
 			String boardTitle = mpReq.getParameter("boardTitle");
 			String boardContent = mpReq.getParameter("boardContent");
 			int boardCode = Integer.parseInt(mpReq.getParameter("board-type"));
-			int projectNo = Integer.parseInt(mpReq.getParameter("projectNo"));
+			
+			
 			session.setAttribute("projectNo", projectNo);
 			
 			Member loginMember = (Member)session.getAttribute("loginMember");
@@ -160,16 +163,14 @@ public class BoardWriteController extends HttpServlet {
 				
 				// detail, imageList , deleteList
 				int result = service.updateBoard(detail,boardAttachmentList, deleteList);
-				
-				
-				
-				
 				String path = null;
 				String message = null;
 				
+				System.out.println(result);
+				
 				if(result>0) { // 성공
 					// detail?no==10000&type=1&cp=20 이런 모양
-					path = "detail?no="+boardNo+"&type="+boardCode+"&cp="+cp; // 상세 조회 페이지 요청 주소 
+					path = "detail?no="+boardNo+"&projectNo="+projectNo+"&type="+boardCode+"&cp="+cp; // 상세 조회 페이지 요청 주소 
 					
 					message = "게시글이 수정되었습니다.";
 					
@@ -185,6 +186,9 @@ public class BoardWriteController extends HttpServlet {
 					message="게시글 수정 실패";
 					
 				}
+				
+				session.setAttribute("message", message); // 리다이렉트를 위해 세션에 올려둔다.
+				resp.sendRedirect(path);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

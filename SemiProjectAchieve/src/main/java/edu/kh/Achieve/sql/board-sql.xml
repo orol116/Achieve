@@ -62,7 +62,7 @@
 		        JOIN MEMBER USING(MEMBER_NO)
 		        WHERE BOARD_ST = 'N'
 		        AND PROJECT_NO = ?
-		        ORDER BY CREATE_DT DESC
+		        ORDER BY BOARD_NO DESC
 		    ) A
 		)
 		WHERE RNUM BETWEEN ? AND ?
@@ -177,7 +177,7 @@
 	UPDATE BOARD SET 
 	BOARD_TITLE =?,
 	BOARD_CONTENT = ?,
-	UPDATE_DATE = SYSDATE
+	UPDATE_DT = SYSDATE
 	WHERE BOARD_NO =? 
 	AND PROJECT_NO = ?
 	</entry>
@@ -192,15 +192,13 @@
 	AND PROJECT_NO = ? 
 	</entry>
 	
-	<entry key="deleteBoardImage">
+	<entry key="deleteBoardAttachment">
 	DELETE FROM BOARD_IMG
 	WHERE BOARD_NO = ?
+	AND PROJECT_NO = ?
 	AND IMG_LEVEL IN(
 	</entry>
 	
-	<entry key="insertBoardImage">
-	INSERT INTO BOARD_IMG
-	VALUES(SEQ_IMG_NO.NEXTVAL, ?, ?, ? ,?)
-	</entry>
+
 	
 </properties>
