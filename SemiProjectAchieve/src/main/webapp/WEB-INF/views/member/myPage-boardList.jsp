@@ -43,19 +43,9 @@
 </head>    
 <body>
     <main>
-        <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
+ 
         <header>
-            <!-- 클릭 시 메인페이지로 이동하는 로고 -->
-            <section>
-                <a href="${contextPath}">
-                    <img src="${contextPath}/resources/images/Achieve_logo.png" id="home-logo">
-                </a>
-            </section>
-
-            <section>
-                <!-- form 내부 input태그 값을 서버 또는 페이지로 전달 -->
-                <div id="team_name">팀 프로젝트 명</div>
-            </section>
+            <jsp:includ page = "/WEB-INF/views/common/header.jsp">
 
             <section>
                 <div>
@@ -75,18 +65,8 @@
         <section class="myPage-content">
             <!-- 왼쪽 사이드 메뉴 -->
         
-            <section class="left-side">
-                <h1>마이페이지</h1>
+            <jsp:include page="/WEB-INF/views/member/sideMenu.jsp" />
 
-                <ul class="list-group">
-                    <li> <a href="${contextPath}/member/myPage/profile">회원정보 수정 </a> </li>
-                    <li> <a href="${contextPath}/member/myPage/changePw">비밀번호 변경 </a> </li>
-                    <li> <a href="${contextPath}/member/List?memNo=${memNo}&type=1">내가 쓴 글 보기 </a> </li>
-                    <li> <a href="${contextPath}/member/List?memNo=${memNo}&type=2">내가 쓴 댓글 보기 </a> </li>
-                    <li> <a href="${contextPath}/member/myPage/secession">회원 탈퇴 </a> </li>
-                </ul>
-
-            </section>
             
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
             <section class="myPage-main">
