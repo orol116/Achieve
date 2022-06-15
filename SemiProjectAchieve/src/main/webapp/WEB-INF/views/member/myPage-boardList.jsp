@@ -117,7 +117,6 @@
                             </c:when>
                         </c:choose>
                 </div>      
-
                 <div class="list-wrapper">
 
                     <form action="delete" name="list-form" onsubmit="return ckBox()">

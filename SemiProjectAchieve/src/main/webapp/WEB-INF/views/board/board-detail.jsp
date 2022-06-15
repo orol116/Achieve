@@ -64,24 +64,24 @@
                 ${detail.boardContent}
             </div>
 
-              <!-- 첨부 파일이  있을 경우 -->
-                <c:if test="${!empty detail.attachmentList}">
+            <!-- 첨부 파일이  있을 경우 -->
+            <c:if test="${!empty detail.attachmentList}">
 
-                    <!-- 업로드 파일 영역  -->
-                    <h5>업로드 파일</h5> 
+                <!-- 업로드 파일 영역  -->
+                <h5>업로드 파일</h5> 
 
-                    <div class="file-box">
-                        <c:forEach var="i" begin="0" end="${fn:length(detail.attachmentList) -1}">
-                            <div class="boardFile">
+                <div class="file-box">
+                    <c:forEach var="i" begin="0" end="${fn:length(detail.attachmentList) -1}">
+                        <div class="boardFile">
 
-                                <a href="${contextPath}${detail.attachmentList[i].attachmentReName}" 
-                                download="${detail.attachmentList[i].attachmentOriginal}">${detail.attachmentList[i].attachmentOriginal}</a>
+                            <a href="${contextPath}${detail.attachmentList[i].attachmentReName}" 
+                            download="${detail.attachmentList[i].attachmentOriginal}">${detail.attachmentList[i].attachmentOriginal}</a>
 
-                            </div>  
-                        </c:forEach>
-                    </div>
+                        </div>  
+                    </c:forEach>
+                </div>
 
-               </c:if>
+            </c:if>
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

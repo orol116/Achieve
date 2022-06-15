@@ -5,6 +5,7 @@ main{
     align-items: center;
 }
 
+
 #board-member{
     width: 1000px;
     height: 700px;
@@ -115,6 +116,9 @@ main{
 }
 .dropBtn:hover{
     background-color: red;
+    color: white;
+    border: none;
+    
 }
 .backBtn{
     width: 50px;
@@ -124,11 +128,14 @@ main{
     background-color: white;
     font-size: 0.7em;
     cursor: pointer;
-
+    
     border-radius: 5px;
 }   
 .backBtn:hover{
     background-color: green;
+    color: white;
+    border: none;
+
 }
 
 .drop{
@@ -139,4 +146,8 @@ main{
 }
 .none{
     background-color: white;
+}
+
+.tontWhite{
+    color: white;
 }

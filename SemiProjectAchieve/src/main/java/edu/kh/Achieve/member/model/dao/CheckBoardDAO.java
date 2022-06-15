@@ -273,7 +273,7 @@ public class CheckBoardDAO {
 				reply.setReplyDate(rs.getString("REPLY_DT"));
 				reply.setBoardTitle(rs.getString("BOARD_TITLE"));
 				reply.setProjectNo(rs.getInt("PROJECT_NO"));
-//				reply.setReplyNo(rs.getInt("BOARD_NO"));
+				reply.setBoardNo(rs.getInt("BOARD_NO"));
 			
 				replyList.add(reply);
 			

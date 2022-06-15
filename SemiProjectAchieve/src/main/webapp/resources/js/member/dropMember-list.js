@@ -78,8 +78,8 @@ function selectAll(){ // 회원 전체 조회 함수
                                     
                                     alert("탈퇴되었습니다.")
 
-                                    backBtn.classList.remove("back");
                                     dropBtn.classList.add("drop");
+                                    backBtn.classList.remove("back");
                                     backBtn.classList.add("none");
                                     
                                     // dropBtn.innerText = "탈퇴";
