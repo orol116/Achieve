@@ -28,31 +28,31 @@
             <div id="notice">알림</div>
             
             
-            <div id="notice-area">
-
-                <c:choose>
+            <div id="notice-area">                
                         
-                    <c:when test="${empty note.noteList}">
-                        <div class="notice-list" id="noNote">                                
-                            <p>알림이 없습니다</p>
-                        </div>
-                    </c:when>
+                <!-- 쪽지는 list로 확인만 가능하게, 링크 연결 X / 현재 el 등 임시 작성 -->
+                <c:forEach var="note" items="${nList}">
 
-                    <c:otherwise>
-                        
-                        <!-- 쪽지는 list로 확인만 가능하게, 링크 연결 X / 현재 el 등 임시 작성 -->
-                        <c:forEach var="project" items="${noteList}">
-                            <div class="notice-list">
-                                <div>${note.senderNo}</div>
-                                <p>${note.noteContent}</p>
-                            </div>
-                            <input type="hidden" name="noteNo" value="${note.noteNo}">
-                        </c:forEach>
-                        
+                    <div class="notice-list" id="noteList">
 
-                    </c:otherwise>
+                        <div>${note.sender}</div>
+                        <p>${note.noteContent}</p>
 
-                </c:choose>
+                    </div>
+
+                </c:forEach>
+                
+                
+                    <div class="notice-list noNote">                                
+                        <p>알림이 없습니다</p>
+                    </div>
+                
+                
+                
+                
+                   
+
+                
 
                 <div class="notice-list">
                     <div>프로젝트 A</div>
@@ -70,8 +70,7 @@
                 </div>
 
 
-            </div>
-                
+            </div>                
 
         </section>
 
@@ -81,6 +80,11 @@
     </main>
         
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <script>
+        //로그인한 회원 번호
+        const loginMemberNo = "${loginMember.memberNo}";
+    </script>
 
     <!-- jQuery Library 추가 -->
     <script    src="https://code.jquery.com/jquery-3.6.0.min.js"    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="    crossorigin="anonymous"></script>
