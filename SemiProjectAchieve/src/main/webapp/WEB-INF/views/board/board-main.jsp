@@ -69,10 +69,6 @@
 
                     
                     <%-- 프로젝트에 가입한 사람이 페이지에 들어왔을 때 --%>
-<<<<<<< HEAD
-=======
-
->>>>>>> 0a8c367038aeb13249031f4747a205a44e29a69b
                     <c:when test="${project.participateStatus == 1}">
 
                         <div id="board-area">
