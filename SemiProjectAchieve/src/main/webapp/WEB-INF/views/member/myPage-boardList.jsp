@@ -46,19 +46,6 @@
         <header>
             <!-- 클릭 시 메인페이지로 이동하는 로고 -->
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
-            <section>
-                <div>
-                    <a href="#">
-                        <img src="${contextPath}/resources/images/favorit.png" id="fav-logo">
-                    </a>
-                </div>
-                <div>
-                    <a href="#">
-                        <img src="${contextPath}/resources/images/note.png" id="note-logo">
-                    </a>
-                </div>
-            </section>
     
         </header>
         <!-- 마이페이지- 내정보 -->
@@ -256,18 +243,7 @@
 
     <footer>
        
-       <%-- <jsp:includ page = "/WEB-INF/views/common/header.jsp"> --%>
-        <article>
-            <a href="#">FAQ</a>
-            <span>|</span>
-            <a href="#">1:1문의</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보취급방침</a>
-        </article>
-         <pre>서울특별시 중구 남대문로 120 대일빌딩 A강의장</pre>
-         <pre>KH A-class 개발2팀</pre>
+        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         
     </footer>
 
