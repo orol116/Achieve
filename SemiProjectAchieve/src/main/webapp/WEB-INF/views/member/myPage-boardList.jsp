@@ -43,10 +43,9 @@
 </head>    
 <body>
     <main>
- 
         <header>
-            <!-- header -->
-            <jsp:includ page = "/WEB-INF/views/common/header.jsp">
+            <!-- 클릭 시 메인페이지로 이동하는 로고 -->
+            <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
             <section>
                 <div>
@@ -66,9 +65,10 @@
         <section class="myPage-content">
             <!-- 왼쪽 사이드 메뉴 -->
         
-            <jsp:include page="/WEB-INF/views/member/sideMenu.jsp" />
+            <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>
+            <!-- <section class="left-side">
 
-
+            </section> -->
             
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
             <section class="myPage-main">
