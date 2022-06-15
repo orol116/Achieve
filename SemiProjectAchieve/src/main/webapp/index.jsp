@@ -125,6 +125,14 @@
                                 
                             </article>
 
+                            <article id="main-project-area">
+                                
+                                <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
+                                <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 조회</a></button>
+        
+                
+                            </article>
+
                         </c:otherwise>
 
 
@@ -132,13 +140,6 @@
                     </c:choose>
 
 
-                    <article id="main-project-area">
-                        
-                        <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
-                        <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 찾기</a></button>
-
-        
-                    </article>
             
             
                 
