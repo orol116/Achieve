@@ -166,11 +166,11 @@ public class BoardService {
 	}
 	
 	
-	public int deleteBoard(int boardNo) throws Exception{
+	public int deleteBoard(int boardNo, int projectNo) throws Exception{
 
 		Connection conn = getConnection();
 		
-		int result = dao.deleteBoard(boardNo, conn);
+		int result = dao.deleteBoard(boardNo, projectNo, conn);
 		
 		if(result>0) commit(conn);
 		else rollback(conn);
@@ -192,8 +192,6 @@ public class BoardService {
 		
 		// 1) 게시글 (BOARD 테이블) 내용만 조회
 		BoardDetail detail = dao.selectBoarDetail(conn, boardNo, projectNo);
-		
-		System.out.println(detail);
 		
 		if(detail != null) { // 게시글 상세 조회 결과가 있을 경우에 
 			
@@ -237,10 +235,10 @@ public class BoardService {
 		
 		detail.setBoardTitle(Util.XSSHandling(detail.getBoardTitle()));
 		
-		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
-		
-		// 2) 개행문자 처리(내용)
-		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
+//		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
+//		
+//		// 2) 개행문자 처리(내용)
+//		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
 		
 		// 3) DAO 호출
 		int result = dao.updateBoard(conn, detail);
@@ -262,7 +260,7 @@ public class BoardService {
 				if(result == 0) {
 					result = dao.insertBoardAttachment(conn, attach);
 				}
-			} // 향상된 for문 끝
+			} // 향상된 for문 끝 
 			
 			
 			// 3. 이미지 삭제

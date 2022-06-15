@@ -139,6 +139,7 @@
 		UPDATE BOARD SET
 		BOARD_ST = 'Y'
 		WHERE BOARD_NO = ?
+		AND PROJECT_NO = ?
 	</entry>
 	
 	<!-- 게글 상세조회 -->
@@ -193,12 +194,10 @@
 	</entry>
 	
 	<entry key="deleteBoardAttachment">
-	DELETE FROM BOARD_IMG
-	WHERE BOARD_NO = ?
-	AND PROJECT_NO = ?
-	AND IMG_LEVEL IN(
+		DELETE FROM BOARD_IMG
+		WHERE BOARD_NO = ?
+		AND PROJECT_NO = ?
+		AND IMG_LEVEL IN(
 	</entry>
-	
-
 	
 </properties>

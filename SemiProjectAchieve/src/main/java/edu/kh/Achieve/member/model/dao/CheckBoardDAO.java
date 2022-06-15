@@ -14,6 +14,7 @@ import java.util.Properties;
 import edu.kh.Achieve.board.model.vo.Pagination;
 import edu.kh.Achieve.member.model.vo.CheckBoard;
 import edu.kh.Achieve.member.model.vo.CheckPagination;
+import edu.kh.Achieve.member.model.vo.CheckProject;
 import edu.kh.Achieve.member.model.vo.CheckReply;
 import edu.kh.Achieve.member.model.vo.Member;
 
@@ -209,33 +210,31 @@ public class CheckBoardDAO {
 
 	/** 작성글 삭제 DAO
 	 * @param conn 
-	 * @param boardNo
+	 * @param cBoard
 	 * @return result
 	 * @throws Exception
 	 */
-	public int deleteBoard(Connection conn, int boardNo) throws Exception {
+	public int deleteBoard(Connection conn, String[] cBoard) throws Exception {
 
-		int result1 = 0;
+		int result = 0;
 		
 		try {
-			String sql = prop.getProperty("deleteBoard");
+			String sql = prop.getProperty("deleteBoard") + String.join(",", cBoard) + " )";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, boardNo);
 			
-			result1 = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			
 		}finally {
 			close(pstmt);
 		}
 		
-		return result1;
+		return result;
 	}
 	
 //-------------------------------------------------------------------------
 	
-	
-	/** 작성 댓글 조회 DAO
+	/** 작성 댓글 개수 조회 DAO
 	 * @param conn
 	 * @param type
 	 * @param memNo
@@ -267,7 +266,7 @@ public class CheckBoardDAO {
 	 * @param pagination
 	 * @param type
 	 * @param memNo
-	 * @return 
+	 * @return replyList
 	 * @throws Exception
 	 */
 	public List<CheckReply> selectReplyList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception{
@@ -312,26 +311,103 @@ public class CheckBoardDAO {
 	/** 댓글 삭제 DAO
 	 * @param conn
 	 * @param replyNo
-	 * @return result2
+	 * @return result
 	 * @throws Exception
 	 */
-	public int deleteReply(Connection conn, int replyNo) throws Exception{
+	public int deleteReply(Connection conn, String[] cReply) throws Exception{
 
-		int result2 = 0;
+		int result = 0;
 		
 		try {
-			String sql = prop.getProperty("deleteReply");
+			String sql = prop.getProperty("deleteReply") + String.join(",", cReply) + " )";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(2, replyNo);
 			
-			result2 = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			
 		}finally {
 			close(pstmt);
 		}
 		
-		return result2;
+		return result;
+	}
+
+	// ------------------------------------------------------
+	
+	/** 가입된 프로젝트 개수 조회 DAO
+	 * @param conn
+	 * @param type
+	 * @param memNo
+	 * @return map
+	 * @throws Exception
+	 */
+	public int getProjectListCount(Connection conn, int type, int memNo) throws Exception{
+
+		int listProjectCount = 0;
+		
+		try{
+			String sql = prop.getProperty("getProjectListCount");
+			
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, memNo);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				listProjectCount = rs.getInt(1);
+			}
+		}finally{
+			close(rs);
+			close(pstmt);
+		}
+		return listProjectCount;
+		
+	}
+
+	/** 가입된 프로젝트 목록 조회 DAO
+	 * @param conn
+	 * @param pagination
+	 * @param type
+	 * @param memNo
+	 * @return projectList
+	 * @throws Exception
+	 */
+	public List<CheckProject> selectProjectList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception{
+		
+		List<CheckProject> projectList = new ArrayList<CheckProject>();
+		
+		try {
+			String sql = prop.getProperty("selectProjectList");
+			
+			// BETWEEN 구문에 들어갈 범위 계산
+			int start =  (pagination.getCurrentPage() - 1) * pagination.getLimit() +1;
+			int end = start + pagination.getLimit()-1;
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, memNo);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				CheckProject project = new CheckProject();
+				
+				project.setProjectNo(rs.getInt("PROJECT_NO"));
+				project.setProjectNM(rs.getString("PROJECT_NM"));
+				
+				projectList.add(project);
+			
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return projectList;
 	}
 
 
