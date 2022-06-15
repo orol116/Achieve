@@ -117,7 +117,7 @@
                                 <!-- 확인용 임시 작성 -->
                                 <tr>                                    
                                     <td>
-                                        <a href="#">프로젝트명은10자추천</a>
+                                        <a href="#">${projectList.projectName}</a>
                                     </td>
                                     <td>유저일</td>
                                     <td>8</td>
