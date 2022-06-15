@@ -59,15 +59,14 @@ public class PJSearchServlet extends HttpServlet{
 //					map = service.searchProjectList(cp, key, query);
 //				}
 				
-				System.out.println(map);
 				
 				// request 범위로 map을 세팅
 				req.setAttribute("map", map);
-
 				
 				String path = "/WEB-INF/views/project/PJSearch.jsp";
 				
 				RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+				
 				
 				dispatcher.forward(req, resp);
 
