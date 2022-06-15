@@ -20,7 +20,6 @@ public class DropMemberService {
 		if(result > 0) commit(conn);
 		else 		   rollback(conn);
 
-
 		
 		return result;
 	}

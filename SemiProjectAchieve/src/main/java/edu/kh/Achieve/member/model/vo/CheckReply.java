@@ -18,6 +18,6 @@ public class CheckReply {
 	private int memberNo;
 	private String memberNickName;
 	private String profileImage;
-	
+	private String boardTitle;
 
 }

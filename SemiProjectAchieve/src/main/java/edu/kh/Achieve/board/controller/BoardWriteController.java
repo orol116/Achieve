@@ -185,10 +185,11 @@ public class BoardWriteController extends HttpServlet {
 					
 				}
 
-		} catch (Exception e) {
+			}
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	
 	}
-
+	
 }

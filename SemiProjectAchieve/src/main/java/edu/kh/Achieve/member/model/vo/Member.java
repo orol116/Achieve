@@ -21,6 +21,5 @@ public class Member {
 	private String profileImage;
 	
 
-	
 
 }

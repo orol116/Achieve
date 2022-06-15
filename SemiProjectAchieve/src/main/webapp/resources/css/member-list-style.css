@@ -95,3 +95,18 @@ main{
 
     border-radius: 50%;
 }
+
+.dropBtn{
+    margin-left: 150px;
+    border: 1px solid #aaa;
+    background-color: white;
+    font-size: 0.7em;
+    cursor: pointer;;
+}
+.backBtn{
+    margin-left: 150px;
+    border: 1px solid #aaa;
+    background-color: white;
+    font-size: 0.7em;
+    cursor: pointer;;
+}   
