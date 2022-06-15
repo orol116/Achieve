@@ -22,7 +22,7 @@
 
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-        <form action="write" enctype="multipart/form-data" method="POST" class="board-write"
+        <form action="#" enctype="multipart/form-data" method="POST" class="board-write"
             onsubmit="return writeValidate()">
 
             <div class="title-area">
@@ -33,6 +33,7 @@
             </div>
 
             <div class="content-area">
+                
                 <div class="add-content">
 
                     <label for="img0">첨부파일<img class="preview" src="${img0}"></label>
