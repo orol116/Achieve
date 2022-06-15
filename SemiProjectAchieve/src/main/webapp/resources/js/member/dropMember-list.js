@@ -50,8 +50,18 @@ function selectAll(){ // 회원 전체 조회 함수
                 span2.innerText = "닉네임 : "+item.memberNickname; // 회원 닉네임
 
                 const dropBtn = document.createElement("button");
+                const backBtn = document.createElement("button");
+
                 dropBtn.classList.add("dropBtn");
-                dropBtn.innerText = "제출";
+                dropBtn.innerText = "탈퇴";
+                backBtn.classList.add("backBtn");
+                backBtn.innerText = "가입 중";
+
+                if(item.suspensionFlag=='N'){
+                    backBtn.style.backgroundColor='green'
+                }else{
+                    dropBtn.style.backgroundColor='red'
+                }
 
               
                 
@@ -67,12 +77,46 @@ function selectAll(){ // 회원 전체 조회 함수
                                     
                                     alert("탈퇴되었습니다.")
                                     dropBtn.style.backgroundColor = "red";
+                                    backBtn.style.backgroundColor = "white";
                                     dropBtn.innerText = "탈퇴됨";
                                     dropBtn.style.width = "50px";
                                     dropBtn.style.marginRight = "5px";
                                     
 
                         
+                                }else{
+                                    alert("실패.");
+                        
+                                }
+                        
+                            },
+                            error : function(){
+                                console.log("에러발생");
+                            }
+                        });
+    
+    
+    
+                    });
+
+                    backBtn.addEventListener("click",function(){
+    
+                        $.ajax({
+                            url : "backMember",
+                            data : {"memberNo":item.memberNo},
+                            type : "POST",
+                            success : function(result){
+                        
+                                if(result == 1){
+                                    
+                                    alert("탈퇴 취소가 완료되었습니다..")
+                                    backBtn.style.backgroundColor = "green";
+                                    dropBtn.style.backgroundColor = "white";
+                                    backBtn.innerText = "가입 중";
+                                    backBtn.style.width = "50px";
+                                    backBtn.style.marginRight = "5px";
+                                    
+
                                 }else{
                                     alert("실패.");
                         
@@ -94,15 +138,11 @@ function selectAll(){ // 회원 전체 조회 함수
                 div3.append(span1,br,span2);
                 
                 div2.append(img);
-                div2.append(div3, dropBtn);
+                div2.append(div3, dropBtn, backBtn);
                 div1.append(div2);
 
                 memberList.append(div1);
 
-                
-
-
-             
          
               
                 

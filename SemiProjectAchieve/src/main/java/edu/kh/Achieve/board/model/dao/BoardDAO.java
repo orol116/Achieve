@@ -630,7 +630,7 @@ public class BoardDAO {
 		int result = 0;
 		
 		try {
-			String sql = prop.getProperty("insertBoardImage");
+			String sql = prop.getProperty("insertBoardAttachment");
 			
 			pstmt=conn.prepareStatement(sql);
 			
