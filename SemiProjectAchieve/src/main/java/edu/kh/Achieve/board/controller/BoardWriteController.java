@@ -162,8 +162,6 @@ public class BoardWriteController extends HttpServlet {
 				
 				// detail, imageList , deleteList
 				int result = service.updateBoard(detail,boardAttachmentList, deleteList);
-				
-				
 				String path = null;
 				String message = null;
 				
@@ -187,6 +185,7 @@ public class BoardWriteController extends HttpServlet {
 					message="게시글 수정 실패";
 					
 				}
+				
 				session.setAttribute("message", message); // 리다이렉트를 위해 세션에 올려둔다.
 				resp.sendRedirect(path);
 			}

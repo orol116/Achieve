@@ -142,10 +142,10 @@ div.myPage-third2>a{
 }
 
 /* 버튼 */
-a.insertBtn{
+.btn{
     margin-right: 8px;
-    width: 60px;
-    height: 100%;
+    width: 55px;
+    height: 90%;
 
     text-decoration:none;
     background-color: white;
@@ -160,7 +160,7 @@ a.insertBtn{
     justify-content: center;
     align-items: center;
 }
-.insertBtn:hover{
+.btn:hover{
     background-color: #0e194e;
     border: 2px solid white;
     color:  white;

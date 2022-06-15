@@ -121,7 +121,7 @@ public class ProjectService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String, Object> searchAll(int cp) throws Exception{
+	public Map<String, Object> searchAll(int cp, int memberNo) throws Exception{
 		
 		Connection conn = getConnection();
 						
@@ -133,7 +133,7 @@ public class ProjectService {
 		Pagination pagination = new Pagination(cp, listCount);
 		
 		// 목록 조회
-		List<Project> projectList = dao.selectProjectList(conn, pagination);
+		List<Project> projectList = dao.selectProjectList(conn, memberNo, pagination);
 		
 		
 		// 4. Map 객체를 생성하여 두 결과 객체를 모두 저장
