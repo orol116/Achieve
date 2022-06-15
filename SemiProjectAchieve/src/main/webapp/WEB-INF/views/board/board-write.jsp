@@ -22,7 +22,7 @@
 
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-        <form action="#" enctype="multipart/form-data" method="POST" class="board-write"
+        <form action="write" enctype="multipart/form-data" method="POST" class="board-write"
             onsubmit="return writeValidate()">
 
             <div class="title-area">
@@ -55,14 +55,29 @@
 
                     <!-- <input type="hidden" name="type" value="${param.type}"> -->
 
-                    <select name="board-type" id="board-type">
-                        <option value="0">게시판 선택</option>
-                        <c:forEach var="boardType" items="${boardTypeList}">
-                            <c:if test="${boardType.boardCode != 1}">
-                                <option value="${boardType.boardCode}" id="boardOption">${boardType.boardName}</option>
-                            </c:if>
-                        </c:forEach>
-                    </select>
+                    <%-- <c:if test="${boardTypeList.boardCode} != 2"> --%>
+                        <select name="board-type" id="board-type">
+                            <option value="-1">게시판 선택</option>
+                            
+                                <c:choose>
+                                    <c:when  test="${param.type != 2}">
+
+                                        <c:forEach var="boardType" items="${boardTypeList}">
+                                            <c:if test="${boardType.boardCode != 1 && boardType.boardCode != 2}">
+                                                <option value="${boardType.boardCode}" id="boardOption">${boardType.boardName}</option>
+                                            </c:if>
+                                        </c:forEach>
+
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <option value="2" id="boardOption" selected>공지사항</option>
+                                    </c:otherwise>
+
+                                </c:choose>
+                                
+                        </select>
+                    <%-- </c:if> --%>
 
                     <!-- 버튼 영역 -->
                     <div class="board-btn-area">
@@ -74,10 +89,19 @@
 
                 <!-- 숨겨진 값(hidden) -->
                 <!-- 동작 구분 -->
-                <input type="hidden" name="mode" value="insert">
-
-                <!-- 게시판 구분 -->
+                <input type="hidden" name="mode" value="${param.mode}">
                 <!-- <input type="hidden" name="type" value="1"> -->
+
+                <!-- type은 게시판 구분 -->
+                <input type="hidden" name="type" value="${param.type}">
+
+                <!-- 게시글 번호 -->
+                <input type="hidden" name="no" value="${param.no}">
+                
+                <!-- 현재 페이지 -->
+                <input type="hidden" name="cp" value="${param.cp}">
+
+                <input type="hidden" name="projectNo" value="${param.projectNo}">
 
             </div>
 
