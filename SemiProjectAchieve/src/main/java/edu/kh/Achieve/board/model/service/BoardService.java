@@ -122,7 +122,7 @@ public class BoardService {
 //
 //		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
 		
-		int result = dao.insertBoard(conn, detail, boardCode, projectNo);
+		int result = dao.updateBoard(conn, detail);
 		
 		if (result > 0) {
 			for (BoardAttachment image : boardAttachmentList) { 
@@ -270,7 +270,7 @@ public class BoardService {
 			
 			if(!deleteList.equals("")) { // 삭제된 이미지 레벨이 기록되어있을 때만 삭제
 				
-				result =dao.deleteBoardAttachment(conn, deleteList, detail.getBoardNo());
+				result =dao.deleteBoardAttachment(conn, deleteList, detail.getBoardNo(), detail.getProjectNo());
 				
 			}
 		}// 게시글 수정 성공 시 if 끝
@@ -278,7 +278,6 @@ public class BoardService {
 		if(result>0) commit(conn);
 		else rollback(conn);
 
-		
 		close(conn);
 		
 		return result;

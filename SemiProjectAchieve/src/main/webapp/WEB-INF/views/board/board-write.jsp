@@ -22,7 +22,7 @@
 
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-        <form action="#" enctype="multipart/form-data" method="POST" class="board-write"
+        <form action="write" enctype="multipart/form-data" method="POST" class="board-write"
             onsubmit="return writeValidate()">
 
             <div class="title-area">
@@ -89,10 +89,19 @@
 
                 <!-- 숨겨진 값(hidden) -->
                 <!-- 동작 구분 -->
-                <input type="hidden" name="mode" value="insert">
-
-                <!-- 게시판 구분 -->
+                <input type="hidden" name="mode" value="${param.mode}">
                 <!-- <input type="hidden" name="type" value="1"> -->
+
+                <!-- type은 게시판 구분 -->
+                <input type="hidden" name="type" value="${param.type}">
+
+                <!-- 게시글 번호 -->
+                <input type="hidden" name="no" value="${param.no}">
+                
+                <!-- 현재 페이지 -->
+                <input type="hidden" name="cp" value="${param.cp}">
+
+                <input type="hidden" name="projectNo" value="${param.projectNo}">
 
             </div>
 
