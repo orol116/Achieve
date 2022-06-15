@@ -1,7 +1,6 @@
 package edu.kh.Achieve.board.model.dao;
 
 import static edu.kh.Achieve.common.JDBCTemplate.close;
-import static edu.kh.community2.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -371,12 +370,15 @@ public class BoardDAO {
 			String sql = prop.getProperty("insertBoard");
 			
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setInt(1, detail.getBoardNo());
 			pstmt.setString(2, detail.getBoardTitle());
 			pstmt.setString(3, detail.getBoardContent());
 			pstmt.setInt(4, detail.getMemberNo());
 			pstmt.setInt(5, boardCode);
 			pstmt.setInt(6, projectNo);
+			
+			
 			
 			result = pstmt.executeUpdate();
 			
@@ -634,15 +636,36 @@ public class BoardDAO {
 			
 			pstmt=conn.prepareStatement(sql);
 			
-			pstmt.setString(1, image.getImageReName());
-			pstmt.setString(2, image.getImageOriginal());
-			pstmt.setInt(3, image.getImageLevel());
-			pstmt.setInt(4, image.getBoardNo());
+			pstmt.setString(1, attach.getAttachmentReName());
+			pstmt.setString(2, attach.getAttachmentOriginal());
+			pstmt.setInt(3, attach.getAttachmentLevel());
+			pstmt.setInt(4, attach.getBoardNo());
+			pstmt.setInt(5, attach.getProjectNo());
 			
 			result = pstmt.executeUpdate();
 			
-			
 		}finally{
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int deleteBoardAttachment(Connection conn, String deleteList, int boardNo, int projectNo) throws Exception {
+	int result = 0;
+		
+		try {
+			// 완성되지 않은 sql
+			String sql = prop.getProperty("deleteBoardImage")+deleteList+")";
+			
+			pstmt= conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, projectNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
 			close(pstmt);
 		}
 		
