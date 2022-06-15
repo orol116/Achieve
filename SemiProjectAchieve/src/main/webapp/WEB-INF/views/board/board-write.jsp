@@ -22,7 +22,7 @@
 
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-        <form action="write" enctype="multipart/form-data" method="POST" class="board-write"
+        <form action="#" enctype="multipart/form-data" method="POST" class="board-write"
             onsubmit="return writeValidate()">
 
             <div class="title-area">

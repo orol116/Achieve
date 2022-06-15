@@ -69,6 +69,7 @@
 
                     <%-- 프로젝트에 가입한 사람이 페이지에 들어왔을 때 --%>
                     <c:when test="${project.participateStatus == 1}">
+
                         <div id="board-area">
         
                             <h1 class="board-name">${boardName}</h1>

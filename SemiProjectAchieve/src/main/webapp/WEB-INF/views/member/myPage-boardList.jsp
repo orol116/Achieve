@@ -119,13 +119,9 @@
                 </div>      
 
                 <div class="list-wrapper">
-<<<<<<< HEAD
+
                     <form action="delete" name="list-form" onsubmit="return ckBox()">
-=======
 
-
-                    <form action="delete" name="list-form">
->>>>>>> origin/main
                         <table class="list-table">
                         <!-- /SemiProjectAchieve/member/delete/List -->
                             <input type="hidden" name="type" value="${param.type}">
@@ -237,7 +233,8 @@
                                                                 
                                                                 <td id="reply-list-part">
                                                                     <!-- http://localhost:10005/SemiProjectAchieve/board/main?type=1&projectNo=2&cp=1 -->
-                                                                    <a href="${contextPath}/board/main?type=${project.boardNo}&projectNo=${project.projectNo}&cp=1" >
+                                                                    <!-- /board/main?type=0&projectNo=3&cp=1 -->
+                                                                    <a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1" >
                                                                         <div class="inner_list">${project.projectNM}<br></div>
                                                                     </a>
                                                                 </td>
@@ -251,11 +248,6 @@
                                         </c:otherwise>
                                 </c:choose>
                         </table>
-
-<<<<<<< HEAD
-                        
-=======
->>>>>>> origin/main
                         <div class="btn-area">
                             <div id="checkAll">
                                 <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
@@ -311,12 +303,9 @@
 
     </main>
 
-    <footer>
-       
-        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         
-    </footer>
-
+  
 
     <script src="${contextPath}/resources/js/member/myPage-boardList.js""></script>
 
