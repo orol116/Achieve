@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.Achieve.board.model.vo.Pagination;
+import edu.kh.Achieve.member.model.dao.DropMemberDAO;
 import edu.kh.Achieve.project.model.dao.ProjectDAO;
 import edu.kh.Achieve.project.model.vo.Project;
+import edu.kh.Achieve.project.model.vo.ProjectSign;
 
 public class ProjectService {
 	
@@ -188,6 +190,65 @@ public class ProjectService {
 		close(conn);
 		
 		return map;
+	}
+
+
+	
+	
+	/** PJ 가입승인 count Service
+	 * @return list
+	 * @throws Exception
+	 */
+	public List<ProjectSign> selectPJSign() throws Exception {
+		
+		Connection conn = getConnection();
+		 
+		List<ProjectSign> list = dao.selectPJSign(conn);
+		
+		close(conn);
+		
+		
+		return list;
+	}
+
+
+	
+	
+	/** PJ 가입승인 item불러오기 Service
+	 * @param count
+	 * @return count
+	 * @throws Exception
+	 */
+	public int selectPJ() throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int count = dao.selectPJ(conn);
+		
+		close(conn);
+		
+		return count;
+	}
+
+
+	/** 가입승인 버튼 service
+	 * @param memberNo
+	 * @param projectNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int accountMember(int memberNo, int projectNo) throws Exception {
+		
+		
+			
+			Connection conn = getConnection();
+			
+			int result = dao.accountMember(conn,memberNo,projectNo );
+			
+			if(result > 0) commit(conn);
+			else 		   rollback(conn);
+		
+		return result;
 	}
 
 }

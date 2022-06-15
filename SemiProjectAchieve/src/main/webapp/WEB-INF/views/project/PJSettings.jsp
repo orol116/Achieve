@@ -37,7 +37,8 @@
 
                     
                         <div name="setting-body" class="setting-body">
-                            참여자 관리 (차단, 탈퇴) <button id="member-control">변경</button>
+                            참여자 관리 (차단, 탈퇴) <button id="member-control"
+                            location.href="../member/dropMember-list.jsp">변경</button>
                         </div>
                   
 
