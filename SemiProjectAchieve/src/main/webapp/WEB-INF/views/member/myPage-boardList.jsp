@@ -45,6 +45,7 @@
     <main>
  
         <header>
+            <!-- header -->
             <jsp:includ page = "/WEB-INF/views/common/header.jsp">
 
             <section>
@@ -66,6 +67,7 @@
             <!-- 왼쪽 사이드 메뉴 -->
         
             <jsp:include page="/WEB-INF/views/member/sideMenu.jsp" />
+
 
             
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
