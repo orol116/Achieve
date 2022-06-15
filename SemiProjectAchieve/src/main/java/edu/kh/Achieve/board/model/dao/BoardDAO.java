@@ -1,6 +1,6 @@
 package edu.kh.Achieve.board.model.dao;
 
-import static edu.kh.Achieve.common.JDBCTemplate.close;
+import static edu.kh.Achieve.common.JDBCTemplate.*;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -481,8 +481,6 @@ public class BoardDAO {
 		BoardDetail detail = null;
 		
 		try{
-			System.out.println(boardNo);
-			
 			String sql = prop.getProperty("selectBoardDetail");
 			
 			pstmt = conn.prepareStatement(sql);
@@ -498,11 +496,17 @@ public class BoardDAO {
 				detail.setBoardContent(rs.getString(3));
 				detail.setCreateDate(rs.getString(4));
 				detail.setUpdateDate(rs.getString(5));
-				detail.setReadCount(rs.getInt(6));
+				
+				int boardReadCount = rs.getInt(6);
+				boardReadCount++;
+				detail.setReadCount(boardReadCount);
+				
 				detail.setMemberNickname(rs.getString(7));
 				detail.setProfileImage(rs.getString(8));
 				detail.setMemberNo(rs.getInt(9));
 				detail.setBoardName(rs.getString(10));
+				
+				updateReadCount(conn, boardReadCount, boardNo);
 			}
 			
 			
@@ -512,6 +516,32 @@ public class BoardDAO {
 		}
 		
 		return detail;
+	}
+	
+	/** 게시글 조회수 증가 DAO
+	 * @param conn
+	 * @param boardReadCount
+	 * @param boardNo
+	 * @throws Exception
+	 */
+	public void updateReadCount(Connection conn, int boardReadCount, int boardNo) throws Exception {
+		
+		try {
+			String sql = "UPDATE BOARD SET READ_COUNT = ? WHERE BOARD_NO = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardReadCount);
+			pstmt.setInt(2, boardNo);
+			
+			pstmt.executeUpdate();
+			
+			commit(conn);
+			
+		} finally {
+			close(pstmt);
+		}
+		
+//		return;
 	}
 
 	public List<BoardAttachment> selectAttachmentList(Connection conn, int boardNo) throws Exception{
@@ -540,7 +570,7 @@ public class BoardDAO {
 				attachmentList.add(attachment);
 			}
 		
-		}finally {
+		} finally {
 			close(rs);
 			close(pstmt);
 		}
@@ -674,6 +704,8 @@ public class BoardDAO {
 		
 		return result;
 	}
+	
+
 	
 
 }
