@@ -209,27 +209,26 @@ public class CheckBoardDAO {
 
 	/** 작성글 삭제 DAO
 	 * @param conn 
-	 * @param boardNo
+	 * @param cBoard
 	 * @return result
 	 * @throws Exception
 	 */
-	public int deleteBoard(Connection conn, int boardNo) throws Exception {
+	public int deleteBoard(Connection conn, String[] cBoard) throws Exception {
 
-		int result1 = 0;
+		int result = 0;
 		
 		try {
-			String sql = prop.getProperty("deleteBoard");
+			String sql = prop.getProperty("deleteBoard") + String.join(",", cBoard) + " )";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, boardNo);
 			
-			result1 = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			
 		}finally {
 			close(pstmt);
 		}
 		
-		return result1;
+		return result;
 	}
 	
 //-------------------------------------------------------------------------
@@ -312,26 +311,25 @@ public class CheckBoardDAO {
 	/** 댓글 삭제 DAO
 	 * @param conn
 	 * @param replyNo
-	 * @return result2
+	 * @return result
 	 * @throws Exception
 	 */
-	public int deleteReply(Connection conn, int replyNo) throws Exception{
+	public int deleteReply(Connection conn, String[] cReply) throws Exception{
 
-		int result2 = 0;
+		int result = 0;
 		
 		try {
-			String sql = prop.getProperty("deleteReply");
+			String sql = prop.getProperty("deleteReply") + String.join(",", cReply) + " )";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(2, replyNo);
 			
-			result2 = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			
 		}finally {
 			close(pstmt);
 		}
 		
-		return result2;
+		return result;
 	}
 
 

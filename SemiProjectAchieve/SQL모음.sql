@@ -150,3 +150,6 @@ SELECT * FROM(
 	)
 WHERE RNUM BETWEEN 1 AND 10	;
 
+-- 배열 작성글,댓글 삭제
+DELETE FROM 테이블명
+WHERER 글번호 IN (1,2,3);

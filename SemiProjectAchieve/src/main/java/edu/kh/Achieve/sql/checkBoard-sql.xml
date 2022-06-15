@@ -52,7 +52,7 @@
 	<entry key="deleteBoard">
 		UPDATE BOARD SET
 		BOARD_ST = 'Y'
-		WHERE BOARD_NO = ?	
+		WHERE BOARD_NO IN (	
 	</entry>
 	
 	<!-- 이하 댓글 PART -->
@@ -82,9 +82,9 @@
 	
 	<!-- 댓글 삭제 -->
 	<entry key="deleteReply">
-		UPDATE BOARD SET
-		BOARD_ST = 'Y'
-		WHERE REPLY_NO = ?	
+		UPDATE REPLY SET
+		REPLY_ST = 'Y'
+		WHERE REPLY_NO IN (	
 	</entry>
 	
 

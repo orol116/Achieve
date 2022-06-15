@@ -54,22 +54,22 @@ public class CheckBoardService {
 
 
 	/** 작성글 삭제 Service
-	 * @param boardNo
+	 * @param cBoard
 	 * @return result1
 	 * @throws Exception
 	 */
-	public int deleteBoard(int boardNo) throws Exception {
+	public int deleteBoard(String[] cBoard) throws Exception {
 
 		Connection conn= getConnection();
 		
-		int result1 = dao.deleteBoard(conn, boardNo);
+		int result = dao.deleteBoard(conn, cBoard);
 
-		if(result1 >0 ) commit(conn);
+		if(result >0 ) commit(conn);
 		else  			rollback(conn);
 		
 		close(conn);
 		
-		return result1;
+		return result;
 	}
 // ----------------------------------------------------------
 	
@@ -116,18 +116,18 @@ public class CheckBoardService {
 	 * @return result2
 	 * @throws Exception
 	 */
-	public int deleteReply(int replyNo) throws Exception{
+	public int deleteReply(String[] cReply) throws Exception{
 
 		Connection conn= getConnection();
 		
-		int result2 = dao.deleteReply(conn, replyNo);
+		int result = dao.deleteReply(conn, cReply);
 
-		if(result2 >0 ) commit(conn);
+		if(result >0 ) commit(conn);
 		else  			rollback(conn);
 		
 		close(conn);
 		
-		return result2;
+		return result;
 		
 		
 	}
