@@ -7,7 +7,7 @@
             <article id="footer">
                 <a href="/SemiProjectAchieve/FAQ/firstFAQ">FAQ</a>
                 <span> | </span>
-                <a href="#">1:1문의</a>
+                <a href="${contextPath}/board/main?type=99&projectNo=${param.projectNo}&cp=1"">1:1문의</a>
                 <span> | </span>
                 <a href="/SemiProjectAchieve/FAQ/terms/conditions">이용약관</a>
                 <span> | </span>

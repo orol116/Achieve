@@ -34,7 +34,9 @@
                     <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1&projectNo=${param.projectNo}">${projectName}</a></div>
 
                     <c:forEach var="boardType" items="${boardTypeList}">
-                        <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}&projectNo=${param.projectNo}&cp=1">${boardType.boardName}</a></div>
+                        <c:if test="${boardType.boardCode != 99}">
+                            <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}&projectNo=${param.projectNo}&cp=1">${boardType.boardName}</a></div>
+                        </c:if>
                     </c:forEach>
 
                     <br>
@@ -63,7 +65,7 @@
 
 
                     <div class="btn-area">
-                        <c:if test="${param.type != 1}">
+                        <c:if test="${param.type != 1 && param.type != 2}">
                             <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&projectNo=${param.projectNo}&cp=${param.cp}'">글쓰기</button>
                         </c:if>
                     </div>

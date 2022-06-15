@@ -118,9 +118,9 @@ public class BoardService {
 		detail.setBoardNo(boardNo);
 		
 		detail.setBoardTitle(Util.XSSHandling(detail.getBoardTitle()));
-		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
-
-		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
+//		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
+//
+//		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
 		
 		int result = dao.updateBoard(conn, detail);
 		

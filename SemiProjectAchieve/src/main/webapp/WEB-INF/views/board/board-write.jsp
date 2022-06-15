@@ -55,14 +55,16 @@
 
                     <!-- <input type="hidden" name="type" value="${param.type}"> -->
 
-                    <select name="board-type" id="board-type">
-                        <option value="0">게시판 선택</option>
-                        <c:forEach var="boardType" items="${boardTypeList}">
-                            <c:if test="${boardType.boardCode != 1}">
-                                <option value="${boardType.boardCode}" id="boardOption">${boardType.boardName}</option>
-                            </c:if>
-                        </c:forEach>
-                    </select>
+                    <%-- <c:if test="${boardTypeList.boardCode} != 2"> --%>
+                        <select name="board-type" id="board-type">
+                            <option value="-1">게시판 선택</option>
+                            <c:forEach var="boardType" items="${boardTypeList}">
+                                <c:if test="${boardType.boardCode != 1}">
+                                    <option value="${boardType.boardCode}" id="boardOption">${boardType.boardName}</option>
+                                </c:if>
+                            </c:forEach>
+                        </select>
+                    <%-- </c:if> --%>
 
                     <!-- 버튼 영역 -->
                     <div class="board-btn-area">

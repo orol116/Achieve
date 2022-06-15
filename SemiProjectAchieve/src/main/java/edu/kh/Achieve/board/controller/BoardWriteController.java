@@ -112,6 +112,7 @@ public class BoardWriteController extends HttpServlet {
 			String boardContent = mpReq.getParameter("boardContent");
 			int boardCode = Integer.parseInt(mpReq.getParameter("board-type"));
 			
+			
 			session.setAttribute("projectNo", projectNo);
 			
 			Member loginMember = (Member)session.getAttribute("loginMember");
