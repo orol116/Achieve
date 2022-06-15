@@ -26,11 +26,11 @@ public class NoteServlet extends HttpServlet{
 			
 			NoteService service = new NoteService();
 			
-			int memberNo = Integer.parseInt(req.getParameter("memberNo"));
+//			int memberNo = Integer.parseInt(req.getParameter("memberNo"));
 			
-			List<Note> nList = service.noteList(memberNo);
+//			List<Note> nList = service.noteList(memberNo);
 			
-			new Gson().toJson(nList, resp.getWriter());
+//			new Gson().toJson(nList, resp.getWriter());
 			
 			
 			String path = "/WEB-INF/views/member/note.jsp";

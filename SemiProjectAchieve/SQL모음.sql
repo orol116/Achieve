@@ -198,11 +198,6 @@ UPDATE REPLY SET REPLY_CONTENT='유익한 정보 감사합니다. '
 WHERE REPLY_NO=29;
 
 SELECT * FROM REPLY WHERE MEMBER_NO=1;
-<<<<<<< HEAD
-=======
->>>>>>> 983264afc69d23a8499a0f43c37ffc97ac9b456f
->>>>>>> origin/main
-
 -- 보드넘버 포함 조회(댓글 목록)
 		SELECT * FROM(
 			SELECT ROWNUM RNUM, A.* FROM (
@@ -233,7 +228,3 @@ SELECT * FROM(
 			ORDER BY PROJECT_NO DESC
 		)
 	WHERE RNUM BETWEEN 1 AND 5;
-=======
-
-
->>>>>>> origin/main

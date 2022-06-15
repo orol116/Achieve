@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>project-settings</title>
 
+    <!-- 헤더, 푸터 위한 main.css -->
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
     
     <link rel="stylesheet" href="../resources/css/project-settings.css">
 
