@@ -141,6 +141,49 @@ public class BoardWriteController extends HttpServlet {
 				resp.sendRedirect(path);
 				
 			}
+			if(mode.equals("update")) { // 수정
+				// 앞선 코드는 동일(업로드된 이미지 저장, imageList 생성, 제목/내용 파라미터 전부 동일)
+				
+				//  + update일 때 추가된 내용
+				//  1. 어떤 게시글 수정할 것인지-> 파라미터 no
+				//  2. 나중에 목록으로 버튼 만들 때 사용할 현재 페이지 -> 파라미터 cp
+				//  3. 이미지 중 x버튼을 눌러서 삭제할 이미지 레벨 목록 -> 파라미터 deleteList
+				int boardNo = Integer.parseInt(mpReq.getParameter("no"));
+				
+				int cp = Integer.parseInt(mpReq.getParameter("cp"));
+				
+				String deleteList = mpReq.getParameter("deleteList"); // 1,2,3
+				
+				// 게시글 수정 서비스 호출 후 결과 반환 받기
+				detail.setBoardNo(boardNo);
+				detail.setProjectNo(projectNo);
+				
+				// detail, imageList , deleteList
+				int result = service.updateBoard(detail,boardAttachmentList, deleteList);
+				
+				
+				
+				String path = null;
+				String message = null;
+				
+				if(result>0) { // 성공
+					// detail?no==10000&type=1&cp=20 이런 모양
+					path = "detail?no="+boardNo+"&type="+boardCode+"&cp="+cp; // 상세 조회 페이지 요청 주소 
+					
+					message = "게시글이 수정되었습니다.";
+					
+				}else { // 실패
+					
+					// 다시 수정화면으로 이동
+					// 상세조회 -> 수정화면 -> 수정 -> (성공) 상세조회
+					//								-> (실패) 수정화면
+					
+					path=req.getHeader("referer");
+					// referer : http 요청 흔적. 요청 바로 이전 페이지 주소가 담겨있다. 네이버에서 카카오로 요청해서 이동하면 referer에 네이버 주소가 담겨있다!!
+					
+					message="게시글 수정 실패";
+					
+				}
 
 		} catch (Exception e) {
 			e.printStackTrace();
