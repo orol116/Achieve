@@ -23,6 +23,8 @@ public class CheckBoard {
 		private int memberNo;
 		private String memberNickname;
 		private String profileImage;
+		private int projectNo;
+		
 
 
 	}

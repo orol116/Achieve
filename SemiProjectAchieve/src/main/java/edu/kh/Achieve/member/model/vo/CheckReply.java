@@ -19,5 +19,7 @@ public class CheckReply {
 	private String memberNickName;
 	private String profileImage;
 	private String boardTitle;
+	private int projectNo;
+	
 
 }
