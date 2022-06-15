@@ -49,7 +49,6 @@
                     <script>
                     CKEDITOR.replace('boardContent', {height: 500});
                     </script>
-
                 </div>
 
                 <div class="bottom-area">
