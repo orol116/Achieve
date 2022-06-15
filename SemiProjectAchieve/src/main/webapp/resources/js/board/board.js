@@ -105,9 +105,9 @@ function writeValidate(){
         boardTitle.focus();
         return false;
     }
-    if (boardContent.value.trim().length == 0) {
+    if (CKEDITOR.instances.boardContent.getData().length == 0) {
         alert("내용을 입력해주세요!");
-        boardContent.value = "";
+        CKEDITOR.instances.boardContent.getData() = "";
         boardContent.focus();
         return false;
     }

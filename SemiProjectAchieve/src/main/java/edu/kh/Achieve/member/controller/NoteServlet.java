@@ -20,7 +20,4 @@ public class NoteServlet extends HttpServlet{
 		req.getRequestDispatcher(path).forward(req, resp);
 		
 	}
-	
-	
-
 }
