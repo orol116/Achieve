@@ -163,7 +163,6 @@ public class BoardWriteController extends HttpServlet {
 				
 				
 				
-				
 				String path = null;
 				String message = null;
 				
@@ -185,6 +184,7 @@ public class BoardWriteController extends HttpServlet {
 					message="게시글 수정 실패";
 					
 				}
+
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
