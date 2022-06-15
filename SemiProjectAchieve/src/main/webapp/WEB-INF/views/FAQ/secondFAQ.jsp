@@ -53,7 +53,7 @@
                         <div id="select-area">
                             <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/firstFAQ'">자주 묻는 질문</button>
                             <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/secondFAQ'">프로젝트 생성/관리</button>
-                            <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/thirdFAQ'">로그인/가입</button>
+                            <button class="selectBtn" onclick="location.href='/SemiProjectAchieve/FAQ/thirdFAQ'">회원 관련</button>
         
                         </div>
         

@@ -4,7 +4,6 @@
 <c:set var="boardName" value="${map.boardName}" />
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="boardList" value="${map.boardList}" />
-<c:set var="projectList" value="${projectMap.projectList}" />
 
 <!-- 프로젝트 리스트에 있는 프로젝트 객체를 불러오고 싶음... -->
 <c:forEach var="p" items="${projectList}">
@@ -12,6 +11,7 @@
         <c:set var="project" value="${p}"/>
     </c:if>
 </c:forEach>
+
 
 
 
@@ -64,11 +64,10 @@
             </c:if>
 
             <section class="board-list">
-
                 <c:choose>
 
                     <%-- 프로젝트에 가입한 사람이 페이지에 들어왔을 때 --%>
-                    <c:when test="${project.participateStatus == 1}">
+                    <c:when test="${!empty project}">
 
                         <div id="board-area">
         
@@ -163,13 +162,12 @@
 
                         <div class="project-signup-content">
                             <div class="project-signup-title">
-                                <h1>${project.projectName}</h1>
-                                <span>${project.projectManagerNickname}</span>
+                                <h1>${projectName}</h1>
                             </div>
     
                             <div class="project-signup-intro">
                                 <p>
-                                ${project.projectIntro}
+                                ${projectIntro}
                                 </p>
                             </div>
     
