@@ -175,10 +175,10 @@ td#reply-list-part {
     padding-left: 25px;
 }
 
-a.insertBtn{
+.btn{
     margin-right: 8px;
-    width: 60px;
-    height: 100%;
+    width: 55px;
+    height: 90%;
 
     background-color: white;
     border: 1px solid #0e194e;

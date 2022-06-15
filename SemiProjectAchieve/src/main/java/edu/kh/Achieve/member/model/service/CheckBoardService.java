@@ -40,7 +40,7 @@ public class CheckBoardService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("type", type);
-		map.put("memNo", memNo);
+//		map.put("memNo", memNo);
 		map.put("memNick", memNick);
 		map.put("pImage", pImage);
 		map.put("boardList", boardList);
@@ -53,24 +53,25 @@ public class CheckBoardService {
 	}
 
 
-	/** 게시글 삭제
+	/** 작성글 삭제 Service
 	 * @param boardNo
-	 * @return result
+	 * @return result1
 	 * @throws Exception
 	 */
 	public int deleteBoard(int boardNo) throws Exception {
 
 		Connection conn= getConnection();
 		
-		int result = dao.deleteBoard(conn, boardNo);
+		int result1 = dao.deleteBoard(conn, boardNo);
 
-		if(result >0 ) commit(conn);
+		if(result1 >0 ) commit(conn);
 		else  			rollback(conn);
 		
 		close(conn);
 		
-		return result;
+		return result1;
 	}
+// ----------------------------------------------------------
 	
 	/** 작성 댓글 조회 Service
 	 * @param cp
@@ -108,5 +109,27 @@ public class CheckBoardService {
 		return map; // map 객체 반환
 	}
 
+
+
+	/** 작성글 삭제 Service
+	 * @param replyNo
+	 * @return result2
+	 * @throws Exception
+	 */
+	public int deleteReply(int replyNo) throws Exception{
+
+		Connection conn= getConnection();
+		
+		int result2 = dao.deleteReply(conn, replyNo);
+
+		if(result2 >0 ) commit(conn);
+		else  			rollback(conn);
+		
+		close(conn);
+		
+		return result2;
+		
+		
+	}
 
 }
