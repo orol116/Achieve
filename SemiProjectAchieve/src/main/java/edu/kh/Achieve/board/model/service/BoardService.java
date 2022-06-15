@@ -262,7 +262,7 @@ public class BoardService {
 				if(result == 0) {
 					result = dao.insertBoardAttachment(conn, attach);
 				}
-			} // 향상된 for문 끝
+			} // 향상된 for문 끝 
 			
 			
 			// 3. 이미지 삭제
