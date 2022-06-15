@@ -454,7 +454,7 @@ public class BoardDAO {
 		
 	}
 
-	public int deleteBoard(int boardNo, Connection conn) throws Exception{
+	public int deleteBoard(int boardNo, int projectNo, Connection conn) throws Exception{
 		
 		int result = 0;
 
@@ -464,6 +464,7 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
