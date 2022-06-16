@@ -259,6 +259,16 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
 
 
+// ------------------ 프로젝트 메인페이지 가입승인 ----------------------------
+
+
+
+
+
+
+
+
+
 // 
 
 

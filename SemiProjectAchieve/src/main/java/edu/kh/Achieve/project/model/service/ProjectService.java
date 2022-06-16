@@ -251,4 +251,24 @@ public class ProjectService {
 		return result;
 	}
 
+
+	/*
+	 * public int cancelAccount(int memberNo) throws Exception {
+	 * 
+	 * Connection conn = getConnection();
+	 * 
+	 * int result = dao.cancelAccount(conn,memberNo);
+	 * 
+	 * if(result > 0) commit(conn); else rollback(conn);
+	 * 
+	 * 
+	 * 
+	 * return result;
+	 * 
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
+
 }

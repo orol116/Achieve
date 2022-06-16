@@ -58,11 +58,10 @@ public class ProjectDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, project.getProjectName());
-			pstmt.setInt(2,memberNo);
-			pstmt.setString(3, project.getProjectQuota());
-			pstmt.setString(4, project.getOpenStatus());
-			pstmt.setString(5, project.getProjectIntro());
-			pstmt.setInt(6, memberNo);
+			pstmt.setString(2, project.getProjectQuota());
+			pstmt.setString(3, project.getOpenStatus());
+			pstmt.setString(4, project.getProjectIntro());
+			pstmt.setInt(5, memberNo);
 			
 			
 			
@@ -495,6 +494,32 @@ public class ProjectDAO {
 		return result;
 	}
 
+	/*
+	 * public int cancelAccount(Connection conn, int memberNo) throws Exception {
+	 * 
+	 * int result = 0;
+	 * 
+	 * try {
+	 * 
+	 * String sql = prop.getProperty("cancelAccount");
+	 * 
+	 * pstmt = conn.prepareStatement(sql);
+	 * 
+	 * 
+	 * pstmt.setInt(1, memberNo);
+	 * 
+	 * result = pstmt.executeUpdate();
+	 * 
+	 * 
+	 * 
+	 * }finally { close(pstmt);
+	 * 
+	 * }
+	 * 
+	 * 
+	 * 
+	 * return result; }
+	 */
 
 	
 }
