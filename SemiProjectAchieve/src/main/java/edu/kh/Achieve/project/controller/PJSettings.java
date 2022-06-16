@@ -20,9 +20,6 @@ public class PJSettings extends HttpServlet{
 		int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 		
 		
-		
-		
-		
 		String path = "/WEB-INF/views/project/PJSettings.jsp";
 		RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 		dispatcher.forward(req, resp);

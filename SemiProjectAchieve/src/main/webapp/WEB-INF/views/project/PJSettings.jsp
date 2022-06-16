@@ -77,10 +77,9 @@
 
                     
                         <div name="setting-body" class="setting-body">
-                            전체 쪽지 발송 <button id="text-all">발송</button>
-                            
+                            전체 알림 발송 <button id="text-all">발송</button>
                         </div>
-                        <textarea placeholder="전체 쪽지는 여기에 작성하세요." id="sendAll-text"></textarea>
+                        <textarea placeholder="전체 알림은 여기에 작성하세요." id="sendAll-text"></textarea>
                     
 
                     
