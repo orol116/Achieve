@@ -1,6 +1,9 @@
-*{ box-sizing:  border-box;}
-body{margin:0;} /* body태그가 가지고있는 기본 마진 제거 */
-/* div{ border : 1px solid black;} */
+
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
 
 
 /* 마이페이지 영역 */

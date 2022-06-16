@@ -110,7 +110,7 @@
 
                 <!-- onclick="history.back();" : 뒤로 가기 -->
                 <!-- history.go(숫자) : 양수(앞으로 가기), 음수(뒤로 가기) -->
-                <button id="goToListBtn">목록으로</button>
+                <button onclick="location.href='${header.referer}'">목록으로</button>
             </div>
 
         </section>

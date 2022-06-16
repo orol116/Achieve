@@ -583,6 +583,32 @@ public class MemberDAO {
 	}
 
 
+	public int managerSelect(Connection conn, int projectNo) throws Exception{
+		
+		int manager = 0;
+		
+		try {
+			String sql = prop.getProperty("managerSelect");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				manager = rs.getInt(1);
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return manager;
+	}
+
+
 
 	
 	
