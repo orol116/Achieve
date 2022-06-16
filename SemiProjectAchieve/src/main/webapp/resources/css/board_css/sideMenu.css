@@ -2,8 +2,7 @@
 
     flex-basis: 25%;
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
     margin-top: 30px;
 
 }
@@ -13,6 +12,11 @@
 /* 리스트 */
 #sideMenu-list{
     width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
 }
 
 /* 페이지 제목 */
@@ -54,6 +58,25 @@
 }
 
 /* 마우스 효과 */
-.sideMenu-list-row:hover{
-    border-bottom: 2px solid #0e194e;
+.sideMenu-list-row a:hover{
+    /* text-decoration:  underline ; */
+
+    border-bottom: 3px solid white;
 }
+
+.sideMenu-list-row ::before {
+    font-family: 'Material Icons';
+    font-size: 1.5em;
+    float: left;
+    clear: left;
+}
+
+#project a::before{ content: '\e5d2'; }
+
+#sideMenu-list div:nth-last-of-type(1) a::before{ content: '\e8b8'; }
+#sideMenu-list div:nth-last-of-type(2) a::before{ content: '\f8df'; }
+#sideMenu-list div:nth-last-of-type(3) a::before{ content: '\e853'; }
+#sideMenu-list div:nth-last-of-type(4) a::before{ content: '\e896'; }
+#sideMenu-list div:nth-last-of-type(5) a::before{ content: '\ef42'; }
+
+#sideMenu-list div:nth-of-type(1) a::before{ content: '\e88a'; }
