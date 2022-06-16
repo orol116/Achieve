@@ -21,11 +21,10 @@
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-
     <main>
+    
+        <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
-        <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"></jsp:include>
 
         <section id="board-member">
 
@@ -38,7 +37,7 @@
     
     
                 <div id="member-list">
-<!-- 
+                    <!-- 
                     <div class="manager-list">
                         <span class="member-status">프로젝트 관리자</span> <br>
 

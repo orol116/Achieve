@@ -135,7 +135,6 @@ public class BoardWriteController extends HttpServlet {
 					path = "write?mode=" + mode + "&type=" + boardCode + "&projectNo=" + projectNo;
 				}
 				
-				System.out.println(path);
 				resp.sendRedirect(path);
 				
 			}
@@ -160,8 +159,6 @@ public class BoardWriteController extends HttpServlet {
 				int result = service.updateBoard(detail,boardAttachmentList, deleteList);
 				String path = null;
 				String message = null;
-				
-				System.out.println(result);
 				
 				if(result>0) { // 성공
 					// detail?no==10000&type=1&cp=20 이런 모양

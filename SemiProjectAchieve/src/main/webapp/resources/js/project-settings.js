@@ -12,7 +12,7 @@ function PJDupCheck(){
         type : "GET",
         success : function(result){
     
-            if(result == 1){
+            if(result2 >  0){
                 
                 alert("중복된 이름입니다.");
 
@@ -66,18 +66,6 @@ nameChangeBtn.addEventListener("click", function(){
     });
 
     
-
-
-
-
-
- 
-
-
-    console.log(PJNameChange.value);
-
-    
-
     });
    
 
@@ -92,7 +80,6 @@ document.getElementById("text-all").addEventListener("click", function(){
 
     const sendAll = document.getElementById("sendAll-text");
 
-    console.log(sendAll.value);
 
     if(sendAll.value == ""){
         alert("전송할 내용이 없습니다!");
@@ -143,7 +130,6 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
         projectIntro.value = "no Intro";
 
  
-        console.log("값" + projectIntro.value);
 
         $.ajax({
             url : "IntroEdit",
@@ -174,14 +160,11 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
     if(projectIntro.value !== ""){
 
 
-        console.log( "글 있을 때" + projectIntro.value);
-
-        console.log("글있음");
 
 
         $.ajax({
             url : "IntroEdit",
-            data : {"projectIntro" : projectIntro.value},
+            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
             type : "GET",
             success : function(result){
 
@@ -215,7 +198,6 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
  const showValue = (target) =>{
 
-    console.log(target.value);
 
     if(target.value =="Y"){
 

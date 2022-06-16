@@ -19,7 +19,7 @@ import edu.kh.Achieve.member.model.vo.Member;
 import edu.kh.Achieve.project.model.service.ProjectService;
 import edu.kh.Achieve.project.model.vo.Project;
 
-@WebServlet("/project/PJ/PJSearch" ) //"/project/PJ/member/login"
+@WebServlet("/project/PJ/PJSearch/list" ) 
 public class PJSearchServlet extends HttpServlet{
 	
 	
@@ -56,9 +56,7 @@ public class PJSearchServlet extends HttpServlet{
 					
 					map = service.searchProjectList(cp, key, query, memberNo);
 				}
-				
-				System.out.println(map);
-				
+
 				
 				// request 범위로 map을 세팅
 				req.setAttribute("map", map);

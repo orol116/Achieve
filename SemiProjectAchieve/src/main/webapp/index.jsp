@@ -125,7 +125,7 @@
                                 <article id="main-project-area">
                                     
                                     <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
-                                    <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 조회</a></button>
+                                    <button type="button"><a href="${contextPath}/project/PJ/PJSearch/list?cp=1">프로젝트 조회</a></button>
             
                                 </article>
                             </c:otherwise>
@@ -152,13 +152,15 @@
                         <c:otherwise>
                             
                             <c:forEach var="project" items="${projectList}">
-                                <div class="project-join">
-                                    
-                                    <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a></h2>
-                                    <h4>${project.projectIntro}</h4>
-                                  
-                                </div>
-                                <input type="hidden" name="projectNo" value="${project.projectNo}">
+                               
+                                    <div class="project-join">
+                                        <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a></h2>
+                                        <h4>${project.projectIntro}</h4>
+                                      
+                                    </div>
+                                    <input type="hidden" name="projectNo" value="${project.projectNo}">
+
+                                
                             </c:forEach>
 
                         </c:otherwise>

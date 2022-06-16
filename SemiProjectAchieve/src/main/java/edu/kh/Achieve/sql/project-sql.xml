@@ -154,7 +154,7 @@
 	  MEMBER_NICK, MEMBER_PROFILE
 	 FROM MEMBER
 	 JOIN PROJECT_SIGN USING(MEMBER_NO)
-	 WHERE PROJECT_NO = 1
+	 WHERE PROJECT_NO = ?
 
 	
 	</entry>
@@ -165,7 +165,7 @@
 	<entry key="selectPJ">
 	 SELECT COUNT(*)
 	 FROM PROJECT_SIGN
-	 WHERE PROJECT_NO = 1
+	 WHERE PROJECT_NO = ?
 
 	</entry>
 	
@@ -175,10 +175,15 @@
 	<entry key="accountMember">
 	 INSERT INTO PROJECT_MEMBER
  	 VALUES(?, ?)
-	
-	
-	
 	</entry>
+	
+	<!-- 관리자가 공지(알림) 작성 -->
+	<entry key="insertNotice">
+		 INSERT INTO NOTE
+	 	 VALUES(SEQ_NOTE_NO.NEXTVAL, ?, SYSDATE, ?, ?)
+	</entry>
+	
+	
 	
 
 	

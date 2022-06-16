@@ -46,23 +46,12 @@ public class BoardMainController extends HttpServlet {
 			int projectAdminNo = service.selectProjectAdminNo(projectNo);
 			req.setAttribute("projectAdminNo", projectAdminNo);
 			
-//			프로젝트 리스트 가져오기
-//			ProjectService pService = new ProjectService(); 
-//
-//			Map<String, Object> projectMap = null;
-//			
+			// 프로젝트 리스트 가져오기
 			HttpSession session = req.getSession();
 			Member loginMember = (Member)(session.getAttribute("loginMember"));
 			int memberNo = loginMember.getMemberNo();
 			req.setAttribute("memberNo", memberNo);
-//			projectMap = pService.searchAll(cp, memberNo);
-//			
-//			req.setAttribute("projectMap", projectMap);
-			
-			System.out.println("memberNo : " + memberNo);
-			System.out.println("admin : " + projectAdminNo);
-			
-			// boardList 가져오기 위한 map
+
 			Map<String, Object> map = null;
 			
 			if (req.getParameter("key") == null) {

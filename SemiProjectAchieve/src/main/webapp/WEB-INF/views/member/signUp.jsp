@@ -8,9 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" href="${contextPath}/resources/css/signUp-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/signUp-style.css">
 
     <!-- 글꼴 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,8 +21,8 @@
 
 </head>
 <body>
-    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
     <main>
+        <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
         <h1>회원가입</h1>
         <section class="signUp-content">
             <form action="signUp" method="POST" name="signUp-form" onsubmit="return signUpValidate()">

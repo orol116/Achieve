@@ -4,6 +4,7 @@ import static edu.kh.Achieve.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -52,15 +53,15 @@ public class ProjectService {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.PJDupCheck(conn, projectName);
+		int result2 = dao.PJDupCheck(conn, projectName);
 		
-		if(result > 0) commit(conn);
+		if(result2 > 0) commit(conn);
 		else		   rollback(conn);
 		
 		
 		
 		
-		return result;
+		return result2;
 	}
 
 
@@ -204,11 +205,11 @@ public class ProjectService {
 	 * @return list
 	 * @throws Exception
 	 */
-	public List<ProjectSign> selectPJSign() throws Exception {
+	public List<ProjectSign> selectPJSign(int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
 		 
-		List<ProjectSign> list = dao.selectPJSign(conn);
+		List<ProjectSign> list = dao.selectPJSign(conn, projectNo);
 		
 		close(conn);
 		
@@ -224,11 +225,11 @@ public class ProjectService {
 	 * @return count
 	 * @throws Exception
 	 */
-	public int selectPJ() throws Exception {
+	public int selectPJ(int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
 		
-		int count = dao.selectPJ(conn);
+		int count = dao.selectPJ(conn, projectNo);
 		
 		close(conn);
 		
@@ -252,6 +253,34 @@ public class ProjectService {
 			
 			if(result > 0) commit(conn);
 			else 		   rollback(conn);
+		
+		return result;
+	}
+
+
+	/** 전체 알림 발송 Service
+	 * @param boardContent
+	 * @param projectNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertNotice(String boardContent, int projectNo, int loginMemberNo) throws Exception {
+
+		Connection conn = getConnection();
+		
+		List<Integer> projectMemberList = dao.selectProjectMemberList(conn, projectNo);
+		
+		int result = 0;
+		
+		for (int i = 0; i < projectMemberList.size(); i++) {
+			
+			int memberNo = projectMemberList.get(i);
+			
+			result = dao.insertNotice(conn, boardContent, memberNo, loginMemberNo);
+		}
+		
+		if (result > 0) commit(conn);
+		else  			rollback(conn);
 		
 		return result;
 	}

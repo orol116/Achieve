@@ -2,6 +2,7 @@ function selectPJSign(){ // 회원 전체 조회 함수
     // ajax 코드
     $.ajax({
         url :"selectPJSign",
+        data : {"projectNo":projectNo },
         dataType : "json", // 응답 데이터의 형식을 JSON으로 지정
                            // -> 자동으로 JS 객체로 변환됨
             success : function( list ){
@@ -55,7 +56,7 @@ function selectPJSign(){ // 회원 전체 조회 함수
 
                 const dropBtn = document.createElement("button");
                 dropBtn.classList.add("dropBtn");
-                dropBtn.innerText = "거절";
+                dropBtn.innerText = "승인";
 
 
               
@@ -123,6 +124,7 @@ function selectPJSign(){ // 회원 전체 조회 함수
 function CountPJSign(){
     $.ajax({
         url: "CountPJSign",
+        data : {"projectNo":projectNo},
         success : function(count){
 
             const memberCount = document.getElementById("member-count");
