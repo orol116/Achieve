@@ -1,6 +1,10 @@
 /* 헤더/푸터 */
 
-*{box-sizing: border-box;}
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
 
 body{margin: 0;}
 

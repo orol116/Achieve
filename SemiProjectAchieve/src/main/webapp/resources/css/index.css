@@ -2,7 +2,8 @@
 
 *{
     box-sizing: border-box;
-    font-family: 'Song Myung', serif;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
 }
 
 body{margin: 0;}

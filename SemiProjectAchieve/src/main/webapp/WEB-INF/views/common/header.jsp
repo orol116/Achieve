@@ -15,7 +15,7 @@
                 <article class="project-title">
 
                     <!-- 조건:프로젝트 이름이 있으면 가져와서 el 세팅 / 임시세팅 -->
-                    ${projectName}
+                    ${project.projectName}
                     
                 </article>
             </c:if>

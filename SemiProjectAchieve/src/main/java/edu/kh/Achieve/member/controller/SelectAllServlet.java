@@ -19,6 +19,7 @@ public class SelectAllServlet extends HttpServlet{
 		try {
 			int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 			
+			System.out.println(projectNo);
 			
 			MemberService service = new MemberService();
 			
