@@ -54,8 +54,10 @@
                     <div class="sideMenu-list-row"><a href="${contextPath}/member/List?memNo=${memberNo}&type=2">내가 쓴 댓글</a></div>
                     <div class="sideMenu-list-row"><a href="${contextPath}/member/myPage/info">마이페이지</a></div>
 
+                    <div class="sideMenu-list-row"><a href="${contextPath}/member/list?projectNo=${param.projectNo}">프로젝트 구성원</a></div>
+
                     <br>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
+                    <div class="sideMenu-list-row" id="manager"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
                 </div>
             </section>
 
@@ -80,7 +82,9 @@
         
                             <div class="btn-area">
                                 <c:if test="${param.type != 1 && param.type != 2}">
-                                    <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&projectNo=${param.projectNo}&cp=${param.cp}'">글쓰기</button>
+                                    <c:if test="${! (projectAdminNo != memberNo && param.type == 4)}">
+                                        <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&projectNo=${param.projectNo}&cp=${param.cp}'">글쓰기</button>
+                                    </c:if>
                                 </c:if>
                             </div>
         

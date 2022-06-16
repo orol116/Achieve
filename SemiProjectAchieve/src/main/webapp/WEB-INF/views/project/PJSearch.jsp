@@ -10,11 +10,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프로젝트 찾기</title>
+    <title>프로젝트 조회</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/index.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/project-search.css">
+
+
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+    
 
     <script src="https://kit.fontawesome.com/35f111b89d.js" crossorigin="anonymous"></script>
 
@@ -25,67 +32,7 @@
 
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
         
-        <!-- 왼쪽 사이드 메뉴 -->
-        <section class="content">
-
-            <section class="content-1">
-        
-                <!-- 회원 정보 -->
-                <article class="login-area">
-                
-                    <!-- 회원 프로필 이미지 -->
-                    <a href="${contextPath}/member/myPage/profile">
-                        <!-- 프로필 이미지 변경하는 페이지 생기면 그쪽으로 -->
-
-                        <c:if test="${empty loginMember.profileImage}">
-                            <img src="${contextPath}/resources/images/user.png" id="member-profile">
-                        </c:if>
-
-                        <c:if test="${!empty loginMember.profileImage}">
-                            <img src="${contextPath}${loginMember.profileImage}" id="member-profile">
-                        </c:if>
-
-                    </a>
-                
-                    <!-- 회원 정보 + 로그아웃 버튼 -->
-                    <div class="my-info">
-                        <div>
-                            <a href="${contextPath}/member/myPage/info" id="nickname">${loginMember.memberNickname}</a>
-                            
-                            <a href="member/logout" id="logout-btn">&times;</a>
-                        
-                        </div>
-                        
-                        <p>
-                            ${loginMember.memberEmail}
-                        </p>
-                        
-                    </div>
-                
-                </article>            
-    
-                <!-- 마이페이지 -->
-                <article id="signup-find-area">
-                    
-                    <button id="myPageBtn"><a href="${contextPath}/member/myPage/info">마이페이지</a></button>
-                    
-                </article>
-
-                <article id="main-project-area">
-                    
-                    <!-- 요청주소 확인 반드시 필요 -->
-                    <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
-                    <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 조회</a></button>
-
-
-                </article>
-                
-
-            </section>
-
-                    
-                
-            
+       
         
     
             <!-- 우측 프로젝트 목록 검색부분-->
@@ -197,8 +144,8 @@
                 </div>  
 
 
-
-                <form action="#" method="get" id="projectSearch" onsubmit="return searchValidate()">
+                <!-- 폼태그 검색 제출 -->
+                <form action="${contextPath}/project/PJ/PJSearch" method="get" id="projectSearch" onsubmit="return searchValidate()">
 
                     <select name="key">
                         <option value="t">프로젝트명</option>

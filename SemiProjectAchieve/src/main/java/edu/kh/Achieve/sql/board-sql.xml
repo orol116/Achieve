@@ -206,14 +206,18 @@
 		SELECT PROJECT_INTRO
 		FROM PROJECT
 		WHERE PROJECT_NO = ?
-
 	</entry>
 
 	
 	<!-- 프로젝트 가입 신청 -->
 	<entry key="passAccount">
-	INSERT INTO PROJECT_SIGN VALUES(
-    SEQ_ACCOUNT_NO.NEXTVAL, ? , ?, 'T')
+		INSERT INTO PROJECT_SIGN VALUES(
+	    SEQ_ACCOUNT_NO.NEXTVAL, ? , ?, 'T')
+	</entry>
+	
+	<!-- 프로젝트 관리자(생성자) 회원 번호 조회 -->
+	<entry key="selectProjectAdminNo">
+		SELECT MEMBER_NO FROM PROJECT WHERE PROJECT_NO = ?
 
 	</entry>
 	

@@ -1,14 +1,6 @@
-* { box-sizing: border-box;}
-
-body{
-    margin: 0;
-}
-
-
-
 .content{
     width: auto;
-    height: auto;
+    min-height: 900px;
 
     display: flex;
 }

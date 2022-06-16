@@ -1,6 +1,10 @@
 /* index 메인 페이지 */
 
-*{box-sizing: border-box;}
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
 
 body{margin: 0;}
 
@@ -20,7 +24,11 @@ main{
 }
 
 .content-1{flex-basis: 25%;}
-.content-2{flex-basis: 75%;}
+.content-2{
+    flex-basis: 75%;
+    margin: 5px;
+}
+
 
 /* login 스타일 */
 form[name="login-form"]{
@@ -68,6 +76,8 @@ form[name="login-form"]{
     outline: 0;
     margin: 0;
     padding: 5px;
+
+    font-weight: bold;
 }
 
 /* ID/PW 구분선 */
@@ -88,6 +98,7 @@ form[name="login-form"]{
     background-color: white;
     cursor: pointer;
     font-size: 18px;
+    font-weight: bold;
 }
 
 /* 로그인 버튼에 마우스 올리면 */
@@ -95,6 +106,8 @@ form[name="login-form"]{
     background-color: rgb(14, 25, 78);
     color:white;
     font-weight: bold;
+    
+    
     border-radius: 3px;
     border: none;
 }
@@ -102,6 +115,8 @@ form[name="login-form"]{
 /* 아이디저장 체크박스 */
 form > label{
     margin-bottom: 10px;
+    font-weight: bold;
+
 }
 
 /* 회원가입, ID/PW 찾기 영역 */
@@ -213,8 +228,6 @@ article > button{
     height: 64px;
 
 
-
-
     border-radius: 50%;
 
 }
@@ -238,7 +251,6 @@ article > button{
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
-    letter-spacing: -3px;
 }
 
 /* 로그아웃 버튼 */
@@ -265,45 +277,20 @@ article > button{
     padding: 10px 30px;
 }
 
-/* 상단 추천 공개 프로젝트 */
-#top-area{
-    width: 100%;
-    height: 120px;
-    background-color: rgba(14, 25, 78, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-/* 추천 공개 프로젝트 세부 */
-.top-class{
-    height: 85%;
-    width: 25%;
-    background-color: aliceblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 3%;
-}
-
-/* 추천 공개 프로젝트 세부 프로젝트 명 부분 */
-.top-class > a{
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(14, 25, 78);
-}
 
 /* 참여중인 프로젝트 */
 .project-join{
-    width: 33%;
+    width: 30%;
     height: 200px;
 
     display: inline-block;
 
     margin: 10px ;
-    background-color: #eee;
+    /* background-color: RGB(245,245,245); */
+    background-color: white;
+
+    border: 3px solid rgb(14, 25, 78);
+    border-radius: 3%;
 }
 
 .project-join h2{
@@ -312,27 +299,13 @@ article > button{
 
 .project-join a{
     text-decoration: none;
-    color: black;
+    color: rgb(14, 25, 78);
 }
 
 .project-join h4{
     text-align: left;
-    color: black;
+    color: rgb(14, 25, 78);
 
     padding: 0 15px;
 }
 
-
-li{
-    list-style: none;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-}
-
-/* 참여중인 프로젝트 새글 */
-li > a{
-    text-decoration: none;
-    padding: 0 5px;
-    color: rgb(14, 25, 78);
-}

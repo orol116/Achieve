@@ -413,7 +413,7 @@ public class ProjectDAO {
 	 * @return
 	 * @throws ex
 	 */
-	public List<Project> searchProjectList(Connection conn, Pagination pagination, String condition) throws Exception{
+	public List<Project> searchProjectList(Connection conn, Pagination pagination, String condition, int memberNo) throws Exception{
 
 		List<Project> projectList = new ArrayList<Project>();
 		
@@ -429,8 +429,9 @@ public class ProjectDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			
 			rs = pstmt.executeQuery();
 			
