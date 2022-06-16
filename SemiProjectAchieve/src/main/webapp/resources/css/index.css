@@ -2,7 +2,8 @@
 
 *{
     box-sizing: border-box;
-    font-family: 'Song Myung', serif;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
 }
 
 body{margin: 0;}
@@ -71,6 +72,8 @@ form[name="login-form"]{
     outline: 0;
     margin: 0;
     padding: 5px;
+
+    font-weight: bold;
 }
 
 /* ID/PW 구분선 */
@@ -91,6 +94,7 @@ form[name="login-form"]{
     background-color: white;
     cursor: pointer;
     font-size: 18px;
+    font-weight: bold;
 }
 
 /* 로그인 버튼에 마우스 올리면 */
@@ -98,6 +102,8 @@ form[name="login-form"]{
     background-color: rgb(14, 25, 78);
     color:white;
     font-weight: bold;
+    
+    
     border-radius: 3px;
     border: none;
 }
@@ -105,6 +111,8 @@ form[name="login-form"]{
 /* 아이디저장 체크박스 */
 form > label{
     margin-bottom: 10px;
+    font-weight: bold;
+
 }
 
 /* 회원가입, ID/PW 찾기 영역 */
@@ -239,7 +247,6 @@ article > button{
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
-    letter-spacing: -3px;
 }
 
 /* 로그아웃 버튼 */
@@ -275,7 +282,10 @@ article > button{
     display: inline-block;
 
     margin: 10px ;
-    background-color: #eee;
+    background-color: white;
+
+    border: 3px solid rgb(14, 25, 78);
+    border-radius: 10%;
 }
 
 .project-join h2{
@@ -284,27 +294,13 @@ article > button{
 
 .project-join a{
     text-decoration: none;
-    color: black;
+    color: rgb(14, 25, 78);
 }
 
 .project-join h4{
     text-align: left;
-    color: black;
+    color: rgb(14, 25, 78);
 
     padding: 0 15px;
 }
 
-
-li{
-    list-style: none;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-}
-
-/* 참여중인 프로젝트 새글 */
-li > a{
-    text-decoration: none;
-    padding: 0 5px;
-    color: rgb(14, 25, 78);
-}

@@ -1,4 +1,8 @@
-
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
 
 
 /* 마이페이지 영역 */
@@ -57,6 +61,11 @@
     border-right: none;
     margin-left: 30px;
     
+}
+
+#projectIntro{
+    width: 300px;
+    height: 130px;
 }
 
 

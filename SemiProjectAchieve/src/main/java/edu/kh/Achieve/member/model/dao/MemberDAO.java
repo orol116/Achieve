@@ -298,6 +298,40 @@ public class MemberDAO {
 		List<Member> list = new ArrayList<Member>();
 		
 		try {
+			String sql = prop.getProperty("selectAllMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while( rs.next() ) {
+				Member mem = new Member();
+				
+				mem.setMemberNo( rs.getInt(1) );
+				mem.setMemberNickname(rs.getString(2));
+				mem.setProfileImage(rs.getString(3));
+				mem.setSuspensionFlag(rs.getString(4));
+				
+				list.add(mem); // 리스트 추가
+			}
+			
+		}finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return list;
+	}
+	
+	public List<Member> selectAllManager(Connection conn, int projectNo) throws Exception{
+		
+//		List<Member>  list = new ArrayList<Member>();
+		
+		List<Member> list = new ArrayList<Member>();
+		
+		try {
 			String sql = prop.getProperty("selectAll");
 			
 			pstmt = conn.prepareStatement(sql);
@@ -361,6 +395,32 @@ public class MemberDAO {
 
 		
 	public int selectAllCount(Connection conn, int projectNo) throws Exception{
+		
+		int count = 0;
+		
+		try {
+			String sql = prop.getProperty("selectAllCountMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return count;
+
+	}
+	public int selectAllCountManager(Connection conn, int projectNo) throws Exception{
 		
 		int count = 0;
 		
