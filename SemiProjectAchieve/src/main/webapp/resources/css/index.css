@@ -282,10 +282,11 @@ article > button{
     display: inline-block;
 
     margin: 10px ;
+    /* background-color: RGB(245,245,245); */
     background-color: white;
 
     border: 3px solid rgb(14, 25, 78);
-    border-radius: 10%;
+    border-radius: 3%;
 }
 
 .project-join h2{
