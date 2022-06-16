@@ -200,4 +200,17 @@
 		AND IMG_LEVEL IN(
 	</entry>
 	
+	
+
+	
+	<!-- 프로젝트 가입 신청 -->
+	<entry key="passAccount">
+	INSERT INTO PROJECT_SIGN VALUES(
+    SEQ_ACCOUNT_NO.NEXTVAL, ? , ?, 'T')
+	
+	
+	
+	
+	</entry>
+	
 </properties>
