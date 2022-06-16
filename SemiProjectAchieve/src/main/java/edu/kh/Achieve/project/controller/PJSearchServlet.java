@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import edu.kh.Achieve.member.model.service.MemberService;
 import edu.kh.Achieve.member.model.vo.Member;
 import edu.kh.Achieve.project.model.service.ProjectService;
 import edu.kh.Achieve.project.model.vo.Project;
@@ -51,13 +50,12 @@ public class PJSearchServlet extends HttpServlet{
 					
 					map = service.searchAll(cp, memberNo);
 					
+				}else { // 검색 목록 조회
+					String key = req.getParameter("key");
+					String query = req.getParameter("query");
+					
+					map = service.searchProjectList(cp, key, query, memberNo);
 				}
-//				else { // 검색 목록 조회
-//					String key = req.getParameter("key");
-//					String query = req.getParameter("query");
-//					
-//					map = service.searchProjectList(cp, key, query);
-//				}
 				
 				
 				// request 범위로 map을 세팅
