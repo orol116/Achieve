@@ -280,7 +280,7 @@ article > button{
 
 /* 참여중인 프로젝트 */
 .project-join{
-    width: 33%;
+    width: 30%;
     height: 200px;
 
     display: inline-block;
