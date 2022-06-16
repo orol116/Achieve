@@ -318,15 +318,13 @@ public class CheckBoardDAO {
 	 * @return map
 	 * @throws Exception
 	 */
-	public int getProjectListCount(Connection conn, int type, int memNo) throws Exception{
-
+    public int getProjectListCount(Connection conn, int type, int memNo) throws Exception{
 		int listProjectCount = 0;
 		
 		try{
 			String sql = prop.getProperty("getProjectListCount");
 			
 			pstmt= conn.prepareStatement(sql);
-			pstmt.setInt(1, memNo);
 			
 			rs=pstmt.executeQuery();
 			

@@ -473,6 +473,7 @@ public class MemberDAO {
 				project.setProjectNo(rs.getInt(1));
 				project.setProjectName(rs.getString(2));
 				project.setProjectIntro(rs.getString(3));
+				project.setOpenStatus(rs.getString(4));
 
 				projectList.add(project);
 			}
