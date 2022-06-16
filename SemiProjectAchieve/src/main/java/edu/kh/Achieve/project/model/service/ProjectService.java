@@ -26,13 +26,18 @@ public class ProjectService {
 		
 		Connection conn = getConnection();
 		
+		int projectNo  = dao.nextProjectNo(conn);
+		
+		project.setProjectNo(projectNo);
+		
 		int result = dao.createProject(conn,project, memberNo);
-		
+			
+		if(result > 0) {
+			result = dao.insertProject(conn, project, memberNo);
+			
+		}
 		if(result > 0) commit(conn);
-		else           rollback(conn);
-		
-		
-		
+		else   			rollback(conn);
 		
 		return result;
 	}
@@ -65,11 +70,11 @@ public class ProjectService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int changeStatus(String openStatus)throws Exception {
+	public int changeStatus(String openStatus, int projectNo)throws Exception {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.changeStatus(conn,openStatus );
+		int result = dao.changeStatus(conn,openStatus, projectNo );
 		
 		if(result > 0) commit(conn);
 		else		   rollback(conn);
@@ -86,11 +91,11 @@ public class ProjectService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int IntroEdit(String projectIntro) throws Exception{
+	public int IntroEdit(String projectIntro, int projectNo) throws Exception{
 		
 		Connection conn = getConnection();
 		
-		int result = dao.IntroEdit(conn, projectIntro);
+		int result = dao.IntroEdit(conn, projectIntro, projectNo);
 		
 		if(result > 0) commit(conn);
 		else		   rollback(conn);
@@ -102,11 +107,11 @@ public class ProjectService {
 
 
 	
-	public int changePJName(String projectName) throws Exception {
+	public int changePJName(String projectName, int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.changePJName(conn,projectName);
+		int result = dao.changePJName(conn,projectName, projectNo);
 		
 		if(result > 0) commit(conn);
 		else		   rollback(conn);
@@ -167,7 +172,7 @@ public class ProjectService {
 		
 		switch(key) {
 		case "t"  : condition = " AND PROJECT_NM LIKE '%" + query + "%' ";  break;
-		case "c"  : condition = " AND MEMBER_NICK LIKE '%" + query + "%' ";  break;
+		case "c"  : condition = " AND M.MEMBER_NICK LIKE '%" + query + "%' ";  break;
 		
 		}
 		

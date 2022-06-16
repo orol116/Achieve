@@ -39,116 +39,103 @@
                 <!-- 왼쪽 회원 사이드 메뉴 -->
                 <section class="content-1">
 
-                    <c:choose>
+                    <div class="side-content">
+                        <c:choose>
+                            <c:when test="${empty sessionScope.loginMember}">
 
-                        <c:when test="${empty sessionScope.loginMember}">
-
-                            <form action="member/login" method="post" name="login-form" onsubmit="return loginValidate()">
-                            
-                                <!-- 아이디(이메일)/비밀번호/로그인 -->
-                                <fieldset id="id-pw-area">
-                                    
-                                    <section>
-                                        <input type="text" name="inputEmail" placeholder="아이디(이메일)" value="${cookie.saveId.value}">
-                                        <input type="password" name="inputPw" placeholder="비밀번호">
-                                    </section>
-                                    
-                                    <section>
-                                        
-                                        <button type="submit">로그인</button>
-                                        
-                                    </section>
-                                    
-                                </fieldset>
-
-                                <!-- 쿠키에 saveId가 있는 경우 -->
-                                <c:if test="${!empty cookie.saveId.value}">
-                                    
-                                    <!-- chk변수 생성(page scope) -->
-                                    <c:set var="chk" value="checked"/>
+                                <form action="member/login" method="post" name="login-form" onsubmit="return loginValidate()">
                                 
+                                    <!-- 아이디(이메일)/비밀번호/로그인 -->
+                                    <fieldset id="id-pw-area">
+                                        <section>
+                                            <input type="text" name="inputEmail" placeholder="아이디(이메일)" value="${cookie.saveId.value}">
+                                            <input type="password" name="inputPw" placeholder="비밀번호">
+                                        </section>
+                                        
+                                        <section>
+                                            
+                                            <button type="submit">로그인</button>
+                                            
+                                        </section>
+                                    </fieldset>
+
+                                    <!-- 쿠키에 saveId가 있는 경우 -->
+                                    <c:if test="${!empty cookie.saveId.value}">
+                                        
+                                        <!-- chk변수 생성(page scope) -->
+                                        <c:set var="chk" value="checked"/>
+                                    
+                                    </c:if>
+                                                            
+                                    <label for="saveId">
+                                        <input type="checkbox" name="saveId" ${chk} id="saveId"> 아이디 저장
+                                    </label>
+                        
+                                    <!-- 회원가입/ID,PW찾기 -->
+                                    <article id="signup-find-area">
+                                        
+                                        <button type="button"><a href="${contextPath}/member/signUp" id="main-singUp">회원가입</a></button>
+                                        <button type="button"><a href="${contextPath}/findId" id="main-find">ID/PW 찾기</a></button>
+                                        
+                                    </article>
+                                </form>
+                                        
+                            </c:when>
+
+                            <c:otherwise>
+                                <article class="login-area">
                                 
-                                </c:if>
-                                                        
-                                <label for="saveId">
-                                    <input type="checkbox" name="saveId" ${chk} id="saveId"> 아이디 저장
-                                </label>
+                                    <!-- 회원 프로필 이미지 -->
+                                    <a href="${contextPath}/member/myPage/profile">
+                                        <!-- 프로필 이미지 변경하는 페이지 생기면 그쪽으로 -->
+
+                                        <c:if test="${empty loginMember.profileImage}">
+                                            <img src="${contextPath}/resources/images/user.png" id="member-profile">
+                                        </c:if>
+
+                                        <c:if test="${!empty loginMember.profileImage}">
+                                            <img src="${contextPath}${loginMember.profileImage}" id="member-profile">
+                                        </c:if>
+
+                                    </a>
+                                
+                                    <!-- 회원 정보 + 로그아웃 버튼 -->
+                                    <div class="my-info">
+                                        <div>
+                                            <a href="${contextPath}/member/myPage/info" id="nickname">${loginMember.memberNickname}</a>
+                                            
+                                            <a href="member/logout" id="logout-btn">&times;</a>
+                                        
+                                        </div>
+                                        
+                                        <p>
+                                            ${loginMember.memberEmail}
+                                        </p>
+                                        
+                                    </div>
+                                </article>            
                     
-                    
-                                <!-- 회원가입/ID,PW찾기 -->
+                                <!-- 마이페이지 -->
                                 <article id="signup-find-area">
                                     
-                                    <button type="button"><a href="${contextPath}/member/signUp" id="main-singUp">회원가입</a></button>
-                                    <button type="button"><a href="${contextPath}/findId" id="main-find">ID/PW 찾기</a></button>
+                                    <button id="myPageBtn"><a href="${contextPath}/member/myPage/info">마이페이지</a></button>
                                     
                                 </article>
-                                
-                            </form>
+
+                                <article id="main-project-area">
                                     
-                        </c:when>
-
-                        <c:otherwise>
-
-                            <article class="login-area">
-	            			
-                                <!-- 회원 프로필 이미지 -->
-                                <a href="${contextPath}/member/myPage/profile">
-                                    <!-- 프로필 이미지 변경하는 페이지 생기면 그쪽으로 -->
-
-                                    <c:if test="${empty loginMember.profileImage}">
-                                        <img src="${contextPath}/resources/images/user.png" id="member-profile">
-                                    </c:if>
-
-                                    <c:if test="${!empty loginMember.profileImage}">
-                                        <img src="${contextPath}${loginMember.profileImage}" id="member-profile">
-                                    </c:if>
-
-                                </a>
-                            
-                                <!-- 회원 정보 + 로그아웃 버튼 -->
-                                <div class="my-info">
-                                    <div>
-                                        <a href="${contextPath}/member/myPage/info" id="nickname">${loginMember.memberNickname}</a>
-                                        
-                                        <a href="member/logout" id="logout-btn">&times;</a>
-                                    
-                                    </div>
-                                    
-                                    <p>
-                                        ${loginMember.memberEmail}
-                                    </p>
-                                    
-                                </div>
-                            
-                            </article>            
-                
-                            <!-- 마이페이지 -->
-                            <article id="signup-find-area">
-                                
-                                <button id="myPageBtn"><a href="${contextPath}/member/myPage/info">마이페이지</a></button>
-                                
-                            </article>
-
-                            <article id="main-project-area">
-                                
-                                <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
-                                <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 조회</a></button>
-        
-                
-                            </article>
-
-                        </c:otherwise>
-
-
-
-                    </c:choose>
-
-
+                                    <button type="button"><a href="${contextPath}/project/PJCreate">프로젝트 만들기</a></button><br>
+                                    <button type="button"><a href="${contextPath}/project/PJ/PJSearch">프로젝트 조회</a></button>
             
-            
-                
-            
+                                </article>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </section>
+
+
+
+
 
 
                 <!-- 오른쪽 프로젝트 추천 부분 -->

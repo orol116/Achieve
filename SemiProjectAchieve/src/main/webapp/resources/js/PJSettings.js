@@ -8,7 +8,7 @@ function PJDupCheck(){
 
     $.ajax({
         url : "PJDupCheck",
-        data : {"projectName" : PJNameChange.value},
+        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo},
         type : "GET",
         success : function(result){
     
@@ -30,6 +30,7 @@ function PJDupCheck(){
 
 
 
+
 // 프로젝트 이름변경 확인 O // 유효성검사 추가 중복되는 이름 거르기
 nameChangeBtn.addEventListener("click", function(){
 
@@ -43,9 +44,9 @@ nameChangeBtn.addEventListener("click", function(){
 
     PJDupCheck();
 
-    $.ajax({
+    $.ajax({  
         url : "PJNameChange",
-        data : {"projectName" : PJNameChange.value},
+        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo},
         type : "GET",
         success : function(result){
     
@@ -64,16 +65,9 @@ nameChangeBtn.addEventListener("click", function(){
         }
     });
 
-    
-
-
-
-
-
- 
-
-
     console.log(PJNameChange.value);
+
+    
 
     
 
@@ -89,7 +83,10 @@ nameChangeBtn.addEventListener("click", function(){
 // 전체 쪽지 값 확인 null 값 ok
 document.getElementById("text-all").addEventListener("click", function(){
 
-    const sendAll = document.getElementById("sendAll-text");
+
+    console.log(projectNo);
+
+/*     const sendAll = document.getElementById("sendAll-text");
 
     console.log(sendAll.value);
 
@@ -120,7 +117,7 @@ document.getElementById("text-all").addEventListener("click", function(){
         });
 
 
-    }
+    } */
 
 });
 
@@ -133,7 +130,7 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
     const projectIntro = document.getElementById("projectIntro");
 
-    console.log(projectIntro.value);
+  
 
     if(projectIntro.value == ""){
     var result = confirm("소개글을 모두 지우시겠습니까?");
@@ -146,7 +143,7 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
         $.ajax({
             url : "IntroEdit",
-            data : {"projectIntro" : projectIntro.value},
+            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
             type : "GET",
             success : function(result){
 
@@ -180,7 +177,7 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
         $.ajax({
             url : "IntroEdit",
-            data : {"projectIntro" : projectIntro.value},
+            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
             type : "GET",
             success : function(result){
 
@@ -237,7 +234,7 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
     $.ajax({
         url : "openStatusChange",
-        data : {"openStatus" : target.value},
+        data : {"openStatus" : target.value, "projectNo": projectNo},
         type : "GET",
         success : function(result){
 
@@ -254,28 +251,3 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
     });
 
 }; 
-
-
-
-
-
-// ------------------ 프로젝트 메인페이지 가입승인 ----------------------------
-
-
-
-
-
-
-
-
-
-// 
-
-
-
-
-
-
-
-
-

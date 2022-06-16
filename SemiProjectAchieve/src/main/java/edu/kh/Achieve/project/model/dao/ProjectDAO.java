@@ -39,6 +39,33 @@ public class ProjectDAO {
 		}
 		
 	}
+	
+	
+	public int nextProjectNo(Connection conn) throws Exception {
+		
+		int projectNo = 0;
+		
+		
+		try {
+			String sql = prop.getProperty("nextProjectNo");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				projectNo = rs.getInt(1);
+			}
+			
+			
+		}finally {
+			
+			close(rs);
+			close(stmt);
+		}
+		
+		return projectNo;
+	}
+	
 
 	/** 프로젝트 생성 DAO
 	 * @param conn
@@ -54,24 +81,19 @@ public class ProjectDAO {
 			String sql = prop.getProperty("createProject");
 			
 			
-			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, project.getProjectName());
-			pstmt.setString(2, project.getProjectQuota());
-			pstmt.setString(3, project.getOpenStatus());
-			pstmt.setString(4, project.getProjectIntro());
-			pstmt.setInt(5, memberNo);
-			
-			
-			
-			
-			
-		
+			pstmt.setInt(1, project.getProjectNo());
+			pstmt.setString(2, project.getProjectName());
+			pstmt.setString(3, project.getProjectQuota());
+			pstmt.setString(4, project.getOpenStatus());
+			pstmt.setString(5, project.getProjectIntro());
+			pstmt.setInt(6, memberNo);
 			
 			result = pstmt.executeUpdate();
 			
-			
+
+
 			
 		}finally {
 			
@@ -81,10 +103,51 @@ public class ProjectDAO {
 		}
 		
 		
-		return result;
+		return  result;
 	}
 	
 	
+	/** PROJECTMEMEBR 삽입
+	 * @param conn
+	 * @param project
+	 * @param memberNo
+	 * @return projectList
+	 * @throws Exception
+	 */
+
+	
+	public int insertProject(Connection conn, Project project,int memberNo) throws Exception{
+		
+		int result = 0;
+				
+		try {
+			String sql = prop.getProperty("insertProject");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			pstmt.setInt(1, project.getProjectNo());
+			pstmt.setInt(2, memberNo);
+			
+	
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		
+		
+		return result;
+	}
+	
+
+	
+		
+
 
 	/** 프로젝트 이름 중복검사 DAO
 	 * @param conn
@@ -130,7 +193,7 @@ public class ProjectDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public int changeStatus(Connection conn, String openStatus) throws Exception{
+	public int changeStatus(Connection conn, String openStatus, int projectNo) throws Exception{
 
 		
 		int result = 0;
@@ -143,6 +206,7 @@ public class ProjectDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, openStatus);
+			pstmt.setInt(2, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -168,7 +232,7 @@ public class ProjectDAO {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int IntroEdit(Connection conn, String projectIntro)throws Exception {
+	public int IntroEdit(Connection conn, String projectIntro, int projectNo)throws Exception {
 		
 		int result = 0;
 		
@@ -179,6 +243,7 @@ public class ProjectDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, projectIntro);
+			pstmt.setInt(2, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -196,7 +261,7 @@ public class ProjectDAO {
 		return result;
 	}
 
-	public int changePJName(Connection conn, String projectName) throws Exception {
+	public int changePJName(Connection conn, String projectName,int projectNo) throws Exception {
 		
 		int result = 0;
 		
@@ -207,6 +272,7 @@ public class ProjectDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, projectName);
+			pstmt.setInt(2, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -373,11 +439,16 @@ public class ProjectDAO {
 				
 				Project pro = new Project();
 				
-				pro.setProjectName(rs.getString(1) );
-				pro.setProjectManagerNickname(rs.getString(2)); //관리자 닉네임
-				pro.setProjectQuota(rs.getString(3)); //정원
-				pro.setProjectIntro(rs.getString(4));
 				
+				//가져오는 부분 확인 
+				
+				pro.setProjectNo(rs.getInt("PROJECT_NO"));
+				pro.setProjectName(rs.getString("PROJECT_NM"));
+				pro.setProjectManagerNickname(rs.getString("MEMBER_NICK"));
+				pro.setProjectQuota(rs.getString("PROJECT_QUOTA"));
+				pro.setProjectIntro(rs.getString("PROJECT_INTRO"));
+				pro.setParticipateStatus(rs.getString("P_ST"));
+							
 				
 				projectList.add(pro);
 			}
@@ -494,6 +565,17 @@ public class ProjectDAO {
 		
 		return result;
 	}
+
+	
+
+
+
+	
+
+	
+	
+
+	
 
 	/*
 	 * public int cancelAccount(Connection conn, int memberNo) throws Exception {

@@ -4,10 +4,25 @@
 <comment>project-sql.xml</comment>
 
 
+	<entry key="nextProjectNo">
+	SELECT SEQ_PROJECT_NO.NEXTVAL FROM DUAL
+	
+	
+	</entry>
+
 	<entry key="createProject">
 	INSERT INTO PROJECT
-	VALUES(SEQ_PROJECT_NO.NEXTVAL, ? 
-	, ? , ? , ? , ?)
+	VALUES(? , ? , ? , ? , ? , ?)
+	</entry>
+	
+
+	
+	<entry key="insertProject">
+	INSERT INTO PROJECT_MEMBER
+ 	VALUES(?, ?)
+	
+	
+	
 	</entry>
 	
 	
@@ -23,19 +38,19 @@
 	
 	UPDATE PROJECT SET
 	OPEN_ST = ?
-	WHERE PROJECT_NO = 5
+	WHERE PROJECT_NO = ?
 	</entry>
 	
 	<entry key="IntroEdit">
 	UPDATE PROJECT SET
 	PROJECT_INTRO = ?
-	WHERE PROJECT_NO = 5
+	WHERE PROJECT_NO = ?
 	</entry>
 	
 	<entry key="changePJName">
 	UPDATE PROJECT SET
 	PROJECT_NM = ?
-	WHERE PROJECT_NO = 5	
+	WHERE PROJECT_NO = ?	
 	</entry>
 	
 	
@@ -71,11 +86,12 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+
 	
 	<!-- 조건을 만족하는 게시글 수 조회 -->
 	<entry key="searchListCount">
 		SELECT COUNT(*) FROM PROJECT 
-		<!-- JOIN MEMBER USING(MEMBER_NO) -->
+		JOIN MEMBER M USING(MEMBER_NO)
 		WHERE OPEN_ST = 'Y'
 	</entry>
 	
@@ -95,6 +111,10 @@
 				JOIN MEMBER M USING(MEMBER_NO)
 				WHERE OPEN_ST = 'Y'
 	</entry>
+	
+	
+
+	
 	
 	<entry key="searchProjectList2">
 	      	ORDER BY PROJECT_NO DESC
@@ -159,6 +179,8 @@
 	
 	
 	</entry>
+	
+
 	
 	
 	

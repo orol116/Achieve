@@ -200,4 +200,3 @@ sendEmailBtn.addEventListener("click", function(){
     }
 
 });
-

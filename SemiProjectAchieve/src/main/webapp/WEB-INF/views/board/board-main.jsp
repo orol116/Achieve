@@ -28,6 +28,13 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/board-main-style.css">
 
     <script src="https://kit.fontawesome.com/a2e8ca0ae3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    
+
 </head>
 <body>
 
@@ -45,19 +52,19 @@
 
                     <c:forEach var="boardType" items="${boardTypeList}">
                         <c:if test="${boardType.boardCode != 99}">
-                            <div class="sideMenu-list-row"><a href="${contextPath}/board/main?type=${boardType.boardCode}&projectNo=${param.projectNo}&cp=1">${boardType.boardName}</a></div>
+                            <div class="sideMenu-list-row" id="project"><a href="${contextPath}/board/main?type=${boardType.boardCode}&projectNo=${param.projectNo}&cp=1">${boardType.boardName}</a></div>
                         </c:if>
                     </c:forEach>
 
                     <br>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/member/List?memNo=${memberNo}&type=1">내가 쓴 글</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/member/List?memNo=${memberNo}&type=2">내가 쓴 댓글</a></div>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/member/myPage/info">마이페이지</a></div>
+                    <div class="sideMenu-list-row default-list"><a href="${contextPath}/member/List?memNo=${memberNo}&type=1">내가 쓴 글</a></div>
+                    <div class="sideMenu-list-row default-list"><a href="${contextPath}/member/List?memNo=${memberNo}&type=2">내가 쓴 댓글</a></div>
+                    <div class="sideMenu-list-row default-list"><a href="${contextPath}/member/myPage/info">마이페이지</a></div>
 
-                    <div class="sideMenu-list-row"><a href="${contextPath}/member/list?projectNo=${param.projectNo}">프로젝트 구성원</a></div>
+                    <div class="sideMenu-list-row default-list"><a href="${contextPath}/member/list?projectNo=${param.projectNo}">프로젝트 구성원</a></div>
 
                     <br>
-                    <div class="sideMenu-list-row" id="manager"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
+                    <div class="sideMenu-list-row default-list" id="manager"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
                 </div>
             </section>
 
@@ -82,9 +89,7 @@
         
                             <div class="btn-area">
                                 <c:if test="${param.type != 1 && param.type != 2}">
-                                    <c:if test="${! (projectAdminNo != memberNo && param.type == 4)}">
-                                        <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&projectNo=${param.projectNo}&cp=${param.cp}'">글쓰기</button>
-                                    </c:if>
+                                    <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&projectNo=${param.projectNo}&cp=${param.cp}'">글쓰기</button>
                                 </c:if>
                             </div>
         

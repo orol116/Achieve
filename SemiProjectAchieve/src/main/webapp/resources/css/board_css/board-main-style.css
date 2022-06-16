@@ -1,12 +1,18 @@
 .div-sec{
-    width: auto;
+    width: 1200px;
     height: auto;
     display: flex;
+}
+
+.myPage-sideMenu{
+    width: 20%;
 }
 
 #board-area{
     width: 100%;
 }
+
+
 
 
 /* a태그 공통 설정 */
@@ -21,7 +27,7 @@
 
 /* 게시판 목록 화면 전체 영역 설정 */
 .board-list{
-    width: 1000px;
+    width: 80%;
     display: inline-block;
     justify-content: left;
     align-items: center;
