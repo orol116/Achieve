@@ -38,7 +38,7 @@
             <c:if test="${!empty sessionScope.loginMember}">
                 
                 <a href="${contextPath}/note">
-                    <button type="button" id="chat-btn" class="fa-solid fa-envelope"></button>
+                    <button type="button" id="chat-btn" class="fa-solid fa-bell"></button>
                     
                 </a>
             
