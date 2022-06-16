@@ -118,9 +118,6 @@ public class BoardService {
 		detail.setBoardNo(boardNo);
 		
 		detail.setBoardTitle(Util.XSSHandling(detail.getBoardTitle()));
-//		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
-//
-//		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
 		
 		int result = dao.updateBoard(conn, detail);
 		
@@ -282,23 +279,19 @@ public class BoardService {
 	}
 	
 	
-	
-	
+	/** 프로젝트 소개 조회 Service
+	 * @param projectNo
+	 * @return projectName
+	 * @throws Exception
+	 */
 
-	public int passAccount(int memberNo, int projectNo) throws Exception {
+	public String selectProjectIntro(int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
+		String projectIntro = dao.selectProjectIntro(conn, projectNo);
+		close(conn);
 		
-		int result = dao.passAccount(conn,memberNo, projectNo);
-		
-		if(result > 0) commit(conn);
-		else		   rollback(conn);
-		
-		
-		
-		return result;
-		
-		
+		return projectIntro;
 	}
 	
 

@@ -22,7 +22,7 @@
 
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-        <form action="write" enctype="multipart/form-data" method="POST" class="board-write"
+        <form action="#" enctype="multipart/form-data" method="POST" class="board-write"
             onsubmit="return writeValidate()">
 
             <div class="title-area">
@@ -33,6 +33,7 @@
             </div>
 
             <div class="content-area">
+                
                 <div class="add-content">
 
                     <label for="img0">첨부파일<img class="preview" src="${img0}"></label>
@@ -47,15 +48,12 @@
                 <div class="board-content">
                     <textarea name="boardContent" id="boardContent">${detail.boardContent}</textarea>
                     <script>
-                    CKEDITOR.replace('boardContent', {height: 500});
+                    CKEDITOR.replace('boardContent', {height: 600});
                     </script>
                 </div>
 
                 <div class="bottom-area">
 
-                    <!-- <input type="hidden" name="type" value="${param.type}"> -->
-
-                    <%-- <c:if test="${boardTypeList.boardCode} != 2"> --%>
                         <select name="board-type" id="board-type">
                             <option value="-1">게시판 선택</option>
                             
@@ -77,7 +75,6 @@
                                 </c:choose>
                                 
                         </select>
-                    <%-- </c:if> --%>
 
                     <!-- 버튼 영역 -->
                     <div class="board-btn-area">
@@ -90,7 +87,6 @@
                 <!-- 숨겨진 값(hidden) -->
                 <!-- 동작 구분 -->
                 <input type="hidden" name="mode" value="${param.mode}">
-                <!-- <input type="hidden" name="type" value="1"> -->
 
                 <!-- type은 게시판 구분 -->
                 <input type="hidden" name="type" value="${param.type}">

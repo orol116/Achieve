@@ -33,7 +33,7 @@ public class CheckBoardListServlet extends HttpServlet {
 			Member loginMember = (Member)session.getAttribute("loginMember");
 			
 			int memNo = loginMember.getMemberNo();
-			System.out.println(memNo);
+			
 
 			String memNick = loginMember.getMemberNickname();
 			String pImage = loginMember.getProfileImage();

@@ -3,8 +3,6 @@
 function selectAll(selectAll){
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach((checkbox)=>{checkbox.checked=selectAll.checked})
-
-
 };
 
 (function(){
@@ -13,6 +11,7 @@ function selectAll(selectAll){
     //member/delete?type=1&cBoard=107
     if(deleteBtn != null){// 버튼이 화면에 존재할때
         deleteBtn.addEventListener("click", function(){
+
 
             let url = "delete"; // 상대경로 형식으로 작성
             // 주소에 작성된 쿼리스트링
@@ -36,9 +35,24 @@ function selectAll(selectAll){
 
             if(confirm("정말로 삭제 하시겠습니까?")){
                 location.href = url; // get 방식으로 url 요청
-
             }
-        });
 
+            return true;
+        });
     }
 })();
+
+
+function selectAll() {
+
+    var count = 0;
+    for(var i=0;i<document.regiform.Answer.length;i++)
+     if (document.regiform.Answer[i].checked == false )
+     count++;
+     
+    if (count == 3) {
+     alert("선택하신 내용이 없습니다.");
+     return true;
+    }
+    document.regiform.submit();
+    }

@@ -201,16 +201,11 @@
 	</entry>
 	
 	
-
-	
-	<!-- 프로젝트 가입 신청 -->
-	<entry key="passAccount">
-	INSERT INTO PROJECT_SIGN VALUES(
-    SEQ_ACCOUNT_NO.NEXTVAL, ? , ?, 'T')
-	
-	
-	
-	
+	<!-- 프로젝트 소개 조회 -->
+	<entry key="selectProjectIntro">
+		SELECT PROJECT_INTRO
+		FROM PROJECT
+		WHERE PROJECT_NO = ?
 	</entry>
 	
 </properties>

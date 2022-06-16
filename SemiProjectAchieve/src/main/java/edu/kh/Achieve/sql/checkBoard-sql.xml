@@ -24,7 +24,7 @@
 		    SELECT ROWNUM RNUM, A.* FROM (
 		        SELECT BOARD_NO, BOARD_TITLE,
 		        TO_CHAR(CREATE_DT, 'YYYY-MM-DD') AS CREATE_DT, 
-		        READ_COUNT
+		        READ_COUNT, PROJECT_NO
 		        FROM BOARD
 		        WHERE MEMBER_NO = ?
 		        AND BOARD_ST = 'N') A
@@ -33,20 +33,6 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	<!-- 최신 작성글 조회 -->
-	<entry key="selectBoardMainList">
-		SELECT * FROM(
-		    SELECT ROWNUM RNUM, A.* FROM(
-		        SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICK, 
-		            TO_CHAR(CREATE_DT, 'YYYY-MM-DD') AS CREATE_DT, 
-		            READ_COUNT
-		        FROM BOARD
-		        WHERE BOARD_ST = 'N'
-		        ORDER BY CREATE_DT DESC
-		    ) A
-		)
-		WHERE RNUM BETWEEN ? AND ?
-	</entry>
 	
 	<!-- 작성글 삭제 -->
 	<entry key="deleteBoard">
@@ -69,11 +55,12 @@
 		SELECT * FROM(
 			SELECT ROWNUM RNUM, A.* FROM (
 				SELECT REPLY_NO, REPLY_CONTENT, BOARD_TITLE,
-				TO_CHAR(REPLY_DT, 'YYYY-MM-DD') AS REPLY_DT
+				TO_CHAR(REPLY_DT, 'YYYY-MM-DD') AS REPLY_DT, PROJECT_NO, BOARD_NO
 				FROM REPLY
 				JOIN BOARD USING(BOARD_NO)
 				WHERE REPLY.MEMBER_NO = ?
-				AND REPLY_ST = 'N') A
+				AND REPLY_ST = 'N'
+				AND BOARD_ST = 'N') A
 				ORDER BY REPLY_NO DESC
 			)
 		WHERE RNUM BETWEEN ? AND ?

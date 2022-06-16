@@ -748,7 +748,34 @@ public class BoardDAO {
 	}
 
 	
+	/** 프로젝트 소개 조회 DAO
+	 * @param conn
+	 * @param projectNo
+	 * @return projectName
+	 * @throws Exception
+	 */
+	public String selectProjectIntro(Connection conn, int projectNo) throws Exception {
+		
+		String projectIntro = null;
+		
+		try {
+			String sql = prop.getProperty("selectProjectIntro");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) projectIntro = rs.getString(1);
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return projectIntro;
 
+	}
 	
 
 }
