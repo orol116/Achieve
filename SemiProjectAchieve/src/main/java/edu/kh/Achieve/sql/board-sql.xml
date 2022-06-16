@@ -206,8 +206,7 @@
 		SELECT PROJECT_INTRO
 		FROM PROJECT
 		WHERE PROJECT_NO = ?
-<<<<<<< HEAD
-=======
+
 	</entry>
 
 	
@@ -215,7 +214,7 @@
 	<entry key="passAccount">
 	INSERT INTO PROJECT_SIGN VALUES(
     SEQ_ACCOUNT_NO.NEXTVAL, ? , ?, 'T')
->>>>>>> origin/main
+
 	</entry>
 	
 </properties>

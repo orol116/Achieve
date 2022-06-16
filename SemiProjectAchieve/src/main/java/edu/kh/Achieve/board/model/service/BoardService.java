@@ -292,8 +292,7 @@ public class BoardService {
 		close(conn);
 		
 		return projectIntro;
-<<<<<<< HEAD
-=======
+
 	}
 	
 	
@@ -310,8 +309,7 @@ public class BoardService {
 		
 		
 		return result;
-		
->>>>>>> origin/main
+
 	}
 	
 
