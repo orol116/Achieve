@@ -297,5 +297,22 @@ public class BoardService {
 		return projectIntro;
 	}
 	
+	
+
+	public int passAccount(int memberNo, int projectNo) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		int result = dao.passAccount(conn,memberNo, projectNo);
+		
+		if(result > 0) commit(conn);
+		else		   rollback(conn);
+		
+		
+		
+		return result;
+		
+	}
+	
 
 }
