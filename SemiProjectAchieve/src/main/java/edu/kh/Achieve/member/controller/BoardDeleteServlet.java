@@ -19,17 +19,21 @@ public class BoardDeleteServlet extends HttpServlet{
 		try {
 			HttpSession session = req.getSession();
 			// 쿼리스트링으로 타입 얻어옴
+			
+			// delete?memNo&type=1&deleteNo=1,2,3
+			
 			int type =  Integer.parseInt(req.getParameter("type"));
 			int memNo = ((int)session.getAttribute("memNo"));
-			String[] cBoard = req.getParameterValues("cBoard");
-			String[] cReply = req.getParameterValues("cReply");
+			String deleteNo = req.getParameter("deleteNo");			
+			
+			System.out.println(deleteNo);
 			
 			int result = 0;
-			if(type ==1 ) {
-				 result = new CheckBoardService().deleteBoard(cBoard);
+			if(type == 1) {
+				 result = new CheckBoardService().deleteBoard(deleteNo);
 				
 			}else {
-				result = new CheckBoardService().deleteReply(cReply);
+				result = new CheckBoardService().deleteReply(deleteNo);
 				
 			}
 			

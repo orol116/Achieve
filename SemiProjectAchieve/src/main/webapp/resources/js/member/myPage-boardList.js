@@ -13,29 +13,7 @@ function selectAll(selectAll){
         deleteBtn.addEventListener("click", function(){
 
 
-            let url = "delete"; // 상대경로 형식으로 작성
-            // 주소에 작성된 쿼리스트링
-
-            // 1) 쿼리스트링에 존재하는 파라미터 모두 얻어오기
-            //현재 /List?memNo=&type=1'
-
-            //이후 /delete?type=1&cBoard=1
-            //이후 /delete/board?type=1&cBoard=95
-            const params = new URL(location.href).searchParams;
-
-            // 2) 원하는 파라미터만 얻어와 변수에 저장
-            const cBoard = "?cBoard="+params.get("cBoard");
-            const cReply = "?cReply="+params.get("cReply");
-            const type = "&type="+params.get("type");
-            const memNo = "&memNo=" + params.get("memNo");
-
-            // url 쿼리스트링 추가
-            url += memNo + type + cBoard  ; // delete?type=1&cBoard=1
-            // url += memNo + type + cReply  ; // delete?type=1&cReply=1
-
-            if(confirm("정말로 삭제 하시겠습니까?")){
-                location.href = url; // get 방식으로 url 요청
-            }
+            
 
             return true;
         });
@@ -43,16 +21,51 @@ function selectAll(selectAll){
 })();
 
 
-function selectAll() {
+// java.lang.NullPointerException:
+// Cannot read the array length because "elements" is null
 
-    var count = 0;
-    for(var i=0;i<document.regiform.Answer.length;i++)
-     if (document.regiform.Answer[i].checked == false )
-     count++;
-     
-    if (count == 3) {
-     alert("선택하신 내용이 없습니다.");
-     return true;
+// 체크박스 선택 안됐을때, 
+function ckBox() {
+    if(!confirm("정말로 삭제 하시겠습니까?")){
+        return false;
     }
-    document.regiform.submit();
+
+
+    const deleteBtn = document.getElementById("deleteBtn");
+    let cBoard = document.querySelectorAll("[name='cBoard']:checked");
+    let cReply = document.querySelectorAll("[name='cReply']:checked");
+
+    //document.querySelectorAll("[name='cReply']:checked").length
+
+    let deleteNo = [];
+
+    // 작성글
+    if(document.querySelectorAll("[name='cBoard']").length != 0 ){
+        if(cBoard.length == 0){
+            alert("삭제할 글을 선택해주세요.");
+            return false;
+        }
+
+        for(let b of cBoard){
+            deleteNo.push( b.value );
+        }
+
     }
+
+    // 작성 댓글
+    if(document.querySelectorAll("[name='cReply']").length != 0 ){ 
+        if(cReply.length == 0){
+            alert("삭제할 댓글을 선택해주세요.");
+            return false;
+        }
+
+        for(let r of cReply){
+            deleteNo.push( r.value );
+        }
+    }
+
+    document.getElementById("deleteNo").value = deleteNo.join(","); // 1,2,3
+    
+    return true;
+  
+}
