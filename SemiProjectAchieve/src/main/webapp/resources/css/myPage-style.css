@@ -1,4 +1,9 @@
-* { box-sizing: border-box;}
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
+
 body{ 
     margin: 0;
 }
@@ -127,14 +132,22 @@ body{
 .secession-guide-detail{
     padding: 3px 0;
 
-    font-size: small;
-    color: #343434;
+    font-size: 15px;
+    font-weight: bold;
+    color: #b4b4b4;
+
+    letter-spacing: 1.2px;
+    
 }
 
 /* 밑줄 */
 #blank{
     margin: 20px 0;
     border-bottom: 2px solid #b4b4b4;
+}
+
+#chkbox > span{
+    font-weight: bold;
 }
 
 /* 버튼 영역 */
