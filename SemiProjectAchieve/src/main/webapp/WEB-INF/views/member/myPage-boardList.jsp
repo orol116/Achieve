@@ -8,6 +8,7 @@
 <c:set var = "pImage" value="${map.pImage}"/>
 <c:set var = "boardList" value="${map.boardList}"/>
 <c:set var = "replyList" value="${map.replyList}"/>
+<c:set var = "projectList" value="${map.projectList}"/>
 
 <c:set var = "listBoardCount" value="${map.listBoardCount}"/>
 <c:set var = "listReplyCount" value="${map.listReplyCount}"/>

@@ -8,7 +8,7 @@
 
 /* 마이페이지 영역 */
 .myPage-content{
-    width: 960px;
+    width: auto;
     height: auto;
     /* margin: 50 0; */
 
@@ -19,7 +19,9 @@
 /* 마이페이지 공통부분 */
 .myPage-main{
     width: 960px;
-    padding: 0 30px;
+    padding: 40 30px;
+    
+    margin-top: 40px;
 
 }
 
