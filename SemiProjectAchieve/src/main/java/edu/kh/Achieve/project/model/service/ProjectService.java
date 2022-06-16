@@ -158,7 +158,7 @@ public class ProjectService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String, Object> searchProjectList(int cp, String key, String query) throws Exception{
+	public Map<String, Object> searchProjectList(int cp, String key, String query, int memberNo) throws Exception{
 
 		Connection conn = getConnection();
 				
@@ -179,7 +179,7 @@ public class ProjectService {
 		
 		
 		// 조건을 만족하는 게시글 목록 조회
-		List<Project> projectList = dao.searchProjectList(conn, pagination, condition);
+		List<Project> projectList = dao.searchProjectList(conn, pagination, condition, memberNo);
 		
 		// 결과를 하나의 Map에 모아서 반환
 		Map<String, Object> map = new HashMap<>();
