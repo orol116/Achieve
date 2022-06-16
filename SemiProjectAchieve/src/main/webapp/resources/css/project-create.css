@@ -6,8 +6,6 @@
 
 
 .classPage-content{
-    width: 1200px;
-    height: auto;
 
     margin: 30px;
 
@@ -59,7 +57,7 @@
 
     font-size: 15px;
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 
     border-radius: 5px;
@@ -114,7 +112,7 @@
 
     margin-top: 30px;
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 
     cursor: pointer;

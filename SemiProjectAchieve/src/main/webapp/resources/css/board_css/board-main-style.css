@@ -54,7 +54,7 @@
 }
 
 .list-table > thead{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 }
 
@@ -98,8 +98,8 @@
     width: 95px;
     height: 40px;
     background-color: white;
-    border: 2px solid #0e194e;
-    color:#0e194e;
+    border: 2px solid rgb(14, 25, 78);
+    color:rgb(14, 25, 78);
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
@@ -130,7 +130,7 @@
 
 /* 현제 페이지 번호 */
 .pagination .current{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     border-radius: 50%;
     color: white;
     font-weight: bold ;
@@ -169,7 +169,7 @@
 #boardSearch button{
     width: 100px;
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
     border: none;
 
@@ -180,8 +180,8 @@
 
     cursor: pointer;
 
-    border: 1px solid #0e194e;
-    color: #0e194e;
+    border: 1px solid rgb(14, 25, 78);
+    color: rgb(14, 25, 78);
     background-color: white;
 }
 
@@ -242,9 +242,9 @@
     height: 33px;
 
     padding: 5px 10px;
-    border: 2px solid #0e194e;
+    border: 2px solid rgb(14, 25, 78);
     background-color: white;
-    color: #0e194e;
+    color: rgb(14, 25, 78);
 
     font-size: 14px;
     font-weight: bold;
@@ -255,7 +255,7 @@
 
 .project-signup-btn > *:hover{
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 }
 

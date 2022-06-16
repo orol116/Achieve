@@ -62,7 +62,7 @@ body{
 }
 
 .findId-button-area button{
-    width: 380px;
+    width: 190px;
     height: 40px;
 
     margin: 35px 0;
@@ -74,14 +74,14 @@ body{
     border-radius: 5px;
 
     background-color: white;
-    color: #0e194e;
-    border: 2px solid #0e194e;
+    color: rgb(14, 25, 78);
+    border: 2px solid rgb(14, 25, 78);
 
     cursor: pointer;
 }
 
 .findId-button-area button:hover{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 }
 
@@ -97,7 +97,7 @@ body{
 }
 
 .findPw-button-area button{
-    width: 380px;
+    width: 190px;
     height: 40px;
 
     margin: 35px 0;
@@ -109,14 +109,14 @@ body{
     border-radius: 5px;
 
     background-color: white;
-    color: #0e194e;
-    border: 2px solid #0e194e;
+    color: rgb(14, 25, 78);
+    border: 2px solid rgb(14, 25, 78);
 
     cursor: pointer;
 }
 
 .findPw-button-area button:hover{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 }
 
@@ -153,7 +153,7 @@ body{
     text-align: center;
     font-weight: bold;
 
-    color: #0e194e;
+    color: rgb(14, 25, 78);
 }
 
 .idList-row{

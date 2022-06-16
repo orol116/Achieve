@@ -12,14 +12,19 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/sidebar.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-
     <main>
+    
+        <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
         <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"></jsp:include>
 
@@ -162,6 +167,9 @@
         const loginMemberNo = "${loginMember.memberNo}";
         // -> 로그인 되어있으면 : "10"
         // -> 로그인 안되어있으면 : ""; (빈문자열)
+
+
+        const projectNo = "${param.projectNo}";
         
 
     </script>

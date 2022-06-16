@@ -4,6 +4,8 @@
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="projectList" value="${map.projectList}" />
 
+<c:set var = "cp" value="${map.cp}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +18,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/index.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/project-search.css">
 
-    <!-- 폰트 -->
+    <!-- 글꼴 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
@@ -111,13 +113,13 @@
 
                     <div class="pagination-area">
 
-                        <c:set var="url" value="list?type=${param.type}&cp="/>
+                        <c:set var="url" value="list?cp="/>
                 
                         <ul class="pagination">
                         
-                            <li><a href="${url}1${sURL}">&lt;&lt;</a></li>
+                            <li><a href="${url}1">&lt;&lt;</a></li>
         
-                            <li><a href="${url}${pagination.prevPage}${sURL}">&lt;</a></li>
+                            <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
         
                             <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
         
@@ -127,15 +129,15 @@
                                     </c:when>
         
                                     <c:otherwise>
-                                        <li><a href="${url}${i}${sURL}">${i}</a></li>        
+                                        <li><a href="${url}${i}">${i}</a></li>        
                                     </c:otherwise>
                                 </c:choose>
         
                             </c:forEach>
                             
-                            <li><a href="${url}${pagination.nextPage}${sURL}">&gt;</a></li>
+                            <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
         
-                            <li><a href="${url}${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
+                            <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
         
                         </ul>
                     </div>
@@ -145,7 +147,7 @@
 
 
                 <!-- 폼태그 검색 제출 -->
-                <form action="${contextPath}/project/PJ/PJSearch" method="get" id="projectSearch" onsubmit="return searchValidate()">
+                <form action="${contextPath}/project/PJ/PJSearch/list" method="get" id="projectSearch" onsubmit="return searchValidate()">
 
                     <select name="key">
                         <option value="t">프로젝트명</option>

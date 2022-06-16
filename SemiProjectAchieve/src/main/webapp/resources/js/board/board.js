@@ -140,7 +140,6 @@ if(inputFile != null){ // inputImage 요소가 화면에 존재할 때
         // 이벤트가 발생한 요소 == input type="file"
         // files : input type ="file"만 사용 가능한 속성으로 
         //          선택된 파일 목록(배열)을 반환한다. 
-        // console.log(this.files[0]); // 파일 목록에서 첫 번째 파일 객체를 선택
 
 
         if(this.files[0] != undefined){ // 파일이 선택되었을 때
@@ -239,7 +238,7 @@ document.getElementById("approveBtn").addEventListener("click", function(){
             if(result == 1){
                 
                 alert("가입 신청에 성공했습니다.");
-                location.href = contextPath + "/project/PJ/PJSearch";
+                location.href = contextPath + "/project/PJ/PJSearch/list";
  
             }else{
                 alert("가입 신청 실패");
