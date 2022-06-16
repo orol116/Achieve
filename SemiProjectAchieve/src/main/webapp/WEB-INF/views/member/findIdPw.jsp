@@ -53,6 +53,7 @@
                         </div>
 
                         <div class="findId-button-area">
+                            <button type="button" onclick = 'location.href = "${contextPath}"'>뒤로 가기</button>
                             <button type="button" id="findIdBtn" onclick="findIdList()">아이디 찾기</button>
                         </div>
                         
