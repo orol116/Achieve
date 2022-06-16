@@ -15,7 +15,7 @@
 
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
 
 }
 
@@ -80,3 +80,11 @@
 #sideMenu-list div:nth-last-of-type(5) a::before{ content: '\ef42'; }
 
 #sideMenu-list div:nth-of-type(1) a::before{ content: '\e88a'; }
+
+.sideMenu-list-row{
+    display: flex;
+}
+
+#sideMenu-list{
+    padding-left: 30px;
+}
