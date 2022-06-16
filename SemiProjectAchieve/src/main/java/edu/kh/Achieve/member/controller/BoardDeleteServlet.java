@@ -26,8 +26,7 @@ public class BoardDeleteServlet extends HttpServlet{
 			int memNo = ((int)session.getAttribute("memNo"));
 			String deleteNo = req.getParameter("deleteNo");			
 			
-			System.out.println(deleteNo);
-			
+
 			int result = 0;
 			if(type == 1) {
 				 result = new CheckBoardService().deleteBoard(deleteNo);
