@@ -12,7 +12,7 @@ function PJDupCheck(){
         type : "GET",
         success : function(result){
     
-            if(result == 1){
+            if(result2 >  0){
                 
                 alert("중복된 이름입니다.");
 

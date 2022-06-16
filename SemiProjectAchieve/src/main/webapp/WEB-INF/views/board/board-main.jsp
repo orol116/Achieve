@@ -53,7 +53,7 @@
             <section class="myPage-sideMenu">
                 <div id="sideMenu-list">
 
-                    <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1&projectNo=${param.projectNo}">${projectName}</a></div>
+                    <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1&projectNo=${param.projectNo}">${project.projectName}</a></div>
 
                     <c:forEach var="boardType" items="${boardTypeList}">
                         <c:if test="${boardType.boardCode != 99}">
