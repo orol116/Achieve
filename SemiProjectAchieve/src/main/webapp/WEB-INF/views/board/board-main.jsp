@@ -181,8 +181,8 @@
                             </div>
     
                             <div class="project-signup-btn">
-                                <button id="cancelBtn" type="button" onclick = 'location.href = "${contextPath}" '>취소</button>
-                                <button id="approveBtn" type="button">가입신청</button>
+                                <button id="cancelBtn" type="button" onclick = 'location.href = "${contextPath}/project/PJ/PJSearch" '>취소</button>
+                                <button id="approveBtn" type="button" >가입신청</button>
                             </div>
     
                         </div>
