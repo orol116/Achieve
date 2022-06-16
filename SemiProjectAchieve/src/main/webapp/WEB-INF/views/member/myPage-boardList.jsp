@@ -13,8 +13,7 @@
 <c:set var = "listBoardCount" value="${map.listBoardCount}"/>
 <c:set var = "listReplyCount" value="${map.listReplyCount}"/>
 <c:set var = "listProjectCount" value="${map.listProjectCount}"/>
-<c:set var = "Btype" value="${map.type}"/>
-<c:set var = "cp" value="${map.cp}"/>
+
 
 <!DOCTYPE html>
 <html lang="en">

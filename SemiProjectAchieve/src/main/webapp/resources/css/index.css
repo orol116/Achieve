@@ -281,7 +281,7 @@ article > button{
 /* 참여중인 프로젝트 */
 .project-join{
     width: 30%;
-    height: 200px;
+    height: 240px;
 
     display: inline-block;
 
@@ -289,8 +289,8 @@ article > button{
     /* background-color: RGB(245,245,245); */
     background-color: white;
 
-    border: 2px solid rgb(14, 25, 78);
-    border-radius: 3%;
+    border: 1.5px solid rgb(14, 25, 78);
+    border-radius: 1.5%;
 }
 
 .project-join h2{
