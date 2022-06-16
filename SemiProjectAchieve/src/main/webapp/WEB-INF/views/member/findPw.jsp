@@ -7,7 +7,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>아이디 / 비밀번호 찾기</title>
+    <title>비밀번호 재설정</title>
+
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/findId-style.css">
