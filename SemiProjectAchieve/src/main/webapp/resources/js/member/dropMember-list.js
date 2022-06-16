@@ -1,7 +1,7 @@
 function selectAll(){ // 회원 전체 조회 함수
     // ajax 코드
     $.ajax({
-        url :"selectAll",
+        url :"selectAllManager",
         data : {"projectNo":projectNo},
         dataType : "json", // 응답 데이터의 형식을 JSON으로 지정
                            // -> 자동으로 JS 객체로 변환됨
@@ -162,7 +162,7 @@ function selectAll(){ // 회원 전체 조회 함수
 
 function selectAllCount(){
     $.ajax({
-        url: "selectAllCount",
+        url: "selectAllCountManager",
         data : {"projectNo":projectNo},
         success : function(count){
 
