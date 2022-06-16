@@ -16,6 +16,8 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/board-detail-style.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/reply-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
