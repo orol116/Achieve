@@ -30,51 +30,32 @@
             
             <div id="notice-area">                
                         
-                <!-- 쪽지는 list로 확인만 가능하게, 링크 연결 X / 현재 el 등 임시 작성 -->
-                <c:forEach var="note" items="${nList}">
+                <!-- 쪽지는 list로 확인만 가능하게, 링크 연결 X -->
+                <c:choose>
+                    <c:when test="${empty nList}">
+                        <div class="notice-list noNote">                                
+                            <p>알림이 없습니다</p>
+                        </div>
+                    </c:when>
 
-                    <div class="notice-list" id="noteList">
+                    <c:otherwise>
+                        <c:forEach var="note" items="${nList}">
 
-                        <div>${note.sender}</div>
-                        <p>${note.noteContent}</p>
+                            <div class="notice-list" id="noteList">
+        
+                                <div>${note.sender}</div>
+                                <p>${note.noteContent}</p>
+        
+                            </div>
+        
+                        </c:forEach>
+                    </c:otherwise>
 
-                    </div>
-
-                </c:forEach>
-                
-                
-                    <div class="notice-list noNote">                                
-                        <p>알림이 없습니다</p>
-                    </div>
-                
-                
-                
-                
-                   
-
-                
-
-                <div class="notice-list">
-                    <div>프로젝트 A</div>
-                    <p>프로젝트 A 안내사항입니다 (프로젝트 A) <br>
-                    4월 31일까지 제출 안된 내용 확인해주시고, 기간내에 반드시 제출해주세요. <br>
-                    미 제출시 강제 편성됩니다.</p>
-                </div>
-                <div class="notice-list">
-                    <div>프로젝트 B</div>
-                    <p>이번주 스터디 과제 안내입니다</p>
-                </div>
-                <div class="notice-list">
-                    <div>발신자일곱글자</div>
-                    <p>공지 확인 부탁드립니다</p>
-                </div>
-
-
+                </c:choose>
+    
             </div>                
 
         </section>
-
-
 
 
     </main>
@@ -82,13 +63,13 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <script>
+
         //로그인한 회원 번호
-        const loginMemberNo = "${loginMember.memberNo}";
+        const memberNo = "${loginMember.memberNo}";
     </script>
 
     <!-- jQuery Library 추가 -->
     <script    src="https://code.jquery.com/jquery-3.6.0.min.js"    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="    crossorigin="anonymous"></script>
-
 
     <script src="${contextPath}/resources/js/note.js"></script>
 

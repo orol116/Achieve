@@ -118,11 +118,8 @@ public class BoardService {
 		detail.setBoardNo(boardNo);
 		
 		detail.setBoardTitle(Util.XSSHandling(detail.getBoardTitle()));
-//		detail.setBoardContent(Util.XSSHandling(detail.getBoardContent()));
-//
-//		detail.setBoardContent(Util.newLineHandling(detail.getBoardContent()));
 		
-		int result = dao.updateBoard(conn, detail);
+		int result = dao.insertBoard(conn, detail, boardCode, projectNo);
 		
 		if (result > 0) {
 			for (BoardAttachment image : boardAttachmentList) { 
@@ -295,6 +292,7 @@ public class BoardService {
 		close(conn);
 		
 		return projectIntro;
+
 	}
 	
 	
@@ -312,6 +310,7 @@ public class BoardService {
 		
 		return result;
 		
+
 	}
 	
 

@@ -61,6 +61,8 @@ public class NoteDAO {
 				note.setSender(rs.getString("MEMBER_NICK"));
 				note.setNoteContent(rs.getString("NOTE_CONTENT"));
 				
+				note.setReceiverNo(memberNo);
+				
 				nList.add(note);
 				
 			}

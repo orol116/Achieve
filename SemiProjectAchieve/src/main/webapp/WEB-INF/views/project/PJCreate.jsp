@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/project-create.css">
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/FAQ.css">
+    <!-- <link rel="stylesheet" href="${contextPath}/resources/css/FAQ.css"> -->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 

@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
 import edu.kh.Achieve.member.model.service.NoteService;
+import edu.kh.Achieve.member.model.vo.Member;
 import edu.kh.Achieve.member.model.vo.Note;
 
 @WebServlet("/note")
@@ -24,15 +26,21 @@ public class NoteServlet extends HttpServlet{
 	
 		try {
 			
-			NoteService service = new NoteService();
+			//1. 세션에서 로그인번호 가져오는 부분
+			HttpSession session = req.getSession();
+		
+			//2. 세션에서 로그인번호 가져오는 부분
+			Member loginMember = (Member)session.getAttribute("loginMember");
 			
-//			int memberNo = Integer.parseInt(req.getParameter("memberNo"));
+			NoteService service = new NoteService();			
 			
-//			List<Note> nList = service.noteList(memberNo);
+			int memberNo = loginMember.getMemberNo();
 			
-//			new Gson().toJson(nList, resp.getWriter());
+			List<Note> nList = service.noteList(memberNo);
 			
+			//new Gson().toJson(nList, resp.getWriter());
 			
+			req.setAttribute("nList", nList);
 			String path = "/WEB-INF/views/member/note.jsp";
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 			dispatcher.forward(req, resp);
@@ -40,6 +48,7 @@ public class NoteServlet extends HttpServlet{
 		
 		}catch (Exception e) {
 			e.printStackTrace();
+			
 			
 			//ajax error 속성 활용을 위해 강제 에러 전달
 			resp.setStatus(500); //(서버에러)
