@@ -252,3 +252,7 @@
     background-color: #0e194e;
     color: white;
 }
+
+.display-none{
+    display: none;
+}

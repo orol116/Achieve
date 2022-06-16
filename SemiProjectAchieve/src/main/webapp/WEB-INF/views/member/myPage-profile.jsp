@@ -37,7 +37,7 @@
             <!-- 마이페이지 - 메인 내용 -->
             <section class="myPage-main">
                 <div id="myPage-detail">
-                    <h1 id="myPage-title">프로필 사진 수정</h1>
+                    <h1 id="myPage-title">프로필 사진</h1>
 
                     <form action="profileSubmit" method="post" name="myPage-form"
                     enctype="multipart/form-data" onsubmit="return profileValidate()">

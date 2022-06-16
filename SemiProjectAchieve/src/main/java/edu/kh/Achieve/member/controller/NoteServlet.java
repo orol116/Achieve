@@ -49,6 +49,7 @@ public class NoteServlet extends HttpServlet{
 		}catch (Exception e) {
 			e.printStackTrace();
 			
+			
 			//ajax error 속성 활용을 위해 강제 에러 전달
 			resp.setStatus(500); //(서버에러)
 			
