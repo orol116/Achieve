@@ -12,7 +12,7 @@ function noteList(){
 
         success : function(nList){
             //nList : 반환 받은 알림 목록
-            console.log(nList);
+            // console.log(nList);
 
             //화면에 있는 목록 삭제
             const noteList = document.getElementById("noteList");
