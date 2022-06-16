@@ -150,8 +150,6 @@
                 <!-- 오른쪽 프로젝트 추천 부분 -->
                 <section class="content-2">
 
-
-
                     <c:choose>
                         
                         <c:when test="${empty sessionScope.loginMember}">
@@ -164,9 +162,10 @@
                             
                             <c:forEach var="project" items="${projectList}">
                                 <div class="project-join">
-                                    <ul>
-                                        <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a></h2>
-                                    </ul>
+                                    
+                                    <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a></h2>
+                                    <h4>${project.projectIntro}</h4>
+                                  
                                 </div>
                                 <input type="hidden" name="projectNo" value="${project.projectNo}">
                             </c:forEach>

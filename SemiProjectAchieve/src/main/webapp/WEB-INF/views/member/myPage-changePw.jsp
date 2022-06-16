@@ -56,11 +56,6 @@
                                 <input class="myPage-detail-input" type="password" name="newPwCheck" maxlength="30">
                             </div>
 
-                            <div class="myPage-detail-row" id="newPwCheck">
-                                <div>보안문자 입력</div>            
-                                <span>보안문자</span><input id="confirmWord" type="text">
-                            </div>
-
                             <div class="myPage-detail-row">
                                 <button id="modify">비밀번호 변경</button>
                             </div>

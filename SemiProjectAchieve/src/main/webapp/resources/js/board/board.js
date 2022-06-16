@@ -176,25 +176,61 @@ if(inputFile != null){ // inputImage 요소가 화면에 존재할 때
 }
 
 // 첨부파일 이름, 파일 크기 출력
-attach.onchange = () => {
-    const selectedFile = attach.files[0];
-    const attachName = document.getElementById("attachName");
-    const attachSize = document.getElementById("attachSize");
+if(attach != undefined){
+    attach.onchange = () => {
+        const selectedFile = attach.files[0];
+        const attachName = document.getElementById("attachName");
+        const attachSize = document.getElementById("attachSize");
 
-    attachName.innerText = selectedFile.name;
-    attachSize.innerText = (selectedFile.size) / 1024 + 'KB';
-};
+        attachName.innerText = selectedFile.name;
+        attachSize.innerText = (selectedFile.size) / 1024 + 'KB';
+    };
+}
 
 (function() {
+    if(deleteAttach != undefined){
+        deleteAttach.addEventListener("click", function() {
 
-    deleteAttach.addEventListener("click", function() {
+            if (document.getElementById("img0").value != "") {
+                document.getElementById("img0").value = "";
+                document.getElementById("attachName").innerText = "";
+                document.getElementById("attachSize").innerText = "";
+            }
 
-        if (document.getElementById("img0").value != "") {
-            document.getElementById("img0").value = "";
-            document.getElementById("attachName").innerText = "";
-            document.getElementById("attachSize").innerText = "";
-        }
-
-    })
-        
+        })
+    }
 })();
+
+
+
+
+
+
+document.getElementById("approveBtn").addEventListener("click", function(){
+
+
+    $.ajax({
+        url : "ApproveBtn",
+        data : {"memberNo" : loginMemberNo, "projectNo" : projectNo},
+        type : "GET",
+        success : function(result){
+ 
+            if(result == 1){
+                
+                alert("신청했습니다.");
+ 
+            }else{
+                alert("실패.");
+ 
+            }
+ 
+        },
+        error : function(){
+            console.log("에러발생");
+        }
+    }); 
+
+
+});
+
+
