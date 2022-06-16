@@ -210,6 +210,9 @@ article > button{
 
 #member-profile{
     width: 64px;
+    height: 64px;
+
+    border-radius: 50px;
 }
 
 
@@ -290,19 +293,29 @@ article > button{
 
 /* 참여중인 프로젝트 */
 .project-join{
-    height: 70px;
-    width: auto;
-    margin: 10px 0;
+    width: 33%;
+    height: 200px;
+
+    display: inline-block;
+
+    margin: 10px ;
     background-color: #eee;
 }
 
 .project-join h2{
-    padding: 20px 0 0;
+    text-align: center;
 }
 
-.project-join h2 > a{
+.project-join a{
     text-decoration: none;
     color: black;
+}
+
+.project-join h4{
+    text-align: left;
+    color: black;
+
+    padding: 0 15px;
 }
 
 
