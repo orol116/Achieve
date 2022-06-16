@@ -167,7 +167,7 @@ public class ProjectService {
 		
 		switch(key) {
 		case "t"  : condition = " AND PROJECT_NM LIKE '%" + query + "%' ";  break;
-		case "c"  : condition = " AND MEMBER_NICK LIKE '%" + query + "%' ";  break;
+		case "c"  : condition = " AND M.MEMBER_NICK LIKE '%" + query + "%' ";  break;
 		
 		}
 		

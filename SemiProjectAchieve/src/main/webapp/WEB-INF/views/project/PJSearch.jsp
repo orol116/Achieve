@@ -132,14 +132,16 @@
                                         <c:forEach var="project" items="${projectList}">
                                             <tr>                                    
                                                 <td>
-                                                    <!-- 가입이 되어있지 않으면 프로젝트의 메인페이지로 넘어가기-->
+                                                    <!-- 가입이 되어있지 않으면 프로젝트의 메인페이지로 넘어가기
                                                     <c:if test="${project.participateStatus == 0}">
                                                         <a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}">${project.projectName}</a>
                                                     </c:if>
-                                                    <!-- 가입이 되어있으면 프로젝트의 최신글 페이지 -->
+                                                    <-- 가입이 되어있으면 프로젝트의 최신글 페이지 -
                                                     <c:if test="${project.participateStatus == 1}">
                                                         <a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a>
-                                                    </c:if>
+                                                    </c:if> -->
+
+                                                    <a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}">${project.projectName}</a>
 
                                                 </td>
                                                 <td>${project.projectManagerNickname}</td>
