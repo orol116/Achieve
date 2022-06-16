@@ -57,6 +57,7 @@ public class PJSearchServlet extends HttpServlet{
 					map = service.searchProjectList(cp, key, query, memberNo);
 				}
 				
+				System.out.println(map);
 				
 				
 				// request 범위로 map을 세팅

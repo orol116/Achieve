@@ -8,7 +8,7 @@ function PJDupCheck(){
 
     $.ajax({
         url : "PJDupCheck",
-        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo.value},
+        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo},
         type : "GET",
         success : function(result){
     
@@ -42,14 +42,11 @@ nameChangeBtn.addEventListener("click", function(){
 
    nameChangeBtn.addEventListener("click", function(){
 
-    console.log(projectNo);
-
-
-    /* PJDupCheck();
+    PJDupCheck();
 
     $.ajax({  
         url : "PJNameChange",
-        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo.value},
+        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo},
         type : "GET",
         success : function(result){
     
@@ -66,18 +63,11 @@ nameChangeBtn.addEventListener("click", function(){
         error : function(){
             console.log("에러발생");
         }
-    }); */
-
-    
-
-
-
-
-
- 
-
+    });
 
     console.log(PJNameChange.value);
+
+    
 
     
 
@@ -93,7 +83,10 @@ nameChangeBtn.addEventListener("click", function(){
 // 전체 쪽지 값 확인 null 값 ok
 document.getElementById("text-all").addEventListener("click", function(){
 
-    const sendAll = document.getElementById("sendAll-text");
+
+    console.log(projectNo);
+
+/*     const sendAll = document.getElementById("sendAll-text");
 
     console.log(sendAll.value);
 
@@ -124,7 +117,7 @@ document.getElementById("text-all").addEventListener("click", function(){
         });
 
 
-    }
+    } */
 
 });
 
@@ -184,7 +177,7 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
         $.ajax({
             url : "IntroEdit",
-            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo.value},
+            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
             type : "GET",
             success : function(result){
 
@@ -241,7 +234,7 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
     $.ajax({
         url : "openStatusChange",
-        data : {"openStatus" : target.value},
+        data : {"openStatus" : target.value, "projectNo": projectNo},
         type : "GET",
         success : function(result){
 
