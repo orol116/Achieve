@@ -149,13 +149,6 @@
 
                 <!-- 오른쪽 프로젝트 추천 부분 -->
                 <section class="content-2">
-<!-- 
-                    <div id="top-area">
-                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
-                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
-                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
-                    </div> -->
-
 
                     <c:choose>
                         
