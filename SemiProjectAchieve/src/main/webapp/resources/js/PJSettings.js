@@ -8,7 +8,7 @@ function PJDupCheck(){
 
     $.ajax({
         url : "PJDupCheck",
-        data : {"projectName" : PJNameChange.value},
+        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo},
         type : "GET",
         success : function(result){
     
@@ -30,6 +30,13 @@ function PJDupCheck(){
 
 
 
+
+
+
+
+
+
+
 // 프로젝트 이름변경 확인 O // 유효성검사 추가 중복되는 이름 거르기
 nameChangeBtn.addEventListener("click", function(){
 
@@ -43,9 +50,9 @@ nameChangeBtn.addEventListener("click", function(){
 
     PJDupCheck();
 
-    $.ajax({
+    $.ajax({  
         url : "PJNameChange",
-        data : {"projectName" : PJNameChange.value},
+        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo},
         type : "GET",
         success : function(result){
     
@@ -64,16 +71,8 @@ nameChangeBtn.addEventListener("click", function(){
         }
     });
 
+
     
-
-
-
-
-
- 
-
-
-    console.log(PJNameChange.value);
 
     
 
@@ -89,9 +88,10 @@ nameChangeBtn.addEventListener("click", function(){
 // 전체 쪽지 값 확인 null 값 ok
 document.getElementById("text-all").addEventListener("click", function(){
 
+
+
     const sendAll = document.getElementById("sendAll-text");
 
-    console.log(sendAll.value);
 
     if(sendAll.value == ""){
         alert("전송할 내용이 없습니다!");
@@ -101,18 +101,10 @@ document.getElementById("text-all").addEventListener("click", function(){
 
         $.ajax({
             url : "sendAllText",
-            data : {"boardContent" : sendAll.value},
+            data : {"boardContent" : sendAll.value, "projectNo" : projectNo, "loginMemberNo" : loginMemberNo},
             type : "GET",
             success : function(result){
-
-                if(result == 1){
-                    console.log("성공");  
-                }else{
-                    console.log("실패");
-                }
-                
-                
-    
+                alert("전체 알림 발송이 완료되었습니다.");
             },
             error : function(){
                 console.log("에러발생");
@@ -120,7 +112,7 @@ document.getElementById("text-all").addEventListener("click", function(){
         });
 
 
-    }
+    } 
 
 });
 
@@ -133,7 +125,7 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
     const projectIntro = document.getElementById("projectIntro");
 
-    console.log(projectIntro.value);
+  
 
     if(projectIntro.value == ""){
     var result = confirm("소개글을 모두 지우시겠습니까?");
@@ -142,11 +134,10 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
         projectIntro.value = "no Intro";
 
  
-        console.log("값" + projectIntro.value);
 
         $.ajax({
             url : "IntroEdit",
-            data : {"projectIntro" : projectIntro.value},
+            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
             type : "GET",
             success : function(result){
 
@@ -173,14 +164,11 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
     if(projectIntro.value !== ""){
 
 
-        console.log( "글 있을 때" + projectIntro.value);
-
-        console.log("글있음");
 
 
         $.ajax({
             url : "IntroEdit",
-            data : {"projectIntro" : projectIntro.value},
+            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
             type : "GET",
             success : function(result){
 
@@ -214,7 +202,6 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
  const showValue = (target) =>{
 
-    console.log(target.value);
 
     if(target.value =="Y"){
 
@@ -237,7 +224,7 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
     $.ajax({
         url : "openStatusChange",
-        data : {"openStatus" : target.value},
+        data : {"openStatus" : target.value, "projectNo": projectNo},
         type : "GET",
         success : function(result){
 
@@ -254,18 +241,3 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
     });
 
 }; 
-
-
-
-
-
-// 
-
-
-
-
-
-
-
-
-

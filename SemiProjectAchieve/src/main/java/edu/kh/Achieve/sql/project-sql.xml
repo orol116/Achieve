@@ -4,10 +4,25 @@
 <comment>project-sql.xml</comment>
 
 
+	<entry key="nextProjectNo">
+	SELECT SEQ_PROJECT_NO.NEXTVAL FROM DUAL
+	
+	
+	</entry>
+
 	<entry key="createProject">
 	INSERT INTO PROJECT
-	VALUES(SEQ_PROJECT_NO.NEXTVAL, ? 
-	, ?, ? , ? , ? , ?)
+	VALUES(? , ? , ? , ? , ? , ?)
+	</entry>
+	
+
+	
+	<entry key="insertProject">
+	INSERT INTO PROJECT_MEMBER
+ 	VALUES(?, ?)
+	
+	
+	
 	</entry>
 	
 	
@@ -23,19 +38,19 @@
 	
 	UPDATE PROJECT SET
 	OPEN_ST = ?
-	WHERE PROJECT_NO = 5
+	WHERE PROJECT_NO = ?
 	</entry>
 	
 	<entry key="IntroEdit">
 	UPDATE PROJECT SET
 	PROJECT_INTRO = ?
-	WHERE PROJECT_NO = 5
+	WHERE PROJECT_NO = ?
 	</entry>
 	
 	<entry key="changePJName">
 	UPDATE PROJECT SET
 	PROJECT_NM = ?
-	WHERE PROJECT_NO = 5	
+	WHERE PROJECT_NO = ?	
 	</entry>
 	
 	
@@ -71,11 +86,12 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+
 	
 	<!-- 조건을 만족하는 게시글 수 조회 -->
 	<entry key="searchListCount">
 		SELECT COUNT(*) FROM PROJECT 
-		<!-- JOIN MEMBER USING(MEMBER_NO) -->
+		JOIN MEMBER M USING(MEMBER_NO)
 		WHERE OPEN_ST = 'Y'
 	</entry>
 	
@@ -83,16 +99,24 @@
 	
 	
 	<!-- 특정 게시판에서 조건을 만족하는 게시글 목록 조회 -->
-	<entry key="searchBoardList1">
+	<entry key="searchProjectList1">
 		SELECT * FROM(
-		   SELECT ROWNUM RNUM, A.* FROM(
-		      SELECT PROJECT_NM, MEMBER_NICK, PROJECT_QUOTA, PROJECT_INTRO		        		            
-		      FROM PROJECT
-		      JOIN MEMBER USING(MEMBER_NO)
-		      WHERE OPEN_ST = 'Y'
+			SELECT ROWNUM RNUM, A.* FROM(
+				SELECT P.PROJECT_NO, P.PROJECT_NM, M.MEMBER_NICK, P.PROJECT_QUOTA, P.PROJECT_INTRO,
+					(SELECT COUNT(*) FROM PROJECT_MEMBER PM
+					WHERE PM.PROJECT_NO = P.PROJECT_NO
+					AND PM.MEMBER_NO = ?
+					) P_ST	          
+				FROM PROJECT P
+				JOIN MEMBER M USING(MEMBER_NO)
+				WHERE OPEN_ST = 'Y'
 	</entry>
 	
-	<entry key="searchBoardList2">
+	
+
+	
+	
+	<entry key="searchProjectList2">
 	      	ORDER BY PROJECT_NO DESC
 		   ) A
 		)
@@ -130,33 +154,41 @@
 	  MEMBER_NICK, MEMBER_PROFILE
 	 FROM MEMBER
 	 JOIN PROJECT_SIGN USING(MEMBER_NO)
-	 WHERE PROJECT_NO = 1
+	 WHERE PROJECT_NO = ?
 
 	
-	
-	
-	
 	</entry>
+	
+	
 	
 	<!--  PJ 가입승인 총인원 불러오기 -->
 	<entry key="selectPJ">
 	 SELECT COUNT(*)
 	 FROM PROJECT_SIGN
-	 WHERE PROJECT_NO = 1
-	
-	
-	
-	
+	 WHERE PROJECT_NO = ?
+
 	</entry>
 	
 	
+	
+	<!-- 관리자가 가입 승인 -->
 	<entry key="accountMember">
 	 INSERT INTO PROJECT_MEMBER
  	 VALUES(?, ?)
-	
-	
-	
 	</entry>
+	
+	<!-- 관리자가 공지(알림) 작성 -->
+	<entry key="insertNotice">
+		 INSERT INTO NOTE
+	 	 VALUES(SEQ_NOTE_NO.NEXTVAL, ?, SYSDATE, ?, ?)
+	</entry>
+	
+	
+	
+
+	
+	
+	
 	
 	
 

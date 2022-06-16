@@ -37,7 +37,7 @@ myPage-row{
 
 .board-list a:hover{
     text-decoration: underline;
-    color: #0e194e;
+    color: rgb(14, 25, 78);
 }
 
 /* 댓글 목록 화면 전체 영역 설정 */
@@ -49,7 +49,7 @@ myPage-row{
 
 /* 게시글 목록 영역 */
 .list-table > thead>tr>th{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 }
 
@@ -114,7 +114,7 @@ div.myPage-third1>a{
 /* 첫번째 a태그  */
 div.myPage-third1>a:nth-of-type(2){
    text-decoration: underline ;
-    color : #0e194e;
+    color : rgb(14, 25, 78);
     padding-bottom: 5px;
     font-weight: 700;
 }
@@ -184,8 +184,8 @@ td#reply-list-part {
     height: 90%;
 
     background-color: white;
-    border: 1px solid #0e194e;
-    color:  #0e194e;
+    border: 1px solid rgb(14, 25, 78);
+    color:  rgb(14, 25, 78);
     text-align: center;
     border-radius: 5px;
     font-weight: bold;
@@ -196,7 +196,7 @@ td#reply-list-part {
     align-items: center;
 }
 .insertBtn:hover{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     border: 2px solid white;
     color:  white;
 
@@ -231,7 +231,7 @@ td#reply-list-part {
 
 /* 현재 페이지 번호 */
 .pagination .current{
-    background-color: #0e194e ;
+    background-color: rgb(14, 25, 78);
     border-radius: 20%;
     color: white;
     font-weight: bold;

@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
 
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+
     <!-- 사이드바 아이콘 사용을 위한 링크 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -46,17 +51,17 @@
                             
                             <div class="myPage-detail-row" id="memberName">
                                 <div>이름</div>            
-                                <input class="myPage-detail-input" type="text" name="memberName" value="${loginMember.memberName}">
+                                <input class="myPage-detail-input" type="text" name="memberName" placeholder="${loginMember.memberName}">
                             </div>
 
                             <div class="myPage-detail-row" id="memberNickname">
                                 <div>닉네임</div>            
-                                <input class="myPage-detail-input" type="text" name="memberNickname" value="${loginMember.memberNickname}">
+                                <input class="myPage-detail-input" type="text" name="memberNickname" placeholder="${loginMember.memberNickname}">
                             </div>
 
                             <div class="myPage-detail-row" id="memberTel">
                                 <div>핸드폰 번호</div>            
-                                <input class="myPage-detail-input" type="text" name="memberTel" value="${loginMember.memberTel}">
+                                <input class="myPage-detail-input" type="text" name="memberTel" placeholder="${loginMember.memberTel}">
                             </div>
 
                             <div class="myPage-detail-row">

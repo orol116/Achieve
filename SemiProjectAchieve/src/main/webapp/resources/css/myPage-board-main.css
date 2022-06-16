@@ -1,57 +1,28 @@
-*{ box-sizing:  border-box;}
-body{margin:0;} /* body태그가 가지고있는 기본 마진 제거 */
-/* div{ border : 1px solid black;} */
+
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
 
 
 /* 마이페이지 영역 */
 .myPage-content{
     width: auto;
     height: auto;
-    margin: 50px auto;
+    /* margin: 50 0; */
 
     display: flex;
 }
 
-/* 왼쪽 사이드 메뉴 */
-.left-side{
-    width: 25%;
-}
-.left-side>h1{
-    padding-left: 40px;
-    font-weight:bold;
-}
-.list-group{
-    width: 100%;
-    padding: 0 10px 0 20px;
-        /* 상 우 하 좌 */
-}
-.list-group>li{
-    padding-left: 20px;
-    list-style: none;
-    height: 28px;
-    font-size: 14px;
-    letter-spacing: -1px;
-}
-
-.list-group>li>a{
-   text-decoration: none;
-    color: black;
-    height: 100%;
-
-    display: flex;
-    justify-content: left;
-    align-items: center;
-/* border-bottom: 2px solid #ddd; */
-}
-
-.list-group>li:hover{
-    background-color: #f2f2f2;
-}
 
 /* 마이페이지 공통부분 */
 .myPage-main{
-    width: 100%;
-    padding: 0 30px;
+    width: 960px;
+    padding: 40 30px;
+    
+    margin-top: 40px;
+
 }
 
 /* 프로필 부분 */

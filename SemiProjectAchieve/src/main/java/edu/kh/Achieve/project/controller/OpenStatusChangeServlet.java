@@ -19,13 +19,14 @@ public class OpenStatusChangeServlet extends HttpServlet{
 		
 		String openStatus = req.getParameter("openStatus");
 		
-		// 아직 proejct에 들어가서 설정변경하는 페이지가 안나와서 projectNo는 기본 5로 설정
+		
+		int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 		
 		try {
 			
 			ProjectService service = new ProjectService();
 			
-			int result = service.changeStatus(openStatus);
+			int result = service.changeStatus(openStatus, projectNo);
 			
 			resp.getWriter().print(result);
 			

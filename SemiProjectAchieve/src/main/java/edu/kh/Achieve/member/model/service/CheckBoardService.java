@@ -57,15 +57,15 @@ public class CheckBoardService {
 
 
 	/** 작성글 삭제 Service
-	 * @param cBoard
+	 * @param deleteNo
 	 * @return result1
 	 * @throws Exception
 	 */
-	public int deleteBoard(String[] cBoard) throws Exception {
+	public int deleteBoard(String deleteNo) throws Exception {
 
 		Connection conn= getConnection();
 		
-		int result = dao.deleteBoard(conn, cBoard);
+		int result = dao.deleteBoard(conn, deleteNo);
 
 		if(result >0 ) commit(conn);
 		else  			rollback(conn);
@@ -118,11 +118,11 @@ public class CheckBoardService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int deleteReply(String[] cReply) throws Exception{
+	public int deleteReply(String deleteNo) throws Exception{
 
 		Connection conn= getConnection();
 		
-		int result = dao.deleteReply(conn, cReply);
+		int result = dao.deleteReply(conn, deleteNo);
 
 		if(result >0 ) commit(conn);
 		else  			rollback(conn);
@@ -144,19 +144,16 @@ public class CheckBoardService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public Map<String, Object> selectProjectList(int cp, int type, int memNo, String memNick, String pImage)  throws Exception{
-
+    public Map<String, Object> selectProjectList(int cp, int type, int memNo, String memNick, String pImage)  throws Exception{
 		Connection conn = getConnection();
 
 		// 1. 가입된 프로젝트 수 조회
-		int listProjectCount = dao.getProjectListCount(conn, type, memNo);
-		
+        int listProjectCount = dao.getProjectListCount(conn, type, memNo);
 		// 2. 가입된 프로젝트 수 + 현재 페이지(cp)를 이용해 페이지네이션 객체 생성
 		CheckPagination pagination = new CheckPagination(cp, listProjectCount);
 		
 		// 3. 가입된 프로젝트 목록 조회
-		List<CheckProject> projectList = dao.selectProjectList(conn, pagination, type, memNo);
-		
+        List<CheckProject> projectList = dao.selectProjectList(conn, pagination, type, memNo);
 		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		

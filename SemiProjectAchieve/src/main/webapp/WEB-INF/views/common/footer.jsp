@@ -2,20 +2,23 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+
     <footer>
         <p>
             <article id="footer">
                 <a href="${contextPath}/FAQ/firstFAQ">FAQ</a>
-                <span> | </span>
-                <a href="${contextPath}/board/main?type=99&projectNo=${param.projectNo}&cp=1">1:1문의</a>
-                <span> | </span>
+                <span> | </span>                
                 <a href="${contextPath}/FAQ/terms/conditions">이용약관</a>
                 <span> | </span>
                 <a href="${contextPath}/FAQ/personal/info">개인정보처리방침</a>
             </article>
             
-            
-            Copyright &copy; KH Information Educational Institute A-class DevTeam2
+            <div>
+                Copyright &copy; KH Information Educational Institute A-class DevTeam2
+            </div>
         </p>
     </footer>
 

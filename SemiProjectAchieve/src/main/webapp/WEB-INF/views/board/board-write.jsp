@@ -15,6 +15,11 @@
     <script src="${contextPath}/resources/js/board/ckeditor/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -79,7 +84,7 @@
                     <!-- 버튼 영역 -->
                     <div class="board-btn-area">
                         <button type="submit" id="writebtn">등록</button>
-                        <button type="button" id="goToListBtn">목록으로</button>
+                        <button type="button" id="goToListBtn" onc>목록으로</button>
                     </div>
 
                 </div>

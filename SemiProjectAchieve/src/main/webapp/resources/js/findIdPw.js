@@ -97,8 +97,6 @@ function findInputValidate(){
 
 
 function findIdList(){
-console.log(memberName.value)
-console.log(memberBirthday.value)
     $.ajax({
         // 현재 페이지 : 메인페이지
         url : contextPath + "/findId",
@@ -106,7 +104,6 @@ console.log(memberBirthday.value)
         type : "post",
         dataType : "JSON",
         success : function(idList){
-            console.log(idList)
             // 메인화면 비우기
             const findIdContainer = document.getElementById("find-container");
             findIdContainer.innerHTML = "";
@@ -171,9 +168,6 @@ const sendEmailBtn = document.getElementById("sendEmailBtn");
 sendEmailBtn.addEventListener("click", function(){
 
     if( findInputValidate() ){
-       console.log(memberEmail.value);
-       console.log(memberName.value);
-       console.log(memberBirthday.value);
 
         $.ajax({
             // 현재 페이지 : /findPw / 보내고자 하는 페이지 : /sendEmail
@@ -200,4 +194,3 @@ sendEmailBtn.addEventListener("click", function(){
     }
 
 });
-

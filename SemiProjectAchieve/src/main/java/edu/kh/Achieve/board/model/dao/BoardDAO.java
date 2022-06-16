@@ -705,6 +705,48 @@ public class BoardDAO {
 		
 		return result;
 	}
+
+
+	 
+	/** 회원가입 요청 버튼 DAO
+	 * @param conn
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int passAccount(Connection conn, int memberNo, int projectNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			String sql = prop.getProperty("passAccount");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, projectNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		
+		
+		return result;
+		
+		
+		
+		
+		
+	}
+
 	
 	/** 프로젝트 소개 조회 DAO
 	 * @param conn
@@ -733,6 +775,35 @@ public class BoardDAO {
 		
 		return projectIntro;
 
+	}
+
+	/** 프로젝트 관리자(생성자) 회원 번호 조회 DAO
+	 * @param conn
+	 * @param projectNo
+	 * @return projectAdminNo
+	 * @throws Exception
+	 */
+	public int selectProjectAdminNo(Connection conn, int projectNo) throws Exception {
+		
+		int projectAdminNo = 0;
+		
+		try {
+			String sql = prop.getProperty("selectProjectAdminNo");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) projectAdminNo = rs.getInt(1);
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return projectAdminNo;
+ 
 	}
 	
 

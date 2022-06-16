@@ -1,3 +1,11 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
+
+
+
 /* content */
 .content{
     height: 800px;
@@ -12,7 +20,8 @@
 }
 
 #project-area{
-    width: 100%;
+    width: 90%;
+    margin: auto;
 }
 
 
@@ -20,6 +29,7 @@
 .content-2 a{
     text-decoration: none;
     color: black;
+    font-weight: bold;
 }
 
 
@@ -52,11 +62,14 @@
     color: white;
 }
 
-.list-table > thead > tr > *:nth-of-type(2){text-align: center;}
+.list-table > thead > tr > *:nth-of-type(2){
+    text-align: center;
+}
 
 .list-table tr{
     height: 60px;
 }
+
 
 .list-table > tbody > tr{
     border-bottom: 1px solid gray;
@@ -70,10 +83,22 @@
     width: 25%;
     justify-content: center;
 }
-.list-table tr > *:nth-of-type(2) {width: 15%;}
-.list-table tr > *:nth-of-type(3) {width: 5%;}
-.list-table tr > *:nth-of-type(4) {width: 40%;}
-.list-table tr > *:nth-of-type(5) {width: 10%;}
+.list-table tr > *:nth-of-type(2) {
+    width: 15%;
+    font-weight: bold;
+}
+.list-table tr > *:nth-of-type(3) {
+    width: 5%;
+    font-weight: bold;
+}
+.list-table tr > *:nth-of-type(4) {
+    width: 40%;
+    font-weight: bold;
+}
+.list-table tr > *:nth-of-type(5) {
+    width: 10%;
+    font-weight: bold;
+}
 
 /* 버튼 영역 */
 .btn-area{
@@ -143,8 +168,7 @@
     display: flex;
     justify-content: space-between;
 
-    margin: 30px;
-    margin-left: 212px;
+    margin: 50px auto;
 
 }
 

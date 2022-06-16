@@ -63,7 +63,7 @@ public class BoardWriteController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
 		try {
 
 			int maxSize = 1024 * 1024 * 500; // 500MB 제한 (수정 가능)
@@ -159,8 +159,6 @@ public class BoardWriteController extends HttpServlet {
 				int result = service.updateBoard(detail,boardAttachmentList, deleteList);
 				String path = null;
 				String message = null;
-				
-				System.out.println(result);
 				
 				if(result>0) { // 성공
 					// detail?no==10000&type=1&cp=20 이런 모양

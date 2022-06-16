@@ -31,6 +31,11 @@ function pwUpdateValidate(){
         return printAlert(newPw, "새로운 비밀번호를 입력해주세요.");
     }
 
+    // 새로운 비밀번호 확인
+    if(newPwCheck.value.length == 0){
+        return printAlert(newPwCheck, "비밀번호 확인을 입력해주세요.");
+    }
+
     
     // 비밀번호 유효성 검사
     if(!regExp.test(newPw.value)){ // 새 비밀번호가 유효하지 않은 경우
@@ -38,12 +43,15 @@ function pwUpdateValidate(){
 
     } else{ // 새 비밀번호가 유효한 경우
         
-        if(newPwConfirm.value.length == 0){
-            return printAlert(newPw, "새로운 비밀번호 확인을 입력해주세요.");
+        if(newPwCheck.value.length == 0){
+            return printAlert(newPwCheck, "새로운 비밀번호 확인을 입력해주세요.");
         }
         
-        if(newPw.value != newPwConfirm.value){
-            return printAlert(newPw, "새로운 비밀번호가 일치하지 않습니다.");
+        if(newPw.value != newPwCheck.value){
+            alert("새로운 비밀번호가 일치하지 않습니다.");
+            newPw.value = "";
+            newPwCheck.value = "";
+            newPw.focus();
 
         } else{
             return true;

@@ -1,31 +1,23 @@
-* { box-sizing: border-box;}
-
-main{
+.div-sec{
+    width: 90%;
+    height: auto;
     display: flex;
-    align-items: center;
 }
 
-
 #board-member{
-    width: 1000px;
+    width: 700px;
     height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-/* 
-#member-side-menu{
-    width: 20%;
-    height: 80%;
-    margin: 0 30px;
-    border: 1px solid #ccc;
-} */
+
 
 #member-content{
-    width: 70%;
+    width: 580px;
     height: 90%;
 
-
+    border: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,8 +80,8 @@ main{
 }
 .member-status-name{
     padding: 5px;
-    width: 120px;
-    border-radius: 5px;
+    width: 140px;
+    border-radius: 10px;
     background-color: aliceblue;
 }
 
@@ -105,14 +97,15 @@ main{
 }
 
 .dropBtn{
-    width: 50px;
-    height: 25px;
+    width: 60px;
+    height: 35px;
     /* margin-left: 100px; */
     border: 1px solid #aaa;
     background-color: white;
     font-size: 0.7em;
     cursor: pointer;;
     border-radius: 5px;
+
 }
 .dropBtn:hover{
     background-color: red;
@@ -121,8 +114,8 @@ main{
     
 }
 .backBtn{
-    width: 50px;
-    height: 25px;
+    width: 60px;
+    height: 35px;
     /* margin-left: 100px; */
     border: 1px solid #aaa;
     background-color: white;

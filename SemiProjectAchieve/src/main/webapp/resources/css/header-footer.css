@@ -1,6 +1,10 @@
 /* 헤더/푸터 */
 
-*{box-sizing: border-box;}
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
 
 body{margin: 0;}
 
@@ -10,28 +14,37 @@ main{
     margin: auto;
 }
 
+button{
+    border-radius: 5px;
+}
+
 /* header */
 header{
     height: 200px;
     display: flex;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgb(14, 25, 78);
 }
 
-header>section:nth-child(1){flex-basis: 20%;}
-header>section:nth-child(2){flex-basis: 60%;}
-header>section:nth-child(3){flex-basis: 20%;}
+header>section:nth-child(1){flex-basis: 10%;}
+header>section:nth-child(2){flex-basis: 70%;}
+header>section:nth-child(3){flex-basis: 15%;}
 
 /* 로고자리 */
 header > section:nth-of-type(1){
     display: flex;
+       
     justify-content: center;
-    align-items: center;
+    align-items: end;
+    padding-bottom: 30px;
+    padding-left: 100px;
 }
+
 
 /* 로고 */
 #home-logo{
-    width: 140px;
-    height: auto;
+    width: 110px;
+    height: 110px;
+
 }
 
 /* 중앙부분 */
@@ -39,6 +52,7 @@ header>section:nth-of-type(2){
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 85px;
 }
 
 .project-title{
@@ -53,28 +67,19 @@ header>section:nth-of-type(2){
     font-weight: bold;
 
 }
-/* 
-#query{
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-
-    /* input 태그에 포커스가 맞춰 졌을때 이를 표현하기위한 바깥선(테두리보다 바깥에 존재) 
-    outline: 0;
-
-    width: 92%;
-} */
 
 /* 헤더 우측 */
 .right-header{
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    padding-top: 40px;
 }
+
 
 /* 헤더 우측 알림 버튼 */
 .right-header button{
-    height: 50px;
+    height: 20px;
     background-color: white;
     color: rgb(14, 25, 78);
     font-size: 40px;
@@ -88,7 +93,10 @@ header>section:nth-of-type(2){
 /* footer */
 footer{
     height: 200px;
-    background-color: #acadd342;
+    background-color: rgb(14, 25, 78);
+
+    opacity: 0.85;
+
     display: flex;
     flex-direction: column; /*중심축 세로로 바꾸기*/
     justify-content: center; /*중심축 중앙으로 보내기*/
@@ -105,5 +113,16 @@ footer{
 /* footer 스타일 */
 footer a{
     text-decoration: none;
-    color: black;
+
+    font-size: 18px;
+
+    color: white;
+}
+
+footer div{
+    color: white;
+}
+
+footer span{
+    color: white;
 }

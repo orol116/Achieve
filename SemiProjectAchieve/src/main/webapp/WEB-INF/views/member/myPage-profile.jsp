@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
 
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+
     <!-- 사이드바 아이콘 사용을 위한 링크 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -37,7 +42,7 @@
             <!-- 마이페이지 - 메인 내용 -->
             <section class="myPage-main">
                 <div id="myPage-detail">
-                    <h1 id="myPage-title">프로필 사진 수정</h1>
+                    <h1 id="myPage-title">프로필 사진</h1>
 
                     <form action="profileSubmit" method="post" name="myPage-form"
                     enctype="multipart/form-data" onsubmit="return profileValidate()">

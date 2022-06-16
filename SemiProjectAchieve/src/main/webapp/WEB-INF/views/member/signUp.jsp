@@ -8,16 +8,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" href="${contextPath}/resources/css/signUp-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/signUp-style.css">
+
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+    
 
     <script src="https://kit.fontawesome.com/51bf4ad8d5.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
-    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
     <main>
+        <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
         <h1>회원가입</h1>
         <section class="signUp-content">
             <form action="signUp" method="POST" name="signUp-form" onsubmit="return signUpValidate()">

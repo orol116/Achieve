@@ -18,7 +18,7 @@ import edu.kh.Achieve.board.model.vo.Reply;
 
 @WebServlet("/board/detail")
 public class BoardDeatailServlet extends HttpServlet{
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

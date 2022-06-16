@@ -30,11 +30,16 @@
     <!-- sidebar -->
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
 
+
     <!-- main -->
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-board-main.css">
 
     <!-- 사이드바 아이콘 사용을 위한 링크 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
   
     <c:choose>
         <c:when test="${param.type==1}">
@@ -61,20 +66,17 @@
 
 <body>
     <main>
-        <header>
-            <!-- 클릭 시 메인페이지로 이동하는 로고 -->
-            <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-    
-        </header>
 
-        <!-- 마이페이지- 내정보 -->
+        <!-- 클릭 시 메인페이지로 이동하는 로고 -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    
+
+
         <section class="myPage-content">
 
             <!-- 왼쪽 사이드 메뉴 -->
            <jsp:include page="/WEB-INF/views/member/sideMenu.jsp"/>
          
-
-            
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
             <section class="myPage-main">
                 <div class="myPage-first">
@@ -109,13 +111,8 @@
                         <a href="${contextPath}/member/List?memNo=${memNo}&type=2">작성댓글</a>
                         <a href="${contextPath}/member/List?memNo=${memNo}&type=3">가입한 프로젝트 보기</a>
                     </div>
-                        <c:choose>
-                            <c:when test ="${param.type==1}">
-                                <div class="myPage-third2">
-                                <a href="#">삭제한 게시글</a>
-                                </div>
-                            </c:when>
-                        </c:choose>
+                      
+                        
                 </div>      
                 <div class="list-wrapper">
 
@@ -124,6 +121,8 @@
                         <table class="list-table">
                         <!-- /SemiProjectAchieve/member/delete/List -->
                             <input type="hidden" name="type" value="${param.type}">
+                            <input type="hidden" name="deleteNo" id="deleteNo">
+
                                 <c:choose>
                                     <c:when test="${param.type==1}">
                                         <thead>
@@ -186,7 +185,7 @@
                                                         <c:forEach var ="reply" items="${replyList}">
                                                             <tr>
                                                                 <td class="list-chkbox">
-                                                                    <input type="checkbox" name="cReply" value="${reply.replyNo}">
+                                                                   <input type="checkbox"name="cReply" value="${reply.replyNo}">
                                                                 </td>
                                                                 
                                                                 <td id="reply-list-part">
@@ -248,12 +247,22 @@
                                 </c:choose>
                         </table>
                         <div class="btn-area">
-                            <div id="checkAll">
-                                <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
-                            </div>
-                            <div>
+                            
+                            <c:if test="${param.type==1}">
+                                <div id="checkAll">
+                                   <label for="cBoxAll"><input type="checkbox" id="cBoxAll" value='selectall' onclick='selectAll(this)'>전체선택</label> 
+                                </div>
+                                <div>
                                 <button type="submit" class="btn" id="deleteBtn" >삭제</button>
+                            </c:if>
+                            <c:if test="${param.type==2}">
+                                <div id="checkAll">
+                                    <label for="cBoxAll"><input type="checkbox" id="cBoxAll" value='selectall' onclick='selectAll(this)'>전체선택</label>                                 </div>
+                                <div>
+                                <button type="submit" class="btn" id="deleteBtn" >삭제</button>
+                            </c:if>
                            
+                        
                                 <c:if test="${param.type==1}">
                                     <a class="btn" href="#">글쓰기</a>
                                 </c:if>
@@ -306,7 +315,7 @@
         
   
 
-    <script src="${contextPath}/resources/js/member/myPage-boardList.js""></script>
+    <script src="${contextPath}/resources/js/member/myPage-boardList.js"></script>
 
 </body>
 </html>

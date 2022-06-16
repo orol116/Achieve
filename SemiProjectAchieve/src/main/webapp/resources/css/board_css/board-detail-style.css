@@ -124,7 +124,7 @@
 
     font-weight: bold;
     border: none;
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 
     cursor: pointer;
@@ -132,6 +132,6 @@
 
 .board-btn-area button:hover{
     background-color: white;
-    color: #0e194e;
-    border: 2px solid #0e194e;
+    color: rgb(14, 25, 78);
+    border: 2px solid rgb(14, 25, 78);
 }

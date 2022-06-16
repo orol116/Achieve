@@ -4,37 +4,40 @@ const deleteSet = new Set();
 const preview = document.getElementsByClassName("preview");
 const deleteAttach = document.getElementsByClassName("deleteAttach")[0];
 
-(function() {
 
-    const goToListBtn = document.getElementById("goToListBtn");
+const manager = document.getElementById("manager");
 
-    if(goToListBtn != null) { // 목록으로 버튼이 화면에 있을때만 이벤트 추가
-        goToListBtn.addEventListener("click", function() {
+// (function() {
 
-            const pathname = location.pathname; // 주소상에서 요청 경로 반환
+//     const goToListBtn = document.getElementById("goToListBtn");
 
-            let url = pathname.substring(0, pathname.indexOf("/", 1))
+//     if(goToListBtn != null) { // 목록으로 버튼이 화면에 있을때만 이벤트 추가
+//         goToListBtn.addEventListener("click", function() {
 
-            url += "/board/main?";
+//             const pathname = location.pathname; // 주소상에서 요청 경로 반환
 
-            const params = new URL(location.href).searchParams;
-            const type = "type=" + params.get("type"); // type=1
-            const projectNo = "projectNo=" + params.get("projectNo");
+//             let url = pathname.substring(0, pathname.indexOf("/", 1))
 
-            let cp;
+//             url += "/board/main?";
 
-            if (params.get("cp") != null) { 
-                cp = "cp=" + params.get("cp"); 
-            } else {
-                cp = "cp=1";
-            }
+//             const params = new URL(location.href).searchParams;
+//             const type = "type=" + params.get("type"); // type=1
+//             const projectNo = "projectNo=" + params.get("projectNo");
 
-            url += type + "&" + projectNo + "&" + cp;
-            location.href = url;
-        });
-    }
+//             let cp;
 
-})();
+//             if (params.get("cp") != null) { 
+//                 cp = "cp=" + params.get("cp"); 
+//             } else {
+//                 cp = "cp=1";
+//             }
+
+//             url += type + "&" + projectNo + "&" + cp;
+//             location.href = url;
+//         });
+//     }
+
+// })();
 
 
 // 검색창에 이전 검색기록 반영하기
@@ -137,7 +140,6 @@ if(inputFile != null){ // inputImage 요소가 화면에 존재할 때
         // 이벤트가 발생한 요소 == input type="file"
         // files : input type ="file"만 사용 가능한 속성으로 
         //          선택된 파일 목록(배열)을 반환한다. 
-        // console.log(this.files[0]); // 파일 목록에서 첫 번째 파일 객체를 선택
 
 
         if(this.files[0] != undefined){ // 파일이 선택되었을 때
@@ -176,25 +178,81 @@ if(inputFile != null){ // inputImage 요소가 화면에 존재할 때
 }
 
 // 첨부파일 이름, 파일 크기 출력
-attach.onchange = () => {
-    const selectedFile = attach.files[0];
-    const attachName = document.getElementById("attachName");
-    const attachSize = document.getElementById("attachSize");
+if(attach != undefined){
+    attach.onchange = () => {
+        const selectedFile = attach.files[0];
+        const attachName = document.getElementById("attachName");
+        const attachSize = document.getElementById("attachSize");
 
-    attachName.innerText = selectedFile.name;
-    attachSize.innerText = (selectedFile.size) / 1024 + 'KB';
-};
+        attachName.innerText = selectedFile.name;
+        attachSize.innerText = (selectedFile.size) / 1024 + 'KB';
+    };
+}
 
 (function() {
+    if(deleteAttach != undefined){
+        deleteAttach.addEventListener("click", function() {
 
-    deleteAttach.addEventListener("click", function() {
+            if (document.getElementById("img0").value != "") {
+                document.getElementById("img0").value = "";
+                document.getElementById("attachName").innerText = "";
+                document.getElementById("attachSize").innerText = "";
+            }
 
-        if (document.getElementById("img0").value != "") {
-            document.getElementById("img0").value = "";
-            document.getElementById("attachName").innerText = "";
-            document.getElementById("attachSize").innerText = "";
+        })
+    }
+})();
+
+
+(function(){
+    $.ajax({
+        url : "manager",
+        data : {"projectNo":projectNo},
+        success: function(managerNo){
+            if(managerNo==loginMemberNo){
+                manager.classList.remove("display-none")
+            }else{
+                manager.classList.add("display-none")
+            }
+        },
+        error:function(){
+            console.log("에러 발생")
         }
 
-    })
-        
+
+    });
 })();
+
+
+
+
+document.getElementById("approveBtn").addEventListener("click", function(){
+
+
+    $.ajax({
+        url : "ApproveBtn",
+        data : {"memberNo" : loginMemberNo, "projectNo" : projectNo},
+        type : "GET",
+        success : function(result){
+ 
+            if(result == 1){
+                
+                alert("가입 신청에 성공했습니다.");
+                location.href = contextPath + "/project/PJ/PJSearch/list";
+ 
+            }else{
+                alert("가입 신청 실패");
+ 
+            }
+ 
+        },
+        error : function(){
+            console.log("에러발생");
+        }
+    }); 
+
+
+});
+
+
+

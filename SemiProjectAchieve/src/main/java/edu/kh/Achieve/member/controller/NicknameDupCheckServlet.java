@@ -30,8 +30,7 @@ public class NicknameDupCheckServlet extends HttpServlet{
 			
 			// 동기식은 forward 또는 redirect로 응답(화면 전환)
 			// 비동기식은 응답용 스트림을 이용해 데이터 전달(화면전환 없이 데이터가 현재 화면에 추가) 
-			System.out.println(result);
-			
+
 			resp.getWriter().print(result);
 			
 		}catch(Exception e) {

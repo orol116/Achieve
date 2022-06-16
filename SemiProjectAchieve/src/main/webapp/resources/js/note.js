@@ -1,17 +1,18 @@
 
 // 댓글을 불러오는 방식처럼 들어가는 함수
+//페이지에서 재로딩 하는 방식이 아니라서 포워드 해야함
 
 function noteList(){
-
+    
     $.ajax({
         url : contextPath + "/note",
-        data : {"memberNo" : memberNo}, //전달이 되는지?
+        data : {"memberNo" : memberNo}, //전달이 안되는거같은
         type : "GET",
         dataType : "JSON", 
 
         success : function(nList){
             //nList : 반환 받은 알림 목록
-            console.log(nList);
+            // console.log(nList);
 
             //화면에 있는 목록 삭제
             const noteList = document.getElementById("noteList");

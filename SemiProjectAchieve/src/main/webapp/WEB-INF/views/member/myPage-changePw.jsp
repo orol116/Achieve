@@ -14,6 +14,11 @@
      <link rel="stylesheet" href="${contextPath}/resources/css/myPage-style.css">
      <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
 
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+
     <!-- 사이드바 아이콘 사용을 위한 링크 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">     
  
@@ -54,11 +59,6 @@
                             <div class="myPage-detail-row" id="newPwCheck">
                                 <div>새로운 비밀번호 확인</div>            
                                 <input class="myPage-detail-input" type="password" name="newPwCheck" maxlength="30">
-                            </div>
-
-                            <div class="myPage-detail-row" id="newPwCheck">
-                                <div>보안문자 입력</div>            
-                                <span>보안문자</span><input id="confirmWord" type="text">
                             </div>
 
                             <div class="myPage-detail-row">

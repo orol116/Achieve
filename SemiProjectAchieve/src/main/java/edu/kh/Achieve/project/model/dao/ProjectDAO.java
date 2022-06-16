@@ -39,6 +39,33 @@ public class ProjectDAO {
 		}
 		
 	}
+	
+	
+	public int nextProjectNo(Connection conn) throws Exception {
+		
+		int projectNo = 0;
+		
+		
+		try {
+			String sql = prop.getProperty("nextProjectNo");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				projectNo = rs.getInt(1);
+			}
+			
+			
+		}finally {
+			
+			close(rs);
+			close(stmt);
+		}
+		
+		return projectNo;
+	}
+	
 
 	/** 프로젝트 생성 DAO
 	 * @param conn
@@ -54,25 +81,19 @@ public class ProjectDAO {
 			String sql = prop.getProperty("createProject");
 			
 			
-			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, project.getProjectName());
-			pstmt.setInt(2,memberNo);
+			pstmt.setInt(1, project.getProjectNo());
+			pstmt.setString(2, project.getProjectName());
 			pstmt.setString(3, project.getProjectQuota());
 			pstmt.setString(4, project.getOpenStatus());
 			pstmt.setString(5, project.getProjectIntro());
 			pstmt.setInt(6, memberNo);
 			
-			
-			
-			
-			
-		
-			
 			result = pstmt.executeUpdate();
 			
-			
+
+
 			
 		}finally {
 			
@@ -82,10 +103,51 @@ public class ProjectDAO {
 		}
 		
 		
-		return result;
+		return  result;
 	}
 	
 	
+	/** PROJECTMEMEBR 삽입
+	 * @param conn
+	 * @param project
+	 * @param memberNo
+	 * @return projectList
+	 * @throws Exception
+	 */
+
+	
+	public int insertProject(Connection conn, Project project,int memberNo) throws Exception{
+		
+		int result = 0;
+				
+		try {
+			String sql = prop.getProperty("insertProject");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			pstmt.setInt(1, project.getProjectNo());
+			pstmt.setInt(2, memberNo);
+			
+	
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		
+		
+		return result;
+	}
+	
+
+	
+		
+
 
 	/** 프로젝트 이름 중복검사 DAO
 	 * @param conn
@@ -95,7 +157,7 @@ public class ProjectDAO {
 	 */
 	public int PJDupCheck(Connection conn, String projectName) throws Exception {
 		
-		int result = 0;
+		int result2 = 0;
 		
 		try {
 			String sql = prop.getProperty("PJDupCheck");
@@ -107,7 +169,7 @@ public class ProjectDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				result = rs.getInt(1);
+				result2 = rs.getInt(1);
 			}
 					
 					
@@ -119,7 +181,7 @@ public class ProjectDAO {
 		}
 		
 		
-		return result;
+		return result2;
 	}
 	
 	
@@ -131,7 +193,7 @@ public class ProjectDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public int changeStatus(Connection conn, String openStatus) throws Exception{
+	public int changeStatus(Connection conn, String openStatus, int projectNo) throws Exception{
 
 		
 		int result = 0;
@@ -144,6 +206,7 @@ public class ProjectDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, openStatus);
+			pstmt.setInt(2, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -169,7 +232,7 @@ public class ProjectDAO {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int IntroEdit(Connection conn, String projectIntro)throws Exception {
+	public int IntroEdit(Connection conn, String projectIntro, int projectNo)throws Exception {
 		
 		int result = 0;
 		
@@ -180,6 +243,7 @@ public class ProjectDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, projectIntro);
+			pstmt.setInt(2, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -197,7 +261,7 @@ public class ProjectDAO {
 		return result;
 	}
 
-	public int changePJName(Connection conn, String projectName) throws Exception {
+	public int changePJName(Connection conn, String projectName,int projectNo) throws Exception {
 		
 		int result = 0;
 		
@@ -208,6 +272,7 @@ public class ProjectDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, projectName);
+			pstmt.setInt(2, projectNo);
 			
 			result = pstmt.executeUpdate();
 			
@@ -348,7 +413,7 @@ public class ProjectDAO {
 	 * @return
 	 * @throws ex
 	 */
-	public List<Project> searchProjectList(Connection conn, Pagination pagination, String condition) throws Exception{
+	public List<Project> searchProjectList(Connection conn, Pagination pagination, String condition, int memberNo) throws Exception{
 
 		List<Project> projectList = new ArrayList<Project>();
 		
@@ -364,8 +429,9 @@ public class ProjectDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
 			
 			rs = pstmt.executeQuery();
 			
@@ -373,11 +439,16 @@ public class ProjectDAO {
 				
 				Project pro = new Project();
 				
-				pro.setProjectName(rs.getString(1) );
-				pro.setProjectManagerNickname(rs.getString(2)); //관리자 닉네임
-				pro.setProjectQuota(rs.getString(3)); //정원
-				pro.setProjectIntro(rs.getString(4));
 				
+				//가져오는 부분 확인 
+				
+				pro.setProjectNo(rs.getInt("PROJECT_NO"));
+				pro.setProjectName(rs.getString("PROJECT_NM"));
+				pro.setProjectManagerNickname(rs.getString("MEMBER_NICK"));
+				pro.setProjectQuota(rs.getString("PROJECT_QUOTA"));
+				pro.setProjectIntro(rs.getString("PROJECT_INTRO"));
+				pro.setParticipateStatus(rs.getString("P_ST"));
+							
 				
 				projectList.add(pro);
 			}
@@ -400,7 +471,7 @@ public class ProjectDAO {
 	 * @return list
 	 * @throws Exception
 	 */
-	public List<ProjectSign> selectPJSign(Connection conn)throws Exception{
+	public List<ProjectSign> selectPJSign(Connection conn, int projectNo)throws Exception{
 		
 		List<ProjectSign> list = new ArrayList<ProjectSign>();
 		
@@ -408,9 +479,12 @@ public class ProjectDAO {
 			
 			String sql = prop.getProperty("ProjectSign");
 			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
 			
+			rs = pstmt.executeQuery();
+			
+						
 			while(rs.next()) {
 				ProjectSign PJSign = new ProjectSign();
 				
@@ -442,7 +516,7 @@ public class ProjectDAO {
 	 * @return count
 	 * @throws Exception
 	 */
-	public int selectPJ(Connection conn) throws Exception{
+	public int selectPJ(Connection conn, int projectNo) throws Exception{
 		
 		int count = 0;
 		
@@ -450,9 +524,10 @@ public class ProjectDAO {
 			
 			String sql = prop.getProperty("selectPJ");
 			
-			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
 			
-			rs = stmt.executeQuery(sql);
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				count = rs.getInt(1);
@@ -485,7 +560,6 @@ public class ProjectDAO {
 			result = pstmt.executeUpdate();
 			
 			
-			
 		}finally {
 			close(pstmt);
 			
@@ -495,6 +569,103 @@ public class ProjectDAO {
 		return result;
 	}
 
+
+	/** 프로젝트 내 참여 회원 번호 조회
+	 * @param conn
+	 * @param projectNo
+	 * @return projectMemberList
+	 * @throws Exception
+	 */
+	public List<Integer> selectProjectMemberList(Connection conn, int projectNo) throws Exception {
+
+		List<Integer> projectMemberList = new ArrayList<Integer>();
+		
+		try {
+			String sql = "SELECT MEMBER_NO FROM PROJECT_MEMBER WHERE PROJECT_NO = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+			
+				int result = rs.getInt(1);
+				
+				projectMemberList.add(result);
+			}
+			
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		} 
+		
+		return projectMemberList;
+	}
+
+
+	public int insertNotice(Connection conn, String boardContent, int memberNo, int loginMemberNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertNotice");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardContent);
+			pstmt.setInt(2, loginMemberNo);
+			pstmt.setInt(3, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+
+		
+	}
+
+	
+
+
+
+	
+
+	
+	
+
+	
+
+	/*
+	 * public int cancelAccount(Connection conn, int memberNo) throws Exception {
+	 * 
+	 * int result = 0;
+	 * 
+	 * try {
+	 * 
+	 * String sql = prop.getProperty("cancelAccount");
+	 * 
+	 * pstmt = conn.prepareStatement(sql);
+	 * 
+	 * 
+	 * pstmt.setInt(1, memberNo);
+	 * 
+	 * result = pstmt.executeUpdate();
+	 * 
+	 * 
+	 * 
+	 * }finally { close(pstmt);
+	 * 
+	 * }
+	 * 
+	 * 
+	 * 
+	 * return result; }
+	 */
 
 	
 }

@@ -4,6 +4,7 @@ import static edu.kh.Achieve.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -26,13 +27,18 @@ public class ProjectService {
 		
 		Connection conn = getConnection();
 		
+		int projectNo  = dao.nextProjectNo(conn);
+		
+		project.setProjectNo(projectNo);
+		
 		int result = dao.createProject(conn,project, memberNo);
-		
+			
+		if(result > 0) {
+			result = dao.insertProject(conn, project, memberNo);
+			
+		}
 		if(result > 0) commit(conn);
-		else           rollback(conn);
-		
-		
-		
+		else   			rollback(conn);
 		
 		return result;
 	}
@@ -47,15 +53,15 @@ public class ProjectService {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.PJDupCheck(conn, projectName);
+		int result2 = dao.PJDupCheck(conn, projectName);
 		
-		if(result > 0) commit(conn);
+		if(result2 > 0) commit(conn);
 		else		   rollback(conn);
 		
 		
 		
 		
-		return result;
+		return result2;
 	}
 
 
@@ -65,11 +71,11 @@ public class ProjectService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int changeStatus(String openStatus)throws Exception {
+	public int changeStatus(String openStatus, int projectNo)throws Exception {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.changeStatus(conn,openStatus );
+		int result = dao.changeStatus(conn,openStatus, projectNo );
 		
 		if(result > 0) commit(conn);
 		else		   rollback(conn);
@@ -86,11 +92,11 @@ public class ProjectService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int IntroEdit(String projectIntro) throws Exception{
+	public int IntroEdit(String projectIntro, int projectNo) throws Exception{
 		
 		Connection conn = getConnection();
 		
-		int result = dao.IntroEdit(conn, projectIntro);
+		int result = dao.IntroEdit(conn, projectIntro, projectNo);
 		
 		if(result > 0) commit(conn);
 		else		   rollback(conn);
@@ -102,11 +108,11 @@ public class ProjectService {
 
 
 	
-	public int changePJName(String projectName) throws Exception {
+	public int changePJName(String projectName, int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.changePJName(conn,projectName);
+		int result = dao.changePJName(conn,projectName, projectNo);
 		
 		if(result > 0) commit(conn);
 		else		   rollback(conn);
@@ -158,7 +164,7 @@ public class ProjectService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String, Object> searchProjectList(int cp, String key, String query) throws Exception{
+	public Map<String, Object> searchProjectList(int cp, String key, String query, int memberNo) throws Exception{
 
 		Connection conn = getConnection();
 				
@@ -167,7 +173,7 @@ public class ProjectService {
 		
 		switch(key) {
 		case "t"  : condition = " AND PROJECT_NM LIKE '%" + query + "%' ";  break;
-		case "c"  : condition = " AND MEMBER_NICK LIKE '%" + query + "%' ";  break;
+		case "c"  : condition = " AND M.MEMBER_NICK LIKE '%" + query + "%' ";  break;
 		
 		}
 		
@@ -179,7 +185,7 @@ public class ProjectService {
 		
 		
 		// 조건을 만족하는 게시글 목록 조회
-		List<Project> projectList = dao.searchProjectList(conn, pagination, condition);
+		List<Project> projectList = dao.searchProjectList(conn, pagination, condition, memberNo);
 		
 		// 결과를 하나의 Map에 모아서 반환
 		Map<String, Object> map = new HashMap<>();
@@ -199,11 +205,11 @@ public class ProjectService {
 	 * @return list
 	 * @throws Exception
 	 */
-	public List<ProjectSign> selectPJSign() throws Exception {
+	public List<ProjectSign> selectPJSign(int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
 		 
-		List<ProjectSign> list = dao.selectPJSign(conn);
+		List<ProjectSign> list = dao.selectPJSign(conn, projectNo);
 		
 		close(conn);
 		
@@ -219,11 +225,11 @@ public class ProjectService {
 	 * @return count
 	 * @throws Exception
 	 */
-	public int selectPJ() throws Exception {
+	public int selectPJ(int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
 		
-		int count = dao.selectPJ(conn);
+		int count = dao.selectPJ(conn, projectNo);
 		
 		close(conn);
 		
@@ -250,5 +256,53 @@ public class ProjectService {
 		
 		return result;
 	}
+
+
+	/** 전체 알림 발송 Service
+	 * @param boardContent
+	 * @param projectNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertNotice(String boardContent, int projectNo, int loginMemberNo) throws Exception {
+
+		Connection conn = getConnection();
+		
+		List<Integer> projectMemberList = dao.selectProjectMemberList(conn, projectNo);
+		
+		int result = 0;
+		
+		for (int i = 0; i < projectMemberList.size(); i++) {
+			
+			int memberNo = projectMemberList.get(i);
+			
+			result = dao.insertNotice(conn, boardContent, memberNo, loginMemberNo);
+		}
+		
+		if (result > 0) commit(conn);
+		else  			rollback(conn);
+		
+		return result;
+	}
+
+
+	/*
+	 * public int cancelAccount(int memberNo) throws Exception {
+	 * 
+	 * Connection conn = getConnection();
+	 * 
+	 * int result = dao.cancelAccount(conn,memberNo);
+	 * 
+	 * if(result > 0) commit(conn); else rollback(conn);
+	 * 
+	 * 
+	 * 
+	 * return result;
+	 * 
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
 
 }

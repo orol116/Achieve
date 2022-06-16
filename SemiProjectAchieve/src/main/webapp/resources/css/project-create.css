@@ -1,287 +1,122 @@
-main{
-    width: 1400px;
-    margin: auto;
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
 }
 
-
-/* header */
-header{
-    height: 200px;
-    display: flex; /* flex 형식으로 변경 -> 내부 요소를 유연하게 정렬/배치 */
-}
-
-header > section:nth-of-type(1){
-    flex-basis : 20%;
-}
-header > section:nth-of-type(2){
-    flex-basis : 60%;
-}
-header > section:nth-of-type(3){
-    flex-basis : 20%;
-}
-
-
-/* 로고 */
-header > section:nth-of-type(1){
-    display : flex;
-    justify-content: center;
-    align-items : center;
-}
-
-
-#home-logo{
-    width: 120px;
-    height: auto;
-    /* 이미지는 width/height 둘 중 하나만 지정 시 
-    나머지 방향의 크기가 같은 비율로 지정됨 */
-}
-
-
-/* 검색 스타일 */
-header > section:nth-of-type(2){
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.search-area{ 
-    width : 400px;
-    height: 50px;
-    
-  }
-
-.search-area fieldset{
-    padding: 2px;
-    margin : 0;
-    border : 2px solid #455ba8;
-    border-radius: 5px;
-    
-    display: flex;
-}
-
-
-
-#search-btn{
-    width: 5%;
-    cursor: pointer;
-    font-size : 1.2em;
-    color : #455ba8;
-    background-color: white;
-    border : 0;
-}
-
-#query{
-    font-weight: bold;
-    width: 350px;
-
-}
-
-
-
-
-/* 마이페이지 영역 */
 
 .classPage-content{
-    width: 1000px;
-    height: 800px;
-    margin: 20px auto;
-    display: flex; 
-    
-    
-    flex-direction: column;
-    
-}
 
-/* 사이드 메뉴 */
+    margin: 30px;
+
+    display: flex; 
+    flex-direction: column;
+}
 
 .classPage-inside{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 20px auto;
-
 }
 
+/* 프로젝트 관련 정보 입력 (왼쪽) */
 .classPage-left{
-    width: 400px;
-    height: 600px;
-    font-size: 20px;
-    border: solid 2px black;
-    margin: 20px;
-    margin-left: 90px;
-    margin-top: 0;
+    width: 40%;
+
+    border: solid 3px rgb(14, 25, 78);
+    border-radius: 5px;
+
+    margin: 20px 0;
+
+    padding: 30px;
 
 }
 
+.classPage-left > * {
+    width: 90%;
+    margin: 10px 0;
+}
 
+.classPage-left input{
+    border: 0;
+    border-bottom: 1px solid #b4b4b4;
+    outline: 0;
 
-.left-text{
-    margin: 40px 10px 20px 30px;
-    font-weight: bold;
-    
-
+    padding-left: 3px;
 }
 
 
-
-#projectName{
-    display: flex;
-    width: 230px;
-    height: 40px;
-    outline: none;
-    justify-content: center;
-    font-size: 15px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    margin-left: 30px;
-    
-}
-
-
-div[class="page-left"]{
-    margin: 0 0 0 30px;
-    font-size: 20px;
-    
-}
-
-select[name="classCategory"]{
-    width: 128px;
-    height: 40px;
-    
-}
-
-
-
-.classPage-right{
-    width: 400px;
-    height: 600px;
-    border: solid 2px black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    margin-right: 40px;
-    margin-top: 0;
-    
-}
-
-.classPage-right label{
-    font-size: 24px;
-    font-weight: bold;
-
-    
-}
-
-p#select-text{
-    margin-top: 6px;
-    margin-left: 30px;
-
-}
-
-.select-text{
-    margin-bottom: 40px;
-}
-
-#createBtn{
-    width: 80px;
-    height: 30px;
-   
-    float: right;
-    margin-left: 20px;
-    margin-top: 90px;
-    cursor: pointer;
-
-    font-size: 16px;
-    background-color: white;
-    border: 1px solid black;
-}
-
-#createBtn:hover{
-
-    background-color: #455ba8;
-    color: white;
-}
-
-
-
-
-
-
-#projectQuota{
-    width: 120px;
-    height: 40px;
-}
-
-
-/* ------------------------ */
-
-.page-left3{
-    display: flex;
-    flex-direction: row;
-    
-}
-
-select{
-    margin-left: 30px;
-    border: none;
-    border-bottom: 1px solid black;
-    outline: none;
-}
-
-div[class=category] .left-text{
-    margin-left: 40px;
-    
-}
-
-div[class="quota"]{
-    margin-left: 60px;
-}
-
-div[class="quota"] .left-text{
-    margin-left: 10px;
-
-}
-
-input[type="number"]{
-    padding: 0;
-    border: none;
-    border-bottom: 1px solid black;
-    outline: none;
-}
-
-.classPage-right :nth-child(1){
-    margin-top: 50px;
-}
-
-.page-left1{
-    display: flex;
-    flex-direction: row;
-    
-}
-
+/* 중복확인 버튼 */
 #name-double-check{
-    width: 70px;
-    height: 38px;
+    width: 75px;
+    height: 32px;
     margin-top: 7px;
     margin-left: 15px;
 
     cursor: pointer;
 
-    font-size: 12px;
-    background-color: white;
-    border: 1px solid black;
-}
+    font-size: 15px;
 
-#name-double-check:hover{
-
-    background-color: #455ba8;
+    background-color: rgb(14, 25, 78);
     color: white;
+
+    border-radius: 5px;
+}
+
+/* 프로젝트 공개 여부(오른쪽) */
+.classPage-right{
+    width: 40%;
+
+    border: solid 3px rgb(14, 25, 78);
+    border-radius: 5px;
+
+    margin: 20px 0;
+
+    padding: 30px;
+
+}
+
+.rightPage{
+    display: flex;
+    flex-direction: column;
+}
+
+.rightPage > div{
+    margin: 40px 0;
+}
+
+.classPage-right label{
+    font-size: 1.3em;
+    font-weight: bolder;
 }
 
 
+/* 버튼 영역 */
+.submit-btn-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 30px 0;
+}
+
+#createBtn{
+    width: 380px;
+    height: 60px;
+
+    font-weight: bold;
+    font-size: 1.1em;
+
+    border: none;
+    border-radius: 5px;
+
+    margin-top: 30px;
+
+    background-color: rgb(14, 25, 78);
+    color: white;
+
+    cursor: pointer;
+}
 
 
 

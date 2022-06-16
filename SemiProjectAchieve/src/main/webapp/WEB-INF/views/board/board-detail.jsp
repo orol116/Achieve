@@ -16,6 +16,13 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/board-detail-style.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/board_css/reply-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&display=swap" rel="stylesheet">
+
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -110,7 +117,7 @@
 
                 <!-- onclick="history.back();" : 뒤로 가기 -->
                 <!-- history.go(숫자) : 양수(앞으로 가기), 음수(뒤로 가기) -->
-                <button id="goToListBtn">목록으로</button>
+                <button onclick="location.href='${header.referer}'">목록으로</button>
             </div>
 
         </section>

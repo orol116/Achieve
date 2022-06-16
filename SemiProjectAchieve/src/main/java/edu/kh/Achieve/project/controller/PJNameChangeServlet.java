@@ -18,11 +18,13 @@ public class PJNameChangeServlet extends HttpServlet{
 		
 		String projectName = req.getParameter("projectName");
 		
+		int projectNo = Integer.parseInt(req.getParameter("projectNo"));
+		
 		
 		try {
 			ProjectService service = new ProjectService();
 			
-			int result = service.changePJName(projectName);
+			int result = service.changePJName(projectName, projectNo);
 			
 			resp.getWriter().print(result);
 			

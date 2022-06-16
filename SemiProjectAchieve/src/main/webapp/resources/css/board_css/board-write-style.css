@@ -35,7 +35,7 @@
 }
 
 .board-title:focus{
-    border-bottom: 3px solid #0e194e;
+    border-bottom: 3px solid rgb(14, 25, 78);
 }
 
 
@@ -43,7 +43,7 @@
 /* 게시글 제목 input에 포커스가 맞춰졌을 때 */
 /* focus-within : 자식 input 요소에 포커스가 맞춰졌을 때 */
 .board-title:focus-within{
-    border-bottom-color: #0e194e;
+    border-bottom-color: rgb(14, 25, 78);
 }
 
 /* 이미지 영역 */
@@ -57,7 +57,7 @@
     width: 110px;
     height: 33px;
     padding: 5px 10px;
-    border: 1px solid #0e194e;
+    border: 1px solid rgb(14, 25, 78);
     background-color: white;
     font-size: 14px;
     cursor: pointer;
@@ -111,7 +111,7 @@
 
     font-weight: bold;
     border: 0;
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color : white;
 
     cursor: pointer;
@@ -119,8 +119,8 @@
 
 .board-btn-area button:hover{
     background-color: white;
-    color : #0e194e;
-    border: 2px solid #0e194e;
+    color : rgb(14, 25, 78);
+    border: 2px solid rgb(14, 25, 78);
 }
 
 #secret-content{

@@ -187,17 +187,16 @@ public class CheckBoardDAO {
 
 	/** 작성글 삭제 DAO
 	 * @param conn 
-	 * @param cBoard
+	 * @param deleteNo
 	 * @return result
 	 * @throws Exception
 	 */
-	public int deleteBoard(Connection conn, String[] cBoard) throws Exception {
+	public int deleteBoard(Connection conn, String deleteNo) throws Exception {
 
 		int result = 0;
 		
 		try {
-			String sql = prop.getProperty("deleteBoard") + String.join(",", cBoard) + " )";
-			
+			String sql = prop.getProperty("deleteBoard") + deleteNo + " )";
 			pstmt = conn.prepareStatement(sql);
 			
 			result = pstmt.executeUpdate();
@@ -293,13 +292,12 @@ public class CheckBoardDAO {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int deleteReply(Connection conn, String[] cReply) throws Exception{
+	public int deleteReply(Connection conn, String deleteNo) throws Exception{
 
 		int result = 0;
 		
 		try {
-			String sql = prop.getProperty("deleteReply") + String.join(",", cReply) + " )";
-			
+			String sql = prop.getProperty("deleteReply") + deleteNo + " )";
 			pstmt = conn.prepareStatement(sql);
 			
 			result = pstmt.executeUpdate();
@@ -320,15 +318,13 @@ public class CheckBoardDAO {
 	 * @return map
 	 * @throws Exception
 	 */
-	public int getProjectListCount(Connection conn, int type, int memNo) throws Exception{
-
+    public int getProjectListCount(Connection conn, int type, int memNo) throws Exception{
 		int listProjectCount = 0;
 		
 		try{
 			String sql = prop.getProperty("getProjectListCount");
 			
 			pstmt= conn.prepareStatement(sql);
-			pstmt.setInt(1, memNo);
 			
 			rs=pstmt.executeQuery();
 			

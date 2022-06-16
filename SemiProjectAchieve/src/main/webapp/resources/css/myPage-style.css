@@ -1,4 +1,9 @@
-* { box-sizing: border-box;}
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
+
 body{ 
     margin: 0;
 }
@@ -83,7 +88,7 @@ body{
 }
 
 .myPage-detail-input:focus-within{
-    border-bottom: 2px solid #0e194e;
+    border-bottom: 2px solid rgb(14, 25, 78);
 }
 
 /* 아이디 */
@@ -106,7 +111,7 @@ body{
     border: none;
     border-radius: 5px;
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 
     cursor: pointer;
@@ -127,14 +132,22 @@ body{
 .secession-guide-detail{
     padding: 3px 0;
 
-    font-size: small;
-    color: #343434;
+    font-size: 15px;
+    font-weight: bold;
+    color: #b4b4b4;
+
+    letter-spacing: 1.2px;
+    
 }
 
 /* 밑줄 */
 #blank{
     margin: 20px 0;
     border-bottom: 2px solid #b4b4b4;
+}
+
+#chkbox > span{
+    font-weight: bold;
 }
 
 /* 버튼 영역 */
@@ -154,11 +167,11 @@ body{
     font-weight: bold;
     font-size: 1.1em;
 
-    border: 2px solid #0e194e;
+    border: 2px solid rgb(14, 25, 78);
     border-radius: 5px;
 
     background-color: white;
-    color: #0e194e;
+    color: rgb(14, 25, 78);
 
     cursor: pointer;
 }
@@ -175,7 +188,7 @@ body{
     border: none;
     border-radius: 5px;
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 
     cursor: pointer;
@@ -228,9 +241,9 @@ body{
     height: 33px;
 
     padding: 5px 10px;
-    border: 2px solid #0e194e;
+    border: 2px solid rgb(14, 25, 78);
     background-color: white;
-    color: #0e194e;
+    color: rgb(14, 25, 78);
 
     font-size: 14px;
     font-weight: bold;
@@ -244,7 +257,7 @@ body{
 }
 
 .profile-btn-area > button{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
     border: 0;
 }

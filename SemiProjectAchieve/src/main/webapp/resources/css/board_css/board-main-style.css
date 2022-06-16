@@ -1,12 +1,18 @@
 .div-sec{
-    width: auto;
+    width: 1200px;
     height: auto;
     display: flex;
+}
+
+.myPage-sideMenu{
+    width: 20%;
 }
 
 #board-area{
     width: 100%;
 }
+
+
 
 
 /* a태그 공통 설정 */
@@ -21,7 +27,7 @@
 
 /* 게시판 목록 화면 전체 영역 설정 */
 .board-list{
-    width: 1000px;
+    width: 80%;
     display: inline-block;
     justify-content: left;
     align-items: center;
@@ -48,7 +54,7 @@
 }
 
 .list-table > thead{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 }
 
@@ -59,7 +65,7 @@
 }
 
 .list-table > tbody > tr{
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(230, 230, 230);
 }
 
 .list-table tr > *{
@@ -92,8 +98,8 @@
     width: 95px;
     height: 40px;
     background-color: white;
-    border: 2px solid #0e194e;
-    color:#0e194e;
+    border: 2px solid rgb(14, 25, 78);
+    color:rgb(14, 25, 78);
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
@@ -124,7 +130,7 @@
 
 /* 현제 페이지 번호 */
 .pagination .current{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     border-radius: 50%;
     color: white;
     font-weight: bold ;
@@ -163,7 +169,7 @@
 #boardSearch button{
     width: 100px;
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
     border: none;
 
@@ -174,8 +180,8 @@
 
     cursor: pointer;
 
-    border: 1px solid #0e194e;
-    color: #0e194e;
+    border: 1px solid rgb(14, 25, 78);
+    color: rgb(14, 25, 78);
     background-color: white;
 }
 
@@ -236,9 +242,9 @@
     height: 33px;
 
     padding: 5px 10px;
-    border: 2px solid #0e194e;
+    border: 2px solid rgb(14, 25, 78);
     background-color: white;
-    color: #0e194e;
+    color: rgb(14, 25, 78);
 
     font-size: 14px;
     font-weight: bold;
@@ -249,6 +255,10 @@
 
 .project-signup-btn > *:hover{
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
+}
+
+.display-none{
+    display: none;
 }

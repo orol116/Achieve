@@ -21,10 +21,11 @@ public class SelectAllCountServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
+			int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 			
 			MemberService service = new MemberService();
 			
-			List<Member> list = service.selectAll();
+			List<Member> list = service.selectAll(projectNo);
 			
 			// Gson 라이브러리를 이용해서 JSON 형태로 변환 후 응답
 			new Gson().toJson( list, resp.getWriter() );

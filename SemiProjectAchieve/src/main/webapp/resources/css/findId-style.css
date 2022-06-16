@@ -18,6 +18,7 @@ body{
 #find-title{
     font-size: 2em;
     margin: 60px 0;
+    font-weight: bold;
 
     text-align: center;
 }
@@ -61,7 +62,7 @@ body{
 }
 
 .findId-button-area button{
-    width: 380px;
+    width: 190px;
     height: 40px;
 
     margin: 35px 0;
@@ -73,14 +74,14 @@ body{
     border-radius: 5px;
 
     background-color: white;
-    color: #0e194e;
-    border: 2px solid #0e194e;
+    color: rgb(14, 25, 78);
+    border: 2px solid rgb(14, 25, 78);
 
     cursor: pointer;
 }
 
 .findId-button-area button:hover{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 }
 
@@ -108,21 +109,24 @@ body{
     border-radius: 5px;
 
     background-color: white;
-    color: #0e194e;
-    border: 2px solid #0e194e;
+    color: rgb(14, 25, 78);
+    border: 2px solid rgb(14, 25, 78);
 
     cursor: pointer;
 }
 
 .findPw-button-area button:hover{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 }
+
+
 
 /* 비밀번호 재설정 a태그 */
 #moveToFindPw{
     display: block;
     text-align: center;
+    font-weight: bold;
 
     color: #504d4d;
 
@@ -136,24 +140,28 @@ body{
     height: auto;
 
     font-size: 1.3em;
+    font-weight: bold;
 
     margin: auto;
     margin-bottom: 60px;
 }
 
 .findIdList > h1{
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin: 60px 0;
 
     text-align: center;
-    color: #0e194e;
-    
+    font-weight: bold;
+
+    color: rgb(14, 25, 78);
 }
 
 .idList-row{
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-weight: bold;
 
     margin: 15px 0;
     color: #504d4d;
@@ -164,4 +172,3 @@ body{
     display: block;
     color: #504d4d;
 }
-
