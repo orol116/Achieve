@@ -157,7 +157,7 @@ public class ProjectDAO {
 	 */
 	public int PJDupCheck(Connection conn, String projectName) throws Exception {
 		
-		int result = 0;
+		int result2 = 0;
 		
 		try {
 			String sql = prop.getProperty("PJDupCheck");
@@ -169,7 +169,7 @@ public class ProjectDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				result = rs.getInt(1);
+				result2 = rs.getInt(1);
 			}
 					
 					
@@ -181,7 +181,7 @@ public class ProjectDAO {
 		}
 		
 		
-		return result;
+		return result2;
 	}
 	
 	

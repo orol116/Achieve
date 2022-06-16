@@ -152,13 +152,15 @@
                         <c:otherwise>
                             
                             <c:forEach var="project" items="${projectList}">
-                                <div class="project-join">
-                                    
-                                    <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a></h2>
-                                    <h4>${project.projectIntro}</h4>
-                                  
-                                </div>
-                                <input type="hidden" name="projectNo" value="${project.projectNo}">
+                               
+                                    <div class="project-join">
+                                        <h2><a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1">${project.projectName}</a></h2>
+                                        <h4>${project.projectIntro}</h4>
+                                      
+                                    </div>
+                                    <input type="hidden" name="projectNo" value="${project.projectNo}">
+
+                                
                             </c:forEach>
 
                         </c:otherwise>
