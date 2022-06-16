@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/FAQ.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
 
     
 </head>
@@ -30,7 +34,7 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
         <section class="content">
-            <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"/>
+           
 
 
             <section class="main">
