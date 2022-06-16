@@ -16,10 +16,11 @@
             <!-- 샘플 이미지 -->
 
             <c:if test="${!empty sessionScope.loginMember}">
-                <img src="${contextPath}/resources/images/HEADER-001 (1).png" style="height: 100%; width: 100%;">
+                <img src="${contextPath}/resources/images/header2.png">
             </c:if>
             <c:if test="${empty sessionScope.loginMember}">
-                <img src="${contextPath}/resources/images/002.png" style="height: 100%;" >
+                <img src="${contextPath}/resources/images/header.png"  >
+                <!-- <img src="${contextPath}/resources/images/header1.png" style="height: 100%;" > -->
             </c:if>
 
            
