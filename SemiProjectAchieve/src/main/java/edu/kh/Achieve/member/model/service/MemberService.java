@@ -6,9 +6,7 @@ import static edu.kh.Achieve.common.JDBCTemplate.getConnection;
 import static edu.kh.Achieve.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import edu.kh.Achieve.member.model.dao.MemberDAO;
 import edu.kh.Achieve.member.model.vo.Member;
@@ -149,11 +147,11 @@ public class MemberService {
 	 * 
 	 * @return list
 	 */
-	public List<Member> selectAll() throws Exception{
+	public List<Member> selectAll(int projectNo) throws Exception{
 		
 		Connection conn = getConnection();
 		
-		List<Member> list  = dao.selectAll(conn);
+		List<Member> list  = dao.selectAll(conn, projectNo);
 		
 		close(conn);
 		
@@ -199,10 +197,10 @@ public class MemberService {
 	}
 	
 
-	public int selectAllCount() throws Exception{
+	public int selectAllCount(int projectNo) throws Exception{
 		Connection conn = getConnection();
 		
-		int count  = dao.selectAllCount(conn);
+		int count  = dao.selectAllCount(conn, projectNo);
 		
 		close(conn);
 		
@@ -297,6 +295,18 @@ public class MemberService {
 
 		close(conn);
 		return result;
+	}
+
+
+	public int managerSelect(int projectNo) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		int managerNo  = dao.managerSelect(conn, projectNo);
+		
+		close(conn);
+		
+		return managerNo;
 	}
 
 	

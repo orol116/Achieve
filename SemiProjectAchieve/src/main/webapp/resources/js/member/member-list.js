@@ -2,6 +2,7 @@ function selectAll(){ // 회원 전체 조회 함수
     // ajax 코드
     $.ajax({
         url :"selectAll",
+        data : {"projectNo":projectNo},
         dataType : "json", // 응답 데이터의 형식을 JSON으로 지정
                            // -> 자동으로 JS 객체로 변환됨
             success : function( list ){
@@ -70,13 +71,14 @@ function selectAll(){ // 회원 전체 조회 함수
 function selectAllCount(){
     $.ajax({
         url: "selectAllCount",
+        data : {"projectNo":projectNo},
         success : function(count){
 
             const memberCount = document.getElementById("member-count");
             memberCount.innerHTML ="";
 
             const h4 = document.createElement("h4");
-            h4.innerText = "클래스 구성원"
+            h4.innerText = "프로젝트 구성원"
             
             const span = document.createElement("span");
             span.innerText = "총 " + count + "명";

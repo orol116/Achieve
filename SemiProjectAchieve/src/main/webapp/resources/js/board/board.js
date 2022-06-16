@@ -4,6 +4,9 @@ const deleteSet = new Set();
 const preview = document.getElementsByClassName("preview");
 const deleteAttach = document.getElementsByClassName("deleteAttach")[0];
 
+
+const manager = document.getElementById("manager");
+
 // (function() {
 
 //     const goToListBtn = document.getElementById("goToListBtn");
@@ -202,6 +205,24 @@ if(attach != undefined){
 })();
 
 
+(function(){
+    $.ajax({
+        url : "manager",
+        data : {"projectNo":projectNo},
+        success: function(managerNo){
+            if(managerNo==loginMemberNo){
+                manager.classList.remove("display-none")
+            }else{
+                manager.classList.add("display-none")
+            }
+        },
+        error:function(){
+            console.log("에러 발생")
+        }
+
+
+    });
+})();
 
 
 
@@ -232,5 +253,6 @@ document.getElementById("approveBtn").addEventListener("click", function(){
 
 
 });
+
 
 

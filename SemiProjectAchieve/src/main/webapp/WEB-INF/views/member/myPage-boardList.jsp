@@ -124,6 +124,8 @@
                         <table class="list-table">
                         <!-- /SemiProjectAchieve/member/delete/List -->
                             <input type="hidden" name="type" value="${param.type}">
+                            <input type="hidden" name="deleteNo" id="deleteNo">
+
                                 <c:choose>
                                     <c:when test="${param.type==1}">
                                         <thead>
@@ -150,7 +152,7 @@
                                                     <!-- 향상된 for문 처럼 사용 -->
                                                     <c:forEach var ="board" items="${boardList}">
                                                         <tr>
-                                                            <td><input type="checkbox" name="cBoard" value="${board.boardNo}"></td>
+                                                            <td><label for="cBoard"><input type="checkbox" id="cBoard" name="cBoard" value="${board.boardNo}"></label></td>
                                                             <td>${board.boardNo}</td>
 
                                                             <!-- /board/detail -->
@@ -186,7 +188,7 @@
                                                         <c:forEach var ="reply" items="${replyList}">
                                                             <tr>
                                                                 <td class="list-chkbox">
-                                                                    <input type="checkbox" name="cReply" value="${reply.replyNo}">
+                                                                   <label for="cReply"><input type="checkbox" id="cReply" name="cReply" value="${reply.replyNo}"></label>
                                                                 </td>
                                                                 
                                                                 <td id="reply-list-part">
@@ -248,12 +250,23 @@
                                 </c:choose>
                         </table>
                         <div class="btn-area">
-                            <div id="checkAll">
-                                <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
-                            </div>
-                            <div>
+                            
+                            <c:if test="${param.type==1}">
+                                <div id="checkAll">
+                                    <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
+                                </div>
+                                <div>
                                 <button type="submit" class="btn" id="deleteBtn" >삭제</button>
+                            </c:if>
+                            <c:if test="${param.type==2}">
+                                <div id="checkAll">
+                                    <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
+                                </div>
+                                <div>
+                                <button type="submit" class="btn" id="deleteBtn" >삭제</button>
+                            </c:if>
                            
+                        
                                 <c:if test="${param.type==1}">
                                     <a class="btn" href="#">글쓰기</a>
                                 </c:if>

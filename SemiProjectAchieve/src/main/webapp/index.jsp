@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/index.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Song+Myung&display=swap" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/35f111b89d.js" crossorigin="anonymous"></script>
     
     
@@ -149,13 +153,6 @@
 
                 <!-- 오른쪽 프로젝트 추천 부분 -->
                 <section class="content-2">
-<!-- 
-                    <div id="top-area">
-                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
-                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
-                        <div class="top-class"><a href="">추천 공개 프로젝트</a></div>
-                    </div> -->
-
 
                     <c:choose>
                         
