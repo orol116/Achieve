@@ -55,6 +55,7 @@
 
                     <!-- 비밀번호 찾기는 메일 ajax 통한 메일 발송 -->
                     <div class="findPw-button-area">
+                        <button type="button" onclick = 'location.href = "${contextPath}/findId"'>뒤로 가기</button>
                         <button id="sendEmailBtn">인증번호 발송(메일)</button>
                     </div>
                 </div>
