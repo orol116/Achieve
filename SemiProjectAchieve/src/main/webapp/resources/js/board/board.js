@@ -4,7 +4,7 @@ const deleteSet = new Set();
 const preview = document.getElementsByClassName("preview");
 const deleteAttach = document.getElementsByClassName("deleteAttach")[0];
 
-const manager = document.getElementsByClassName("sideMenu-list-row")[9];
+const manager = document.getElementById("manager");
 
 (function() {
 

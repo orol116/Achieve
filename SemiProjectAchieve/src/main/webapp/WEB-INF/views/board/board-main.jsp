@@ -57,7 +57,7 @@
                     <div class="sideMenu-list-row"><a href="${contextPath}/member/list?projectNo=${param.projectNo}">프로젝트 구성원</a></div>
 
                     <br>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
+                    <div class="sideMenu-list-row" id="manager"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
                 </div>
             </section>
 
