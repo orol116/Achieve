@@ -201,8 +201,8 @@
                 </div>  
 
 
-
-                <form action="#" method="get" id="projectSearch" onsubmit="return searchValidate()">
+                <!-- 폼태그 검색 제출 -->
+                <form action="${contextPath}/project/PJ/PJSearch" method="get" id="projectSearch" onsubmit="return searchValidate()">
 
                     <select name="key">
                         <option value="t">프로젝트명</option>
