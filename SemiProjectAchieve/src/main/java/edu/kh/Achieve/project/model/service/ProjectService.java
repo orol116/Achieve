@@ -4,6 +4,7 @@ import static edu.kh.Achieve.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -252,6 +253,34 @@ public class ProjectService {
 			
 			if(result > 0) commit(conn);
 			else 		   rollback(conn);
+		
+		return result;
+	}
+
+
+	/** 전체 알림 발송 Service
+	 * @param boardContent
+	 * @param projectNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertNotice(String boardContent, int projectNo, int loginMemberNo) throws Exception {
+
+		Connection conn = getConnection();
+		
+		List<Integer> projectMemberList = dao.selectProjectMemberList(conn, projectNo);
+		
+		int result = 0;
+		
+		for (int i = 0; i < projectMemberList.size(); i++) {
+			
+			int memberNo = projectMemberList.get(i);
+			
+			result = dao.insertNotice(conn, boardContent, memberNo, loginMemberNo);
+		}
+		
+		if (result > 0) commit(conn);
+		else  			rollback(conn);
 		
 		return result;
 	}

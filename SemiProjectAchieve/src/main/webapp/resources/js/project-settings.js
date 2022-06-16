@@ -26,7 +26,7 @@ function PJDupCheck(){
         }
     });
 
-} ;
+}  
 
 
 
@@ -66,18 +66,6 @@ nameChangeBtn.addEventListener("click", function(){
     });
 
     
-
-
-
-
-
- 
-
-
-    console.log(PJNameChange.value);
-
-    
-
     });
    
 
@@ -92,7 +80,6 @@ document.getElementById("text-all").addEventListener("click", function(){
 
     const sendAll = document.getElementById("sendAll-text");
 
-    console.log(sendAll.value);
 
     if(sendAll.value == ""){
         alert("전송할 내용이 없습니다!");
@@ -134,8 +121,44 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
     const projectIntro = document.getElementById("projectIntro");
 
+  
+
+    if(projectIntro.value == ""){
+    var result = confirm("소개글을 모두 지우시겠습니까?");
+
+    if(result){
+        projectIntro.value = "no Intro";
+
+ 
+
+        $.ajax({
+            url : "IntroEdit",
+            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
+            type : "GET",
+            success : function(result){
+
+                if(result == 1){
+                    console.log("성공");  
+                }else{
+                    console.log("실패");
+                }
+                
+                
+    
+            },
+            error : function(){
+                console.log("에러발생");
+            }
+        });
+        
+    }
+
+
+    }
+
 
     if(projectIntro.value !== ""){
+
 
 
 
@@ -145,10 +168,10 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
             type : "GET",
             success : function(result){
 
-                if(result > 0){
-                    alert("변경되었습니다.");
+                if(result == 1){
+                    console.log("성공");  
                 }else{
-                    alert("실패");
+                    console.log("실패");
                 }
                 
                 
@@ -175,7 +198,6 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
  const showValue = (target) =>{
 
-    console.log(target.value);
 
     if(target.value =="Y"){
 
