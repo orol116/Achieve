@@ -58,7 +58,7 @@ form[name="signUp-form"]>label{
 
     width: 15%;
     height: 36px;
-    background-color: rgb(52, 152, 219);
+    background-color: rgb(14, 25, 78);
     border: 0;
     color: white;
     border-radius: 5px;
@@ -87,7 +87,7 @@ form[name="signUp-form"]>label{
     font-weight: bold;
 
     color: white;
-    background-color: rgb(52, 152, 219);
+    background-color: rgb(14, 25, 78);
 
     align-self: center;
     border-radius: 5px;
