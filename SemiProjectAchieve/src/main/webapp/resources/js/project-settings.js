@@ -26,7 +26,7 @@ function PJDupCheck(){
         }
     });
 
-}  
+} ;
 
 
 
@@ -134,50 +134,10 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
     const projectIntro = document.getElementById("projectIntro");
 
-  
-
-    if(projectIntro.value == ""){
-    var result = confirm("소개글을 모두 지우시겠습니까?");
-
-    if(result){
-        projectIntro.value = "no Intro";
-
- 
-        console.log("값" + projectIntro.value);
-
-        $.ajax({
-            url : "IntroEdit",
-            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
-            type : "GET",
-            success : function(result){
-
-                if(result == 1){
-                    console.log("성공");  
-                }else{
-                    console.log("실패");
-                }
-                
-                
-    
-            },
-            error : function(){
-                console.log("에러발생");
-            }
-        });
-        
-    }
-
-
-    }
-
 
     if(projectIntro.value !== ""){
 
 
-        console.log( "글 있을 때" + projectIntro.value);
-
-        console.log("글있음");
-
 
         $.ajax({
             url : "IntroEdit",
@@ -185,10 +145,10 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
             type : "GET",
             success : function(result){
 
-                if(result == 1){
-                    console.log("성공");  
+                if(result > 0){
+                    alert("변경되었습니다.");
                 }else{
-                    console.log("실패");
+                    alert("실패");
                 }
                 
                 
