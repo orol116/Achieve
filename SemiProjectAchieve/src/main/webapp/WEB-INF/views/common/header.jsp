@@ -10,6 +10,9 @@
 
         <section>
             <!-- 프로젝트 타이틀 들어오는 자리 -->
+            <!-- 샘플 이미지 -->
+            <img src="${contextPath}/resources/images/HEADER-001 (1).png" style="height: 190px; width: 700px;">
+           
             <c:if test="${!empty sessionScope.projectName}">
                 
                 <article class="project-title">
