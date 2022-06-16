@@ -4,10 +4,25 @@
 <comment>project-sql.xml</comment>
 
 
+	<entry key="nextProjectNo">
+	SELECT SEQ_PROJECT_NO.NEXTVAL FROM DUAL
+	
+	
+	</entry>
+
 	<entry key="createProject">
 	INSERT INTO PROJECT
-	VALUES(SEQ_PROJECT_NO.NEXTVAL, ? 
-	, ? , ? , ? , ?)
+	VALUES(? , ? , ? , ? , ? , ?)
+	</entry>
+	
+
+	
+	<entry key="insertProject">
+	INSERT INTO PROJECT_MEMBER
+ 	VALUES(?, ?)
+	
+	
+	
 	</entry>
 	
 	
@@ -23,19 +38,19 @@
 	
 	UPDATE PROJECT SET
 	OPEN_ST = ?
-	WHERE PROJECT_NO = 5
+	WHERE PROJECT_NO = ?
 	</entry>
 	
 	<entry key="IntroEdit">
 	UPDATE PROJECT SET
 	PROJECT_INTRO = ?
-	WHERE PROJECT_NO = 5
+	WHERE PROJECT_NO = ?
 	</entry>
 	
 	<entry key="changePJName">
 	UPDATE PROJECT SET
 	PROJECT_NM = ?
-	WHERE PROJECT_NO = 5	
+	WHERE PROJECT_NO = ?	
 	</entry>
 	
 	
@@ -159,6 +174,8 @@
 	
 	
 	</entry>
+	
+
 	
 	
 	
