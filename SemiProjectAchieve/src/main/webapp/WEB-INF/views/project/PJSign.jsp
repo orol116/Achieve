@@ -22,9 +22,9 @@
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-
     <main>
+    
+        <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
         <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"></jsp:include>
 
