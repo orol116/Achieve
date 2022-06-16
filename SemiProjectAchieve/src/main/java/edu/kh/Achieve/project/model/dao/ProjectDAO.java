@@ -629,6 +629,35 @@ public class ProjectDAO {
 		
 	}
 
+
+	public void insertBoardType(Connection conn, int boardCode, int projectNo) throws Exception {
+
+		try {
+			
+			String sql = null;
+			
+			if (boardCode == 1)  sql = "INSERT INTO BOARD_TYPE VALUES(?, '최신 글', ?)";
+			else if (boardCode == 2)  sql = "INSERT INTO BOARD_TYPE VALUES(?, '공지사항', ?)";
+			else if (boardCode == 3)  sql = "INSERT INTO BOARD_TYPE VALUES(?, '자유 게시판', ?)";
+			else if (boardCode == 4)  sql = "INSERT INTO BOARD_TYPE VALUES(?, '과제', ?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardCode);
+			pstmt.setInt(2, projectNo);
+
+			rs = pstmt.executeQuery();
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		commit(conn);
+		
+		return;
+	}
+
 	
 
 
