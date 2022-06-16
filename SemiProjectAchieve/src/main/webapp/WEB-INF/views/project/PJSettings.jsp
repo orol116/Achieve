@@ -27,7 +27,7 @@
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
 
-		<jsp:include page="/WEB-INF/views/common/sideMenu.jsp"/>
+		
 
         <div class="body">
             
