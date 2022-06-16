@@ -53,10 +53,11 @@
                     <div class="sideMenu-list-row"><a href="${contextPath}/member/List?memNo=${memberNo}&type=1">내가 쓴 글</a></div>
                     <div class="sideMenu-list-row"><a href="${contextPath}/member/List?memNo=${memberNo}&type=2">내가 쓴 댓글</a></div>
                     <div class="sideMenu-list-row"><a href="${contextPath}/member/myPage/info">마이페이지</a></div>
+
                     <div class="sideMenu-list-row"><a href="${contextPath}/member/list?projectNo=${param.projectNo}">프로젝트 구성원</a></div>
 
                     <br>
-                    <div class="sideMenu-list-row"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
+                    <div class="sideMenu-list-row" id="manager"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
                 </div>
             </section>
 

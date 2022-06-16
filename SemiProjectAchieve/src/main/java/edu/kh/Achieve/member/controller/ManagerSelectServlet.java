@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.kh.Achieve.member.model.service.MemberService;
 
-@WebServlet("/member/selectAllCount")	
-public class SelectAllServlet extends HttpServlet{
+@WebServlet("/board/manager")	
+public class ManagerSelectServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,9 +22,12 @@ public class SelectAllServlet extends HttpServlet{
 			
 			MemberService service = new MemberService();
 			
-			int count = service.selectAllCount(projectNo);
+			int managerNo = service.managerSelect(projectNo);
 			
-			resp.getWriter().print(count); ;
+			System.out.println(managerNo);
+			
+			resp.getWriter().print(managerNo); 
+			
 		
 		}catch(Exception e) {
 			e.printStackTrace();
