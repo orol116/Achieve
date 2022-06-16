@@ -53,15 +53,15 @@ public class ProjectService {
 		
 		Connection conn = getConnection();
 		
-		int result = dao.PJDupCheck(conn, projectName);
+		int result2 = dao.PJDupCheck(conn, projectName);
 		
-		if(result > 0) commit(conn);
+		if(result2 > 0) commit(conn);
 		else		   rollback(conn);
 		
 		
 		
 		
-		return result;
+		return result2;
 	}
 
 

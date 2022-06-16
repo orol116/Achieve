@@ -22,9 +22,9 @@ public class PJDupCheckServlet extends HttpServlet{
 			
 			ProjectService service = new ProjectService();
 			
-			int result = service.PJDupCheck(projectName);
+			int result2 = service.PJDupCheck(projectName);
 			
-			resp.getWriter().print(result);
+			resp.getWriter().print(result2);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
