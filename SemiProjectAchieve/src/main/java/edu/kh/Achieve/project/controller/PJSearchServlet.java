@@ -19,7 +19,7 @@ import edu.kh.Achieve.member.model.vo.Member;
 import edu.kh.Achieve.project.model.service.ProjectService;
 import edu.kh.Achieve.project.model.vo.Project;
 
-@WebServlet("/project/PJ/PJSearch" ) //"/project/PJ/member/login"
+@WebServlet("/project/PJ/PJSearch/list" ) 
 public class PJSearchServlet extends HttpServlet{
 	
 	
