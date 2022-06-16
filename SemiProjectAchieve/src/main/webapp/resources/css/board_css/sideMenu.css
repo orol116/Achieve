@@ -12,6 +12,11 @@
 /* 리스트 */
 #sideMenu-list{
     width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
 }
 
 /* 페이지 제목 */

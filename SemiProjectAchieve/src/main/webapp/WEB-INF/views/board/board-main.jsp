@@ -33,11 +33,7 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <style>
-        main{
-            width: 1200px;
-        }
-    </style>
+    
 
 </head>
 <body>
