@@ -86,11 +86,12 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+
 	
 	<!-- 조건을 만족하는 게시글 수 조회 -->
 	<entry key="searchListCount">
 		SELECT COUNT(*) FROM PROJECT 
-		<!-- JOIN MEMBER USING(MEMBER_NO) -->
+		JOIN MEMBER M USING(MEMBER_NO)
 		WHERE OPEN_ST = 'Y'
 	</entry>
 	
@@ -110,6 +111,10 @@
 				JOIN MEMBER M USING(MEMBER_NO)
 				WHERE OPEN_ST = 'Y'
 	</entry>
+	
+	
+
+	
 	
 	<entry key="searchProjectList2">
 	      	ORDER BY PROJECT_NO DESC

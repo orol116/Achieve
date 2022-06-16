@@ -51,17 +51,17 @@
                             
                             <div class="myPage-detail-row" id="memberName">
                                 <div>이름</div>            
-                                <input class="myPage-detail-input" type="text" name="memberName" value="${loginMember.memberName}">
+                                <input class="myPage-detail-input" type="text" name="memberName" placeholder="${loginMember.memberName}">
                             </div>
 
                             <div class="myPage-detail-row" id="memberNickname">
                                 <div>닉네임</div>            
-                                <input class="myPage-detail-input" type="text" name="memberNickname" value="${loginMember.memberNickname}">
+                                <input class="myPage-detail-input" type="text" name="memberNickname" placeholder="${loginMember.memberNickname}">
                             </div>
 
                             <div class="myPage-detail-row" id="memberTel">
                                 <div>핸드폰 번호</div>            
-                                <input class="myPage-detail-input" type="text" name="memberTel" value="${loginMember.memberTel}">
+                                <input class="myPage-detail-input" type="text" name="memberTel" placeholder="${loginMember.memberTel}">
                             </div>
 
                             <div class="myPage-detail-row">

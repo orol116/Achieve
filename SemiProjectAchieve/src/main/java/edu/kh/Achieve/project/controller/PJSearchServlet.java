@@ -58,6 +58,7 @@ public class PJSearchServlet extends HttpServlet{
 				}
 				
 				
+				
 				// request 범위로 map을 세팅
 				req.setAttribute("map", map);
 				

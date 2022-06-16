@@ -439,11 +439,16 @@ public class ProjectDAO {
 				
 				Project pro = new Project();
 				
-				pro.setProjectName(rs.getString(1) );
-				pro.setProjectManagerNickname(rs.getString(2)); //관리자 닉네임
-				pro.setProjectQuota(rs.getString(3)); //정원
-				pro.setProjectIntro(rs.getString(4));
 				
+				//가져오는 부분 확인 
+				
+				pro.setProjectNo(rs.getInt("PROJECT_NO"));
+				pro.setProjectName(rs.getString("PROJECT_NM"));
+				pro.setProjectManagerNickname(rs.getString("MEMBER_NICK"));
+				pro.setProjectQuota(rs.getString("PROJECT_QUOTA"));
+				pro.setProjectIntro(rs.getString("PROJECT_INTRO"));
+				pro.setParticipateStatus(rs.getString("P_ST"));
+							
 				
 				projectList.add(pro);
 			}
