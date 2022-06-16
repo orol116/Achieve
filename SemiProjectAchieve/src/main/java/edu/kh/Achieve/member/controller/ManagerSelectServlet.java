@@ -24,8 +24,6 @@ public class ManagerSelectServlet extends HttpServlet{
 			
 			int managerNo = service.managerSelect(projectNo);
 			
-			System.out.println(managerNo);
-			
 			resp.getWriter().print(managerNo); 
 			
 		

@@ -30,9 +30,6 @@ public class PassAccountServlet extends HttpServlet{
 			
 			resp.getWriter().print(result);
 			
-			System.out.println(memberNo);
-			
-			
 		}catch(Exception e) {
 			
 			e.printStackTrace();

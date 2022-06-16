@@ -471,7 +471,7 @@ public class ProjectDAO {
 	 * @return list
 	 * @throws Exception
 	 */
-	public List<ProjectSign> selectPJSign(Connection conn)throws Exception{
+	public List<ProjectSign> selectPJSign(Connection conn, int projectNo)throws Exception{
 		
 		List<ProjectSign> list = new ArrayList<ProjectSign>();
 		
@@ -479,9 +479,12 @@ public class ProjectDAO {
 			
 			String sql = prop.getProperty("ProjectSign");
 			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
 			
+			rs = pstmt.executeQuery();
+			
+						
 			while(rs.next()) {
 				ProjectSign PJSign = new ProjectSign();
 				
@@ -513,7 +516,7 @@ public class ProjectDAO {
 	 * @return count
 	 * @throws Exception
 	 */
-	public int selectPJ(Connection conn) throws Exception{
+	public int selectPJ(Connection conn, int projectNo) throws Exception{
 		
 		int count = 0;
 		
@@ -521,9 +524,10 @@ public class ProjectDAO {
 			
 			String sql = prop.getProperty("selectPJ");
 			
-			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
 			
-			rs = stmt.executeQuery(sql);
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				count = rs.getInt(1);
@@ -556,7 +560,6 @@ public class ProjectDAO {
 			result = pstmt.executeUpdate();
 			
 			
-			
 		}finally {
 			close(pstmt);
 			
@@ -564,6 +567,66 @@ public class ProjectDAO {
 		
 		
 		return result;
+	}
+
+
+	/** 프로젝트 내 참여 회원 번호 조회
+	 * @param conn
+	 * @param projectNo
+	 * @return projectMemberList
+	 * @throws Exception
+	 */
+	public List<Integer> selectProjectMemberList(Connection conn, int projectNo) throws Exception {
+
+		List<Integer> projectMemberList = new ArrayList<Integer>();
+		
+		try {
+			String sql = "SELECT MEMBER_NO FROM PROJECT_MEMBER WHERE PROJECT_NO = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+			
+				int result = rs.getInt(1);
+				
+				projectMemberList.add(result);
+			}
+			
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		} 
+		
+		return projectMemberList;
+	}
+
+
+	public int insertNotice(Connection conn, String boardContent, int memberNo, int loginMemberNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertNotice");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardContent);
+			pstmt.setInt(2, loginMemberNo);
+			pstmt.setInt(3, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+
+		
 	}
 
 	

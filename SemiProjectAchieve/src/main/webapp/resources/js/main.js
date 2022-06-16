@@ -33,7 +33,7 @@ function loginValidate(){ //로그인 유효성 검사
 document.getElementById("saveId").addEventListener("change", function(){
 
     //체크여부 확인
-    console.log(this.checked)
+    // console.log(this.checked)
     //체크박스요소.checked : 체크 여부 반환 (T/F)
 
     if(this.checked){
