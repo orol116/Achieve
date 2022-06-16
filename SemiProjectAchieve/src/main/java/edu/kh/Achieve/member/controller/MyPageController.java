@@ -103,6 +103,8 @@ public class MyPageController extends HttpServlet{
 				String currentPw = req.getParameter("currentPw");
 				String newPw = req.getParameter("newPw");
 				
+				
+				
 				// 비밀번호 변경 후 결과 반환
 				int result = service.changePw(currentPw, newPw, memberNo);
 				
@@ -115,7 +117,7 @@ public class MyPageController extends HttpServlet{
 					path = req.getContextPath() + "/member/myPage/info";
 					loginMember.setMemberPw(newPw);
 				} else {
-					session.setAttribute("message", "비밀번호 변경 실패");
+					session.setAttribute("message", "비밀번호가 일치하지 않습니다.");
 					path = req.getContextPath() + "/member/myPage/changePw";
 				}
 
