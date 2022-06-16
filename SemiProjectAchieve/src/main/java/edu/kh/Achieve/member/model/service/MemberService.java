@@ -157,6 +157,17 @@ public class MemberService {
 		
 		return list;
 	}
+	
+	public List<Member> selectAllManager(int projectNo) throws Exception{
+		
+		Connection conn = getConnection();
+		
+		List<Member> list  = dao.selectAllManager(conn, projectNo);
+		
+		close(conn);
+		
+		return list;
+	}
 
 
 	/**
@@ -201,6 +212,16 @@ public class MemberService {
 		Connection conn = getConnection();
 		
 		int count  = dao.selectAllCount(conn, projectNo);
+		
+		close(conn);
+		
+		return count;
+
+	}
+	public int selectAllCountManager(int projectNo) throws Exception{
+		Connection conn = getConnection();
+		
+		int count  = dao.selectAllCountManager(conn, projectNo);
 		
 		close(conn);
 		
