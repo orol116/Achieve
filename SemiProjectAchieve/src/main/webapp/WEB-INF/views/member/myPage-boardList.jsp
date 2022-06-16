@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
-
-
 <!-- map에 저장된 값을 각각 변수에 저장 -->
 <c:set var = "pagination" value="${map.pagination}"/>
 <c:set var = "memNick" value="${map.memNick}"/>
@@ -30,6 +28,7 @@
 
     <!-- sidebar -->
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
+
 
     <!-- main -->
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-board-main.css">
@@ -66,11 +65,9 @@
 
 <body>
     <main>
-        <header>
-            <!-- 클릭 시 메인페이지로 이동하는 로고 -->
-            <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+        <!-- 클릭 시 메인페이지로 이동하는 로고 -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     
-        </header>
 
         <!-- 마이페이지- 내정보 -->
         <section class="myPage-content">

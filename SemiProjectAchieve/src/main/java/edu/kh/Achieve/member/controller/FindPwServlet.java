@@ -41,12 +41,9 @@ public class FindPwServlet extends HttpServlet {
 
 		try {
 			MemberService service = new MemberService();
-//			System.out.println(memberEmail);
-//			System.out.println(memberName);
-//			System.out.println(memberBirthday);
-			
+
 			int result = service.checkPw(memberEmail, memberName, memberBirthday);
-			System.out.println(result);
+
 			if (result > 0) {
 
 				String subject = "[Achieve] 비밀번호 재설정"; // 제목
