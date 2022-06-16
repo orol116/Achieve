@@ -26,7 +26,7 @@ main{
 .content-1{flex-basis: 25%;}
 .content-2{
     flex-basis: 75%;
-    margin: 5px;
+    /* margin: 5px; */
 }
 
 

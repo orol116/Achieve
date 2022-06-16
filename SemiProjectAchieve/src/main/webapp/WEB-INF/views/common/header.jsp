@@ -9,14 +9,13 @@
         </section>
 
         <section>
-            <!-- 프로젝트 타이틀 들어오는 자리 -->
             <!-- 샘플 이미지 -->
 
             <c:if test="${!empty sessionScope.loginMember}">
                 <img src="${contextPath}/resources/images/HEADER-001 (1).png" style="height: 100%; width: 100%;">
             </c:if>
             <c:if test="${empty sessionScope.loginMember}">
-                <img src="${contextPath}/resources/images/002.png" style="height: 100%;"" >
+                <img src="${contextPath}/resources/images/002.png" style="height: 100%;" >
             </c:if>
 
            
@@ -24,8 +23,6 @@
                 
                 <article class="project-title">
 
-                    <!-- 조건:프로젝트 이름이 있으면 가져와서 el 세팅 / 임시세팅 -->
-                    ${project.projectName}
                     
                 </article>
             </c:if>
