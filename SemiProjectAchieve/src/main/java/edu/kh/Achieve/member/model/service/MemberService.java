@@ -149,11 +149,11 @@ public class MemberService {
 	 * 
 	 * @return list
 	 */
-	public List<Member> selectAll() throws Exception{
+	public List<Member> selectAll(int projectNo) throws Exception{
 		
 		Connection conn = getConnection();
 		
-		List<Member> list  = dao.selectAll(conn);
+		List<Member> list  = dao.selectAll(conn, projectNo);
 		
 		close(conn);
 		
@@ -199,10 +199,10 @@ public class MemberService {
 	}
 	
 
-	public int selectAllCount() throws Exception{
+	public int selectAllCount(int projectNo) throws Exception{
 		Connection conn = getConnection();
 		
-		int count  = dao.selectAllCount(conn);
+		int count  = dao.selectAllCount(conn, projectNo);
 		
 		close(conn);
 		
