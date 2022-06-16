@@ -25,7 +25,6 @@
 
     <main>
 
-        <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"></jsp:include>
 
         <section id="board-member">
 

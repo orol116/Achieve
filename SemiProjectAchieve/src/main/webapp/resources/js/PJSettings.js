@@ -31,6 +31,12 @@ function PJDupCheck(){
 
 
 
+
+
+
+
+
+
 // 프로젝트 이름변경 확인 O // 유효성검사 추가 중복되는 이름 거르기
 nameChangeBtn.addEventListener("click", function(){
 
