@@ -7,12 +7,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>구성원 조회 페이지</title>
-    <link rel="stylesheet" href="${contextPath}/resources/css/member-list-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/sidebar.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>구성원 조회 페이지</title>
+
+    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/member-list-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/board_css/sideMenu.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/board_css/board-main-style.css">
+
+
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&display=swap" rel="stylesheet">
 
@@ -22,131 +27,157 @@
 </head>
 <body>
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-
     <main>
+    
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-        <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"></jsp:include>
 
-        <section id="board-member">
+        <div class="div-sec">
+            <section class="myPage-sideMenu">
+                <div id="sideMenu-list">
 
-            <div id="member-content">
+                    <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1&projectNo=${param.projectNo}">${projectName}</a></div>
 
-                <div id="member-count">
-                    <h4>프로젝트 구성원</h4>
-                    <span>총 *명</span>
+                    <c:forEach var="boardType" items="${boardTypeList}">
+                        <c:if test="${boardType.boardCode != 99}">
+                            <div class="sideMenu-list-row" id="project"><a href="${contextPath}/board/main?type=${boardType.boardCode}&projectNo=${param.projectNo}&cp=1">${boardType.boardName}</a></div>
+                        </c:if>
+                    </c:forEach>
+
+                    <br>
+                    <div class="sideMenu-list-row default-list"><a href="${contextPath}/member/List?memNo=${memberNo}&type=1">내가 쓴 글</a></div>
+                    <div class="sideMenu-list-row default-list"><a href="${contextPath}/member/List?memNo=${memberNo}&type=2">내가 쓴 댓글</a></div>
+                    <div class="sideMenu-list-row default-list"><a href="${contextPath}/member/myPage/info">마이페이지</a></div>
+
+                    <div class="sideMenu-list-row default-list"><a href="${contextPath}/member/list?projectNo=${param.projectNo}">프로젝트 구성원</a></div>
+
+                    <br>
+                    <div class="sideMenu-list-row default-list" id="manager"><a href="${contextPath}/project/PJSettings?projectNo=${param.projectNo}">프로젝트 관리</a></div>
                 </div>
-    
-    
-                <div id="member-list">
-<!-- 
-                    <div class="manager-list">
-                        <span class="member-status">프로젝트 관리자</span> <br>
+            </section>
 
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            
-                            <div class="member-status-name"> 
-                                <span class="status">관리자</span> <br>
-                                <span class="name">관리자</span>
+
+            <section id="board-member">
+
+                <div id="member-content">
+
+                    <div id="member-count">
+                        <h4>프로젝트 구성원</h4>
+                        <span>총 *명</span>
+                    </div>
+        
+        
+                    <div id="member-list">
+                        <!-- 
+                        <div class="manager-list">
+                            <span class="member-status">프로젝트 관리자</span> <br>
+
+                            <div class="member-img">
+                                <i class="fa-solid fa-circle fa-2x"></i>
+                                
+                                <div class="member-status-name"> 
+                                    <span class="status">관리자</span> <br>
+                                    <span class="name">관리자</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="member-list">
-                        <span class="member-status">프로젝트 팀원</span> <br>
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
+                        <div class="member-list">
+                            <span class="member-status">프로젝트 팀원</span> <br>
+                            <div class="member-img">
+                                <i class="fa-solid fa-circle fa-2x"></i>
+                                <div class="member-status-name"> 
+                                    <span class="status">팀원</span> <br>
+                                    <span class="name">팀원1</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
+                        <div class="member-list">
+                            <div class="member-img">
+                                <i class="fa-solid fa-circle fa-2x"></i>
+                                <div class="member-status-name"> 
+                                    <span class="status">팀원</span> <br>
+                                    <span class="name">팀원1</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
+                        <div class="member-list">
+                            <div class="member-img">
+                                <i class="fa-solid fa-circle fa-2x"></i>
+                                <div class="member-status-name"> 
+                                    <span class="status">팀원</span> <br>
+                                    <span class="name">팀원1</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
+                        <div class="member-list">
+                            <div class="member-img">
+                                <i class="fa-solid fa-circle fa-2x"></i>
+                                <div class="member-status-name"> 
+                                    <span class="status">팀원</span> <br>
+                                    <span class="name">팀원1</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
+                        <div class="member-list">
+                            <div class="member-img">
+                                <i class="fa-solid fa-circle fa-2x"></i>
+                                <div class="member-status-name"> 
+                                    <span class="status">팀원</span> <br>
+                                    <span class="name">팀원1</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
+                        <div class="member-list">
+                            <div class="member-img">
+                                <i class="fa-solid fa-circle fa-2x"></i>
+                                <div class="member-status-name"> 
+                                    <span class="status">팀원</span> <br>
+                                    <span class="name">팀원1</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
+                        <div class="member-list">
+                            <div class="member-img">
+                                <i class="fa-solid fa-circle fa-2x"></i>
+                                <div class="member-status-name"> 
+                                    <span class="status">팀원</span> <br>
+                                    <span class="name">팀원1</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
+                        <div class="member-list">
+                            <div class="member-img">
+                                <i class="fa-solid fa-circle fa-2x"></i>
+                                <div class="member-status-name"> 
+                                    <span class="status">팀원</span> <br>
+                                    <span class="name">팀원1</span>
+                                </div>
                             </div>
                         </div>
+
+                        -->
+
+        
                     </div>
 
-                     -->
-
-    
                 </div>
 
-            </div>
 
 
+            </section>
 
-        </section>
+        </div>
     </main>
 
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
     <script> 
         // 댓글 관련 JS 코드에 필요한 값을 전역 변수로 선언

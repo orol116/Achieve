@@ -65,7 +65,7 @@
 }
 
 .list-table > tbody > tr{
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(230, 230, 230);
 }
 
 .list-table tr > *{
