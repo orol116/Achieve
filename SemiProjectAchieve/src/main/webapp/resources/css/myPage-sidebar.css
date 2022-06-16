@@ -35,8 +35,10 @@
     position: absolute;
     left: 40px;
     line-height: 1.5;
+
+    font-weight: bold;
     font-size: 1em;
-    font-family: 'Noto Sans KR';
+    font-family: 'Hahmlet', serif;
 }
 
 .menu ::before {

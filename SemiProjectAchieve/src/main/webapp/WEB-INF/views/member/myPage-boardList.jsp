@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
+
+
 <!-- map에 저장된 값을 각각 변수에 저장 -->
 <c:set var = "pagination" value="${map.pagination}"/>
 <c:set var = "memNick" value="${map.memNick}"/>
@@ -35,6 +37,10 @@
 
     <!-- 사이드바 아이콘 사용을 위한 링크 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
   
     <c:choose>
         <c:when test="${param.type==1}">
@@ -109,13 +115,8 @@
                         <a href="${contextPath}/member/List?memNo=${memNo}&type=2">작성댓글</a>
                         <a href="${contextPath}/member/List?memNo=${memNo}&type=3">가입한 프로젝트 보기</a>
                     </div>
-                        <c:choose>
-                            <c:when test ="${param.type==1}">
-                                <div class="myPage-third2">
-                                <a href="#">삭제한 게시글</a>
-                                </div>
-                            </c:when>
-                        </c:choose>
+                      
+                        
                 </div>      
                 <div class="list-wrapper">
 
@@ -152,7 +153,7 @@
                                                     <!-- 향상된 for문 처럼 사용 -->
                                                     <c:forEach var ="board" items="${boardList}">
                                                         <tr>
-                                                            <td><label for="cBoard"><input type="checkbox" id="cBoard" name="cBoard" value="${board.boardNo}"></label></td>
+                                                            <td><input type="checkbox" name="cBoard" value="${board.boardNo}"></td>
                                                             <td>${board.boardNo}</td>
 
                                                             <!-- /board/detail -->
@@ -188,7 +189,7 @@
                                                         <c:forEach var ="reply" items="${replyList}">
                                                             <tr>
                                                                 <td class="list-chkbox">
-                                                                   <label for="cReply"><input type="checkbox" id="cReply" name="cReply" value="${reply.replyNo}"></label>
+                                                                   <input type="checkbox"name="cReply" value="${reply.replyNo}">
                                                                 </td>
                                                                 
                                                                 <td id="reply-list-part">
@@ -253,15 +254,14 @@
                             
                             <c:if test="${param.type==1}">
                                 <div id="checkAll">
-                                    <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
+                                   <label for="cBoxAll"><input type="checkbox" id="cBoxAll" value='selectall' onclick='selectAll(this)'>전체선택</label> 
                                 </div>
                                 <div>
                                 <button type="submit" class="btn" id="deleteBtn" >삭제</button>
                             </c:if>
                             <c:if test="${param.type==2}">
                                 <div id="checkAll">
-                                    <input type="checkbox" value='selectall' onclick='selectAll(this)'>전체선택
-                                </div>
+                                    <label for="cBoxAll"><input type="checkbox" id="cBoxAll" value='selectall' onclick='selectAll(this)'>전체선택</label>                                 </div>
                                 <div>
                                 <button type="submit" class="btn" id="deleteBtn" >삭제</button>
                             </c:if>

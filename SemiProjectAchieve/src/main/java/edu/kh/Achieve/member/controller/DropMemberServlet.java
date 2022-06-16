@@ -20,12 +20,6 @@ public class DropMemberServlet extends HttpServlet{
 		
 		String path = "/WEB-INF/views/member/dropMember-list.jsp";
 		
-		int projectNo = Integer.parseInt(req.getParameter("projectNo")) ;
-		
-		System.out.println(projectNo);
-		
-		req.setAttribute("projectNo", projectNo);
-		
 		req.getRequestDispatcher(path).forward(req, resp);
 		
 	}
@@ -34,7 +28,6 @@ public class DropMemberServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String dropMemberNo = req.getParameter("memberNo");
-		
 		
 		try {
 			

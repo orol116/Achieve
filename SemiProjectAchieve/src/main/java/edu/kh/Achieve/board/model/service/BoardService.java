@@ -310,6 +310,23 @@ public class BoardService {
 		
 		return result;
 	}
+
+	/** 프로젝트 관리자(생성자) 회원 번호 조회 Service
+	 * @param projectNo
+	 * @return projectAdminNo
+	 * @throws Exception
+	 */
+	public int selectProjectAdminNo(int projectNo) throws Exception {
+
+		Connection conn = getConnection();
+		
+		int projectAdminNo = dao.selectProjectAdminNo(conn, projectNo);
+		
+		close(conn);
+		
+		return projectAdminNo;
+
+	}
 	
 
 }
