@@ -119,7 +119,7 @@ public class BoardService {
 		
 		detail.setBoardTitle(Util.XSSHandling(detail.getBoardTitle()));
 		
-		int result = dao.updateBoard(conn, detail);
+		int result = dao.insertBoard(conn, detail, boardCode, projectNo);
 		
 		if (result > 0) {
 			for (BoardAttachment image : boardAttachmentList) { 
