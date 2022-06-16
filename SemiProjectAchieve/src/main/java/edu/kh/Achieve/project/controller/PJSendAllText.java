@@ -18,8 +18,8 @@ public class PJSendAllText extends HttpServlet {
 
 		try {
 		
-		String boardContent = req.getParameter("boardContent");
 		int projectNo = Integer.parseInt(req.getParameter("projectNo"));
+		String boardContent = "<a href=\"board/main?type=1&projectNo=" + projectNo + "&cp=1\">"  + req.getParameter("boardContent") + "</a>"; 
 		int loginMemberNo = Integer.parseInt(req.getParameter("loginMemberNo"));
 
 		ProjectService service = new ProjectService();
