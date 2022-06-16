@@ -181,7 +181,7 @@ document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
         $.ajax({
             url : "IntroEdit",
-            data : {"projectIntro" : projectIntro.value},
+            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
             type : "GET",
             success : function(result){
 

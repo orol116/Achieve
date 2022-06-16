@@ -471,7 +471,7 @@ public class ProjectDAO {
 	 * @return list
 	 * @throws Exception
 	 */
-	public List<ProjectSign> selectPJSign(Connection conn)throws Exception{
+	public List<ProjectSign> selectPJSign(Connection conn, int projectNo)throws Exception{
 		
 		List<ProjectSign> list = new ArrayList<ProjectSign>();
 		
@@ -479,9 +479,12 @@ public class ProjectDAO {
 			
 			String sql = prop.getProperty("ProjectSign");
 			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
 			
+			rs = pstmt.executeQuery();
+			
+						
 			while(rs.next()) {
 				ProjectSign PJSign = new ProjectSign();
 				
@@ -513,7 +516,7 @@ public class ProjectDAO {
 	 * @return count
 	 * @throws Exception
 	 */
-	public int selectPJ(Connection conn) throws Exception{
+	public int selectPJ(Connection conn, int projectNo) throws Exception{
 		
 		int count = 0;
 		
@@ -521,9 +524,10 @@ public class ProjectDAO {
 			
 			String sql = prop.getProperty("selectPJ");
 			
-			stmt = conn.createStatement();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, projectNo);
 			
-			rs = stmt.executeQuery(sql);
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				count = rs.getInt(1);

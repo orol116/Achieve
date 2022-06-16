@@ -73,7 +73,7 @@
     height: 25px;
     padding: 8px;
     cursor: pointer;
-    color: #0e194e;
+    color: rgb(14, 25, 78);
     text-decoration: none;
 }
 
@@ -163,14 +163,14 @@
     width: 0;
     height: 0;
     border: 8px solid transparent;
-    border-left: 8px solid #455ba8;
+    border-left: 8px solid rgb(14, 25, 78);
     margin: 2px 0 0 8px;
     float: left;
 }
 
 .FAQ input:checked + label::before {
     border: 8px solid transparent;
-    border-top: 8px solid #455ba8;
+    border-top: 8px solid rgb(14, 25, 78);
     border-bottom: 0;
     margin: 8px 4px 0;
     

@@ -88,7 +88,7 @@ body{
 }
 
 .myPage-detail-input:focus-within{
-    border-bottom: 2px solid #0e194e;
+    border-bottom: 2px solid rgb(14, 25, 78);
 }
 
 /* 아이디 */
@@ -111,7 +111,7 @@ body{
     border: none;
     border-radius: 5px;
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 
     cursor: pointer;
@@ -167,11 +167,11 @@ body{
     font-weight: bold;
     font-size: 1.1em;
 
-    border: 2px solid #0e194e;
+    border: 2px solid rgb(14, 25, 78);
     border-radius: 5px;
 
     background-color: white;
-    color: #0e194e;
+    color: rgb(14, 25, 78);
 
     cursor: pointer;
 }
@@ -188,7 +188,7 @@ body{
     border: none;
     border-radius: 5px;
 
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 
     cursor: pointer;
@@ -241,9 +241,9 @@ body{
     height: 33px;
 
     padding: 5px 10px;
-    border: 2px solid #0e194e;
+    border: 2px solid rgb(14, 25, 78);
     background-color: white;
-    color: #0e194e;
+    color: rgb(14, 25, 78);
 
     font-size: 14px;
     font-weight: bold;
@@ -257,7 +257,7 @@ body{
 }
 
 .profile-btn-area > button{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
     border: 0;
 }

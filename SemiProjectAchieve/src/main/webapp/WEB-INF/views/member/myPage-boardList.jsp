@@ -319,7 +319,7 @@
         
   
 
-    <script src="${contextPath}/resources/js/member/myPage-boardList.js""></script>
+    <script src="${contextPath}/resources/js/member/myPage-boardList.js"></script>
 
 </body>
 </html>

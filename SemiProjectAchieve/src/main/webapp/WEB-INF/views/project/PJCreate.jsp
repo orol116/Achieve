@@ -11,12 +11,10 @@
 
     <!-- 헤더, 푸터 위한 main.css -->
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
-
     <link rel="stylesheet" href="${contextPath}/resources/css/project-create.css">
 
-    <!-- <link rel="stylesheet" href="${contextPath}/resources/css/FAQ.css"> -->
 
-    <!-- 폰트 -->
+    <!-- 글꼴 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
@@ -25,13 +23,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="https://kit.fontawesome.com/a2e8ca0ae3.js" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
-    <!-- 헤더 -->
-    <jsp:include page="/WEB-INF/views/common/header.jsp" />
-
-
     <main>
+        
+        <!-- 헤더 -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+
         <!-- 프로젝트 생성 페이지 -->
         <section class="classPage-content">
             

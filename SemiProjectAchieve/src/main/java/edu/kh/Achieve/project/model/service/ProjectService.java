@@ -205,11 +205,11 @@ public class ProjectService {
 	 * @return list
 	 * @throws Exception
 	 */
-	public List<ProjectSign> selectPJSign() throws Exception {
+	public List<ProjectSign> selectPJSign(int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
 		 
-		List<ProjectSign> list = dao.selectPJSign(conn);
+		List<ProjectSign> list = dao.selectPJSign(conn, projectNo);
 		
 		close(conn);
 		
@@ -225,11 +225,11 @@ public class ProjectService {
 	 * @return count
 	 * @throws Exception
 	 */
-	public int selectPJ() throws Exception {
+	public int selectPJ(int projectNo) throws Exception {
 		
 		Connection conn = getConnection();
 		
-		int count = dao.selectPJ(conn);
+		int count = dao.selectPJ(conn, projectNo);
 		
 		close(conn);
 		

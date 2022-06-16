@@ -18,6 +18,11 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/FAQ.css">
 
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hahmlet:wght@100&family=Song+Myung&display=swap" rel="stylesheet">
+
 
     </style>
 
@@ -37,10 +42,15 @@
                         프로젝트 설정 
                     </div>
 
+                        <div name="setting-body" class="setting-body">
+                            참여자 관리 (가입) <button id="member-pass"
+                            onclick='location.href="${contextPath}/project/PJSign?projectNo=${param.projectNo}"'>변경</button>
+                        </div>
+
                     
                         <div name="setting-body" class="setting-body">
                             참여자 관리 (차단, 탈퇴) <button id="member-control"
-                            location.href="../member/dropMember-list.jsp">변경</button>
+                            onclick='location.href="${contextPath}/member/dropMember?projectNo=${param.projectNo}"'>변경</button>
                         </div>
                   
 
@@ -90,7 +100,7 @@
                         <textarea placeholder="바꿀 소개를 작성하세요." id="projectIntro">개발2팀입니당</textarea>
 
                         <div name="setting-body" class="setting-body">
-                            공지 작성 <button id="write-notice"><a href="${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1">작성</a></button>
+                            공지 작성 <button id="write-notice" onclick="location.href='${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1'">작성</button>
                         </div>
 
                 </div>
