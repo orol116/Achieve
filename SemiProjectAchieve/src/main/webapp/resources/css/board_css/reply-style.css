@@ -50,7 +50,7 @@
 
     font-weight: bold;
     color: white;
-    background-color: #455ba8;
+    background-color: #0e194e;
     border: 0;
 
     border-radius: 3px;
@@ -60,8 +60,8 @@
 /* 버튼 hover */
 .reply-btn-area > button:hover{
     background-color: white;
-    border: 2px solid #455ba8;
-    color: #455ba8;
+    border: 2px solid #0e194e;
+    color: #0e194e;
 }
 
 /* 댓글 작성 영역 */
@@ -83,7 +83,7 @@
 #addReply{
     flex-basis: 8%;
     font-weight: bold;
-    background-color: #455ba8;
+    background-color: #0e194e;
     color: white;
     cursor: pointer;
     border: 0;
@@ -91,8 +91,8 @@
 
 #addReply:hover{
     background-color: white;
-    color: #455ba8;
-    border: 2px solid #455ba8;
+    color: #0e194e;
+    border: 2px solid #0e194e;
 }
 
 

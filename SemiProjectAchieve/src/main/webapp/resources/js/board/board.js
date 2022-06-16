@@ -238,10 +238,11 @@ document.getElementById("approveBtn").addEventListener("click", function(){
  
             if(result == 1){
                 
-                alert("신청했습니다.");
+                alert("가입 신청에 성공했습니다.");
+                location.href = contextPath + "/project/PJ/PJSearch";
  
             }else{
-                alert("실패.");
+                alert("가입 신청 실패");
  
             }
  
