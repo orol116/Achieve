@@ -4,6 +4,32 @@ const regExp = /^[a-zA-Z0-9가-힣-_/]{2,20}/;
 
 const nameChangeBtn = document.getElementById("nameChangeBtn");
 
+function PJDupCheck(){
+
+    $.ajax({
+        url : "PJDupCheck",
+        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo},
+        type : "GET",
+        success : function(result){
+    
+            if(result == 1){
+                
+                alert("중복된 이름입니다.");
+
+                return false;
+    
+            }
+    
+        },
+        error : function(){
+            console.log("에러발생");
+        }
+    });
+
+}  
+
+
+
 
 // 프로젝트 이름변경 확인 O // 유효성검사 추가 중복되는 이름 거르기
 nameChangeBtn.addEventListener("click", function(){
@@ -16,6 +42,36 @@ nameChangeBtn.addEventListener("click", function(){
 
    nameChangeBtn.addEventListener("click", function(){
 
+    PJDupCheck();
+
+    $.ajax({  
+        url : "PJNameChange",
+        data : {"projectName" : PJNameChange.value, "projectNo" : projectNo},
+        type : "GET",
+        success : function(result){
+    
+            if(result == 1){
+                
+                alert("프로젝트 이름이 변경되었습니다.");
+    
+            }else{
+                alert("실패.");
+
+            }
+    
+        },
+        error : function(){
+            console.log("에러발생");
+        }
+    });
+
+    
+
+
+
+
+
+ 
 
 
     console.log(PJNameChange.value);
@@ -42,24 +98,109 @@ document.getElementById("text-all").addEventListener("click", function(){
         alert("전송할 내용이 없습니다!");
     }
 
+    if(sendAll.value != ""){
+
+        $.ajax({
+            url : "sendAllText",
+            data : {"boardContent" : sendAll.value},
+            type : "GET",
+            success : function(result){
+
+                if(result == 1){
+                    console.log("성공");  
+                }else{
+                    console.log("실패");
+                }
+                
+                
+    
+            },
+            error : function(){
+                console.log("에러발생");
+            }
+        });
+
+
+    }
+
 });
 
+
+
+
+
 // 소개 변경 확인 소개글 지우기 확인
-document.getElementById("intro-edit").addEventListener("click", function(){
+document.getElementById("IntroEditBtn").addEventListener("click", function(){
 
-    const introText = document.getElementById("intro-text");
+    const projectIntro = document.getElementById("projectIntro");
 
-    console.log(introText.value);
+  
 
-    if(introText.value == ""){
+    if(projectIntro.value == ""){
     var result = confirm("소개글을 모두 지우시겠습니까?");
 
     if(result){
-        introText.value == "";
+        projectIntro.value = "no Intro";
+
+ 
+        console.log("값" + projectIntro.value);
+
+        $.ajax({
+            url : "IntroEdit",
+            data : {"projectIntro" : projectIntro.value, "projectNo" : projectNo},
+            type : "GET",
+            success : function(result){
+
+                if(result == 1){
+                    console.log("성공");  
+                }else{
+                    console.log("실패");
+                }
+                
+                
+    
+            },
+            error : function(){
+                console.log("에러발생");
+            }
+        });
         
-    }else{
-        return;
     }
+
+
+    }
+
+
+    if(projectIntro.value !== ""){
+
+
+        console.log( "글 있을 때" + projectIntro.value);
+
+        console.log("글있음");
+
+
+        $.ajax({
+            url : "IntroEdit",
+            data : {"projectIntro" : projectIntro.value},
+            type : "GET",
+            success : function(result){
+
+                if(result == 1){
+                    console.log("성공");  
+                }else{
+                    console.log("실패");
+                }
+                
+                
+    
+            },
+            error : function(){
+                console.log("에러발생");
+            }
+        });
+
+
+        
 
 
     }
@@ -70,43 +211,42 @@ document.getElementById("intro-edit").addEventListener("click", function(){
 
 
 
-// 공개 여부 변경 확인
-const selectPublic = document.getElementById("project-public");
 
-const showValue = (target) =>{
+
+ const showValue = (target) =>{
 
     console.log(target.value);
 
-    alert(target.value + "로 변경됩니다.");
+    if(target.value =="Y"){
 
-    const openStatus = (target.options[target.selectedIndex].text);
-
-    console.log("openStatus" + openStatus);
-
-
-    if(openStatus == "공개"){
-
-        openStatus.value == "Y";
+        alert("공개로 변경됩니다.");
     }
 
-    if(openStatus == "클래스명 공개"){
+    if(target.value =="N"){
 
-        openStatus.value == "P"
+        alert("비공개로 변경됩니다.");
     }
 
-    if(openStatus == "비공개"){
+    if(target.value =="P"){
 
-        openStatus.value == "N"
-
+        alert("클래스명 공개로 변경됩니다.");
     }
+
+    
+
+    
 
     $.ajax({
         url : "openStatusChange",
-        data : {"openStatus" : openStatus.value},
+        data : {"openStatus" : target.value},
         type : "GET",
-        success : function(){
+        success : function(result){
 
-            alert(target.value + "로 변경됩니다.");
+            if(result == 1){
+                console.log("성공");  
+            }else{
+                console.log("실패");
+            }
 
         },
         error : function(){
@@ -114,15 +254,5 @@ const showValue = (target) =>{
         }
     });
 
-};
-
-// 
-
-
-
-
-
-
-
-
+}; 
 

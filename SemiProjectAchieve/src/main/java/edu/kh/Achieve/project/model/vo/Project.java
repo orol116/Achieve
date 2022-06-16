@@ -19,6 +19,8 @@ public class Project {
 	private String openStatus;
 	private String projectIntro;
 	
+	private int memberNo;
+	
 	private String projectManagerNickname;
 	
 	private String participateStatus; // 특정 회원의 프로젝트 가입 여부 

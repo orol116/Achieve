@@ -24,7 +24,11 @@ main{
 }
 
 .content-1{flex-basis: 25%;}
-.content-2{flex-basis: 75%;}
+.content-2{
+    flex-basis: 75%;
+    margin: 5px;
+}
+
 
 /* login 스타일 */
 form[name="login-form"]{
@@ -276,16 +280,17 @@ article > button{
 
 /* 참여중인 프로젝트 */
 .project-join{
-    width: 33%;
+    width: 30%;
     height: 200px;
 
     display: inline-block;
 
     margin: 10px ;
+    /* background-color: RGB(245,245,245); */
     background-color: white;
 
     border: 3px solid rgb(14, 25, 78);
-    border-radius: 10%;
+    border-radius: 3%;
 }
 
 .project-join h2{
