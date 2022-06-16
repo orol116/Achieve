@@ -167,6 +167,9 @@
         const loginMemberNo = "${loginMember.memberNo}";
         // -> 로그인 되어있으면 : "10"
         // -> 로그인 안되어있으면 : ""; (빈문자열)
+
+
+        const projectNo = "${param.projectNo}";
         
 
     </script>

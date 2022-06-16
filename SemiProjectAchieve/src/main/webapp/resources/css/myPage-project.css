@@ -28,7 +28,7 @@ myPage-row{
 }
 
 .list-table > thead>tr>th{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     color: white;
 }
 /* 작성글/ 작성댓글/ 가입 등등 */
@@ -46,7 +46,7 @@ div.myPage-third1>a{
 /* 세번째 a태그  */
 div.myPage-third1>a:nth-of-type(3){
    text-decoration: underline ;
-    color : #0e194e;
+    color : rgb(14, 25, 78);
     /* padding-bottom: 5px; */
     font-weight: 700;
 }
@@ -67,7 +67,7 @@ div.myPage-third2>a{
 
 .board-list a:hover{
     text-decoration: underline;
-    color: #0e194e;
+    color: rgb(14, 25, 78);
 }
 
 
@@ -153,8 +153,8 @@ td#reply-list-part {
 
     text-decoration:none;
     background-color: white;
-    border: 1px solid #0e194e;
-    color:  #0e194e;
+    border: 1px solid rgb(14, 25, 78);
+    color:  rgb(14, 25, 78);
     text-align: center;
     border-radius: 5px;
     font-weight: bold;
@@ -165,7 +165,7 @@ td#reply-list-part {
     align-items: center;
 }
 .btn:hover{
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
     border: 2px solid white;
     color:  white;
 
@@ -200,7 +200,7 @@ td#reply-list-part {
 
 /* 현재 페이지 번호 */
 .pagination .current{
-    background-color: #0e194e ;
+    background-color: rgb(14, 25, 78);
     border-radius: 20%;
     color: white;
     font-weight: bold;

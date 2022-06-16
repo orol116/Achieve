@@ -54,7 +54,7 @@
     color: #fff;
 }
 .menu ul li:hover, .menu > label:hover {
-    background-color: #455ba8;
+    background-color: rgb(14, 25, 78);
     color: #fff;
     border-radius: 10px;
 }

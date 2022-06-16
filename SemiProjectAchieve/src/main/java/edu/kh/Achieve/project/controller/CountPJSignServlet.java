@@ -16,11 +16,15 @@ public class CountPJSignServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		int projectNo = Integer.parseInt(req.getParameter("projectNo"));
+		
+		
+		
 		try {
 			
 			ProjectService service = new ProjectService();
 			
-			int count = service.selectPJ();
+			int count = service.selectPJ(projectNo);
 			
 			resp.getWriter().print(count); ;
 			

@@ -23,13 +23,14 @@ public class SelectPJSignServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		int projectNo = Integer.parseInt(req.getParameter("projectNo"));
 
 		
 		try {
 			
 			ProjectService service = new ProjectService();
 			
-			List<ProjectSign> list = service.selectPJSign();
+			List<ProjectSign> list = service.selectPJSign(projectNo);
 			
 			new Gson().toJson( list, resp.getWriter() );
 			
