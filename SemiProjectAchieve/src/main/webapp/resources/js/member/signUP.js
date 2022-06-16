@@ -53,7 +53,6 @@ memberEmail.addEventListener("input", function(){
                 // 비동기 통신(ajax)가 오류 없이 요청/응답을 성공한 경우
 
                 // 매개변수 result : servlet에서 출력된 result 값이 담겨있다.
-                console.log(result);
 
                 if(result == 1){ // 중복 O
 
@@ -261,7 +260,6 @@ for(let i of memberBirth){
             checkObj.memberBirth = false;
             return;
         }
-        console.log(i.value);
     
 
         const regExp =/^[0-9]{1,4}$/;
