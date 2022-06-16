@@ -63,7 +63,7 @@ public class BoardWriteController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		
 		try {
 
 			int maxSize = 1024 * 1024 * 500; // 500MB 제한 (수정 가능)
@@ -135,6 +135,7 @@ public class BoardWriteController extends HttpServlet {
 					path = "write?mode=" + mode + "&type=" + boardCode + "&projectNo=" + projectNo;
 				}
 				
+				System.out.println(path);
 				resp.sendRedirect(path);
 				
 			}

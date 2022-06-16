@@ -7,7 +7,7 @@
 	<entry key="createProject">
 	INSERT INTO PROJECT
 	VALUES(SEQ_PROJECT_NO.NEXTVAL, ? 
-	, ?, ? , ? , ? , ?)
+	, ? , ? , ? , ?)
 	</entry>
 	
 	
@@ -133,23 +133,21 @@
 	 WHERE PROJECT_NO = 1
 
 	
-	
-	
-	
 	</entry>
+	
+	
 	
 	<!--  PJ 가입승인 총인원 불러오기 -->
 	<entry key="selectPJ">
 	 SELECT COUNT(*)
 	 FROM PROJECT_SIGN
 	 WHERE PROJECT_NO = 1
-	
-	
-	
-	
+
 	</entry>
 	
 	
+	
+	<!-- 관리자가 가입 승인 -->
 	<entry key="accountMember">
 	 INSERT INTO PROJECT_MEMBER
  	 VALUES(?, ?)
@@ -157,6 +155,9 @@
 	
 	
 	</entry>
+	
+	
+	
 	
 	
 
