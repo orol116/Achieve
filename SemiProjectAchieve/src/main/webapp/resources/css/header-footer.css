@@ -14,6 +14,10 @@ main{
     margin: auto;
 }
 
+button{
+    border-radius: 5px;
+}
+
 /* header */
 header{
     height: 200px;
@@ -89,7 +93,7 @@ header>section:nth-of-type(2){
 /* footer */
 footer{
     height: 200px;
-    background-color: #0e194e;
+    background-color: rgb(14, 25, 78);
 
     opacity: 0.85;
 
