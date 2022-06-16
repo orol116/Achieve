@@ -81,8 +81,8 @@ function selectAll(){ // 회원 전체 조회 함수
                                     dropBtn.classList.add("drop");
                                     backBtn.classList.remove("back");
                                     backBtn.classList.add("none");
+                                    dropBtn.classList.remove("none");
                                     
-                                    // dropBtn.innerText = "탈퇴";
 
                         
                                 }else{
@@ -115,8 +115,8 @@ function selectAll(){ // 회원 전체 조회 함수
                                     backBtn.classList.add("back");
                                     dropBtn.classList.remove("drop");
                                     dropBtn.classList.add("none");
+                                    backBtn.classList.remove("none");
 
-                                    // backBtn.innerText = "가입 중";
                                     
 
                                 }else{
@@ -168,7 +168,7 @@ function selectAllCount(){
             memberCount.innerHTML ="";
 
             const h4 = document.createElement("h4");
-            h4.innerText = "클래스 구성원"
+            h4.innerText = "프로젝트 구성원"
             
             const span = document.createElement("span");
             span.innerText = "총 " + count + "명";
