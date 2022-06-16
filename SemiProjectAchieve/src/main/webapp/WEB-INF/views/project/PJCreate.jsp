@@ -94,7 +94,7 @@
 
 
                             <input type="radio" name="openStatus" id="public-class" value="Y">
-                            <label for="private-class">공개 클래스</label><br>
+                            <label for="public-class">공개 클래스</label><br>
                             <p id="select-text"> 누구든 클래스를 검색해 찾을 수 있고 </p>
                             <p id="select-text">클래스 소개와 게시글을 볼 수 있습니다.</p>
 
