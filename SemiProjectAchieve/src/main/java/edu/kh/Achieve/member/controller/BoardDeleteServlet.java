@@ -23,7 +23,7 @@ public class BoardDeleteServlet extends HttpServlet{
 			// delete?memNo&type=1&deleteNo=1,2,3
 			
 			int type =  Integer.parseInt(req.getParameter("type"));
-			int memNo = ((int)session.getAttribute("memNo"));
+			int memNo = ((int)session.getAttribute("memberNo"));
 			String deleteNo = req.getParameter("deleteNo");			
 			
 			System.out.println(deleteNo);
