@@ -79,7 +79,7 @@
                     <!-- 버튼 영역 -->
                     <div class="board-btn-area">
                         <button type="submit" id="writebtn">등록</button>
-                        <button type="button" id="goToListBtn">목록으로</button>
+                        <button type="button" id="goToListBtn" onc>목록으로</button>
                     </div>
 
                 </div>
