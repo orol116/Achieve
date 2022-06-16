@@ -212,7 +212,11 @@ article > button{
     width: 64px;
     height: 64px;
 
+
+
+
     border-radius: 50%;
+
 }
 
 
@@ -261,51 +265,32 @@ article > button{
     padding: 10px 30px;
 }
 
-/* 상단 추천 공개 프로젝트 */
-#top-area{
-    width: 100%;
-    height: 120px;
-    background-color: rgba(14, 25, 78, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-/* 추천 공개 프로젝트 세부 */
-.top-class{
-    height: 85%;
-    width: 25%;
-    background-color: aliceblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 3%;
-}
-
-/* 추천 공개 프로젝트 세부 프로젝트 명 부분 */
-.top-class > a{
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(14, 25, 78);
-}
 
 /* 참여중인 프로젝트 */
 .project-join{
-    height: 70px;
-    width: auto;
-    margin: 10px 0;
+    width: 33%;
+    height: 200px;
+
+    display: inline-block;
+
+    margin: 10px ;
     background-color: #eee;
 }
 
 .project-join h2{
-    padding: 20px 0 0;
+    text-align: center;
 }
 
-.project-join h2 > a{
+.project-join a{
     text-decoration: none;
     color: black;
+}
+
+.project-join h4{
+    text-align: left;
+    color: black;
+
+    padding: 0 15px;
 }
 
 
