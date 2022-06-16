@@ -18,7 +18,7 @@ main{
 header{
     height: 200px;
     display: flex;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgb(14, 25, 78);
 }
 
 header>section:nth-child(1){flex-basis: 20%;}
