@@ -86,7 +86,7 @@ document.getElementById("text-all").addEventListener("click", function(){
 
     console.log(projectNo);
 
-/*     const sendAll = document.getElementById("sendAll-text");
+    const sendAll = document.getElementById("sendAll-text");
 
     console.log(sendAll.value);
 
@@ -98,18 +98,10 @@ document.getElementById("text-all").addEventListener("click", function(){
 
         $.ajax({
             url : "sendAllText",
-            data : {"boardContent" : sendAll.value},
+            data : {"boardContent" : sendAll.value, "projectNo" : projectNo, "loginMemberNo" : loginMemberNo},
             type : "GET",
             success : function(result){
-
-                if(result == 1){
-                    console.log("성공");  
-                }else{
-                    console.log("실패");
-                }
-                
-                
-    
+                alert("전체 알림 발송이 완료되었습니다.");
             },
             error : function(){
                 console.log("에러발생");
@@ -117,7 +109,7 @@ document.getElementById("text-all").addEventListener("click", function(){
         });
 
 
-    } */
+    } 
 
 });
 
