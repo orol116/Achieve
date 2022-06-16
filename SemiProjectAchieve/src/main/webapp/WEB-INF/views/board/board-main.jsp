@@ -80,7 +80,9 @@
         
                             <div class="btn-area">
                                 <c:if test="${param.type != 1 && param.type != 2}">
-                                    <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&projectNo=${param.projectNo}&cp=${param.cp}'">글쓰기</button>
+                                    <c:if test="${! (projectAdminNo != memberNo && param.type == 4)}">
+                                        <button id="insertBtn" onclick="location.href='write?mode=insert&type=${param.type}&projectNo=${param.projectNo}&cp=${param.cp}'">글쓰기</button>
+                                    </c:if>
                                 </c:if>
                             </div>
         
