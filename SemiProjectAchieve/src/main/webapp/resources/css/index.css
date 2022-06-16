@@ -270,13 +270,13 @@ article > button{
 
 /* content-2 */
 .content-2{
-    padding: 10px 30px;
+    padding: 20px 30px;
 }
 
 
 /* 참여중인 프로젝트 */
 .project-join{
-    width: 33%;
+    width: 30%;
     height: 200px;
 
     display: inline-block;
