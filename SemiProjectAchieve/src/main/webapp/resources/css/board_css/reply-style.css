@@ -103,3 +103,7 @@
     height: 90px;
     resize: none;
 }
+
+.reply-writer img{
+    border-radius: 50%;
+}
