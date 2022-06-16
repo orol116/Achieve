@@ -172,8 +172,8 @@
                             </div>
     
                             <div class="project-signup-btn">
-                                <button>취소</button>
-                                <button>가입신청</button>
+                                <button id="cancelBtn" type="button" onclick = 'location.href = "${contextPath}" '>취소</button>
+                                <button id="approveBtn" type="button">가입신청</button>
                             </div>
     
                         </div>
@@ -211,7 +211,34 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    <script> 
+        // 댓글 관련 JS 코드에 필요한 값을 전역 변수로 선언
+
+        // jsp 파일 : html, css, js, el, jstl 사용가능
+        // js 파일  : js 만 사용 가능. 
+        // -> 그렇기에 el을 사용하려면 여기 jsp에서 사용해야된다. 
+
+        //** JS 코드에서 EL/JSTl을 작성하게 된다면 반드시 ""를 양쪽에 추가해야된다.**
+
+        // 최상위 주소
+        const contextPath = "${contextPath}"; 
+
+        // 게시글 번호
+        const boardNo = "${detail.boardNo}"; // "500"
+
+        // 로그인한 회원 번호
+        const loginMemberNo = "${loginMember.memberNo}";
+        // -> 로그인 되어있으면 : "10"
+        // -> 로그인 안되어있으면 : ""; (빈문자열)
+
+        const projectNo = "${param.projectNo}";
+        
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/board/board.js"></script>
+    
     
 </body>
 </html>
