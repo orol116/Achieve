@@ -238,7 +238,7 @@ document.getElementById("approveBtn").addEventListener("click", function(){
             if(result == 1){
                 
                 alert("가입 신청에 성공했습니다.");
-                location.href = contextPath + "/project/PJ/PJSearch";
+                location.href = contextPath + "/project/PJ/PJSearch/list";
  
             }else{
                 alert("가입 신청 실패");

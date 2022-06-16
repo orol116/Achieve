@@ -12,11 +12,10 @@
     <!-- 헤더, 푸터 위한 main.css -->
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
     
-    <link rel="stylesheet" href="../resources/css/project-settings.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/project-settings.css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/FAQ.css">
 
     <!-- 글꼴 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,14 +28,16 @@
 </head>
 <body>
     <main>  
+        
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-
 		
+        <div class="setting-main">
 
-        <div class="body">
-            
-                <div class="setting-main">
+            <div name="setting-header" id="infor-first">
+                프로젝트 설정 
+            </div>
+
 
                     <div name="setting-header" id="infor-first">
                         프로젝트 설정 
@@ -55,44 +56,53 @@
                   
 
 
-                    
-                        <div name="setting-body" class="setting-body">
-                            프로젝트 공개
+
+            
+                <div name="setting-body" class="setting-body">
+                    프로젝트 공개
+                
+                    <select name="project-public" id="project-public" onchange="showValue(this)">
+                        <option value="Y">공개</option>
+                        <option value="P">클래스명 공개</option>
+                        <option value="N">비공개</option>
+
+                    </select>
                         
-                            <select name="project-public" id="project-public" onchange="showValue(this)">
-                                <option value="Y">공개</option>
-                                <option value="P">클래스명 공개</option>
-                                <option value="N">비공개</option>
+                </div>
+            
 
-                            </select>
-                                
-                        </div>
-                    
+            
+                <div name="setting-body" class="setting-body">
+                        
 
-                    
-                        <div name="setting-body" class="setting-body">
-                                
+                    클래스 이름 변경 <button id="nameChangeBtn">변경</button>
+                    <input type="text" id="PJNameChange" name="PJNameChange"
+                        maxlength="20" autocomplete="off">
+                </div>
+            
 
-                            클래스 이름 변경 <button id="nameChangeBtn">변경</button>
-                            <input type="text" id="PJNameChange" name="PJNameChange"
-                             maxlength="20" autocomplete="off">
-                        </div>
-                    
+            
+                <div name="setting-body" class="setting-body">
+                    과제 관리 <button id="homework-control">변경</button>
+                </div>
+            
 
-                    
-                        <div name="setting-body" class="setting-body">
-                            과제 관리 <button id="homework-control">변경</button>
-                        </div>
-                    
-
-                    
+            
+                <div name="setting-body" class="setting-body">
+                    전체 쪽지 발송 <button id="text-all">발송</button>
+                </div>
+               
                         <div name="setting-body" class="setting-body">
                             전체 알림 발송 <button id="text-all">발송</button>
                         </div>
                         <textarea placeholder="전체 알림은 여기에 작성하세요." id="sendAll-text"></textarea>
                     
 
+            
+                <div name="setting-body" class="setting-body">
+                    소개 수정 <button id="IntroEditBtn">수정</button>
                     
+
                         <div name="setting-body" class="setting-body">
                             소개 수정 <button id="IntroEditBtn">수정</button>
                             
@@ -103,9 +113,14 @@
                             공지 작성 <button id="write-notice" onclick="location.href='${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1'">작성</button>
                         </div>
 
+
+                <div name="setting-body" class="setting-body">
+                    공지 작성 <button id="write-notice"><a href="${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1">작성</a></button>
                 </div>
-           
+
         </div>
+           
+    
 
         
 
