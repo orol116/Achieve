@@ -78,7 +78,7 @@ function selectAllCount(){
             memberCount.innerHTML ="";
 
             const h4 = document.createElement("h4");
-            h4.innerText = "클래스 구성원"
+            h4.innerText = "프로젝트 구성원"
             
             const span = document.createElement("span");
             span.innerText = "총 " + count + "명";

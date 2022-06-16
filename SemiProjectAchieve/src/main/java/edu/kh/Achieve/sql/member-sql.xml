@@ -134,6 +134,12 @@
 		AND SECESSION_FL = 'N'
 	</entry>
 	
+	<entry key="managerSelect">
+	SELECT MEMBER_NO
+	FROM PROJECT
+	WHERE PROJECT_NO= ?
+	</entry>
+	
 	
 	
 	

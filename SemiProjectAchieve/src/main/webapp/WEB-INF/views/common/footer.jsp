@@ -14,8 +14,9 @@
                 <a href="${contextPath}/FAQ/personal/info">개인정보처리방침</a>
             </article>
             
-            
-            Copyright &copy; KH Information Educational Institute A-class DevTeam2
+            <div>
+                Copyright &copy; KH Information Educational Institute A-class DevTeam2
+            </div>
         </p>
     </footer>
 
