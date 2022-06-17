@@ -159,7 +159,7 @@ public class CheckBoardService {
 		
 		map.put("memNick", memNick);
 		map.put("pImage", pImage);
-//		map.put("pagination", pagination);
+		map.put("pagination", pagination);
 		map.put("projectList", projectList);
 		map.put("listProjectCount", listProjectCount);
 		

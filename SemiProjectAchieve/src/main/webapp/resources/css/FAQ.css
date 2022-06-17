@@ -1,3 +1,10 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
+
+
 .content{
     width: auto;
     min-height: 900px;
