@@ -145,7 +145,7 @@
                         
                         <c:when test="${empty sessionScope.loginMember}">
                             <!-- 하단 어취브 홍보 부분 -->
-                            <img src="${contextPath}/resources/images/main.png" id="main-lobby">
+                            <img src="${contextPath}/resources/images/main(2).png" id="main-lobby">
     
                         </c:when>
 
