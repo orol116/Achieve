@@ -234,7 +234,7 @@
                                                                     <!-- http://localhost:10005/SemiProjectAchieve/board/main?type=1&projectNo=2&cp=1 -->
                                                                     <!-- /board/main?type=0&projectNo=3&cp=1 -->
                                                                     <a href="${contextPath}/board/main?type=1&projectNo=${project.projectNo}&cp=1" >
-                                                                        <div class="inner_list">${project.projectNM}<br></div>
+                                                                       <div class="inner_list">${project.projectNM}<br></div>
                                                                     </a>
                                                                 </td>
                                                             </tr>

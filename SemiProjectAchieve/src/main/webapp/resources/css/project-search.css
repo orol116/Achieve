@@ -155,7 +155,7 @@
 /* 현제 페이지 번호 */
 .pagination .current{
     background-color: rgb(14, 25, 78);
-    border-radius: 50%;
+    border-radius: 20%;
     color: white;
     font-weight: bold ;
 }

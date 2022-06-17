@@ -325,8 +325,8 @@ public class CheckBoardDAO {
 			String sql = prop.getProperty("getProjectListCount");
 			
 			pstmt= conn.prepareStatement(sql);
-			
-			rs=pstmt.executeQuery();
+			pstmt.setInt(1, memNo);			
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				listProjectCount = rs.getInt(1);
