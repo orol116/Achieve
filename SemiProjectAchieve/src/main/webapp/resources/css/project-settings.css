@@ -102,6 +102,12 @@ button:hover a{
     font-weight: 700;
 }
 
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}
+
 
 
 

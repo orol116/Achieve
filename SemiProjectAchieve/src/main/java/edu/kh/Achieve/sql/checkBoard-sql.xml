@@ -82,20 +82,24 @@
 	<entry key ="getProjectListCount">
 		SELECT COUNT(*) FROM PROJECT
 		WHERE OPEN_ST = 'Y'
-		AND MEMBER_NO=?
+		AND MEMBER_NO = ?
 	</entry>
 	
 	<!--  가입한 프로젝트 목록 조회 -->
 	<entry key="selectProjectList">
-	SELECT * FROM(
-		SELECT ROWNUM RNUM, A.* FROM (
-			SELECT PROJECT_NO, PROJECT_NM
-			FROM PROJECT
-			WHERE MEMBER_NO = ?
-			AND OPEN_ST = 'Y') A
-			ORDER BY PROJECT_NO DESC
-		)
-	WHERE RNUM BETWEEN ? AND ?
+		SELECT * FROM(
+			SELECT ROWNUM RNUM, A.* FROM (
+				SELECT PROJECT_NO, PROJECT_NM
+				FROM PROJECT
+				WHERE PROJECT_NO IN(
+					SELECT PROJECT_NO
+					FROM PROJECT_MEMBER
+					WHERE MEMBER_NO =?
+				)
+				) A
+				ORDER BY PROJECT_NO DESC
+			)
+		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 

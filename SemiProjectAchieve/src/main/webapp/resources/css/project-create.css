@@ -118,6 +118,21 @@
     cursor: pointer;
 }
 
+/* *{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+} */
+
+#projectQuota{
+margin-bottom: 35px;
+
+}
+
+#projectName{
+    margin-bottom: 35px;
+}
+
 
 
 
