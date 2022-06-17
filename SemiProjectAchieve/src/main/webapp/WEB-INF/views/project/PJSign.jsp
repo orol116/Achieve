@@ -9,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>구성원 조회 페이지</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/member-list-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/sidebar.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
+     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
     <!-- 글꼴 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +25,6 @@
     
         <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 
-        <jsp:include page="/WEB-INF/views/common/sideMenu.jsp"></jsp:include>
 
         <section id="board-member">
 
@@ -39,103 +37,7 @@
     
     
                 <div id="member-list">
-<!-- 
-                    <div class="manager-list">
-                        <span class="member-status">프로젝트 관리자</span> <br>
-
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            
-                            <div class="member-status-name"> 
-                                <span class="status">관리자</span> <br>
-                                <span class="name">관리자</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="member-list">
-                        <span class="member-status">프로젝트 팀원</span> <br>
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="member-list">
-                        <div class="member-img">
-                            <i class="fa-solid fa-circle fa-2x"></i>
-                            <div class="member-status-name"> 
-                                <span class="status">팀원</span> <br>
-                                <span class="name">팀원1</span>
-                            </div>
-                        </div>
-                    </div>
-
-                     -->
-
+                   
     
                 </div>
 
