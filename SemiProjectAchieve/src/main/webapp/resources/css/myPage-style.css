@@ -152,15 +152,17 @@ body{
 
 /* 버튼 영역 */
 .secession-btn-area{
-    margin: 50px 0;
-
-    display: inline-block;
-    
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-evenly;
 }
+
+    
+
 
 /* 회원 탈퇴 취소 버튼 */
 #secession-cancel-btn{
-    width: 180px;
+    width: 100px;
     height: 40px;
     margin-right: 130px;
 
@@ -179,7 +181,7 @@ body{
 
 /* 회원 탈퇴 버튼 */
 #secession-confirm-btn{
-    width: 180px;
+    width: 100px;
     height: 40px;
 
     font-weight: bold;

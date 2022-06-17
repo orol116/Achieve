@@ -13,8 +13,7 @@
 <c:set var = "listBoardCount" value="${map.listBoardCount}"/>
 <c:set var = "listReplyCount" value="${map.listReplyCount}"/>
 <c:set var = "listProjectCount" value="${map.listProjectCount}"/>
-<c:set var = "Btype" value="${map.type}"/>
-<c:set var = "cp" value="${map.cp}"/>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,12 +26,12 @@
     <!-- header-footer -->
     <link rel="stylesheet" href="${contextPath}/resources/css/header-footer.css">
 
+    <!-- main -->
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-board-main.css">
+    
     <!-- sidebar -->
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage-sidebar.css">
 
-
-    <!-- main -->
-    <link rel="stylesheet" href="${contextPath}/resources/css/myPage-board-main.css">
 
     <!-- 사이드바 아이콘 사용을 위한 링크 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -79,41 +78,43 @@
          
             <!-- 오른쪽 마이페이지 주요 내용 부분 -->
             <section class="myPage-main">
-                <div class="myPage-first">
-                    <a href="${contextPath}/member/myPage/profile"></a>
-                    <c:choose>
-                        <c:when test ="${!empty pImage}">
-                            <img src="${contextPath}${pImage}" id="profile-logo"></a>
-                        </c:when>
-                   
-                        <c:otherwise>
-                        <img src="${contextPath}/resources/images/user.png" id="profile-logo"></a>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-
-                <div class="myPage-second">
-                    <span class="myPage-nickname">${memNick}</span>
-                    <span class="myPage-grade"></span>
-                    <div class="myPage-info">
-                        <c:if test="${param.type==1}"> 
-                            <span class="myPage-words">작성한 글 : ${listBoardCount}</span>  
-                        </c:if>  
-                        <c:if test="${param.type==2}"> 
-                            <span class="myPage-reply">작성한 댓글 : ${listReplyCount}</span>
-                        </c:if>
+                <div id="myPage-detail">
+                    <div class="myPage-first">
+                        <a href="${contextPath}/member/myPage/profile"></a>
+                        <c:choose>
+                            <c:when test ="${!empty pImage}">
+                                <img src="${contextPath}${pImage}" id="profile-logo"></a>
+                            </c:when>
+                    
+                            <c:otherwise>
+                            <img src="${contextPath}/resources/images/user.png" id="profile-logo"></a>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
-                </div> 
 
-                <div class="myPage-third">
-                    <div class="myPage-third1">
-                        <a href="${contextPath}/member/List?memNo=${memNo}&type=1">작성글</a>
-                        <a href="${contextPath}/member/List?memNo=${memNo}&type=2">작성댓글</a>
-                        <a href="${contextPath}/member/List?memNo=${memNo}&type=3">가입한 프로젝트 보기</a>
-                    </div>
-                      
+                    <div class="myPage-second">
+                        <span class="myPage-nickname">${memNick}</span>
+                        <span class="myPage-grade"></span>
+                        <div class="myPage-info">
+                            <c:if test="${param.type==1}"> 
+                                <span class="myPage-words">작성한 글 : ${listBoardCount}</span>  
+                            </c:if>  
+                            <c:if test="${param.type==2}"> 
+                                <span class="myPage-reply">작성한 댓글 : ${listReplyCount}</span>
+                            </c:if>
+                        </div>
+                    </div> 
+
+                    <div class="myPage-third">
+                        <div class="myPage-third1">
+                            <a href="${contextPath}/member/List?memNo=${memNo}&type=1">작성글</a>
+                            <a href="${contextPath}/member/List?memNo=${memNo}&type=2">작성댓글</a>
+                            <a href="${contextPath}/member/List?memNo=${memNo}&type=3">가입한 프로젝트 보기</a>
+                        </div>
                         
-                </div>      
+                            
+                    </div>      
+                </div>
                 <div class="list-wrapper">
 
                     <form action="delete" name="list-form" onsubmit="return ckBox()">
@@ -270,6 +271,7 @@
                         </div>
                     </form>
                 </div>
+                
     
                 
 
