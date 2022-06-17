@@ -112,7 +112,10 @@
                                                                     <!-- detail?type=1&cp=3&no=100 -->
                                                                     <!-- detail?no=1522&type=2 -->
                     <button id="updateBtn" onclick="location.href='write?mode=update&type=${param.type}&projectNo=${param.projectNo}&no=${detail.boardNo}&cp=${cp}'">수정</button>
-                    <button id="deleteBtn">삭제</button>
+                    <c:if test="${!empty param.type}">
+                        <button id="deleteBtn">삭제</button>
+                    </c:if>
+                    
                 </c:if>
 
                 <!-- onclick="history.back();" : 뒤로 가기 -->

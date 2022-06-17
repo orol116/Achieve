@@ -4,8 +4,8 @@
     display: flex;
 }
 
+
 #board-member{
-    width: 700px;
     height: 700px;
     display: flex;
     align-items: center;

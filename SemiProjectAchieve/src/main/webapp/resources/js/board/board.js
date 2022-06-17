@@ -84,6 +84,7 @@ const manager = document.getElementById("manager");
 
             // url에 쿼리스트링 추가
             url+= no + projectNo+ type; // delete?no=1508&type=1
+          
 
             if(confirm("정말로 삭제하시겠습니까?")){
                 location.href= url; // get 방식으로 url에 요청
