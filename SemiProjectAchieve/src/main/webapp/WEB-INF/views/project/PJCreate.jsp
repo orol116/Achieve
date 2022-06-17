@@ -35,7 +35,7 @@
         <!-- 프로젝트 생성 페이지 -->
         <section class="classPage-content">
             
-            <form action="PJCreate" method="POST" name="PJCreate-form" ><!-- onsubmit="return createVD()" -->
+            <form action="PJCreate" method="POST" name="PJCreate-form" onsubmit="return createVD()" >
 
 
 
@@ -49,7 +49,7 @@
                         
                         <div class="page-left1">
                             <input type="text" id="projectName" maxlength="11" name="projectName"
-                            placeholder="프로젝트 이름 입력" size="30">
+                            placeholder="프로젝트 이름 입력" size="30" required>
 
                             <button id="name-double-check" type="button">중복확인</button>
                         
@@ -59,7 +59,7 @@
                             <div class="quota">
                                 <h3 class="left-text" style="margin:10px 0;">정원</h3>
                                 <input type="number" id="projectQuota" name="projectQuota"
-                                    placeholder="0" max="30" min="1">
+                                    placeholder="0" max="30" min="1" required>
                             </div>
                         </div>
 
@@ -79,7 +79,7 @@
                         <div class="rightPage">
 
                             <div>
-                                <input type="radio" name="openStatus" id="secret-class" value="N">
+                                <input type="radio" name="openStatus" id="secret-class" value="N" required>
                                 <label for="secret-class">비공개 프로젝트</label><br>
                                 <p id="select-text" class="select-text">초대를 통해서만 가입할 수 있습니다.</p>
                             </div>
