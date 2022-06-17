@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:forEach var="p" items="${projectList}">
+    <c:if test="${param.projectNo == p.projectNo}">
+        <c:set var="project" value="${p}"/>
+    </c:if>
+</c:forEach>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +42,7 @@
             <section class="myPage-sideMenu">
                 <div id="sideMenu-list">
 
-                    <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1&projectNo=${param.projectNo}">${projectName}</a></div>
+                    <div class="sideMenu-list-row project-main"><a href="${contextPath}/board/main?type=1&projectNo=${param.projectNo}">${project.projectName}</a></div>
 
                     <c:forEach var="boardType" items="${boardTypeList}">
                         <c:if test="${boardType.boardCode != 99}">

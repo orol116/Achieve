@@ -25,12 +25,11 @@
 
 .main{
     width: 100%;
-
+    height: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    min-height: 800px;
+    align-items: top;
+    /* min-height: 800px; */
+    padding: 70px;
 }
 
 

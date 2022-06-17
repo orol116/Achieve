@@ -73,6 +73,7 @@
 @media screen and (max-width:560px) {
     .menu #expand-menu:not(:checked) ~ ul { /* 2단계 */
         display: none;
+      
     }
 }
 

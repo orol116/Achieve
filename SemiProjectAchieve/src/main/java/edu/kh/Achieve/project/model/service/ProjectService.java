@@ -23,7 +23,7 @@ public class ProjectService {
 	 * @return result
 	 * @throws Exception
 	 */
-	public int createProject(Project project, int memberNo)throws Exception {
+	public int createProject(Project project, int memberNo) throws Exception {
 		
 		Connection conn = getConnection();
 		
@@ -36,7 +36,9 @@ public class ProjectService {
 		if(result > 0) {
 			result = dao.insertProject(conn, project, memberNo);
 			
+			for (int i = 1; i < 5; i++) dao.insertBoardType(conn, i, projectNo);
 		}
+		
 		if(result > 0) commit(conn);
 		else   			rollback(conn);
 		

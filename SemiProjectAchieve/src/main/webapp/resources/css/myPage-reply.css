@@ -167,6 +167,7 @@ td#reply-list-part {
     justify-content: space-between;
     align-items: center;
     font-size: 13px;
+    margin-top: 20px;
 }
 
 .btn-area > div:nth-of-type(2){
