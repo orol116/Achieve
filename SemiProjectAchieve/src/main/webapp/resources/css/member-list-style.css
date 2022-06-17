@@ -144,3 +144,9 @@
 .tontWhite{
     color: white;
 }
+
+*{
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+    letter-spacing: 0.8px;
+}

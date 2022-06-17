@@ -34,10 +34,6 @@
 		
         <div class="setting-main">
 
-            <div name="setting-header" id="infor-first">
-                프로젝트 설정 
-            </div>
-
 
                     <div name="setting-header" id="infor-first">
                         프로젝트 설정 
@@ -80,43 +76,25 @@
                         maxlength="20" autocomplete="off">
                 </div>
             
-
             
                 <div name="setting-body" class="setting-body">
-                    과제 관리 <button id="homework-control">변경</button>
+                    전체 알림 발송 <button id="text-all">발송</button>
                 </div>
+                <textarea placeholder="전체 알림은 여기에 작성하세요." id="sendAll-text"></textarea>
             
 
-            
-                <div name="setting-body" class="setting-body">
-                    전체 쪽지 발송 <button id="text-all">발송</button>
-                </div>
-               
-                        <div name="setting-body" class="setting-body">
-                            전체 알림 발송 <button id="text-all">발송</button>
-                        </div>
-                        <textarea placeholder="전체 알림은 여기에 작성하세요." id="sendAll-text"></textarea>
-                    
 
-            
                 <div name="setting-body" class="setting-body">
                     소개 수정 <button id="IntroEditBtn">수정</button>
                     
-
-                        <div name="setting-body" class="setting-body">
-                            소개 수정 <button id="IntroEditBtn">수정</button>
-                            
-                        </div>
-                        <textarea placeholder="바꿀 소개를 작성하세요." id="projectIntro">개발2팀입니당</textarea>
-
-                        <div name="setting-body" class="setting-body">
-                            공지 작성 <button id="write-notice" onclick="location.href='${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1'">작성</button>
-                        </div>
-
+                </div>
+                <textarea placeholder="바꿀 소개를 작성하세요." id="projectIntro">개발2팀입니당</textarea>
 
                 <div name="setting-body" class="setting-body">
-                    공지 작성 <button id="write-notice"><a href="${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1">작성</a></button>
+                    공지 작성 <button id="write-notice" onclick="location.href='${contextPath}/board/write?mode=insert&type=2&projectNo=${param.projectNo}&cp=1'">작성</button>
                 </div>
+
+
 
         </div>
            
@@ -132,24 +110,15 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <script> 
-        // 댓글 관련 JS 코드에 필요한 값을 전역 변수로 선언
 
-        // jsp 파일 : html, css, js, el, jstl 사용가능
-        // js 파일  : js 만 사용 가능. 
-        // -> 그렇기에 el을 사용하려면 여기 jsp에서 사용해야된다. 
-
-        //** JS 코드에서 EL/JSTl을 작성하게 된다면 반드시 ""를 양쪽에 추가해야된다.**
-
-        // 최상위 주소
         const contextPath = "${contextPath}"; 
 
-        // 게시글 번호
-        const boardNo = "${detail.boardNo}"; // "500"
+       
+        const boardNo = "${detail.boardNo}"; 
 
-        // 로그인한 회원 번호
+       
         const loginMemberNo = "${loginMember.memberNo}";
-        // -> 로그인 되어있으면 : "10"
-        // -> 로그인 안되어있으면 : ""; (빈문자열)
+        
 
         var projectNo = "${param.projectNo}";
         
