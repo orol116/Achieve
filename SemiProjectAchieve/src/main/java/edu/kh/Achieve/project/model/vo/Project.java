@@ -18,6 +18,10 @@ public class Project {
 	private String projectQuota;
 	private String openStatus;
 	private String projectIntro;
+
+	private String memberNickName;
+	private String projectNM;
+	private int boardNo;
 	
 	private int memberNo;
 	

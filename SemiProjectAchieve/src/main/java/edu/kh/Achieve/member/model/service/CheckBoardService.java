@@ -5,12 +5,15 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import edu.kh.Achieve.board.model.vo.Board;
+import edu.kh.Achieve.board.model.vo.Reply;
 import edu.kh.Achieve.member.model.dao.CheckBoardDAO;
 import edu.kh.Achieve.member.model.vo.CheckBoard;
 import edu.kh.Achieve.member.model.vo.CheckPagination;
-import edu.kh.Achieve.member.model.vo.CheckProject;
 import edu.kh.Achieve.member.model.vo.CheckReply;
 import edu.kh.Achieve.member.model.vo.Member;
+import edu.kh.Achieve.project.model.vo.Project;
 
 public class CheckBoardService {
 
@@ -35,7 +38,7 @@ public class CheckBoardService {
 		CheckPagination pagination = new CheckPagination(cp, listBoardCount);
 		
 		// 3. 작성글 목록 조회
-		List<CheckBoard> boardList = dao.selectBoardList(conn, pagination, type, memNo);
+		List<Board> boardList = dao.selectBoardList(conn, pagination, type, memNo);
 
 		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -96,7 +99,7 @@ public class CheckBoardService {
 		CheckPagination pagination = new CheckPagination(cp, listReplyCount);
 		
 		// 3. 작성댓글 목록 조회
-		List<CheckReply> replyList = dao.selectReplyList(conn, pagination, type, memNo);
+		List<Reply> replyList = dao.selectReplyList(conn, pagination, type, memNo);
 		
 		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -153,7 +156,7 @@ public class CheckBoardService {
 		CheckPagination pagination = new CheckPagination(cp, listProjectCount);
 		
 		// 3. 가입된 프로젝트 목록 조회
-        List<CheckProject> projectList = dao.selectProjectList(conn, pagination, type, memNo);
+        List<Project> projectList = dao.selectProjectList(conn, pagination, type, memNo);
 		// 4. Map 객체를 생성하여 1,2,3 결과 객체를 모두 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		

@@ -12,6 +12,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class Reply {
+	
 	private int replyNo;
 	private String replyContent;
 	private String createDate;
@@ -19,5 +20,10 @@ public class Reply {
 	private int memberNo;
 	private String memberNickname;
 	private String profileImage;
+
+	private String replyDate;
+	private String memberNickName;
+	private String boardTitle;
+	private int projectNo;
 	
 }

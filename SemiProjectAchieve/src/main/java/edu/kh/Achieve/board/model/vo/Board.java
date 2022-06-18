@@ -23,5 +23,8 @@ public class Board {
 	private String boardName;
 	private int boardCode;
 
+	private String profileImage;
+	private int projectNo;
+	
 	
 }

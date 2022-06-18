@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import edu.kh.Achieve.board.model.vo.Board;
 import edu.kh.Achieve.board.model.vo.Pagination;
+import edu.kh.Achieve.board.model.vo.Reply;
 import edu.kh.Achieve.member.model.vo.CheckBoard;
 import edu.kh.Achieve.member.model.vo.CheckPagination;
-import edu.kh.Achieve.member.model.vo.CheckProject;
 import edu.kh.Achieve.member.model.vo.CheckReply;
 import edu.kh.Achieve.member.model.vo.Member;
+import edu.kh.Achieve.project.model.vo.Project;
 
 public class CheckBoardDAO {
 
@@ -143,9 +145,9 @@ public class CheckBoardDAO {
 	 * @return boardList
 	 * @throws Exception
 	 */
-	public List<CheckBoard> selectBoardList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception {
+	public List<Board> selectBoardList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception {
 		
-		List<CheckBoard> boardList = new ArrayList<CheckBoard>();
+		List<Board> boardList = new ArrayList<Board>();
 		
 		try {
 			String sql = prop.getProperty("selectBoardList");
@@ -163,7 +165,7 @@ public class CheckBoardDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				CheckBoard board = new CheckBoard();
+				Board board = new Board();
 				
 				board.setBoardNo(rs.getInt("BOARD_NO"));
 				board.setBoardTitle(rs.getString("BOARD_TITLE"));
@@ -245,8 +247,8 @@ public class CheckBoardDAO {
 	 * @return replyList
 	 * @throws Exception
 	 */
-	public List<CheckReply> selectReplyList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception{
-		List<CheckReply> replyList = new ArrayList<CheckReply>();
+	public List<Reply> selectReplyList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception{
+		List<Reply> replyList = new ArrayList<Reply>();
 		
 		try {
 			String sql = prop.getProperty("selectReplyList");
@@ -265,7 +267,7 @@ public class CheckBoardDAO {
 			
 			while(rs.next()) {
 				
-				CheckReply reply = new CheckReply();
+				Reply reply = new Reply();
 				
 				reply.setReplyNo(rs.getInt("REPLY_NO"));
 				reply.setReplyContent(rs.getString("REPLY_CONTENT"));
@@ -347,9 +349,9 @@ public class CheckBoardDAO {
 	 * @return projectList
 	 * @throws Exception
 	 */
-	public List<CheckProject> selectProjectList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception{
+	public List<Project> selectProjectList(Connection conn, CheckPagination pagination, int type, int memNo) throws Exception{
 		
-		List<CheckProject> projectList = new ArrayList<CheckProject>();
+		List<Project> projectList = new ArrayList<Project>();
 		
 		try {
 			String sql = prop.getProperty("selectProjectList");
@@ -368,7 +370,7 @@ public class CheckBoardDAO {
 			
 			while(rs.next()) {
 				
-				CheckProject project = new CheckProject();
+				Project project = new Project();
 				
 				project.setProjectNo(rs.getInt("PROJECT_NO"));
 				project.setProjectNM(rs.getString("PROJECT_NM"));
